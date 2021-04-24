@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+    <head>
+        <title>User</title>
+    </head>
+    <body>
+        <div class="content" layout:fragment="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-text card-header-primary">
+                                <div class="card-text">
+                                    <h4 class="card-title"><i class="fas fa-user-plus"></i> Tạo tài khoản</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/create-user}" th:object="${appUserForm}" method="POST">
+                                    <div class="row" th:if="${#fields.hasErrors()}">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger" role="alert">
+                                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                                                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                                                <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+                                                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                                                <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <input type="text" class="form-control" placeholder="Họ" th:field="*{firstName}">
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          <input type="text" class="form-control" placeholder="Tên" th:field="*{lastName}">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                          <input type="text" class="form-control" placeholder="Tên đăng nhập" th:field="*{userName}">
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          <input type="text" class="form-control" placeholder="Email" th:field="*{email}">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-6">
+                                            <input type="password" class="form-control" placeholder="Mật khẩu" th:field="*{password}">
+                                            
+                                        </div>
+                                        <div class="col-6">
+                                          <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" th:field="*{confirmPassword}">
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="form-group col-md-6">
+                                          <select class="form-control" th:field="*{gender}">
+                                            <option value="1">Nam</option>
+                                            <option value="0">Nữ</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" th:field="*{role}">
+                                                <option th:each="item : ${listRole}" th:value="${item.roleId}" th:text="${item.roleName}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary">Tạo</button>
+                                            <button type="reset" class="btn btn-info"><i class="fas fa-eraser"></i> Làm mới</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a href="javascript:;"><img class="img" src="../assets/img/faces/marc.jpg"></a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Tải ảnh lên</h4>
+                                <p class="card-description">Click vào ảnh để upload ảnh</p>
+                                <a href="javascript:;" class="btn btn-primary btn-round">Upload ảnh</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-success">
+                                <h4 class="card-title ">Danh sách nhân viên</h4>
+                                <p class="card-category">Here is list user</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>ID</th>
+                                            <th>Tên đăng nhập</th>
+                                            <th>Họ và tên</th>
+                                            <th>Chức vụ</th>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
