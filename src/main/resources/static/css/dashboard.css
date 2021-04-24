@@ -1,0 +1,20 @@
+.bd-leftbar {
+	position: sticky!important;
+    top: 0;
+    z-index: 1000;
+    height: calc(100vh);
+    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+}
+
+.item-active {
+	background-color: #9c27b0;
+	border-radius: 3px;
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(156 39 176 / 40%);
+    color: white!important;
+}
+
+.item-menu {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+}

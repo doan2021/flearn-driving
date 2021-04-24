@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Login</title>
+      <link rel="stylesheet" type="text/css" th:href="@{../css/login.css}" />
+   </head>
+   <body>
+		<div class="header">
+			<div>KP<span>Group</span></div>
+		</div>
+		<br>
+		<form class="login" name='f' th:action="@{/j_spring_security_check}" method="POST">
+			<input type="text" placeholder="username" name="username"><br>
+			<input type="password" placeholder="password" name="password"><br>
+			<input type="submit" value="Login" name="submit" class="btn-login">
+		</form>
+		
+		<!-- /login?error=true -->
+      <div th:if="${#request.getParameter('error') == 'true'}"
+            style="color:red;margin:10px 0px;">
+         Login Failed!!!<br />
+         Reason :
+         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+      </div>
+   </body>
+</html>
