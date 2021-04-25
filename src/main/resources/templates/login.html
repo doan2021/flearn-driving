@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-   <head>
-      <meta charset="UTF-8">
-      <title>Login</title>
-      <link rel="stylesheet" type="text/css" th:href="@{../css/login.css}" />
-   </head>
-   <body>
-		<div class="header">
-			<div>KP<span>Group</span></div>
-		</div>
-		<br>
-		<form class="login" name='f' th:action="@{/j_spring_security_check}" method="POST">
-			<input type="text" placeholder="username" name="username"><br>
-			<input type="password" placeholder="password" name="password"><br>
-			<input type="submit" value="Login" name="submit" class="btn-login">
-		</form>
-		
-		<!-- /login?error=true -->
-      <div th:if="${#request.getParameter('error') == 'true'}"
-            style="color:red;margin:10px 0px;">
-         Login Failed!!!<br />
-         Reason :
-         <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-            th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-                Static summary
-         </span>
-      </div>
-   </body>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <title>Login</title>
+        <!-- CSS Files -->
+        <link th:href="@{../assets/css/material-dashboard.css}" rel="stylesheet" />
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
+        <!--   Core JS Files   -->
+        <script th:src="@{../assets/js/core/jquery.min.js}"></script>
+        <script th:src="@{../assets/js/core/popper.min.js}"></script>
+        <script th:src="@{../assets/js/core/bootstrap-material-design.min.js}"></script>
+        <link rel="stylesheet" type="text/css" th:href="@{../css/login.css}"/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 d-flex justify-content-center align-items-center content">
+                    <div class="strong-title mr-5">Log<span class="title">in</span></div>
+                    <!-- /login?error=true -->
+                    <div th:if="${#request.getParameter('error') == 'true'}">Login Failed!!!<br/>Reason :
+                       <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}" th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Static summary</span>
+                    </div>
+                    <form class="login" name='f' th:action="@{/j_spring_security_check}" method="POST">
+                        <input type="text" placeholder="username" name="username" class="form-control"><br>
+                        <input type="password" placeholder="password" name="password" class="form-control"><br>
+                        <button type="submit" name="submit" class="btn btn-info">Login</button>
+                        <button type="button" name="submit" class="btn btn-danger"><i class="fab fa-google"></i> Login with google</button>
+                    </form>
+                </div>
+                <div class="col-6 bg-image">
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
