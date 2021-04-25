@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ManagermentKtgroupApplication {
+public class DoanFptApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ManagermentKtgroupApplication.class, args);
+		SpringApplication.run(DoanFptApplication.class, args);
 	}
 
 }
