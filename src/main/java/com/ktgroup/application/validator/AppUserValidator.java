@@ -9,8 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.ktgroup.application.dto.AppUserForm;
-import com.ktgroup.application.responsitories.AppUserRespository;
+import com.ktgroup.application.dto.AccountForm;
+import com.ktgroup.application.responsitories.AccountsRespository;
 
 /**
  * @author tamdu
@@ -20,16 +20,16 @@ import com.ktgroup.application.responsitories.AppUserRespository;
 public class AppUserValidator implements Validator {
 
     @Autowired
-    private AppUserRespository appUserRespository;
+    private AccountsRespository appUserRespository;
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return clazz == AppUserForm.class;
+        return clazz == AccountForm.class;
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        AppUserForm appUserForm = (AppUserForm) target;
+        AccountForm appUserForm = (AccountForm) target;
         // Kiểm tra các field của AppUserForm.
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "NotEmpty.appUserForm.userName");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty.appUserForm.firstName");
