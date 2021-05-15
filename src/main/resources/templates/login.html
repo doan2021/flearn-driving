@@ -2,16 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
         <title>Login</title>
-        <!-- CSS Files -->
-        <link th:href="@{../assets/css/material-dashboard.css}" rel="stylesheet" />
-        <!--     Fonts and icons     -->
-        <link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
         <!--   Core JS Files   -->
-        <script th:src="@{../assets/js/core/jquery.min.js}"></script>
-        <script th:src="@{../assets/js/core/popper.min.js}"></script>
-        <script th:src="@{../assets/js/core/bootstrap-material-design.min.js}"></script>
         <link rel="stylesheet" type="text/css" th:href="@{../css/login.css}"/>
     </head>
     <body>
@@ -27,8 +19,7 @@
                         <input type="text" placeholder="username" name="username" class="form-control"><br>
                         <input type="password" placeholder="password" name="password" class="form-control"><br>
                         <button type="submit" name="submit" class="btn btn-info">Login</button>
-                        <a class="btn btn-danger" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
-    &client_id=80724656105-fg2ndheoujm7c7dd4ob1i9mq3ebdbjhb.apps.googleusercontent.com&approval_prompt=force"><i class="fab fa-google"></i> Login With Gmail</a>
+                        <button class="btn btn-danger"><i class="fab fa-google"></i> Login With Gmail</button>
                     </form>
                 </div>
                 <div class="col-6 bg-image">

@@ -22,8 +22,7 @@ import javax.persistence.UniqueConstraint;
 public class Accounts {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "account_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
     @Column(name = "user_name", length = 36, nullable = false)

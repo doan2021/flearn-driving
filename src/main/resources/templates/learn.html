@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+    <head>
+        <title>Learn</title>
+        <link rel="stylesheet" th:href="@{../css/learn.css}">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="content">
+            <h1>LEARN</h1>
+            <div class="row mt-3 g-3" th:each="question: ${listQuestions}">
+                <div class="col-12 border">
+                    <h5 class="card-title">CAU + ${question.number}</h5>
+                    <p class="card-text" th:text="${question.content}"></p>
+                    <div th:each="image: ${question.listImages}">
+                        <img th:src="@{${image.url}}" class="image-question" alt="...">
+                    </div>
+                </div>
+                <div class="col-6 border" th:each="answer: ${question.answers}">
+                    <label th:for="'ans' + ${answer.answerId}"th:text="${answer.content}"></label>
+                    <input type="checkbox" th:id="'ans' + ${answer.answerId}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

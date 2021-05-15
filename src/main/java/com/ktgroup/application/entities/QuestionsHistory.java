@@ -1,5 +1,5 @@
 package com.ktgroup.application.entities;
 
-public class ResultExam {
+public class QuestionsHistory {
 
 }
