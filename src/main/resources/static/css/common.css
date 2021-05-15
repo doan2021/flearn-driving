@@ -3,31 +3,45 @@
 }
 
 .display-none {
-    display: none;
+	display: none;
 }
 
 .bg-loadding {
-    height: 100%;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 99999;
-    background-color: #ffffff73;
-        animation-name: loader-two-before-transition;
-    animation-duration: 1.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 99999;
+	background-color: #ffffff73;
+	animation-name: loader-two-before-transition;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
 }
 
 .loadding {
-    height: 100px;
-    left: 46%;
-    position: absolute;
-    top: 40%;
-    width: 100px;
-    text-align: center;
+	height: 100px;
+	left: 46%;
+	position: absolute;
+	top: 40%;
+	width: 100px;
+	text-align: center;
+}
 
+.icon-profile-mini {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+.icon-notifications {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    background-color: #d2d2d24d;
 }
