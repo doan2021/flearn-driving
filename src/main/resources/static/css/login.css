@@ -10275,7 +10275,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 	/* background: blue; */
 	background: #DC2A2D !important;
 	color: white;
-	border-color: #000;
+	border-color: #DC2A2D;
 }
 
 .form-group {
