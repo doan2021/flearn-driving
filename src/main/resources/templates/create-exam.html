@@ -3,7 +3,6 @@
     <head>
         <title>Learn</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" th:href="@{../css/dashboard.css}">
     </head>
     <body>
         <div class="container-xxl" layout:fragment="content">
@@ -37,8 +36,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="question: ${listQuestions}">
-                                <td><input class="form-check-input" type="checkbox" value="${question.questionId}"></td>
+                            <tr th:each="question, stat : ${listQuestions}">
+                                <td><input class="form-check-input" type="checkbox" th:value="${question.questionId}" th:field="*{listQuestionId[__${stat.index}__]}"></td>
                                 <td th:text="|Câu ${question.number}|"></td>
                                 <td th:text="${question.content}"></td>
                             </tr>

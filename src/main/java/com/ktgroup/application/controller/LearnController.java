@@ -1,7 +1,5 @@
 package com.ktgroup.application.controller;
 
-import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ktgroup.application.dto.ExamForm;
 import com.ktgroup.application.dto.QuestionForm;
-import com.ktgroup.application.entities.Questions;
+import com.ktgroup.application.entities.Question;
 import com.ktgroup.application.services.QuestionServices;
 
 @Controller
@@ -38,17 +36,19 @@ public class LearnController {
     @GetMapping(value = {"/create-exam"})
     public String createNewExam(Model model) {
         ExamForm examForm = new ExamForm();
-        List<Questions> listQuestions = questionServices.getAllQuestions();
+        List<Question> listQuestions = questionServices.getAllQuestions();
         model.addAttribute("listQuestions", listQuestions);
         model.addAttribute("examForm", examForm);
         return "create-exam";
     }
     
+    @PostMapping(value = {"/save-exam"})
+    public String createNewExam(@ModelAttribute ExamForm form, Model model) {
+        return "redirect:/create-exam";
+    }
+    
     @GetMapping(value = {"/learn"})
-    public String index(Model model, Principal principal) {
-        List<Questions> listQuestions = new ArrayList<>();
-        listQuestions = questionServices.getAllQuestions();
-        model.addAttribute("listQuestions", listQuestions);
+    public String index(Model model) {
         return "learn";
     }
 }

@@ -18,8 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "accounts", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "user_name") })
-public class Accounts {
+@Table(name = "account", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "user_name") })
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -121,5 +121,5 @@ public class Accounts {
     public void setDelete(boolean isDelete) {
         this.isDelete = isDelete;
     }
-    
+
 }
