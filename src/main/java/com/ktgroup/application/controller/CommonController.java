@@ -8,10 +8,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ktgroup.application.dto.AccountForm;
+import com.ktgroup.application.entities.Account;
 import com.ktgroup.application.services.AccountsServices;
 import com.ktgroup.application.services.RoleServices;
 import com.ktgroup.application.utils.WebUtils;
@@ -26,7 +25,12 @@ public class CommonController {
     RoleServices roleServices;
     
     @GetMapping(value = {"/", "/index"})
-    public String init(Model model) {
+    public String init(Principal principal, Model model) {
+        Account accountLogin = new Account();
+        if (principal != null) {
+           accountLogin = accountsServices.getAccountByUserName(principal.getName());
+        }
+        model.addAttribute(accountLogin);
         return "index";
     }
     
@@ -35,7 +39,7 @@ public class CommonController {
         return "login";
     }
 
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    @GetMapping(value = "/403")
     public String accessDenied(Model model, Principal principal) {
         if (principal != null) {
             User loginedUser = (User) ((Authentication) principal).getPrincipal();
@@ -45,13 +49,13 @@ public class CommonController {
                     + "<br> You do not have permission to access this page!";
             model.addAttribute("message", message);
         }
-        return "403Page";
+        return "403";
     }
     
     @GetMapping(value = {"/register"})
     public String registerPage(Model model) {
         model.addAttribute("appUserForm", new AccountForm());
-        return "Register";
+        return "register";
     }
 
 }

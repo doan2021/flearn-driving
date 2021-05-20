@@ -8,13 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "questions", uniqueConstraints = { @UniqueConstraint(name = "QUESTIONS_UK", columnNames = "number") })
-public class Questions {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +32,15 @@ public class Questions {
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
 
-    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)
-    private List<Answers> answers;
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Answer> answer;
 
-    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL)
-    private List<Images> listImages;
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Image> listImage;
+
+    @ManyToOne
+    @JoinColumn(name = "chapter_id")
+    private Chapter chapter;
 
     public Long getQuestionId() {
         return questionId;
@@ -42,6 +48,14 @@ public class Questions {
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getContent() {
@@ -60,28 +74,28 @@ public class Questions {
         this.isDelete = isDelete;
     }
 
-    public List<Answers> getAnswers() {
-        return answers;
+    public List<Answer> getAnswer() {
+        return answer;
     }
 
-    public void setAnswers(List<Answers> answers) {
-        this.answers = answers;
+    public void setAnswer(List<Answer> answer) {
+        this.answer = answer;
     }
 
-    public List<Images> getListImages() {
-        return listImages;
+    public List<Image> getListImage() {
+        return listImage;
     }
 
-    public void setListImages(List<Images> listImages) {
-        this.listImages = listImages;
+    public void setListImage(List<Image> listImage) {
+        this.listImage = listImage;
     }
 
-    public int getNumber() {
-        return number;
+    public Chapter getChapter() {
+        return chapter;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setChapter(Chapter chapter) {
+        this.chapter = chapter;
     }
 
 }

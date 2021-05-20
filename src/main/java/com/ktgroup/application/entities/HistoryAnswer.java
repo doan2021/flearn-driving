@@ -31,11 +31,11 @@ public class HistoryAnswer {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Questions questions;
+    private Question questions;
 
     @ManyToOne
     @JoinColumn(name = "answer_id")
-    private Accounts accounts;
+    private Account accounts;
 
     public Long getHistoryAnswerId() {
         return historyAnswerId;
@@ -69,19 +69,19 @@ public class HistoryAnswer {
         this.isCorrect = isCorrect;
     }
 
-    public Questions getQuestions() {
+    public Question getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Questions questions) {
+    public void setQuestions(Question questions) {
         this.questions = questions;
     }
 
-    public Accounts getAccounts() {
+    public Account getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Accounts accounts) {
+    public void setAccounts(Account accounts) {
         this.accounts = accounts;
     }
 

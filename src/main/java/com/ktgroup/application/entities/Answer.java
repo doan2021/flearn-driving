@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "answers")
-public class Answers {
+@Table(name = "answer")
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answer_id")
@@ -28,7 +28,7 @@ public class Answers {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Questions questions;
+    private Question question;
 
     public Long getAnswerId() {
         return answerId;
@@ -62,12 +62,12 @@ public class Answers {
         this.isDelete = isDelete;
     }
 
-    public Questions getQuestions() {
-        return questions;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestions(Questions questions) {
-        this.questions = questions;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
 }

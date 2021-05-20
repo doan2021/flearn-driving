@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ktgroup.application.dto.AccountForm;
-import com.ktgroup.application.entities.Accounts;
+import com.ktgroup.application.entities.Account;
 import com.ktgroup.application.entities.Role;
 import com.ktgroup.application.responsitories.AccountsRespository;
 import com.ktgroup.application.responsitories.RoleRespository;
@@ -19,23 +19,28 @@ import com.ktgroup.application.utils.EncrytedPasswordUtils;
 public class AccountsServices {
 
     @Autowired
-    private AccountsRespository appUserRespository;
+    private AccountsRespository accountsRespository;
     
     @Autowired
     private RoleRespository roleRespository;
+    
+    public Account getAccountByUserName(String userName) {
+        return accountsRespository.findByUserName(userName);
+    }
+    
 
-    public List<Accounts> findAllAccount() {
-        List<Accounts> listUser = appUserRespository.findAll();
+    public List<Account> findAllAccount() {
+        List<Account> listUser = accountsRespository.findAll();
         if (listUser != null) {
             return listUser;
         }
-        return new ArrayList<Accounts>();
+        return new ArrayList<Account>();
     }
     
     @Transactional
     public void createAccount(AccountForm appUserForm) {
         String encrytedPassword = EncrytedPasswordUtils.encrytePassword(appUserForm.getPassword());
-        Accounts account = new Accounts();
+        Account account = new Account();
         account.setUserName(appUserForm.getUserName());
         account.setFirstName(appUserForm.getFirstName());
         account.setLastName(appUserForm.getLastName());
@@ -44,6 +49,6 @@ public class AccountsServices {
         account.setEncrytedPassword(encrytedPassword);
         Role role = roleRespository.getOne(new Long(2));
         account.setRole(role);
-        appUserRespository.save(account);
+        accountsRespository.save(account);
     }
 }

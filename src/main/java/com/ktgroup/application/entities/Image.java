@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "images")
-public class Images {
+@Table(name = "image")
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Images {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Questions questions;
+    private Question question;
 
     public Long getImageId() {
         return imageId;
@@ -40,6 +40,14 @@ public class Images {
 
     public void setImageId(Long imageId) {
         this.imageId = imageId;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getUrl() {
@@ -66,20 +74,12 @@ public class Images {
         this.isDelete = isDelete;
     }
 
-    public Questions getQuestions() {
-        return questions;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestions(Questions questions) {
-        this.questions = questions;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
+    
 }
