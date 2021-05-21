@@ -19,17 +19,7 @@
 	height: 4rem;
 }
 
-.icon-profile-mini {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	border: 2px solid white;
-}
-
 .icon-notifications {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	color: white;
-	background-color: #d2d2d24d;
+	width: 72px;
+	height: 40px
 }

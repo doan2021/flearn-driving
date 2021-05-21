@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>Layout page</title>
         <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900&amp;display=swap" rel="stylesheet">
         <link rel="icon" type="image/ico" th:href="@{../image/favicon.ico}"/>
         <!--     Fonts and icons     -->
         <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
@@ -41,24 +42,25 @@
                         <li class="nav-item col-6 col-md-auto">
                             <a class="nav-link p-2" th:href="@{/create-exam}">Create exam</a>
                         </li>
+                        <li class="nav-item col-6 col-md-auto">
+                            <a class="nav-link p-2" th:href="@{/select-chapter}">Select chapter</a>
+                        </li>
                     </ul>
                     <ul class="navbar-nav flex-row flex-wrap ms-md-auto" th:if="${#request.userPrincipal == null}">
                         <li class="nav-item col-6 col-md-auto dropdown">
                             <div class="nav-link p-2">
-                                <a class="btn icon-notifications border-0" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i></a>
+                                <a class="btn btn-secondary rounded-pill" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i></a>
                             </div>
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-row flex-wrap ms-md-auto" th:if="${#request.userPrincipal != null}">
                         <li class="nav-item col-6 col-md-auto dropdown">
                             <div class="nav-link p-2">
-                                <button class="icon-notifications border-0"><i class="fas fa-bell"></i></button>
+                                <button class="btn btn-secondary rounded-pill"><i class="fas fa-bell"></i></button>
                             </div>
                         </li>
-                        <li class="nav-item col-6 col-md-auto dropdown">
-                            <a class="nav-link p-2" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="image/no_image_user_icon.png" class="icon-profile-mini"/>
-                            </a>
+                        <li class="nav-link p-2 dropdown">
+                            <button class="btn btn-secondary rounded-pill"  data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></button>
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                                 <li>
                                     <div class="dropdown-item">

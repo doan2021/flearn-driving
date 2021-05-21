@@ -5,13 +5,56 @@
         <link rel="stylesheet" th:href="@{../css/learn.css}">
     </head>
     <body>
-        <div class="container-xxl" layout:fragment="content">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1><strong>Chương 1</strong> Cơ bản về lái xe</h1>
+        <th:block layout:fragment="content">
+        <div class="container-xxl" id="app-learn">
+            <input type="hidden" th:value="${chapterId}" id="chapterId"/>
+            <div v-if="dataResult != '' && dataResult != null">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2><strong>Chương {{ dataResult.chapter.name }}</strong></h2>
+                    <h3>{{ dataResult.chapter.content }}</h3>
                     
                 </div>
             </div>
+            <div class="row mt-5 p-2 justify-content-center bg-white rounded-3 shadow">
+                <div class="col-2 text-center">
+                    <p><strong>37</strong></p>
+                    <span class="text-secondary">Còn lại</span>
+                </div>
+                <div class="col-1 text-center align-self-center text-secondary">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="col-2 text-center">
+                    <p class="text-primary"><strong>37</strong></p>
+                    <span class="text-secondary">Quen thuộc</span>
+                </div>
+                <div class="col-1 text-center align-self-center text-secondary">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="col-2 text-center">
+                    <p class="text-success"><strong>37</strong></p>
+                    <span class="text-secondary">Nắm vững</span>
+                </div>
+            </div>
+            <div class="row bg-white rounded-3 shadow mt-3" v-if="dataResult.questionRandom != '' && dataResult.questionRandom != null">
+                <div class="col-12 p-4">
+                    <h4>Câu {{ dataResult.questionRandom.number }}</h4>
+                    <p>{{ dataResult.questionRandom.content }}</p>
+                </div>
+                <div class="col-3 p-4 d-grid gap-2" v-for="(answer, index) in dataResult.questionRandom.listAnswers" :key="answer.answerId">
+                    <button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)"><span class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
+                </div>
+            </div>
         </div>
+        <div v-else>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-danger">No question in this chapter !</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script th:src="@{../js/learn.js}"></script>
+        </th:block>
     </body>
 </html>

@@ -16,8 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ktgroup.application.dto.AnswerForm;
 import com.ktgroup.application.dto.QuestionForm;
 import com.ktgroup.application.entities.Answer;
+import com.ktgroup.application.entities.Chapter;
 import com.ktgroup.application.entities.Image;
 import com.ktgroup.application.entities.Question;
+import com.ktgroup.application.responsitories.ChapterResponsitory;
 import com.ktgroup.application.responsitories.QuestionsRespository;
 
 @Service
@@ -28,13 +30,19 @@ public class QuestionServices {
 
     @Autowired
     private Environment env;
+    
+    @Autowired
+    ChapterResponsitory chapterResponsitory;
 
     @Transactional
     public void createNewQuestion(QuestionForm form) {
+        Chapter chapter = new Chapter();
+        chapter = chapterResponsitory.getOne(form.getChapterId());
         Question question = new Question();
         question.setContent(form.getContent());
         question.setNumber(form.getNumber());
         question.setListImage(handleImage(question, form.getImages()));
+        question.setChapter(chapter);
         List<Answer> listAnswers = new ArrayList<>();
         for (AnswerForm answer : form.getListAnswers()) {
             Answer ans = new Answer();
@@ -43,7 +51,7 @@ public class QuestionServices {
             ans.setQuestion(question);
             listAnswers.add(ans);
         }
-        question.setAnswer(listAnswers);
+        question.setListAnswers(listAnswers);
         questionsRespository.save(question);
     }
 

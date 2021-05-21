@@ -17,4 +17,7 @@ public class Constant {
 	public static final String STATUS_NOT_FOUND = "not found";
 	
 	public static final String LABEL_NAME_SCREEN = "nameScreen";
+	
+	public static final String STR_TRUE = "true";
+	public static final String STR_FALSE = "false";
 }

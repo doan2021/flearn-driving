@@ -11,31 +11,40 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "history_answer")
 public class HistoryAnswer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="history_answer_id")
+    @Column(name = "history_answer_id")
     private Long historyAnswerId;
 
     @Column(name = "note")
     private String note;
-    
+
     @Column(name = "date_answer")
     private Date dateAnswer;
 
     @Column(name = "is_correct")
     private boolean isCorrect;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Question questions;
+    private Question question;
 
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "answer_id")
-    private Account accounts;
+    private Answer answer;
 
     public Long getHistoryAnswerId() {
         return historyAnswerId;
@@ -69,20 +78,28 @@ public class HistoryAnswer {
         this.isCorrect = isCorrect;
     }
 
-    public Question getQuestions() {
-        return questions;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestions(Question questions) {
-        this.questions = questions;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
-    public Account getAccounts() {
-        return accounts;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccounts(Account accounts) {
-        this.accounts = accounts;
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
 
 }

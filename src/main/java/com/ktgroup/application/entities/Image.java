@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "image")
 public class Image {
@@ -30,6 +32,7 @@ public class Image {
     @Column(name = "is_delete")
     private String isDelete;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;

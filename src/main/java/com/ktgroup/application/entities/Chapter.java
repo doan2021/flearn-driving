@@ -1,5 +1,6 @@
 package com.ktgroup.application.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,9 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "chapter")
-public class Chapter {
+public class Chapter implements Serializable{
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +34,13 @@ public class Chapter {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL)
     private List<Question> listQuestion;
 
@@ -70,6 +82,14 @@ public class Chapter {
 
     public void setListQuestion(List<Question> listQuestion) {
         this.listQuestion = listQuestion;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

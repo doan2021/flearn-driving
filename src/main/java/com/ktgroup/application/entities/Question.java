@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "questions", uniqueConstraints = { @UniqueConstraint(name = "QUESTIONS_UK", columnNames = "number") })
 public class Question {
@@ -29,18 +32,28 @@ public class Question {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "isParalysis", columnDefinition = "boolean default false")
+    private boolean isParalysis;
+
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Answer> answer;
-
+    private List<Answer> listAnswers;
+    
+    @JsonManagedReference
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Image> listImage;
-
+    
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<HistoryAnswer> listHistoryAnswer;
 
     public Long getQuestionId() {
         return questionId;
@@ -74,12 +87,12 @@ public class Question {
         this.isDelete = isDelete;
     }
 
-    public List<Answer> getAnswer() {
-        return answer;
+    public List<Answer> getListAnswers() {
+        return listAnswers;
     }
 
-    public void setAnswer(List<Answer> answer) {
-        this.answer = answer;
+    public void setListAnswers(List<Answer> listAnswers) {
+        this.listAnswers = listAnswers;
     }
 
     public List<Image> getListImage() {
@@ -96,6 +109,22 @@ public class Question {
 
     public void setChapter(Chapter chapter) {
         this.chapter = chapter;
+    }
+
+    public boolean isParalysis() {
+        return isParalysis;
+    }
+
+    public void setParalysis(boolean isParalysis) {
+        this.isParalysis = isParalysis;
+    }
+
+    public List<HistoryAnswer> getListHistoryAnswer() {
+        return listHistoryAnswer;
+    }
+
+    public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
+        this.listHistoryAnswer = listHistoryAnswer;
     }
 
 }

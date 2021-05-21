@@ -6,6 +6,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import com.ktgroup.application.dto.AccountForm;
@@ -50,5 +53,12 @@ public class AccountsServices {
         Role role = roleRespository.getOne(new Long(2));
         account.setRole(role);
         accountsRespository.save(account);
+    }
+    
+    public Account getAccountLogin() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User loginedUser = (User) auth.getPrincipal();
+        String userNameLogin = loginedUser.getUsername();
+        return accountsRespository.findByUserName(userNameLogin);
     }
 }
