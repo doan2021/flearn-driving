@@ -435,15 +435,15 @@ h1, h3, .h1, .h3 {
 	width: 70%;
 }
 
-.login-wrap .social a {
-	width: 100%;
+.btn-google {
+	width: 245px;
 	display: block;
 	border: 1px solid rgba(255, 255, 255, 0.4);
 	color: #000;
 	background: #fff;
 }
 
-.login-wrap .social a:hover {
+.btn-google:hover {
 	/* background: blue; */
 	background: #DC2A2D !important;
 	color: white;
@@ -584,4 +584,19 @@ textarea.form-control {
 	border: 1px solid #fbceb5;
 	background: transparent;
 	color: #fbceb5;
+}
+
+.btn.btn-primary.btn-outline-primary {
+	border: 1px solid #fbceb5;
+	background: transparent;
+	color: #fbceb5;
+}
+
+.btn.btn-primary.btn-outline-primary:hover {
+	border: 1px solid transparent;
+	background: #fbceb5;
+	color: #fff;
+}
+.w-330 {
+	width: 350px;
 }

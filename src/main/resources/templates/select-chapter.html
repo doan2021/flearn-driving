@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+    <head>
+        <title>Learn</title>
+        <link rel="stylesheet" th:href="@{../css/select-chapter.css}">
+    </head>
+    <body>
+        <div class="container-xxl" layout:fragment="content">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>Select Chapter</h3>
+                </div>
+            </div>
+            <div class="row g-3 mt-2">
+                <div class="col-3" th:each="chapter : ${listChapter}">
+                    <a th:href="@{/learn/{chapterId}(chapterId=${chapter.chapterId})}" class="card-chapter p-3 block">
+                        <span th:text="|Chương ${chapter.name}|" class="chapter-name badge bg-secondary"></span>
+                        <span th:text="|${chapter.listQuestion.size} Question|" class="chapter-content"></span>
+                        <span th:text="${chapter.description}" class="chapter-description"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

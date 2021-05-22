@@ -1,12 +1,17 @@
 package com.ktgroup.application.responsitories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ktgroup.application.entities.Questions;
+import com.ktgroup.application.entities.Chapter;
+import com.ktgroup.application.entities.Question;
 
 @Repository
-public interface QuestionsRespository  extends JpaRepository<Questions, Long> {
+public interface QuestionsRespository  extends JpaRepository<Question, Long> {
 
-    public Questions findByNumber(int number);
+    public Question findByNumber(int number);
+    
+    public List<Question> findByChapter(Chapter chapter);
 }
