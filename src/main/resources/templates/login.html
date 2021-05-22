@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -9,6 +11,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
 	rel="stylesheet">
+
 <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
 
 <link rel="stylesheet"
@@ -17,66 +20,69 @@
 </head>
 <body class="img js-fullhieght"
 	style="background-image: url(image/bg.jpg);">
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="text-center">
-					<h1 class="heading-section">Login</h1>
+	<div class="container-xxl" layout:fragment="content">
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="text-center">
+						<h1 class="heading-section">Login</h1>
+					</div>
 				</div>
-			</div>
-			<div class="text-center" style="color: red;"
-				th:if="${#request.getParameter('error') == 'true'}">
-				Login Failed!!!<br />Reason : <span
-					th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-					th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Static
-					summary</span>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
-						<h3 class="mb-4 text-center">Have an account?</h3>
+				<div class="text-center" style="color: red;"
+					th:if="${#request.getParameter('error') == 'true'}">
+					Login Failed!!!<br />Reason : <span
+						th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+						th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Static
+						summary</span>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-6 col-lg-4">
+						<div class="login-wrap p-0">
+							<h3 class="mb-4 text-center">Have an account?</h3>
 
-						<form action="#" class="login" name='f'
-							th:action="@{/j_spring_security_check}" method="POST">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username"
-									name="username" required>
-							</div>
-							<div class="form-group">
-								<input id="password-field" name="password" type="password"
-									class="form-control" placeholder="Password" required> <span
-									toggle="#password-field"
-									class="fa fa-fw fa-eye field-icon toggle-password"> </span>
-							</div>
-							<div class="form-group">
-								<button type="submit" name="submit"
-									class="form-control btn btn-primary submit px-3">Sign
-									In</button>
-							</div>
-							<div class="form-group d-md-flex">
-								<div class="w-50">
-									<label class="checkbox-wrap checkbox-primary">Remember
-										Me <input type="checkbox" checked> <span
-										class="checkmark"></span>
-									</label>
+							<form action="#" class="login" name='f'
+								th:action="@{/j_spring_security_check}" method="POST">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Username"
+										name="username" required>
 								</div>
-								<div class="w-50 text-md-right">
-									<a href="#" style="color: #fff">Forgot Password</a>
+								<div class="form-group">
+									<input id="password-field" name="password" type="password"
+										class="form-control" placeholder="Password" required>
+									<span toggle="#password-field"
+										class="fa fa-fw fa-eye field-icon toggle-password"> </span>
 								</div>
-							</div>
+								<div class="form-group">
+									<button type="submit" name="submit"
+										class="form-control btn btn-primary submit px-3"
+										style="font-weight: bold;">Sign In</button>
+								</div>
+								<div class="form-group d-md-flex">
+									<div class="w-50">
+										<label class="checkbox-wrap checkbox-primary">Remember
+											Me <input type="checkbox" checked> <span
+											class="checkmark"></span>
+										</label>
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="#" style="color: #fff">Forgot Password</a>
+									</div>
+								</div>
 
-							<h6 style="color: white;" class="w-100 text-center">&mdash;&mdash;
-								Or Sign In With &mdash;&mdash;</h6>
-							<div class="social text-center mt-4 ml-5">
-								<a href="#" class="px-2 py-2 mr-md-1 rounded"> <span
-									style="font-size: large;" class="log-in-google"><i class="far fa-envelope"></i> Gmail</span>
-								</a>
-							</div>
-						</form>
-
+								<h6 style="color: white;" class="w-100 text-center">&mdash;&mdash;
+									Or Sign In With &mdash;&mdash;</h6>
+								<div class="social text-center mt-4 ml-5">
+									<a href="#" class="px-2 py-2 mr-md-1 rounded"> <span
+										style="font-size: large;" class="log-in-google"><i
+											class="far fa-envelope"></i> Gmail</span>
+									</a>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
-	</section>
+		</section>
+	</div>
 </body>
 </html>
