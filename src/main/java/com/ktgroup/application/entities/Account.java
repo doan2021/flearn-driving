@@ -3,6 +3,9 @@
  */
 package com.ktgroup.application.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 /**
  * @author tamdu
  *
@@ -14,12 +17,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table(name = "accounts", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "user_name") })
-public class Accounts {
+@Table(name = "account", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "user_name") })
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +55,10 @@ public class Accounts {
 
     @Column(columnDefinition = "boolean default false")
     private boolean isDelete;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<HistoryAnswer> listHistoryAnswer;
 
     public Long getAccountId() {
         return accountId;
@@ -121,5 +131,13 @@ public class Accounts {
     public void setDelete(boolean isDelete) {
         this.isDelete = isDelete;
     }
-    
+
+    public List<HistoryAnswer> getListHistoryAnswer() {
+        return listHistoryAnswer;
+    }
+
+    public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
+        this.listHistoryAnswer = listHistoryAnswer;
+    }
+
 }

@@ -9,6 +9,7 @@ public class QuestionForm {
     private String content;
     private List<AnswerForm> listAnswers;
     private MultipartFile[] images;
+    private Long chapterId;
 
     public String getContent() {
         return content;
@@ -40,6 +41,14 @@ public class QuestionForm {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public Long getChapterId() {
+        return chapterId;
+    }
+
+    public void setChapterId(Long chapterId) {
+        this.chapterId = chapterId;
     }
 
 }

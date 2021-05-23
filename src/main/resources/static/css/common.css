@@ -1,3 +1,7 @@
+body {
+	font-family: "Lato", Arial, sans-serif;
+}
+
 .cursor-poiter {
 	cursor: pointer;
 }
@@ -6,42 +10,20 @@
 	display: none;
 }
 
-.bg-loadding {
-	height: 100%;
-	bottom: 0;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
+.bg-loading {
 	width: 100%;
-	z-index: 99999;
-	background-color: #ffffff73;
-	animation-name: loader-two-before-transition;
-	animation-duration: 1.5s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-}
-
-.loadding {
-	height: 100px;
-	left: 46%;
+	height: 100vh;
+	display: flex;
 	position: absolute;
-	top: 40%;
-	width: 100px;
-	text-align: center;
+	z-index: 999;
 }
 
-.icon-profile-mini {
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	border: 2px solid white;
+.custom-spinner {
+	width: 4rem;
+	height: 4rem;
 }
 
 .icon-notifications {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    color: white;
-    background-color: #d2d2d24d;
+	width: 72px;
+	height: 40px
 }
