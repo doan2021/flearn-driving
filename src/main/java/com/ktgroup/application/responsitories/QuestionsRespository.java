@@ -14,4 +14,8 @@ public interface QuestionsRespository  extends JpaRepository<Question, Long> {
     public Question findByNumber(int number);
     
     public List<Question> findByChapter(Chapter chapter);
+    
+    public List<Question> findByQuestionIdNotIn(List<Long> listIds);
+    
+    public List<Question> findByQuestionIdIn(List<Long> listIds);
 }
