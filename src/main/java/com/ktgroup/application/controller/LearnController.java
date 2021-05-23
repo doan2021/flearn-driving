@@ -76,4 +76,10 @@ public class LearnController {
     public ResponeData submitAnswer(Long questionId, Long answerId) {
         return learnServices.checkResultAnswer(questionId, answerId);
     }
+    
+    @GetMapping(value = {"/get-status-learn"})
+    @ResponseBody
+    public ResponeData getStatusAnswer(Long chapterId) {
+        return learnServices.getStatusLearn(chapterId);
+    }
 }

@@ -59,6 +59,10 @@ public class Account {
     @JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<HistoryAnswer> listHistoryAnswer;
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<StatusLearn> listStatusLearn;
 
     public Long getAccountId() {
         return accountId;
@@ -138,6 +142,14 @@ public class Account {
 
     public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
         this.listHistoryAnswer = listHistoryAnswer;
+    }
+
+    public List<StatusLearn> getListStatusLearn() {
+        return listStatusLearn;
+    }
+
+    public void setListStatusLearn(List<StatusLearn> listStatusLearn) {
+        this.listStatusLearn = listStatusLearn;
     }
 
 }

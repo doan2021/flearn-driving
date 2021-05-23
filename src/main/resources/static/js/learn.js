@@ -4,7 +4,10 @@ var pageListData = new Vue({
         chapterId: $('#chapterId').val(),
         dataResult: '',
         resultAnswer: '',
-        aswered     : false
+        rest       : 0,
+        knowledge  : 0,
+        familiar   : 0,
+        statusLoadQuestion :'1R'
     },
     mounted() {
         this.initPage();
@@ -23,14 +26,15 @@ var pageListData = new Vue({
                 axios(config).then(function (response) {
                     console.log(response.data.result);
                     _this.dataResult = response.data.result;
+                    _this.getStatusLearn();
                     $('#loading').fadeOut();
                 })
                 .catch(function (error) {
                     console.log(error);
+                    $('#loading').fadeOut();
                 });
         },
         submitAnswer: function(answerId){
-            $('#loading').fadeIn();
             var _this = this;
             var config = {
                     url: "/submit-answer", 
@@ -42,16 +46,54 @@ var pageListData = new Vue({
                 }
                 axios(config).then(function (response) {
                     _this.resultAnswer = response.data;
-                    $('#loading').fadeOut();
-                    if (_this.resultAnswer.status == true) {
-                        alert(_this.resultAnswer.message);
+                    if (_this.resultAnswer.status == 'true') {
+                        $.alert({
+                            icon: 'far fa-laugh-squint',
+                            theme: 'modern',
+                            title: _this.resultAnswer.message,
+                            content: 'Next the question ?',
+                            type: 'green',
+                            buttons: {
+                                confirm: function () {
+                                    _this.initPage();
+                                }
+                            }
+                        });
                     } else {
-                        alert(_this.resultAnswer.message);
+                        $.alert({
+                            icon: 'far fa-sad-cry',
+                            theme: 'modern',
+                            title: _this.resultAnswer.message,
+                            content: 'Next the question ?',
+                            type: 'red',
+                            buttons: {
+                                confirm: function () {
+                                    _this.initPage();
+                                }
+                            }
+                        });
                     }
-                    _this.aswered = true;
                 })
                 .catch(function (error) {
                     $('#loading').fadeOut();
+                    console.log(error);
+                });
+        },
+        getStatusLearn(){
+            var _this = this;
+            var config = {
+                    url: "/get-status-learn", 
+                    method: "GET",
+                    params: {
+                        chapterId : this.chapterId
+                    }
+                }
+                axios(config).then(function (response) {
+                    _this.rest = response.data.result.rest;
+                    _this.knowledge = response.data.result.knowledge;
+                    _this.familiar = response.data.result.familiar;
+                })
+                .catch(function (error) {
                     console.log(error);
                 });
         }

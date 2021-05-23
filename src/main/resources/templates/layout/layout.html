@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -11,10 +11,12 @@
         <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
         <!-- CSS Common -->
         <link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{../css/jquery-confirm.min.css}" rel="stylesheet" />
         <link th:href="@{../css/common.css}" rel="stylesheet" />
         <!-- JS Common -->
         <script th:src="@{../js/jquery.min.js}"></script>
         <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{../js/jquery-confirm.min.js}"></script>
         <script th:src="@{../js/axios.min.js}"></script>
         <script th:src="@{../js/vue.js}"></script>
         <script th:src="@{../js/common.js}"></script>
@@ -36,10 +38,10 @@
                         <li class="nav-item col-6 col-md-auto">
                             <a class="nav-link p-2" th:href="@{/}">Home</a>
                         </li>
-                        <li class="nav-item col-6 col-md-auto">
+                        <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a class="nav-link p-2" th:href="@{/create-question}">Create question</a>
                         </li>
-                        <li class="nav-item col-6 col-md-auto">
+                        <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_USER')">
                             <a class="nav-link p-2" th:href="@{/create-exam}">Create exam</a>
                         </li>
                         <li class="nav-item col-6 col-md-auto">
@@ -64,7 +66,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                                 <li>
                                     <div class="dropdown-item">
-                                        <img src="image/no_image_user_icon.png" class="icon-profile-mini"/>
+                                        <img th:src="@{../image/no_image_user_icon.png}" class="icon-profile-mini"/>
                                         <span th:utext="${#request.userPrincipal.name}"></span>
                                     </div>
                                 </li>
