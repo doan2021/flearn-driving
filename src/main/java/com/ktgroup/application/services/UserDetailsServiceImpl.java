@@ -12,18 +12,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ktgroup.application.entities.Accounts;
+import com.ktgroup.application.entities.Account;
 import com.ktgroup.application.responsitories.AccountsRespository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private AccountsRespository appUserRespository;
+	private AccountsRespository accountsRespository;
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		Accounts appUser = this.appUserRespository.findByUserName(userName);
+		Account appUser = this.accountsRespository.findByUserName(userName);
 
 		if (appUser == null) {
 			throw new UsernameNotFoundException("User " + userName + " was not found in the database");
@@ -41,5 +41,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		UserDetails userDetails = (UserDetails) new User(appUser.getUserName(), appUser.getEncrytedPassword(), grantList);
 		return userDetails;
 	}
-
 }

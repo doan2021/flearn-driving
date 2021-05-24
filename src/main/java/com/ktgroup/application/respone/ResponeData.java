@@ -1,21 +1,15 @@
 package com.ktgroup.application.respone;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ResponeData {
     private String status;
     private String message;
-    private Object result;
+    private Map<String, Object> result;
 
     public ResponeData() {
         result = new HashMap<>();
-    }
-
-    public ResponeData(String status, String message, Object result) {
-        super();
-        this.status = status;
-        this.message = message;
-        this.result = result;
     }
 
     public String getStatus() {
@@ -38,7 +32,12 @@ public class ResponeData {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(Map<String, Object> result) {
         this.result = result;
     }
+    
+    public void putResult(String key, Object value) {
+        this.result.put(key, value);
+    }
+
 }

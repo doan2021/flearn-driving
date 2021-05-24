@@ -31,7 +31,13 @@
 	</div>
 	 <div class="container-xxl pt-5">
             <form class="row" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
-                <div class="col-5">
+                <div class="col-12">
+                    <select class="form-select" th:field="*{chapterId}">
+					    <option value="" selected>---- Select chapter ----</option>
+					    <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
+					</select>
+                </div>
+                <div class="col-12">
                     <label for="contentQuestion" class="form-label">Content question</label>
                     <textarea class="form-control" id="contentQuestion" rows="3" th:field="*{content}"></textarea>
                 </div> 

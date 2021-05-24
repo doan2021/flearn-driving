@@ -15,9 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ktgroup.application.dto.AnswerForm;
 import com.ktgroup.application.dto.QuestionForm;
-import com.ktgroup.application.entities.Answers;
-import com.ktgroup.application.entities.Images;
-import com.ktgroup.application.entities.Questions;
+import com.ktgroup.application.entities.Answer;
+import com.ktgroup.application.entities.Chapter;
+import com.ktgroup.application.entities.Image;
+import com.ktgroup.application.entities.Question;
+import com.ktgroup.application.responsitories.ChapterResponsitory;
 import com.ktgroup.application.responsitories.QuestionsRespository;
 
 @Service
@@ -28,34 +30,40 @@ public class QuestionServices {
 
     @Autowired
     private Environment env;
+    
+    @Autowired
+    ChapterResponsitory chapterResponsitory;
 
     @Transactional
     public void createNewQuestion(QuestionForm form) {
-        Questions question = new Questions();
+        Chapter chapter = new Chapter();
+        chapter = chapterResponsitory.getOne(form.getChapterId());
+        Question question = new Question();
         question.setContent(form.getContent());
         question.setNumber(form.getNumber());
-        question.setListImages(handleImage(question, form.getImages()));
-        List<Answers> listAnswers = new ArrayList<>();
+        question.setListImage(handleImage(question, form.getImages()));
+        question.setChapter(chapter);
+        List<Answer> listAnswers = new ArrayList<>();
         for (AnswerForm answer : form.getListAnswers()) {
-            Answers ans = new Answers();
+            Answer ans = new Answer();
             ans.setContent(answer.getContent());
             ans.setTrue(answer.getIsTrue());
-            ans.setQuestions(question);
+            ans.setQuestion(question);
             listAnswers.add(ans);
         }
-        question.setAnswers(listAnswers);
+        question.setListAnswers(listAnswers);
         questionsRespository.save(question);
     }
 
-    public List<Images> handleImage(Questions question, MultipartFile[] data) {
-        List<Images> images = new ArrayList<>();
+    public List<Image> handleImage(Question question, MultipartFile[] data) {
+        List<Image> images = new ArrayList<>();
         for (MultipartFile c : data) {
             if (!c.isEmpty()) {
-                Images image = new Images();
+                Image image = new Image();
                 image.setFileName(c.getOriginalFilename());
                 image.setUrl(writeFile(c));
                 image.setDescription("Create new question");
-                image.setQuestions(question);
+                image.setQuestion(question);
                 images.add(image);
             }
         }
@@ -80,7 +88,7 @@ public class QuestionServices {
         return pathFolderUpload + "/" + fileName;
     }
 
-    public List<Questions> getAllQuestions() {
+    public List<Question> getAllQuestions() {
         return questionsRespository.findAll();
     }
 }
