@@ -33,11 +33,6 @@ public class HistoryAnswer {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
-
-    @JsonBackReference
-    @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
@@ -45,6 +40,11 @@ public class HistoryAnswer {
     @ManyToOne
     @JoinColumn(name = "answer_id")
     private Answer answer;
+    
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "exam_result_id")
+    private ExamResult examResult;
 
     public Long getHistoryAnswerId() {
         return historyAnswerId;
@@ -78,14 +78,6 @@ public class HistoryAnswer {
         this.isCorrect = isCorrect;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
     public Account getAccount() {
         return account;
     }
@@ -100,6 +92,14 @@ public class HistoryAnswer {
 
     public void setAnswer(Answer answer) {
         this.answer = answer;
+    }
+
+    public ExamResult getExamResult() {
+        return examResult;
+    }
+
+    public void setExamResult(ExamResult examResult) {
+        this.examResult = examResult;
     }
 
 }

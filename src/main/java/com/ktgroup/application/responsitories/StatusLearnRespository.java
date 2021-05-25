@@ -18,7 +18,18 @@ public interface StatusLearnRespository extends JpaRepository<StatusLearn, Long>
 
     public List<StatusLearn> findByQuestionInAndAccount(List<Question> listQuestion, Account account);
 
-    @Query("SELECT st.question.questionId FROM StatusLearn st WHERE st.account = :account AND st.question.chapter = :chapter")
-    public List<Long> getListQuestionHadAnswer(@Param("account") Account account,
+    @Query("   SELECT  st.question "
+         + "   FROM    StatusLearn st "
+         + "   WHERE   st.account = :account "
+         + "       AND st.question.chapter = :chapter")
+    public List<Question> getListQuestionHadAnswer(@Param("account") Account account,
             @Param("chapter") Chapter chapter);
+    
+    @Query("   SELECT sl.question "
+            + "FROM StatusLearn sl "
+            + "WHERE sl.question.chapter = :chapter "
+            + "AND sl.account = :account "
+            + "AND sl.statusQuestion = :statusQuestion")
+    public List<Question> getListQuestionWithStatus(Chapter chapter, Account account, Integer statusQuestion);
+    
 }

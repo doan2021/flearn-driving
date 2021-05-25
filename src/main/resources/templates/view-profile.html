@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
     <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" th:href="@{../css/index.css}">
+        <title>View profile</title>
+        <link rel="stylesheet" th:href="@{../css/view-profile.css}">
     </head>
     <body>
-        <div layout:fragment="content">
+        <div class="container-xxl my-3" layout:fragment="content">
+            <div class="row content-profile">
+                <div class="col-8">
+                    <div class="bg-white rounded shadow">
+                        <div class="row">
+                            <div class="col-12 px-4 py-3">
+                                <h3 class="display-4">View profile</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="bg-white rounded shadow pb-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <img alt="../image/bg.jpg" src="../image/bg.jpg" class="w-100 rounded-top" style="height: 120px">
+                            </div>
+                            <div class="col-12 text-center">
+                                <img th:src="@{../image/no_image_user_icon.png}" class="rounded-pill image-profile"/>
+                            </div>
+                            <div class="col-12 text-center">
+                                <h4>Tâm Dương</h4>
+                                <hr>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </button>
+                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

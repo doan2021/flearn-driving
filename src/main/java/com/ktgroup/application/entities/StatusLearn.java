@@ -31,6 +31,9 @@ public class StatusLearn {
     @Column(name = "update_at")
     private Date updateAt;
 
+    @Column(name = "status_question")
+    private int statusQuestion;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "question_id")
@@ -87,6 +90,14 @@ public class StatusLearn {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public int getStatusQuestion() {
+        return statusQuestion;
+    }
+
+    public void setStatusQuestion(int statusQuestion) {
+        this.statusQuestion = statusQuestion;
     }
 
 }
