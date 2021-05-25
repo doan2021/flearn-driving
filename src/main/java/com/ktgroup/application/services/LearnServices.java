@@ -1,6 +1,5 @@
 package com.ktgroup.application.services;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ktgroup.application.common.Common;
 import com.ktgroup.application.common.Constant;
 import com.ktgroup.application.entities.Account;
 import com.ktgroup.application.entities.Answer;
@@ -58,21 +56,38 @@ public class LearnServices {
         // Get chapter
         Chapter chapter = chapterResponsitory.getOne(chapterId);
         // Get list question in chapter
-        List<Long> listQuestionIdHadAnswer = new ArrayList<>();
-        listQuestionIdHadAnswer = statusLearnRespository.getListQuestionHadAnswer(account, chapter);
-        List<Question> listQuestion = new ArrayList<>();
-        listQuestion = questionsRespository.findByQuestionIdNotIn(listQuestionIdHadAnswer);
-        // Get ramdom question
         Random rand = new Random();
         Question questionRandom = null;
-        if (listQuestion == null || listQuestion.size() == 0) {
-            listQuestion = questionsRespository.findByQuestionIdIn(listQuestionIdHadAnswer);
+        int rest = 0;
+        int familiar = 0;
+        int knowledge = 0;
+        List<Question> listQuestionRest = questionsRespository.getListQuestionRest(chapter, account);
+        List<Question> listQuestionFamiliar = statusLearnRespository.getListQuestionWithStatus(chapter, account, 2);
+        List<Question> listQuestionKnowledge = statusLearnRespository.getListQuestionWithStatus(chapter, account, 3);
+        if (listQuestionRest != null && listQuestionRest.size() != 0) {
+            questionRandom = listQuestionRest.get(rand.nextInt(listQuestionRest.size()));
+        } else if (listQuestionFamiliar != null && listQuestionFamiliar.size() != 0) {
+                questionRandom = listQuestionFamiliar.get(rand.nextInt(listQuestionFamiliar.size()));
+        } else {
+            questionRandom = listQuestionKnowledge.get(rand.nextInt(listQuestionKnowledge.size()));
         }
         
-        if (listQuestion != null && listQuestion.size() != 0) {
-            questionRandom = listQuestion.get(rand.nextInt(listQuestion.size()));
+        if (listQuestionRest != null && listQuestionRest.size() != 0) {
+            rest = listQuestionRest.size();
         }
+        
+        if (listQuestionFamiliar != null && listQuestionFamiliar.size() != 0) {
+            familiar = listQuestionFamiliar.size();
+        }
+        
+        if (listQuestionKnowledge != null && listQuestionKnowledge.size() != 0) {
+            knowledge = listQuestionKnowledge.size();
+        }
+        
         // Get list status learn
+        responeData.putResult("rest", rest);
+        responeData.putResult("familiar", familiar);
+        responeData.putResult("knowledge", knowledge);
         responeData.putResult("questionRandom", questionRandom);
         responeData.putResult("chapter", chapter);
         return responeData;
@@ -98,14 +113,7 @@ public class LearnServices {
     
     public void setHistoryAnswer(Question question, Answer answer) {
         Account account = accountsServices.getAccountLogin();
-        HistoryAnswer historyAnswer = new HistoryAnswer();
-        historyAnswer.setCorrect(answer.isTrue());
-        historyAnswer.setDateAnswer(new Date());
-        historyAnswer.setQuestion(question);
-        historyAnswer.setNote("Answer when learn");
-        historyAnswer.setAnswer(answer);
-        historyAnswer.setAccount(account);
-        historyAnswerRespository.save(historyAnswer);
+        // Set status learn
         StatusLearn statusLearn = statusLearnRespository.findByQuestionAndAccount(question, account);
         if (statusLearn == null) {
             statusLearn = new StatusLearn();
@@ -114,41 +122,36 @@ public class LearnServices {
             if (answer.isTrue()) {
                 statusLearn.setCorrectNumberOfTimes(1);
                 statusLearn.setIncorrectNumberOfTimes(0);
+                statusLearn.setStatusQuestion(2);
             } else {
                 statusLearn.setCorrectNumberOfTimes(0);
                 statusLearn.setIncorrectNumberOfTimes(1);
+                statusLearn.setStatusQuestion(1);
             }
         } else {
+            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(question, account);
             if (answer.isTrue()) {
+                if (statusLastQuestion.get(0)) {
+                    statusLearn.setStatusQuestion(3);
+                }
                 statusLearn.setCorrectNumberOfTimes(statusLearn.getCorrectNumberOfTimes() + 1);
-            } else {
+               } else {
+                if (statusLearn.getCorrectNumberOfTimes() > 0) {
+                    statusLearn.setStatusQuestion(2);
+                } else {
+                    statusLearn.setStatusQuestion(1);
+                }
                 statusLearn.setIncorrectNumberOfTimes(statusLearn.getIncorrectNumberOfTimes() + 1);
             }
         }
         statusLearn.setUpdateAt(new Date());
         statusLearnRespository.save(statusLearn);
-    }
-    
-    public ResponeData getStatusLearn(Long chapterId) {
-        ResponeData responeData = new ResponeData();
-        Chapter chapter = chapterResponsitory.getOne(chapterId);
-        List<Question> listQuestion = new ArrayList<>();
-        listQuestion = chapter.getListQuestion();
-        Account account = accountsServices.getAccountLogin();
-        List<StatusLearn> listStatusLearn = statusLearnRespository.findByQuestionInAndAccount(listQuestion, account);
-        int rest = listQuestion.size() - listStatusLearn.size();
-        responeData.putResult("rest", rest);
-        int knowledge = 0;
-        int familiar = 0;
-        for (StatusLearn statusLearn :listStatusLearn) {
-            if (Common.percentQuestion(statusLearn.getCorrectNumberOfTimes(), statusLearn.getIncorrectNumberOfTimes()) >= 80 || statusLearn.getCorrectNumberOfTimes() > statusLearn.getIncorrectNumberOfTimes() + 5) {
-                knowledge+= 1;
-            } else {
-                familiar+=1;
-            }
-        }
-        responeData.putResult("knowledge", knowledge);
-        responeData.putResult("familiar", familiar);
-        return responeData;
+        HistoryAnswer historyAnswer = new HistoryAnswer();
+        historyAnswer.setCorrect(answer.isTrue());
+        historyAnswer.setDateAnswer(new Date());
+        historyAnswer.setNote("Answer when learn");
+        historyAnswer.setAnswer(answer);
+        historyAnswer.setAccount(account);
+        historyAnswerRespository.save(historyAnswer);
     }
 }

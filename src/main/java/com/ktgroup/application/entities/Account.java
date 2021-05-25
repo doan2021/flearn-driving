@@ -24,14 +24,14 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "account", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "user_name") })
+@Table(name = "account", uniqueConstraints = { @UniqueConstraint(name = "ACCOUNTS_UK", columnNames = "username") })
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
-    @Column(name = "user_name", length = 36, nullable = false)
+    @Column(name = "username", length = 36, nullable = false)
     private String userName;
 
     @Column(name = "encryted_password", length = 128, nullable = false)

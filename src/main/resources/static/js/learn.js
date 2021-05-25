@@ -4,10 +4,8 @@ var pageListData = new Vue({
         chapterId: $('#chapterId').val(),
         dataResult: '',
         resultAnswer: '',
-        rest       : 0,
-        knowledge  : 0,
-        familiar   : 0,
-        statusLoadQuestion :'1R'
+        answered: false,
+        answerCorrect : ''
     },
     mounted() {
         this.initPage();
@@ -24,15 +22,21 @@ var pageListData = new Vue({
                     }
                 }
                 axios(config).then(function (response) {
-                    console.log(response.data.result);
                     _this.dataResult = response.data.result;
-                    _this.getStatusLearn();
+                    _this.answerCorrect = _this.getAnswerCorrect()
                     $('#loading').fadeOut();
                 })
                 .catch(function (error) {
                     console.log(error);
                     $('#loading').fadeOut();
                 });
+        },
+        getAnswerCorrect : function() {
+        	return this.dataResult.questionRandom.listAnswers.filter(function (item) {
+            	if (item.true) {
+            		return item;
+            	}
+        	})[0].content;
         },
         submitAnswer: function(answerId){
             var _this = this;
@@ -47,24 +51,14 @@ var pageListData = new Vue({
                 axios(config).then(function (response) {
                     _this.resultAnswer = response.data;
                     if (_this.resultAnswer.status == 'true') {
-                        $.alert({
-                            icon: 'far fa-laugh-squint',
-                            theme: 'modern',
-                            title: _this.resultAnswer.message,
-                            content: 'Next the question ?',
-                            type: 'green',
-                            buttons: {
-                                confirm: function () {
-                                    _this.initPage();
-                                }
-                            }
-                        });
+                        _this.answered = true;
+                        setTimeout(function(){_this.initPage(); _this.answered = false;}, 2000)
                     } else {
                         $.alert({
                             icon: 'far fa-sad-cry',
                             theme: 'modern',
                             title: _this.resultAnswer.message,
-                            content: 'Next the question ?',
+                            content: '<h5>Answer is correct</h5><br>' + _this.answerCorrect,
                             type: 'red',
                             buttons: {
                                 confirm: function () {
@@ -76,24 +70,6 @@ var pageListData = new Vue({
                 })
                 .catch(function (error) {
                     $('#loading').fadeOut();
-                    console.log(error);
-                });
-        },
-        getStatusLearn(){
-            var _this = this;
-            var config = {
-                    url: "/get-status-learn", 
-                    method: "GET",
-                    params: {
-                        chapterId : this.chapterId
-                    }
-                }
-                axios(config).then(function (response) {
-                    _this.rest = response.data.result.rest;
-                    _this.knowledge = response.data.result.knowledge;
-                    _this.familiar = response.data.result.familiar;
-                })
-                .catch(function (error) {
                     console.log(error);
                 });
         }

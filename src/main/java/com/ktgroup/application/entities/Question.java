@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "questions", uniqueConstraints = { @UniqueConstraint(name = "QUESTIONS_UK", columnNames = "number") })
+@Table(name = "question", uniqueConstraints = { @UniqueConstraint(name = "QUESTIONS_UK", columnNames = "number") })
 public class Question {
 
     @Id
@@ -50,10 +50,6 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<HistoryAnswer> listHistoryAnswer;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
@@ -121,14 +117,6 @@ public class Question {
 
     public void setParalysis(boolean isParalysis) {
         this.isParalysis = isParalysis;
-    }
-
-    public List<HistoryAnswer> getListHistoryAnswer() {
-        return listHistoryAnswer;
-    }
-
-    public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
-        this.listHistoryAnswer = listHistoryAnswer;
     }
 
     public List<StatusLearn> getListStatusLearn() {
