@@ -1,64 +1,152 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-    <head>
-        <title>Learn</title>
-        <link rel="stylesheet" th:href="@{../css/create-question.css}">
-    </head>
-    <body>
-        <th:block layout:fragment="content">
-            <div id="create-question-app">
-                <div class="bg-white border-bottom">
-                    <div class="container-xxl">
-                        <div class="row">
-                            <div class="col-12 pt-5">
-                                <h3>Create question</h3>
-                            </div>
-                        </div>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>Learn</title>
+	<link rel="stylesheet" th:href="@{../css/create-question.css}">
+	<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/bootstrap.min.css">
+	<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/style.css">
+
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/angular.min.js"></script>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/angular-animate.min.js"></script>
+</head>
+
+<body layout:fragment="content">
+	<div ng-controller="FormController">
+
+			<section id="section-timesheet" ng-class="{ scale: success }">
+
+				<h1>Create question</h1>
+
+				<div class="inner">
+
+					<div  novalidate>
+
+	<div class="bg-white border-bottom">
+		<div class="container-xxl">
+			<div class="row">
+			</div>
+		</div>
+	</div>
+	 <div class="container-xxl pt-5">
+            <form class="row" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
+                <div class="col-12">
+                    <select class="form-select" th:field="*{chapterId}">
+					    <option value="" selected>---- Select chapter ----</option>
+					    <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
+					</select>
+                </div>
+                <div class="col-12">
+                    <label for="contentQuestion" class="form-label">Content question</label>
+                    <textarea class="form-control" id="contentQuestion" rows="3" th:field="*{content}"></textarea>
+                </div> 
+                <div class="col-5">
+                    <label for="numberQuestion" class="form-label">Number</label>
+                    <input type="number" class="form-control" id="numberQuestion" th:field="*{number}"></input>
+                </div>
+                <div class="col-5">
+                    <label for="formFile" class="form-label">Upload image</label>
+                    <input class="form-control" type="file" id="formFile" th:field="*{images}" multiple>
+                    
+                </div>
+                <div class="col-5" >
+                    <label for="contentAnswer1" class="form-label">Answer 1</label>
+                    <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[0].content}">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="isTrue" th:field="*{listAnswers[0].isTrue}" value="1">
+                        <label class="form-check-label" for="flexRadioDefault1">True</label>
                     </div>
                 </div>
-                <div class="container-xxl pt-5">
-                    <form class="row" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
-                        <div class="col-12">
-                            <select class="form-select" th:field="*{chapterId}">
-                                <option value="" selected>---- Select chapter ----</option>
-                                <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentQuestion" class="form-label">Content question</label>
-                            <textarea class="form-control" id="contentQuestion" rows="3" th:field="*{content}"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <label for="numberQuestion" class="form-label">Number</label>
-                            <input type="number" class="form-control" id="numberQuestion" th:field="*{number}"></input>
-                        </div>
-                        <div class="col-12">
-                            <label for="formFile" class="form-label">Upload image</label>
-                            <input class="form-control" type="file" id="formFile" th:field="*{images}" multiple>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentAnswer1" class="form-label">Answer 1</label>
-                            <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[0].content}">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="checkbox-answer0" th:field="*{listAnswers[0].true}">
-                                <label class="form-check-label" for="checkbox-answer0"> True</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentAnswer1" class="form-label">Answer 2</label>
-                            <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[1].content}">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="checkbox-answer1" th:field="*{listAnswers[1].true}">
-                                <label class="form-check-label" for="checkbox-answer1"> True</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-primary">Submit</button>
-                            <button class="btn btn-success">Add new answer</button>
-                        </div>
-                    </form>
+                <div class="col-5">
+                    <label for="contentAnswer1" class="form-label">Answer 2</label>
+                    <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[1].content}">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="isTrue" th:field="*{listAnswers[1].isTrue}" value="1">
+                        <label class="form-check-label" for="flexRadioDefault1">True</label>
+                    </div>
                 </div>
-            </div>
-        </th:block>
-    </body>
+                <div class="col-5">
+                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-success">Add new answer</button>
+                </div>
+                
+            </form>
+        </div>
+        </div>
+	</div>
+
+
+
+
+
+	<!--<form>
+		<div ng-controller="FormController">
+
+			<section id="section-timesheet" ng-class="{ scale: success }">
+
+				<h1>Submit Your Timesheet</h1>
+
+				<div class="inner">
+
+					<form name="formTimesheet" novalidate>
+						<label>Email:</label>
+						<input ng-model="ele.email" type="email" placeholder="artist@moviemakr.com" required>
+
+						<label>Time:</label>
+						<input ng-model="ele.time.hours" type="number" min="0" placeholder="hours" required>
+						<span>hours</span>
+						<input ng-model="ele.time.mins" type="number" min="0" max="59" placeholder="minutes" required>
+						<span>minutes</span>
+
+						<label>Message <span>(optional)</span></label>
+						<textarea ng-model="ele.msg"></textarea>
+
+						<div id="projects">
+							<label>Types of work: <span>(select all that apply)</span></label>
+							<select id="dropDown" name="dropDown" ng-model="selectedItems" multiple required>
+								<option ng-repeat="type in ele.selectTypes" value="{{type}}">{{type}}</option>
+							</select>
+
+							<div id="create-new">
+								<input type="text" ng-model="newType" placeholder="add new type of work">
+								<button class="button" type="button" ng-click="createNew(newType)">Add New</button>
+							</div>
+						</div>
+
+						<div id="buttons">
+							<button class="button grey flex-item" type="reset" ng-click="clearInfo()">Clear</button>
+							<input ng-init="success = false" class="button flex-item" type="button" value="Next"
+								ng-click="saveForm()" ng-disabled="formTimesheet.$invalid">
+						</div>
+					</form>
+
+				</div>
+
+				<div class="overlay" ng-class="{ animateShow:clicked }">
+					<div class="spinner">
+						<div class="double-bounce1"></div>
+						<div class="double-bounce2"></div>
+					</div>
+				</div>
+
+			</section>
+
+			<section id="section-thankyou" ng-class="{ hidden:!success, shown: success }">
+				<h1>Timesheet Submitted</h1>
+
+				<div class="inner">
+
+					<p>Thank you <span class="green">{{ele.email}}</span>.</p>
+					<p>You have logged <span class="green">{{ele.time.hours}}</span> hr and <span
+							class="green">{{ele.time.mins}}</span> min of work today.</p>
+
+					<button class="button" type="reset" ng-click="startAgain()">Start Again</button>
+
+				</div>
+			</section>
+
+		</div>
+	</form>-->
+</body>
 </html>
