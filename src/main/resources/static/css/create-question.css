@@ -1,7 +1,38 @@
-@font-face {
-  font-family: 'azo_sansbold';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.eot');
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.woff2') format('woff2'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.woff') format('truetype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/260783/rui_abreu_-_azosans-bold-webfont.svg#azo_sansbold') format('svg');
-  font-weight: normal;
-  font-style: normal;
+
+.title{
+	font-size: 80%;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	margin-top: 3%;
+}
+.container{
+	background-color: rgb(244, 255, 254);
+}
+.outbackground{
+	background-color: tan;
+}
+.btn{
+	margin-top: 1.5%;
+}
+.nut{
+	text-align: center;
+}
+
+.fa-window-close{
+	color: red;
+	margin-left: 10px;
+	
+}
+.answer {
+	margin-top: 3%;
+}
+
+.nq{
+	margin-top: 3%;
+}
+.cq{
+	margin-top: 3%;
+}
+.img{
+	margin-top: 3%;
 }
