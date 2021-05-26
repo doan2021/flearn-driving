@@ -47,7 +47,7 @@ public class QuestionServices {
         for (AnswerForm answer : form.getListAnswers()) {
             Answer ans = new Answer();
             ans.setContent(answer.getContent());
-            ans.setTrue(answer.getIsTrue());
+            ans.setTrue(answer.isTrue());
             ans.setQuestion(question);
             listAnswers.add(ans);
         }

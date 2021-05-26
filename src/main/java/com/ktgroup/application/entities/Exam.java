@@ -1,11 +1,18 @@
 package com.ktgroup.application.entities;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "exam")
@@ -22,8 +29,15 @@ public class Exam {
     @Column(name = "is_delete")
     public boolean isDelete;
 
-    @Column(name = "list_question_id")
-    private String listQuestionId;
+    @Column(name = "is_trial")
+    public boolean isTrial;
+
+    @Column(name = "date_exam")
+    private Date date_exam;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
+    private List<ExamResult> listExamResult;
 
     public Long getExamId() {
         return examId;
@@ -49,12 +63,28 @@ public class Exam {
         this.isDelete = isDelete;
     }
 
-    public String getListQuestionId() {
-        return listQuestionId;
+    public boolean isTrial() {
+        return isTrial;
     }
 
-    public void setListQuestionId(String listQuestionId) {
-        this.listQuestionId = listQuestionId;
+    public void setTrial(boolean isTrial) {
+        this.isTrial = isTrial;
+    }
+
+    public Date getDate_exam() {
+        return date_exam;
+    }
+
+    public void setDate_exam(Date date_exam) {
+        this.date_exam = date_exam;
+    }
+
+    public List<ExamResult> getListExamResult() {
+        return listExamResult;
+    }
+
+    public void setListExamResult(List<ExamResult> listExamResult) {
+        this.listExamResult = listExamResult;
     }
 
 }
