@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -38,15 +38,26 @@
                         <li class="nav-item col-6 col-md-auto">
                             <a class="nav-link p-2" th:href="@{/}">Home</a>
                         </li>
-                        <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a class="nav-link p-2" th:href="@{/create-question}">Create question</a>
-                        </li>
-                        <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_USER')">
-                            <a class="nav-link p-2" th:href="@{/create-exam}">Create exam</a>
-                        </li>
+                        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link p-2" th:href="@{/select-chapter}">Select chapter</a>
+                            <a class="nav-link p-2" th:href="@{/create-question}">Question</a>
                         </li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+                        <li class="nav-item col-6 col-md-auto">
+                            <a class="nav-link p-2" th:href="@{/create-exam}">Exam</a>
+                        </li>
+                        </th:block>
+                        <th:block sec:authorize="hasRole('ROLE_USER')">
+	                        <li class="nav-item col-6 col-md-auto">
+	                            <a class="nav-link p-2" th:href="@{/select-chapter}">Chapter</a>
+	                        </li>
+                        </th:block>
+                        <th:block sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+                            <li class="nav-item col-6 col-md-auto">
+                                <a class="nav-link p-2" th:href="@{/view-documents}">Documents</a>
+                            </li>
+                        </th:block>
                     </ul>
                     <ul class="navbar-nav flex-row flex-wrap ms-md-auto" th:if="${#request.userPrincipal == null}">
                         <li class="nav-item col-6 col-md-auto dropdown">
@@ -65,8 +76,8 @@
                             <button class="btn btn-secondary rounded-pill"  data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></button>
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                                 <li>
-                                    <div class="dropdown-item">
-                                        <img th:src="@{../image/no_image_user_icon.png}" class="icon-profile-mini"/>
+                                    <div class="dropdown-item col-12">
+                                        <img th:src="@{../image/no_image_user_icon.png}" class="w-50 rounded-pill mr-2"/>
                                         <span th:utext="${#request.userPrincipal.name}"></span>
                                     </div>
                                 </li>

@@ -42,6 +42,9 @@ public class LearnController {
     @PostMapping(value = {"/save-question"})
     public String createNewQuestion(@ModelAttribute QuestionForm form, Model model) {
         questionServices.createNewQuestion(form);
+        QuestionForm questionForm = new QuestionForm();
+        model.addAttribute("listChapter", chapterServices.getAllChapter());
+        model.addAttribute(questionForm);
         return "create-question";
     }
     
@@ -76,10 +79,5 @@ public class LearnController {
     public ResponeData submitAnswer(Long questionId, Long answerId) {
         return learnServices.checkResultAnswer(questionId, answerId);
     }
-    
-    @GetMapping(value = {"/get-status-learn"})
-    @ResponseBody
-    public ResponeData getStatusAnswer(Long chapterId) {
-        return learnServices.getStatusLearn(chapterId);
-    }
+
 }

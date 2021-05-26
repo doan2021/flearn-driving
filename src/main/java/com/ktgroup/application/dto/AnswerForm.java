@@ -12,7 +12,7 @@ public class AnswerForm {
         this.content = content;
     }
 
-    public boolean getIsTrue() {
+    public boolean isTrue() {
         return isTrue;
     }
 

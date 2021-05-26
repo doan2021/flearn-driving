@@ -51,12 +51,14 @@ public class AppUserValidator implements Validator {
                 errors.rejectValue("userName", "Duplicate.appUserForm.userName");
             }
         }
-
+        if (appUserForm.getPassword().length() < 8) {
+            // Email đã được sử dụng bởi tài khoản khác.
+            errors.rejectValue("password", "Pattern.appUserForm.password");
+        }
         if (!errors.hasErrors()) {
             if (!appUserForm.getConfirmPassword().equals(appUserForm.getPassword())) {
                 errors.rejectValue("confirmPassword", "Match.appUserForm.confirmPassword");
             }
         }
     }
-
 }
