@@ -1,22 +1,22 @@
 .form-check-input {
-    background-color: #fbceb5;
+	background-color: #fbceb5;
 }
 
 .form-check-input:checked {
-    background-color: #fbceb5;
-    border-color: #fbceb5;
+	background-color: #fbceb5;
+	border-color: #fbceb5;
 }
 
 .form-check-input:focus {
-    border-color: #fbceb5;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(251 206 181 / 20%);
+	border-color: #fbceb5;
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgb(251 206 181/ 20%);
 }
 
 .bg-login {
 	height: 100vh;
-	background-image: linear-gradient(to bottom, rgb(0 0 0 / 0%) 0%,rgb(0 0 0 / 51%) 100%), url(../image/bg.jpg);
-	
+	background-image: linear-gradient(to bottom, rgb(0 0 0/ 0%) 0%,
+		rgb(0 0 0/ 51%) 100%), url(../image/bg.jpg);
 }
 
 .heading-section {
@@ -44,19 +44,30 @@
 	border-color: #DC2A2D;
 }
 
+.btn-register {
+	width: 245px;
+	height: 40px;
+}
+
+.btn-register:hover {
+	background: #FF4500 !important;
+	color: white;
+	border-color: #FF4500;
+}
+
 .btn-login {
 	background-color: #fbceb5;
 }
 
 .btn-login:hover {
 	border: 1px solid white;
-    background-color: transparent;
-    
+	background-color: transparent;
 }
 
 .btn-login:focus {
 	box-shadow: none;
 }
+
 
 .form-group {
 	position: relative;
