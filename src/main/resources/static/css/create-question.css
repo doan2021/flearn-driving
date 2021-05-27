@@ -1,0 +1,38 @@
+
+.title{
+	font-size: 80%;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	margin-top: 3%;
+}
+.container{
+	background-color: rgb(244, 255, 254);
+}
+.outbackground{
+	background-color: tan;
+}
+.btn{
+	margin-top: 1.5%;
+}
+.nut{
+	text-align: center;
+}
+
+.fa-window-close{
+	color: red;
+	margin-left: 10px;
+	
+}
+.answer {
+	margin-top: 3%;
+}
+
+.nq{
+	margin-top: 3%;
+}
+.cq{
+	margin-top: 3%;
+}
+.img{
+	margin-top: 3%;
+}

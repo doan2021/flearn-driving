@@ -1,64 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-    <head>
-        <title>Learn</title>
-        <link rel="stylesheet" th:href="@{../css/create-question.css}">
-    </head>
-    <body>
-        <th:block layout:fragment="content">
-            <div id="create-question-app">
-                <div class="bg-white border-bottom">
-                    <div class="container-xxl">
-                        <div class="row">
-                            <div class="col-12 pt-5">
-                                <h3>Create question</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-xxl pt-5">
-                    <form class="row" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
-                        <div class="col-12">
-                            <select class="form-select" th:field="*{chapterId}">
-                                <option value="" selected>---- Select chapter ----</option>
-                                <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentQuestion" class="form-label">Content question</label>
-                            <textarea class="form-control" id="contentQuestion" rows="3" th:field="*{content}"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <label for="numberQuestion" class="form-label">Number</label>
-                            <input type="number" class="form-control" id="numberQuestion" th:field="*{number}"></input>
-                        </div>
-                        <div class="col-12">
-                            <label for="formFile" class="form-label">Upload image</label>
-                            <input class="form-control" type="file" id="formFile" th:field="*{images}" multiple>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentAnswer1" class="form-label">Answer 1</label>
-                            <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[0].content}">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="checkbox-answer0" th:field="*{listAnswers[0].true}">
-                                <label class="form-check-label" for="checkbox-answer0"> True</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <label for="contentAnswer1" class="form-label">Answer 2</label>
-                            <input type="text" class="form-control" id="contentAnswer1" placeholder="content answer" th:field="*{listAnswers[1].content}">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="checkbox-answer1" th:field="*{listAnswers[1].true}">
-                                <label class="form-check-label" for="checkbox-answer1"> True</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-primary">Submit</button>
-                            <button class="btn btn-success">Add new answer</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </th:block>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>Learn</title>
+<link rel="stylesheet" th:href="@{../css/create-question.css}">
+	
+
+</head>
+<body layout:fragment="content">
+	<div class="container card">
+	<div class="title">
+	<h1>Tạo câu hỏi </h1>
+	</div>
+		<div class="container-xxl pt-5">
+			<form class="row" th:action="@{/save-question}"
+				th:object="${questionForm}" method="post"
+				enctype="multipart/form-data">
+				
+				
+				<div class="">			
+				<div class="col-5">
+					<select class="form-select" th:field="*{chapterId}">
+						<option value="" selected>---- Chọn Chương ----</option>
+						<option th:each="chapter : ${listChapter}"
+							th:value="${chapter.chapterId}"
+							th:text="|ChÆ°Æ¡ng ${chapter.name}: ${chapter.content}|">One</option>
+					</select>
+				</div>
+			
+				<div class="nq col-3">
+					<label for="numberQuestion" class="form-label"><b>Câu hỏi số:</b></b></label> 
+					<input
+						type="number" class="form-control" id="numberQuestion"
+						th:field="*{number}"></input>
+				</div>
+				</div>
+				<div class="cq col-12">
+					<label for="contentQuestion" class="form-label"><b>Nội dung câu hỏi</b></label>
+					<textarea class="form-control" id="contentQuestion" rows="3"
+						th:field="*{content}"></textarea>
+				</div>
+				
+				<div class="img col-7">
+					<label for="formFile" class="form-label"><b>Hình ảnh</b></label> <input
+						class="form-control" type="file" id="formFile"
+						th:field="*{images}" multiple>
+				</div>
+				<div class="answer col-6">
+					<label for="contentAnswer1" class="form-label"><b>Đáp án 1</b></label>
+					<i class="fas fa-window-close fa-lg"></i>
+					 <input
+						type="text" class="form-control" id="contentAnswer1"
+						placeholder="content answer" th:field="*{listAnswers[0].content}">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="isTrue"
+							th:field="*{listAnswers[0].isTrue}" value="1"> <label
+							class="form-check-label" for="flexRadioDefault1">Đây là đáp án đúng</label>
+					</div>
+				</div>
+				<div class=" answer col-6">
+					<label for="contentAnswer1" class="form-label"><b>Đáp án 2</b></label>
+					<i class="fas fa-window-close fa-lg"></i>
+					 <input
+						type="text" class="form-control" id="contentAnswer1"
+						placeholder="content answer" th:field="*{listAnswers[1].content}">
+						
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="isTrue"
+							th:field="*{listAnswers[1].isTrue}" value="1"> <label
+							class="form-check-label" for="flexRadioDefault1">Đây là đáp án đúng</label>
+					</div>
+				</div>
+			<div class="nut ">
+					<button class="btn btn-success col-3">Thêm câu trả lời</button>
+					<button class="btn btn-primary col-3 ">Đăng tải	</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</body>
 </html>
