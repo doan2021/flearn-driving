@@ -74,7 +74,7 @@ public class AccountServices {
         account.setFirstName(firstName);
         account.setLastName(lastName);
         account.setDelete(false);
-        account.setAuthProvider(authenticationProvider);
+        account.setAuthProvider(authenticationProvider.toString());
         account.setEncrytedPassword("");
         Role role = roleRespository.getOne(new Long(2));
         account.setRole(role);
@@ -83,7 +83,7 @@ public class AccountServices {
 
     @Transactional
     public void updateAccountAfterOAuthLoginSuccess(Account account, AuthenticationProvider authenticationProvider) {
-        account.setAuthProvider(authenticationProvider);
+        account.setAuthProvider(authenticationProvider.toString());
         accountsRespository.save(account);
     }
 
