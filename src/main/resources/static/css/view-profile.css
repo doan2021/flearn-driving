@@ -16,3 +16,15 @@
 .rounded-custom {
 	border-radius: 30px;
 }
+
+.btn-danger {
+	margin-left: 5rem;
+	width: 140px;
+	height: 40px;
+}
+
+.btn-success {
+	margin-left: 23rem;
+	width: 140px;
+	height: 40px;
+}
