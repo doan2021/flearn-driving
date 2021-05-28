@@ -1,0 +1,60 @@
+@media ( min-width : 768px) {
+	.container {
+		max-width: 730px;
+	}
+}
+
+label {
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+div.radio-wrapper {
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bolder;
+	color: black;
+}
+
+div.radio-container {
+	/* background-color: deeppink; */
+	background-color: #66CDAA;
+	display: inline-block;
+	border: 1px solid #66CDAA;
+}
+
+div.radio-container input[type=radio] {
+	opacity: 0;
+	display: none;
+	margin: 0;
+	outline: none;
+}
+
+div.radio-container input[type="radio"]:checked+label {
+	/* background-color: deeppink; */
+	background-color: #66CDAA;
+	color: white;
+	animation-name: radio-active;
+	animation-duration: 0.5s;
+}
+
+div.radio-container label {
+	padding: 0.8em;
+	cursor: pointer;
+	background: none;
+	display: inline-block;
+	outline: none;
+	letter-spacing: 0.1em;
+	background-color: white;
+	color: black;
+	transition: all ease-in-out 0.1s;
+}
+
+@keyframes radio-active {
+  from {
+      transform: scale(0.6, 0.6);
+  }
+  to {
+      transform: scale(1, 1);
+  }
+}
