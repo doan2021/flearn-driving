@@ -78,7 +78,7 @@
                                 <li>
                                     <div class="dropdown-item col-12">
                                         <img th:src="@{../image/no_image_user_icon.png}" class="w-50 rounded-pill mr-2"/>
-                                        <span th:utext="${#request.userPrincipal.name}"></span>
+                                        <span th:utext="${#authentication.principal.fullName}"></span>
                                     </div>
                                 </li>
                                 <li><label class="dropdown-item border-bottom"></label></li>

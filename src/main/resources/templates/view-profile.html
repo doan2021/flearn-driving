@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>View profile</title>
+<link rel="stylesheet" th:href="@{../css/view-profile.css}">
+</head>
+<body>
+	<div class="container-xxl my-3" layout:fragment="content">
+		<div class="row content-profile">
+			<div class="col-8">
+				<div class="bg-white rounded shadow">
+					<div class="row">
+						<div class="col-12 px-4 py-3 mt-4">
+							<h3 class="display-5" style="font-weight: bold;">Xem hồ sơ</h3>
+						</div>
+					</div>
+					<form>
+						<div class="row mt-3">
+							<div class="col-12 px-4 py-3">
+								<div class="card" style="width: 54rem;">
+									<div class="card-body">
+										<h4 class="card-title">Thông tin cơ bản</h4>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Họ và tên:</span>
+											[[${account.lastName}]] [[${account.firstName}]]</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Tên đăng nhập:</span>
+											[[${account.userName}]]</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Số điện thoại:</span> 0931920700</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Email:</span> [[${account.email}]]</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Đia chỉ:</span> 90 Bùi Lâm</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Phường:</span> Nại Hiên Đông</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Quận:</span> Sơn Trà</p>
+										<p class="card-text mt-5"><span style="font-weight: bold;">Thành phố:</span> Đà Nẵng</p>
+										<p class="card-text mt-5" th:if="${account.gender} == 1"><span style="font-weight: bold;">Giới tính:</span> Nam</p>
+										<p class="card-text mt-5" th:if="${account.gender} == 0"><span style="font-weight: bold;">Giới tính:</span> Nữ</p>
+									</div>
+								</div>
+								<div class="btn mt-4" role="group" aria-label="Basic example">
+									<button type="submit" class="btn btn-danger mr-5">Sửa
+										hồ sơ</button>
+									<a><button type="button" class="btn btn-success">Đổi
+											mật khẩu</button></a>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="bg-white rounded shadow pb-3">
+					<div class="row">
+						<div class="col-12">
+							<img alt="../image/bg.jpg" src="../image/bg.jpg"
+								class="w-100 rounded-top" style="height: 120px">
+						</div>
+						<div class="col-12 text-center">
+							<img th:src="@{../image/no_image_user_icon.png}"
+								class="rounded-pill image-profile" />
+						</div>
+						<div class="col-12 text-center">
+							<h4>[[${account.lastName}]] [[${account.firstName}]]</h4>
+							<hr>
+						</div>
+						<div class="col-12 text-center">
+							<button class="btn rounded-pill btn-social text-light">
+								<i class="fab fa-facebook-f"></i>
+							</button>
+							<button class="btn rounded-pill btn-social text-light">
+								<i class="fab fa-google-plus-g"></i>
+							</button>
+							<button class="btn rounded-pill btn-social text-light">
+								<i class="fab fa-twitter"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

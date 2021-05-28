@@ -5,21 +5,67 @@
         <link rel="stylesheet" th:href="@{../css/learn.css}">
     </head>
     <body>
-        <div class="container-fluid" layout:fragment="content">
-            <h1>LEARN</h1>
-            <div class="row mt-3 g-3" th:each="question: ${listQuestions}">
-                <div class="col-12 border">
-                    <h5 class="card-title">CAU + ${question.number}</h5>
-                    <p class="card-text" th:text="${question.content}"></p>
-                    <div th:each="image: ${question.listImages}">
-                        <img th:src="@{${image.url}}" class="image-question" alt="...">
+        <th:block layout:fragment="content">
+        <div class="container-xxl py-5" id="app-learn">
+            <input type="hidden" th:value="${chapterId}" id="chapterId"/>
+            <div v-if="dataResult != '' && dataResult.chapter.listQuestion.length != 0">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="display-4"><strong>Chương {{ dataResult.chapter.name }}</strong></h2>
+                        <h3>{{ dataResult.chapter.content }}</h3>
+                        
                     </div>
                 </div>
-                <div class="col-6 border" th:each="answer: ${question.answers}">
-                    <label th:for="'ans' + ${answer.answerId}"th:text="${answer.content}"></label>
-                    <input type="checkbox" th:id="'ans' + ${answer.answerId}">
+                <div class="row mt-5 p-2 justify-content-center bg-white rounded-3 shadow">
+                    <div class="col-2 text-center">
+                        <p><strong>{{ dataResult.rest }}</strong></p>
+                        <span class="text-secondary">Rest</span>
+                    </div>
+                    <div class="col-1 text-center align-self-center text-secondary">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p class="text-primary"><strong>{{ dataResult.familiar }}</strong></p>
+                        <span class="text-secondary">Familiar</span>
+                    </div>
+                    <div class="col-1 text-center align-self-center text-secondary">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p class="text-success"><strong>{{ dataResult.knowledge }}</strong></p>
+                        <span class="text-secondary">Knowledge</span>
+                    </div>
+                </div>
+                <div class="row bg-white rounded-3 shadow mt-3" v-if="dataResult.questionRandom != '' && dataResult.questionRandom != null">
+                    <div class="col-12 p-4">
+                        <h4>Câu {{ dataResult.questionRandom.number }} <span class="badge bg-warning text-dark" v-if="dataResult.questionRandom.paralysis">Câu điểm liệt</span></h4>
+                        <p>{{ dataResult.questionRandom.content }}</p>
+                    </div>
+                    <div class="col-12 px-4">
+                        <div v-for="image in dataResult.questionRandom.listImage" :key="image.imageId">
+                            <img alt="" :src="image.url">
+                        </div>
+                    </div>
+                    <div class="col-3 p-3" v-for="(answer, index) in dataResult.questionRandom.listAnswers" :key="answer.answerId">
+                        <div v-if="answer.true" class=" d-grid gap-2">
+	                        <button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)" :class="answered ? 'display-none' : ''"><span class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
+                            <button class="btn btn-success" type="button" :class="!answered ? 'display-none' : ''"><i class="far fa-smile-beam"></i> Correct</button>
+                        </div>
+                        <div v-else class=" d-grid gap-2">
+                            <button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)"><span class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-danger">No question in this chapter !</h3>
+                    </div>
                 </div>
             </div>
         </div>
+        <script th:src="@{../js/learn.js}"></script>
+        </th:block>
     </body>
 </html>

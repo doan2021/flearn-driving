@@ -1,0 +1,23 @@
+.card-chapter {
+	background: #fff;
+    box-shadow: 0 2px 48px 0 rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    display: block;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card-chapter span {
+	display: block;
+}
+
+.card-chapter:hover {
+	margin-top: -5px;
+    transition: all 0.3s ease 0s;
+}
+
+.chapter-name {
+	display: block;
+	font-size: 22px;
+}
