@@ -67,14 +67,14 @@ public class AccountServices {
     }
 
     @Transactional
-    public void createAccountAfterOAuthLoginSuccess(String email, String firstName, String lastName, AuthenticationProvider authenticationProvider) {
+    public void createAccountAfterOAuthLoginSuccess(String email, String firstName, String lastName, String authenticationProvider) {
         Account account = new Account();
         account.setUserName(email);
         account.setEmail(email);
         account.setFirstName(firstName);
         account.setLastName(lastName);
         account.setDelete(false);
-        account.setAuthProvider(authenticationProvider.toString());
+        account.setAuthProvider(AuthenticationProvider.GOOGLE.toString());
         account.setEncrytedPassword("");
         Role role = roleRespository.getOne(new Long(2));
         account.setRole(role);
@@ -82,8 +82,8 @@ public class AccountServices {
     }
 
     @Transactional
-    public void updateAccountAfterOAuthLoginSuccess(Account account, AuthenticationProvider authenticationProvider) {
-        account.setAuthProvider(authenticationProvider.toString());
+    public void updateAccountAfterOAuthLoginSuccess(Account account, String authenticationProvider) {
+        account.setAuthProvider(AuthenticationProvider.GOOGLE.toString());
         accountsRespository.save(account);
     }
 

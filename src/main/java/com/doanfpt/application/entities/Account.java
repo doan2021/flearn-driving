@@ -60,7 +60,7 @@ public class Account {
     @Column(name = "is_nable", columnDefinition = "boolean default false")
     private boolean isEnable;
 
-    @Column(name = "auth_provider")
+    @Column(name = "auth_provider", length = 15)
     private String authProvider;
 
     @JsonManagedReference

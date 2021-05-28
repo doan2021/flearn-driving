@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/layout}">
     <head>
+        <meta charset="utf-8"/>
         <title>Learn</title>
         <link rel="stylesheet" th:href="@{../css/create-question.css}">
     </head>
@@ -13,14 +14,13 @@
                        <h5><i class="fas fa-question"></i> Create question</h5>
                    </div>
                 </div>
-                <div v-for="n in numberQuestion" :key="n">
                 <form class="row p-0 mb-3" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
                     <div class="col-7 border p-3 bg-white shadow rounded">
                         <div class="row">
                             <div class="col-6">
                                 <select class="form-select" th:field="*{chapterId}">
                                     <option value="" selected>---- Select chapter ----</option>
-                                    <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
+                                    <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|ChÆ°Æ¡ng ${chapter.name}: ${chapter.content}|">One</option>
                                 </select>
                             </div>
                             <div class="col-6">
@@ -63,15 +63,12 @@
                             </div>
                         </div>
                     </div>
+	                <div class="col-12 mt-3 text-center">
+	                    <button type="submit" class="btn btn-primary rounded-pill w-25">Tạo câu hỏi</button>
+	                </div>
                 </form>
             </div>
-            <div class="row">
-	            <div class="col-12 mt-3 text-center">
-	                <button type="button" class="btn btn-success rounded-pill w-25" @click="addQuestion"><i class="fas fa-plus"></i></button>
-	            </div>
-            </div>
-            </div>
-        <script th:src="@{../js/create-question.js}"></script>
+            <script th:src="@{../js/create-question.js}"></script>
         </th:block>
     </body>
 </html>
