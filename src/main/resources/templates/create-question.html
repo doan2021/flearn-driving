@@ -1,83 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
-<head>
-<title>Learn</title>
-<link rel="stylesheet" th:href="@{../css/create-question.css}">
-	
-
-</head>
-<body layout:fragment="content">
-	<div class="container card">
-	<div class="title">
-	<h1>Tạo câu hỏi </h1>
-	</div>
-		<div class="container-xxl pt-5">
-			<form class="row" th:action="@{/save-question}"
-				th:object="${questionForm}" method="post"
-				enctype="multipart/form-data">
-				
-				
-				<div class="">			
-				<div class="col-5">
-					<select class="form-select" th:field="*{chapterId}">
-						<option value="" selected>---- Chọn Chương ----</option>
-						<option th:each="chapter : ${listChapter}"
-							th:value="${chapter.chapterId}"
-							th:text="|ChÆ°Æ¡ng ${chapter.name}: ${chapter.content}|">One</option>
-					</select>
-				</div>
-			
-				<div class="nq col-3">
-					<label for="numberQuestion" class="form-label"><b>Câu hỏi số:</b></b></label> 
-					<input
-						type="number" class="form-control" id="numberQuestion"
-						th:field="*{number}"></input>
-				</div>
-				</div>
-				<div class="cq col-12">
-					<label for="contentQuestion" class="form-label"><b>Nội dung câu hỏi</b></label>
-					<textarea class="form-control" id="contentQuestion" rows="3"
-						th:field="*{content}"></textarea>
-				</div>
-				
-				<div class="img col-7">
-					<label for="formFile" class="form-label"><b>Hình ảnh</b></label> <input
-						class="form-control" type="file" id="formFile"
-						th:field="*{images}" multiple>
-				</div>
-				<div class="answer col-6">
-					<label for="contentAnswer1" class="form-label"><b>Đáp án 1</b></label>
-					<i class="fas fa-window-close fa-lg"></i>
-					 <input
-						type="text" class="form-control" id="contentAnswer1"
-						placeholder="content answer" th:field="*{listAnswers[0].content}">
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="isTrue"
-							th:field="*{listAnswers[0].isTrue}" value="1"> <label
-							class="form-check-label" for="flexRadioDefault1">Đây là đáp án đúng</label>
-					</div>
-				</div>
-				<div class=" answer col-6">
-					<label for="contentAnswer1" class="form-label"><b>Đáp án 2</b></label>
-					<i class="fas fa-window-close fa-lg"></i>
-					 <input
-						type="text" class="form-control" id="contentAnswer1"
-						placeholder="content answer" th:field="*{listAnswers[1].content}">
-						
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="isTrue"
-							th:field="*{listAnswers[1].isTrue}" value="1"> <label
-							class="form-check-label" for="flexRadioDefault1">Đây là đáp án đúng</label>
-					</div>
-				</div>
-			<div class="nut ">
-					<button class="btn btn-success col-3">Thêm câu trả lời</button>
-					<button class="btn btn-primary col-3 ">Đăng tải	</button>
-			</div>
-			</form>
-		</div>
-	</div>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+    <head>
+        <title>Learn</title>
+        <link rel="stylesheet" th:href="@{../css/create-question.css}">
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <div class="container-xxl py-5" id="create-question-app">
+                <div class="row">
+                   <div class="col-12">
+                       <h5><i class="fas fa-question"></i> Create question</h5>
+                   </div>
+                </div>
+                <div v-for="n in numberQuestion" :key="n">
+                <form class="row p-0 mb-3" th:action="@{/save-question}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
+                    <div class="col-7 border p-3 bg-white shadow rounded">
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-select" th:field="*{chapterId}">
+                                    <option value="" selected>---- Select chapter ----</option>
+                                    <option th:each="chapter : ${listChapter}" th:value="${chapter.chapterId}" th:text="|Chương ${chapter.name}: ${chapter.content}|">One</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="numberQuestion" placeholder="Index question" th:field="*{number}"></input>
+                            </div>
+                            <div class="col-9 mt-3">
+                                <textarea class="form-control" id="contentQuestion" rows="3" th:field="*{content}" placeholder="Content question"></textarea>
+                            </div>
+                            <input class="form-control d-none" type="file" id="upload" th:field="*{images}" @change="readURL" multiple>
+                            <div class="col-3 mt-3" v-if="images != [] && images.length != 0">
+                                <label class="image-area mb-3 d-block" v-for="img in images" :key="img" for="upload">
+                                    <img v-bind:src="img" alt="" class="img-fluid">
+                                </label>
+                            </div>
+                            <div class="col-3 mt-3" v-else>
+                                <label class="image-area d-block" for="upload" style="height:150px">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 p-3 border bg-white shadow rounded">
+                        <div class="col-12" v-for="n in numberAnswer" :key="n">
+                            <div class="row">
+                                <div class="col-9">
+                                    <input type="text" class="form-control" :placeholder="'Answer ' + n" :name="'listAnswers['+ (n-1) +'].content'">
+                                </div>
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" :name="'listAnswers['+ (n-1) +'].true'" value="1" :id="'answer'+ n">
+                                        <label class="form-check-label" :for="'answer'+ n">True</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-danger rounded-pill" v-if="numberAnswer > 2" @click="deleteAnswer"><i class="fas fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-success rounded-pill" @click="addNewAnswer"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+	            <div class="col-12 mt-3 text-center">
+	                <button type="button" class="btn btn-success rounded-pill w-25" @click="addQuestion"><i class="fas fa-plus"></i></button>
+	            </div>
+            </div>
+            </div>
+        <script th:src="@{../js/create-question.js}"></script>
+        </th:block>
+    </body>
 </html>

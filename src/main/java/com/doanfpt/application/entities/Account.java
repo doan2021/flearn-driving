@@ -12,8 +12,6 @@ import javax.persistence.CascadeType;
  */
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,15 +54,14 @@ public class Account {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @Column(name="is_delete", columnDefinition = "boolean default false")
+    @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
-    
-    @Column(name="is_nable", columnDefinition = "boolean default false")
+
+    @Column(name = "is_nable", columnDefinition = "boolean default false")
     private boolean isEnable;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "auth_provider")
-    private AuthenticationProvider authProvider;
+    @Column(name = "auth_provider")
+    private String authProvider;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
@@ -166,20 +163,28 @@ public class Account {
         this.listStatusLearn = listStatusLearn;
     }
 
-    public AuthenticationProvider getAuthProvider() {
-        return authProvider;
-    }
-
-    public void setAuthProvider(AuthenticationProvider authProvider) {
-        this.authProvider = authProvider;
-    }
-
     public List<Image> getListImages() {
         return listImages;
     }
 
     public void setListImages(List<Image> listImages) {
         this.listImages = listImages;
+    }
+
+    public boolean isEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(boolean isEnable) {
+        this.isEnable = isEnable;
+    }
+
+    public String getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(String authProvider) {
+        this.authProvider = authProvider;
     }
 
 }
