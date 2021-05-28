@@ -1,6 +1,12 @@
-.header-profile {
+.btn-social {
+	background-color: #00000045;
+    width: 50px;
+    transition: all 0.4s ease 0.1s;
 }
 
+.btn-social:hover {
+	width: 70px;
+}
 
 .image-profile {
 	margin-top: -60px;

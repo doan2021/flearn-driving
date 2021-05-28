@@ -11,7 +11,9 @@
                     <div class="bg-white rounded shadow">
                         <div class="row">
                             <div class="col-12 px-4 py-3">
-                                <h3 class="display-4">View profile</h3>
+                                <h3 class="display-5">View profile</h3>
+                            </div>
+                            <div class="col-12">
                             </div>
                         </div>
                     </div>
@@ -26,17 +28,17 @@
                                 <img th:src="@{../image/no_image_user_icon.png}" class="rounded-pill image-profile"/>
                             </div>
                             <div class="col-12 text-center">
-                                <h4>Tâm Dương</h4>
+                                <h4>[[${account.lastName}]] [[${account.firstName}]]</h4>
                                 <hr>
                             </div>
                             <div class="col-12 text-center">
-                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                <button class="btn rounded-pill btn-social text-light">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
-                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                <button class="btn rounded-pill btn-social text-light">
                                     <i class="fab fa-google-plus-g"></i>
                                 </button>
-                                <button class="btn btn-secondary rounded-pill" style="width: 50px">
+                                <button class="btn rounded-pill btn-social text-light">
                                     <i class="fab fa-twitter"></i>
                                 </button>
                             </div>
