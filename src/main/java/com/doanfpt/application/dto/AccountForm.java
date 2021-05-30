@@ -6,7 +6,7 @@ public class AccountForm {
     private String lastName;
     private String password;
     private String confirmPassword;
-    private Integer gender;
+    private int gender;
     private String email;
     private Long roleId;
 
