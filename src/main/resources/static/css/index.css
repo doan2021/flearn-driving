@@ -1,125 +1,143 @@
 .bd-leftbar {
-	position: sticky!important;
-    top: 0;
-    z-index: 1000;
-    height: calc(100vh);
-    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+	position: sticky !important;
+	top: 0;
+	z-index: 1000;
+	height: calc(100vh);
+	box-shadow: 0 16px 38px -12px rgb(0 0 0/ 56%), 0 4px 25px 0
+		rgb(0 0 0/ 12%), 0 8px 10px -5px rgb(0 0 0/ 20%);
 }
 
 .item-active {
 	background-color: #9c27b0;
 	border-radius: 3px;
-    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgb(156 39 176 / 40%);
-    color: white!important;
+	box-shadow: 0 4px 20px 0 rgb(0 0 0/ 14%), 0 7px 10px -5px
+		rgb(156 39 176/ 40%);
+	color: white !important;
 }
 
 .item-menu {
-    position: relative;
-    display: block;
-    padding: 0.75rem 1.25rem;
+	position: relative;
+	display: block;
+	padding: 0.75rem 1.25rem;
 }
+
 .learn {
-    position: relative;
-    width: 100%;
-    padding: 45px 0;
-    background-color:rgb(255, 244, 227);
-    
+	position: relative;
+	width: 100%;
+	padding: 45px 0;
+	background-color: rgb(255, 244, 227);
 }
-.learn-img>img{
+
+.learn-img>img {
 	width: 100%;
 }
 
-
 .learn .section-header {
-    margin-bottom: 30px;
-    margin-left: 0;
+	margin-bottom: 30px;
+	margin-left: 0;
 }
 
 .learn .about-img {
-    position: relative;
-    height: 60%;
+	position: relative;
+	height: 60%;
 }
 
 .learn .about-img img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .learn .learn-text p {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .learn .learn-text a.btn {
-    position: relative;
-    margin-top: 15px;
-    padding: 12px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #F7CAC9;
-    background: #343148;
-    border-radius: 0;
-    transition: .3s;
+	position: relative;
+	margin-top: 15px;
+	padding: 12px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: #F7CAC9;
+	background: #343148;
+	border-radius: 0;
+	transition: .3s;
 }
 
 .learn .learn-text a.btn:hover {
-    color: #343148;
-    background: #F7CAC9;
-}
-.tab_menu {
-    overflow: scroll;
-}
-.flex-container {
-  display: flex;
-  background-color: DodgerBlue;
+	color: #343148;
+	background: #F7CAC9;
 }
 
-.flex-container > div {
-  background-color: #f1f1f1;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-}
 .tab_menu {
-    background: #fff;
-    border-radius: 10px;
-    margin-top: -50px;
-    z-index: 9;
-    box-shadow: 0px 0 14px 0 rgb(0 0 0 / 30%);
-    overflow: hidden;
+	overflow: scroll;
 }
+
+.flex-container {
+	display: flex;
+	background-color: DodgerBlue;
+}
+
+.flex-container>div {
+	background-color: #f1f1f1;
+	margin: 10px;
+	padding: 20px;
+	font-size: 30px;
+}
+
+.tab_menu {
+	background: #fff;
+	border-radius: 10px;
+	margin-top: -50px;
+	z-index: 9;
+	box-shadow: 0px 0 14px 0 rgb(0 0 0/ 30%);
+	overflow: hidden;
+	background-color: rgb(63, 116, 148);
+}
+
 .tab_menu ul li {
-    padding: 25px 0;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(63, 116, 148);
+	padding: 25px 0;
+	display: flex;
+	justify-content: center;
 }
+
 .tab_menu ul li span {
 	text-align: center;
 	font-weight: 600;
 }
+
 .tab_menu ul li a {
 	text-align: center;
 	font-weight: 600;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
+	transition: all 0.3s ease 0s;
 }
+
+.tab_menu ul li a:hover {
+	margin-top: -10px;
+	transition: all 0.3s ease 0s;
+}
+
 .icon {
 	font-size: 26px;
 	display: block;
 }
 
-.tabbar_menu{
-	background-color:rgb(255, 244, 227)
+.tabbar_menu {
+	background-color: rgb(255, 244, 227)
 }
-.carousel-indicators{
+
+.carousel-indicators {
 	margin-bottom: 3.5rem;
 }
+
 .carousel-caption {
 	padding-bottom: 3.5rem;
 }
-.tab_menu ul li i{
+
+.tab_menu ul li i {
 	color: gold;
 }
