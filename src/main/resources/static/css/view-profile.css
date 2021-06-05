@@ -1,30 +1,98 @@
-.btn-social {
-	background-color: #00000045;
-    width: 50px;
-    transition: all 0.4s ease 0.1s;
+.profile-info-list {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
 }
 
-.btn-social:hover {
-	width: 70px;
+.profile-info-list>li.title {
+	font-size: 0.625rem;
+	font-weight: 700;
+	color: #8a8a8f;
+	padding: 0 0 0.3125rem;
 }
 
-.image-profile {
-	margin-top: -60px;
-	width: 120px;
+.profile-info-list>li {
+	padding: 0.625rem 0;
 }
 
-.rounded-custom {
-	border-radius: 30px;
+.profile-info-list>li .field {
+	font-weight: 700;
 }
 
-.btn-danger {
-	margin-left: 5rem;
-	width: 140px;
-	height: 40px;
+.coming-soon-cover img, .email-detail-attachment .email-attachment .document-file img,
+	.email-sender-img img, .profile-header-img img {
+	max-width: 100%;
 }
 
-.btn-success {
-	margin-left: 23rem;
-	width: 140px;
-	height: 40px;
+.table.table-profile th {
+	border: none;
+	color: #000;
+	padding-bottom: 0.3125rem;
+	padding-top: 0;
+}
+
+/* Chỉnh màu viền của table cho thẻ td */
+.table.table-profile td {
+	border-color: #c8c7cc;
+}
+
+.table.table-profile .field {
+	color: #666;
+	font-weight: 600;
+	width: 30%;
+	text-align: right;
+}
+
+.table.table-profile .value {
+	font-weight: 500;
+}
+
+.profile-header .profile-header-cover {
+	background: url(https://bootdey.com/img/Content/bg1.jpg) center
+		no-repeat;
+	background-size: 100% auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.profile-header .profile-header-cover:before {
+	content: "";
+	position: absolute;
+	top: 0; left : 0; right : 0; bottom : 0;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0,
+		rgba(0, 0, 0, 0.85) 100%);
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.profile-header .profile-header-content, .profile-header,
+	.profile-header-img, body {
+	position: relative;
+}
+
+.profile-header {
+	color: #fff;
+	padding: 1.25rem;
+}
+
+.profile-header-img {
+	float: left;
+	width: 7.5rem;
+	height: 7.5rem;
+	overflow: hidden;
+	z-index: 10;
+	margin: 0 1.25rem -1.25rem 0;
+	padding: 0.1875rem;
+	-webkit-border-radius: 0.25rem;
+	-moz-border-radius: 0.25rem;
+	border-radius: 0.25rem;
+	background: #fff;
+}
+
+.profile-container {
+	padding: 1.5625rem;
 }

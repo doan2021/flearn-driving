@@ -8,77 +8,125 @@
 </head>
 <body>
 	<div class="container-xxl my-3" layout:fragment="content">
-		<div class="row content-profile">
-			<div class="col-8">
-				<div class="bg-white rounded shadow">
-					<div class="row">
-						<div class="col-12 px-4 py-3 mt-4">
-							<h3 class="display-5" style="font-weight: bold;">Xem hồ sơ</h3>
-						</div>
-					</div>
-					<form>
-						<div class="row mt-3">
-							<div class="col-12 px-4 py-3">
-								<div class="card" style="width: 54rem;">
-									<div class="card-body">
-										<h4 class="card-title">Thông tin cơ bản</h4>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Họ và tên:</span>
-											[[${account.lastName}]] [[${account.firstName}]]</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Tên đăng nhập:</span>
-											[[${account.userName}]]</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Số điện thoại:</span> 0931920700</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Email:</span> [[${account.email}]]</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Đia chỉ:</span> 90 Bùi Lâm</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Phường:</span> Nại Hiên Đông</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Quận:</span> Sơn Trà</p>
-										<p class="card-text mt-5"><span style="font-weight: bold;">Thành phố:</span> Đà Nẵng</p>
-										<p class="card-text mt-5" th:if="${account.gender} == 1"><span style="font-weight: bold;">Giới tính:</span> Nam</p>
-										<p class="card-text mt-5" th:if="${account.gender} == 0"><span style="font-weight: bold;">Giới tính:</span> Nữ</p>
-									</div>
-								</div>
-								<div class="btn mt-4" role="group" aria-label="Basic example">
-									<button type="submit" class="btn btn-danger mr-5">Sửa
-										hồ sơ</button>
-									<a><button type="button" class="btn btn-success">Đổi
-											mật khẩu</button></a>
-								</div>
-							</div>
-						</div>
-					</form>
+		<div class="profile-header">
+			<div class="profile-header-cover"></div>
 
+			<div class="profile-header-content">
+				<div class="profile-header-img">
+					<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+						alt="" />
+				</div>
+
+				<div class="profile-header-info">
+					<h4 class="m-t-sm">[[${account.firstName}]]
+						[[${account.lastName}]]</h4>
+					<p class="m-b-sm">Quản trị viên</p>
+					<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="bg-white rounded shadow pb-3">
-					<div class="row">
-						<div class="col-12">
-							<img alt="../image/bg.jpg" src="../image/bg.jpg"
-								class="w-100 rounded-top" style="height: 120px">
-						</div>
-						<div class="col-12 text-center">
-							<img th:src="@{../image/no_image_user_icon.png}"
-								class="rounded-pill image-profile" />
-						</div>
-						<div class="col-12 text-center">
-							<h4>[[${account.lastName}]] [[${account.firstName}]]</h4>
-							<hr>
-						</div>
-						<div class="col-12 text-center">
-							<button class="btn rounded-pill btn-social text-light">
-								<i class="fab fa-facebook-f"></i>
-							</button>
-							<button class="btn rounded-pill btn-social text-light">
-								<i class="fab fa-google-plus-g"></i>
-							</button>
-							<button class="btn rounded-pill btn-social text-light">
-								<i class="fab fa-twitter"></i>
-							</button>
+		</div>
+
+		<div class="profile-container">
+			<div class="row row-space-20">
+				<div class="col-md-8">
+					<div class="tab-content p-0">
+						<div class="tab-pane active show" id="profile-about">
+							<table class="table table-profile">
+								<thead>
+									<tr>
+										<th colspan="2">THÔNG TIN CƠ BẢN</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="field">Tên</td>
+										<td class="value">
+											<div class="m-b-5">
+												<b>[[${account.firstName}]]</b>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="field">Họ</td>
+										<td class="value">
+											<div class="m-b-5">
+												<b>[[${account.lastName}]]</b>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="field">Tên đăng nhập</td>
+										<td class="value">[[${account.userName}]]</td>
+									</tr>
+									<tr>
+										<td class="field">Giới tính</td>
+										<td class="value" th:if="${account.gender} == null">Chưa
+											cập nhật</td>
+										<td class="value" th:if="${account.gender} == 1">Nam</td>
+										<td class="value" th:if="${account.gender} == 0">Nữ</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-profile">
+								<thead>
+									<tr>
+										<th colspan="2">ĐỊA CHỈ LIÊN LẠC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="field">Số điện thoại</td>
+										<td class="value">0931920700
+									</tr>
+									<tr>
+										<td class="field">Email</td>
+										<td class="value">[[${account.email}]]
+									</tr>
+									<tr>
+										<td class="field">Địa chỉ</td>
+										<td class="value">90 Bùi Lâm
+									</tr>
+									<tr>
+										<td class="field">Phường</td>
+										<td class="value">Nại Hiên Đông</td>
+									</tr>
+									<tr>
+										<td class="field">Quận</td>
+										<td class="value">Sơn Trà</td>
+									</tr>
+									<tr>
+										<td class="field">Thành phố</td>
+										<td class="value">Đà Nẵng</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
+
+				<div class="col-md-4 hidden-xs hidden-sm">
+					<ul class="profile-info-list">
+						<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
+						<li>
+							<div class="field">Ngày tạo:</div>
+							<div class="value">05/06/2021</div>
+						</li>
+						<li>
+							<div class="field">Lịch sử thi:</div> <a href="#">Click here</a>
+						</li>
+						<li>
+							<div class="field">Thống kê hiệu suất thi thử:</div> <a href="#">Click
+								here</a>
+						</li>
+						<li>
+							<div class="field">Kiểm tra nhanh:</div> <a href="#">Click
+								here</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			
 		</div>
 	</div>
+
 </body>
 </html>
