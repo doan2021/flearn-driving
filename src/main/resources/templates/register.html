@@ -1,159 +1,119 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
-<head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
-	name='viewport' />
-<title>Register</title>
-<!-- CSS Files -->
-<link th:href="@{../css/register.css}" rel="stylesheet" />
-<!--     Fonts and icons     -->
-<link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
-<!--   Core JS Files   -->
-<script th:src="@{../assets/js/core/jquery.min.js}"></script>
-<script th:src="@{../assets/js/core/popper.min.js}"></script>
-<script th:src="@{../assets/js/core/bootstrap-material-design.min.js}"></script>
-
-</head>
-<body>
-	<div class="container" layout:fragment="content">
-		<div class="signup-content">
-			<div class="signup-img">
-				<img src="../image/signup.jpg" alt="">
-			</div>
-
-			<!-- form th:action="@{/create-account}" th:object="${appUserForm}"
-					method="POST">
-					<div class="row" th:if="${#fields.hasErrors()}">
-						<div class="col-12">
-							<div class="alert alert-danger" role="alert">
-								<span th:if="${#fields.hasErrors('firstName')}"
-									th:errors="*{firstName}"></span> <span
-									th:if="${#fields.hasErrors('lastName')}"
-									th:errors="*{lastName}"></span> <span
-									th:if="${#fields.hasErrors('userName')}"
-									th:errors="*{userName}"></span> <span
-									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-								<span th:if="${#fields.hasErrors('password')}"
-									th:errors="*{password}"></span> <span
-									th:if="${#fields.hasErrors('confirmPassword')}"
-									th:errors="*{confirmPassword}"></span>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-6 form-group mt-4">
-								<label>Tên</label> <input type="text" class="form-control"
-									th:field="*{firstName}">
-							</div>
-							<div class="col-sm-6 form-group mt-4">
-								<label>Họ</label> <input type="text" class="form-control"
-									th:field="*{lastName}">
-							</div>
-						</div>
-						<div class="row  mt-4">
-							<div class="col-sm-6 form-group">
-								<label>Email</label> <input type="text" class="form-control"
-									th:field="*{email}">
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Tên đăng nhập</label> <input type="text"
-									class="form-control" th:field="*{userName}">
-							</div>
-						</div>
-						<div class="row mt-4">
-							<div class="col-sm-6 form-group">
-								<label>Mật khẩu</label> <input type="password"
-									class="form-control" th:field="*{password}">
-							</div>
-							<div class="col-sm-6 form-group">
-								<label>Nhập lại mật khẩu</label> <input type="password"
-									class="form-control" th:field="*{confirmPassword}">
-							</div>
-						</div>
-						<div class="radio-wrapper mt-5">
-							<p>GENDER</p>
-							<div class="radio-container">
-								<input class="form-check-input" type="radio" name="gender" value="1" id="male" checked th:field="*{gender}" /> 
-								<label for="male">MALE</label> 
-								<input class="form-check-input" type="radio" name="gender" value="0" id="female" th:field="*{gender}" /> 
-								<label for="female">FEMALE</label>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-lg btn-info mt-5 mb-5">Đăng ký</button>
-						<div class="d-flex justify-content-around"><button type="submit" class="btn btn-outline-primary mt-5 mr-5">Đăng Ký</button></div>
-					</div>
-				</form> -->
-
-			<div class="signup-form">
-				<form class="register-form" id="register-form" th:action="@{/create-account}" th:object="${appUserForm}" method="POST">
-					<div class="row" th:if="${#fields.hasErrors()}">
-						<div class="col-12">
-							<div class="alert alert-danger" role="alert">
-								<span th:if="${#fields.hasErrors('firstName')}"
-									th:errors="*{firstName}"></span> <span
-									th:if="${#fields.hasErrors('lastName')}"
-									th:errors="*{lastName}"></span> <span
-									th:if="${#fields.hasErrors('userName')}"
-									th:errors="*{userName}"></span> <span
-									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-								<span th:if="${#fields.hasErrors('password')}"
-									th:errors="*{password}"></span> <span
-									th:if="${#fields.hasErrors('confirmPassword')}"
-									th:errors="*{confirmPassword}"></span>
-							</div>
-						</div>
-					</div>
-					<h2>đăng ký</h2>
-					<div class="form-row">
-						<div class="form-group">
-							<label for="name">Tên :</label> 
-							<input type="text" name="name" id="name" th:field="*{firstName}" required />
-						</div>
-						<div class="form-group">
-							<label for="father_name">Họ :</label> 
-							<input type="text" name="father_name" id="father_name" th:field="*{lastName}" required />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="email">Email :</label> 
-						<input type="email" name="email" id="email" th:field="*{email}" required />
-					</div>
-					<div class="form-group">
-						<label for="address">Tên đăng nhập :</label> 
-						<input type="text" name="address" id="address" th:field="*{userName}" required />
-					</div>
-					<div class="form-group">
-						<label for="birth_date">Mật khẩu :</label> 
-						<input type="password" name="birth_date" id="birth_date" th:field="*{password}" required>
-					</div>
-					<div class="form-group">
-						<label for="pincode">Nhập lại mật khẩu :</label> 
-						<input type="password" name="pincode" id="pincode" th:field="*{confirmPassword}" required>
-					</div>
-					<div class="form-radio">
-						<label for="gender" class="radio-label">Giới tính :</label>
-						<div class="form-radio-item">
-							<input type="radio" name="gender" id="male" value="1" th:field="*{gender}" th:checked="${gender}"> 
-							<label for="male">Nam</label> 
-							<span class="check"></span>
-						</div>
-						<div class="form-radio-item">
-							<input type="radio" name="gender" id="female" value="0" th:field="*{gender}"> 
-							<label for="female">Nữ</label> 
-							<span class="check"></span>
-						</div>
-					</div>
-					<div class="form-submit">
-						<input type="button" value="Reset All" class="submit" name="reset" id="reset" /> 
-						<input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</body>
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+    <head>
+        <title>Register</title>
+        <!-- CSS Files -->
+        <link th:href="@{../css/register.css}" rel="stylesheet" />
+        <!--     Fonts and icons     -->
+        <link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <div class="container-xxl py-5">
+                <div class="row">
+                    <div class="col-12 rounded shadow bg-white">
+                        <div class="row">
+                            <div class="col-4 rounded bg-register text-center d-flex align-items-center">
+                                <div>
+                                    <a href="#" class="btn btn-primary mt-2 w-75 text-start my-auto">
+                                        <i class="fab fa-facebook-f"></i> Đăng nhập với Facebook
+                                    </a>
+                                    <a href="#" class="btn btn-info mt-2 w-75 text-light text-start">
+                                        <i class="fab fa-twitter"></i> Đăng nhập với Twitter
+                                    </a>
+                                    <a th:href="@{/oauth2/authorization/google}" class="btn btn-danger mt-2 w-75 text-start">
+                                        <i class="fab fa-google"></i> Đăng nhập với Google+
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-8 p-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="display-5">Đăng ký tài khoản</h2>
+                                    </div>
+                                </div>
+                                <form class="row mt-4" th:action="@{/create-account}" th:object="${appUserForm}" method="POST">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" th:field="*{firstName}" placeholder="Họ"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" th:field="*{lastName}" placeholder="Tên"/>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" th:field="*{email}" placeholder="sample@email.com"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                            <input type="text" class="form-control" th:field="*{email}" placeholder="Số điện thoại" />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                                            <input type="text" class="form-control" id="birthday" th:field="*{email}" placeholder="Chọn ngày sinh" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+                                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Tên đăng nhập"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-retweet"></i></span>
+                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Nhập lại mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <label class="d-block">Giới tính</label> 
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="male" value="1" th:field="*{gender}" th:checked="${gender} == 1"> 
+                                            <label for="male">Nam</label> 
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="female" value="0" th:field="*{gender}" th:checked="${gender} == 0"> 
+                                            <label for="female">Nữ</label> 
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" id="orther" value="2" th:field="*{gender}" th:checked="${gender} == 2"> 
+                                            <label for="orther">Khác</label> 
+                                            <span class="check"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3 text-center">
+                                        <input type="submit" value="Đăng ký" class="btn btn-primary"/>
+                                        <input type="reset" value="làm mới" class="btn btn-secondary"/> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function() {
+                    $("#birthday").datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true
+                    });
+                });
+            </script>
+        </th:block>
+    </body>
 </html>

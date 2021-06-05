@@ -1,64 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout}">
 
 <head>
-<title>Dashboard</title>
-<link rel="stylesheet" th:href="@{../css/index.css}">
+	<title>Dashboard</title>
+	<link rel="stylesheet" th:href="@{../css/index.css}">
 </head>
 
 <body>
 
 	<div layout:fragment="content">
-		<div id="carouselExampleDark" class="carousel slide"
-			data-bs-ride="carousel">
+		<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#carouselExampleDark"
-					data-bs-slide-to="0" class="active" aria-current="true"
-					aria-label="Slide 1"></button>
-				<button type="button" data-bs-target="#carouselExampleDark"
-					data-bs-slide-to="1" aria-label="Slide 2"></button>
-				<button type="button" data-bs-target="#carouselExampleDark"
-					data-bs-slide-to="2" aria-label="Slide 3"></button>
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+					aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+					aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+					aria-label="Slide 3"></button>
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="10000">
-					<img
-						src="https://i.pinimg.com/564x/69/71/e4/6971e4b804454b55637474ece26518c7.jpg"
-						alt="..." style="width: 100%;">
+					<img src="https://img.lovepik.com/photo/40031/4791.jpg_wh860.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>First slide label</h5>
-						<p>Some representative placeholder content for the first
-							slide.</p>
+						<p>Some representative placeholder content for the first slide.</p>
 					</div>
 				</div>
 				<div class="carousel-item" data-bs-interval="2000">
-					<img src="https://img.lovepik.com/photo/40031/4791.jpg_wh860.jpg"
-						class="d-block w-100" alt="...">
+
+					<img th:src="@{../image/banner_img.png}" alt="..." style="width: 100%;">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Second slide label</h5>
-						<p>Some representative placeholder content for the second
-							slide.</p>
+						<p>Some representative placeholder content for the second slide.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="image/background-login.jpg" class="d-block w-100"
-						alt="...">
+					<img src="image/background-login.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Third slide label</h5>
-						<p>Some representative placeholder content for the third
-							slide.</p>
+						<p>Some representative placeholder content for the third slide.</p>
 					</div>
 				</div>
 			</div>
-			<button class="carousel-control-prev" type="button"
-				data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+				data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
 			</button>
-			<button class="carousel-control-next" type="button"
-				data-bs-target="#carouselExampleDark" data-bs-slide="next">
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+				data-bs-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>
@@ -67,26 +58,27 @@
 		<div class="section tabbar_menu">
 			<div class="container-xxl">
 				<div class="row">
-					<div class="col-md-12">
-						<div class="tab_menu">
-							<ul>
-								<li><a href="#"><span class="icon"><img
-											src="images/i1.png" alt="#" /></span><span></span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i2.png" alt="#" /></span><span>Graduation</span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i3.png" alt="#" /></span><span>Athletics</span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i4.png" alt="#" /></span><span>Social</span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i5.png" alt="#" /></span><span>Location</span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i6.png" alt="#" /></span><span>Call us</span></a></li>
-								<li><a href="#"><span class="icon"><img
-											src="images/i7.png" alt="#" /></span><span>Email</span></a></li>
-							</ul>
-						</div>
+					<div class="tab_menu col-12 ">
+						<ul class="row m-0 p-0">
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-newspaper"></i></span><span>Thông
+										Tin</span></a></li>
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-graduation-cap"></i></span><span>Học</span></a></li>
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-diagnoses"></i></span><span>Thi
+										Thử</span></a></li>
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-map-marker-alt"></i></span><span>Địa
+										Chỉ</span></a></li>
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-phone-square-alt"></i></span><span>Điện Thoại</span></a>
+							</li>
+							<li class="col-2"><a href="#"><span class="icon"><i
+											class="fas fa-envelope"></i></span><span>Email</span></a></li>
+						</ul>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -99,151 +91,132 @@
 
 					<div class="col-lg-5">
 						<div class="section-header text-left">
-							<h1>
-								Học B2 để làm gì
-								</h2>
+							<h1>Học B2 để làm gì</h2>
 						</div>
 						<div class="learn-text">
-							<p>
-								<i class="fas fa-check-circle"></i> Để đi lại thuận tiện trong
-								công việc
-							</p>
-							<p>
-								<i class="fas fa-check-circle"></i> Để đưa gia đình đi chơi , du
-								lịch xa
-							</p>
-							<p>
-								<i class="fas fa-check-circle"></i> Để kiếm thêm thu nhập cho
-								gia đình
-							</p>
+							<p><i class="fas fa-check-circle"></i> Để đi lại thuận tiện trong công việc</p>
+							<p><i class="fas fa-check-circle"></i> Để đưa gia đình đi chơi , du lịch xa</p>
+							<p><i class="fas fa-check-circle"></i> Để kiếm thêm thu nhập cho gia đình</p>
 							<a class="btn" href="">Learn More</a>
 						</div>
 					</div>
 					<div class="col-lg-7">
 						<div class="learn-img">
-							<img
-								src="https://daylaixehanoi.vn/wp-content/uploads/2019/11/hoc-b2-de-lam-gi-731x400.jpg">
+							<img src="https://daylaixehanoi.vn/wp-content/uploads/2019/11/hoc-b2-de-lam-gi-731x400.jpg"
+								</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- dungcoding -->
+
+
+		</div>
 
 		<div class="chapter">
 			<div class="container-xxl learn-bg-red">
 				<div class="row align-items-center">
 					<div></div>
-					<div class="col-lg-6">
-						<div class="section-header text-left">
+					<div class="col-lg-5">
+						<div class="section-header text-left mb-4">
 							<h1>Học theo Chương</h1>
 						</div>
 						<div class="chapter-text">
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 1</a>: Khái niệm
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									1</a>: Khái niệm
 								và quy tắc giao thông đường bộ
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 2</a>: Nghiệp vụ
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									2</a>: Nghiệp vụ
 								vận tải
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 3</a>: Văn hóa
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									3</a>: Văn hóa
 								giao thông và đạo đức người lái xe
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 4</a>: Kỹ thuật
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									4</a>: Kỹ thuật
 								lái xe
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 5</a>: Cấu tạo và
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									5</a>: Cấu tạo và
 								sữa chữa
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 6</a>: Hệ thống
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									6</a>: Hệ thống
 								biển báo hiệu đường bộ
 
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 7</a>: Giải thế
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									7</a>: Giải thế
 								sa hình và kỹ năng xử lý tình huống giao thông
 							</p>
 							<p>
-								<i class="fas fa-chevron-right"></i> <a
-									style="text-decoration: none" href="#">Chương 8</a>: Tình huống
+								<i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
+									8</a>: Tình huống
 								mất an toàn giao thông
 							</p>
 							<a class="btn" href="">Learn More</a>
 						</div>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-7">
 						<div class="chapter-img">
-							<div class="row">
-								<div class="col-sm"
-									style="background: #99CCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="first after" href="#">CHƯƠNG 1</a>
+							<div class="row mt-3">
+								<div class="col-sm">
+									<div class="wrapper text-center" style="background:rgb(172, 166, 219); height: 70px;">
+										<a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 1</a>
 									</div>
 
 								</div>
-								<div class="col-sm"
-									style="background: #FFCCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="second after" href="#">CHƯƠNG 2</a>
+								<div class="col-sm">
+									<div class="wrapper text-center" style="background: #FFCCFF; height: 70px; text-align: center;">
+										<a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 2</a>
 									</div>
 								</div>
-								<div class="col-sm"
-									style="background: #CCFFFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="third after" href="#">CHƯƠNG 3</a>
-									</div>
-								</div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-sm"
-									style="background: #99CCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="first after" href="#">CHƯƠNG 4</a>
-									</div>
-								</div>
-								<div class="col-sm"
-									style="background: #FFCCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="second after" href="#">CHƯƠNG 5</a>
-									</div>
-								</div>
-								<div class="col-sm"
-									style="background: #CCFFFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="third after" href="#">CHƯƠNG 6</a>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #CCFFFF; height: 70px; text-align: center;">
+										<a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 3</a>
 									</div>
 								</div>
 							</div>
 							<div class="row mt-3">
-								<div class="col-sm"
-									style="background: #99CCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="first after" href="#">CHƯƠNG 7</a>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #99CCFF; height: 70px; text-align: center;">
+										<a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 4</a>
 									</div>
 								</div>
-								<div class="col-sm"
-									style="background: #FFCCFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="second after" href="#">CHƯƠNG 8</a>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #FFCCFF; height: 70px; text-align: center;">
+										<a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 5</a>
 									</div>
 								</div>
-								<div class="col-sm"
-									style="background: #CCFFFF; height: 70px; text-align: center;">
-									<div class="wrapper">
-										<a class="third after" href="#">TỔNG HỢP</a>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #CCFFFF; height: 70px; text-align: center;">
+										<a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 6</a>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #99CCFF; height: 70px; text-align: center;">
+										<a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 7</a>
+									</div>
+								</div>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #FFCCFF; height: 70px; text-align: center;">
+										<a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 8</a>
+									</div>
+								</div>
+								<div class="col-sm" >
+									<div class="wrapper text-center" style="background: #CCFFFF; height: 70px; text-align: center;">
+										<a class="third after" href="#" style=" text-decoration: none;">TỔNG HỢP</a>
 									</div>
 								</div>
 							</div>
@@ -253,8 +226,6 @@
 				</div>
 			</div>
 		</div>
-
-	</div>
 
 </body>
 

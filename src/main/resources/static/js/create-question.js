@@ -4,7 +4,6 @@ var pageListData = new Vue({
         srcImagePreview   : '',
         contentAddAnswer  : '',
         numberAnswer      : 2,
-        numberQuestion    : 1,
         images            : []
     },
     mounted() {
@@ -27,9 +26,6 @@ var pageListData = new Vue({
             if (this.numberAnswer > 2) {
                 this.numberAnswer -= 1;
             }
-        },
-        addQuestion: function() {
-        	this.numberQuestion += 1;
         }
     }
 });

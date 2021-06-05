@@ -6,7 +6,7 @@ public class AccountForm {
     private String lastName;
     private String password;
     private String confirmPassword;
-    private String gender;
+    private int gender;
     private String email;
     private Long roleId;
 
@@ -50,11 +50,11 @@ public class AccountForm {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 

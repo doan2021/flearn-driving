@@ -45,7 +45,7 @@ public class Account {
     private String lastName;
 
     @Column(name = "gender")
-    private String gender;
+    private Integer gender;
 
     @Column(name = "email")
     private String email;
@@ -60,7 +60,7 @@ public class Account {
     @Column(name = "is_nable", columnDefinition = "boolean default false")
     private boolean isEnable;
 
-    @Column(name = "auth_provider")
+    @Column(name = "auth_provider", length = 15)
     private String authProvider;
 
     @JsonManagedReference
@@ -115,11 +115,11 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public String getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 

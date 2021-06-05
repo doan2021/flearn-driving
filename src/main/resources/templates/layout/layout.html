@@ -12,9 +12,13 @@
         <!-- CSS Common -->
         <link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
         <link th:href="@{../css/jquery-confirm.min.css}" rel="stylesheet" />
+        <link th:href="@{../css/jquery-ui.min.css}" rel="stylesheet" />
+        <link th:href="@{../css/jquery-ui.structure.min.css}" rel="stylesheet" />
+        <link th:href="@{../css/jquery-ui.theme.min.css}" rel="stylesheet" />
         <link th:href="@{../css/common.css}" rel="stylesheet" />
         <!-- JS Common -->
         <script th:src="@{../js/jquery.min.js}"></script>
+        <script th:src="@{../js/jquery-ui.min.js}"></script>
         <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
         <script th:src="@{../js/jquery-confirm.min.js}"></script>
         <script th:src="@{../js/axios.min.js}"></script>
@@ -49,9 +53,9 @@
                         </li>
                         </th:block>
                         <th:block sec:authorize="hasRole('ROLE_USER')">
-	                        <li class="nav-item col-6 col-md-auto">
-	                            <a class="nav-link p-2" th:href="@{/select-chapter}">Chapter</a>
-	                        </li>
+                            <li class="nav-item col-6 col-md-auto">
+                                <a class="nav-link p-2" th:href="@{/select-chapter}">Chapter</a>
+                            </li>
                         </th:block>
                         <th:block sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
                             <li class="nav-item col-6 col-md-auto">
@@ -96,128 +100,109 @@
         </header>
         <section layout:fragment="content"></section>
         <footer class="text-center text-lg-start bg-light text-muted">
-  <!-- Section: Social media -->
-  <section
-    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-  >
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-      <span>Hãy liên hệ với chúng tôi qua:</span>
-    </div>
-    <!-- Left -->
-
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
-
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Learn Car
-          </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Contact
-          </h6>
-          <p><i class="fas fa-home me-3"></i>24 Phạm Thế Hiển, Đà Nẵng ,Việt Nam</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            Onthibanglaib2@gmail.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 0236 3456 789</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-
-  <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Onthibanglaib2.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
+        <section class="p-4 border-bottom border-top">
+            <div class="container-xxl d-flex justify-content-between">
+                <div class="me-5 d-none d-lg-block">
+                    <span>Hãy liên hệ với chúng tôi qua:</span>
+                </div>
+                <div class="icon-social">
+	                <a href="" class="me-4 text-reset">
+	                    <i class="fab fa-facebook-f"></i>
+	                </a>
+	                <a href="" class="me-4 text-reset">
+	                    <i class="fab fa-twitter"></i>
+	                </a>
+	                <a href="" class="me-4 text-reset">
+	                    <i class="fab fa-google"></i>
+	                </a>
+	                <a href="" class="me-4 text-reset">
+	                    <i class="fab fa-instagram"></i>
+	                </a>
+	                <a href="" class="me-4 text-reset">
+	                    <i class="fab fa-linkedin"></i>
+	                </a>
+	                <a href="" class="text-reset">
+	                    <i class="fab fa-github"></i>
+	                </a>
+                </div>
+            </div>
+        </section>
+        <section>
+          <div class="container-xxl text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-3 mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  <i class="fas fa-gem me-3"></i>Learn Car
+                </h6>
+                <p>
+                  Here you can use rows and columns to organize your footer content. Lorem ipsum
+                  dolor sit amet, consectetur adipisicing elit.
+                </p>
+              </div>
+              <div class="col-3 ps-5 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Products
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">Angular</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">React</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Vue</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Laravel</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+        
+              <!-- Grid column -->
+              <div class="col-3 ps-5">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Useful links
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">Pricing</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Settings</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Orders</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Help</a>
+                </p>
+              </div>
+              <div class="col-3 ps-5 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Contact
+                </h6>
+                <p><i class="fas fa-home me-3"></i>24 Phạm Thế Hiển, Đà Nẵng</p>
+                <p>
+                  <i class="fas fa-envelope me-3"></i>
+                  Onthibanglaib2@gmail.com
+                </p>
+                <p><i class="fas fa-phone me-3"></i> + 0236 3456 789</p>
+                <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                <span>© 2021 Copyright:</span>
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Onthibanglaib2.com</a>
+            </div>
+        </footer>
     </body>
 </html>
