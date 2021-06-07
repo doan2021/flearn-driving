@@ -3,7 +3,8 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/layout}">
     <head>
-        <title>Register</title>
+        <title>Đăng ký</title>
+        <meta charset="utf-8"/>
         <!-- CSS Files -->
         <link th:href="@{../css/register.css}" rel="stylesheet" />
         <!--     Fonts and icons     -->
@@ -31,7 +32,7 @@
                             <div class="col-8 p-4">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h2 class="display-5">Đăng ký tài khoản</h2>
+                                        <h2 class="display-5 text-primary">Đăng ký tài khoản</h2>
                                     </div>
                                 </div>
                                 <form class="row mt-4" th:action="@{/create-account}" th:object="${appUserForm}" method="POST">
@@ -74,7 +75,7 @@
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-retweet"></i></span>
-                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Nhập lại mật khẩu">
+                                            <input type="password" class="form-control" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu">
                                         </div>
                                     </div>
                                     <div class="col-12 mt-3">
@@ -114,6 +115,7 @@
                     });
                 });
             </script>
+            <script th:src="@{../js/register.js}"></script>
         </th:block>
     </body>
 </html>
