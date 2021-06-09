@@ -14,6 +14,21 @@
     </head>
     <body>
         <th:block layout:fragment="content">
+            <div class="header-page d-flex align-items-center">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-12 py-5" >
+                            <span class="display-5 pb-3 d-inline-block text-light">Đăng ký tài khoản</span>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb text-light">
+                                    <li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
+                                    <li class="breadcrumb-item">Đăng ký tài khoản</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container-xxl py-5">
                 <div class="row">
                     <div class="col-12 rounded shadow bg-white">
@@ -23,21 +38,13 @@
                                     <a href="#" class="btn btn-primary mt-2 w-75 text-start my-auto">
                                         <i class="fab fa-facebook-f"></i> Đăng nhập với Facebook
                                     </a>
-                                    <a href="#" class="btn btn-info mt-2 w-75 text-light text-start">
-                                        <i class="fab fa-twitter"></i> Đăng nhập với Twitter
-                                    </a>
                                     <a th:href="@{/oauth2/authorization/google}" class="btn btn-danger mt-2 w-75 text-start">
                                         <i class="fab fa-google"></i> Đăng nhập với Google+
                                     </a>
                                 </div>
                             </div>
                             <div class="col-8 p-4">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h2 class="display-5 text-primary">Đăng ký tài khoản</h2>
-                                    </div>
-                                </div>
-                                <form class="row mt-4" th:action="@{/create-account}" th:object="${appUserForm}" method="POST" id="register-form">
+                                <form class="row" th:action="@{/create-account}" th:object="${appUserForm}" method="POST" id="register-form">
                                     <div class="col-6">
                                         <input type="text" class="error form-control" th:field="*{lastName}" placeholder="Họ" name="lastName"/>
                                     </div>
@@ -53,11 +60,11 @@
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            <input type="text" class="error form-control" placeholder="Số điện thoại" name="phoneNumber"/>
+                                            <input type="text" class="form-control" placeholder="Số điện thoại" name="phoneNumber"/>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4">
-                                        <div class="input-group">
+                                        <div class="input-group" id="birthday-place">
                                             <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
                                             <input type="text" class="error form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off"/>
                                         </div>

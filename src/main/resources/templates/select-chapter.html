@@ -1,25 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
     <head>
-        <title>Learn</title>
+        <title>Chọn chương</title>
+        <meta charset="utf-8"/>
         <link rel="stylesheet" th:href="@{../css/select-chapter.css}">
     </head>
     <body>
-        <div class="container-xxl" layout:fragment="content">
-            <div class="row mt-5">
-                <div class="col-12">
-                    <h3>Select Chapter</h3>
+        <th:block layout:fragment="content">
+            <div class="bg-primary header-page d-flex align-items-center">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-12 py-5" >
+                            <span class="display-5 pb-3 d-inline-block text-light">Chọn chương</span>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb text-light">
+                                    <li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
+                                    <li class="breadcrumb-item">Chọn chương</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row g-3 mt-2">
-                <div class="col-3" th:each="chapter : ${listChapter}">
-                    <a th:href="@{/learn/{chapterId}(chapterId=${chapter.chapterId})}" class="card-chapter p-3 block">
-                        <span th:text="|Chương ${chapter.name}|" class="chapter-name badge bg-secondary"></span>
-                        <span th:text="|${chapter.listQuestion.size} Question|" class="chapter-content"></span>
-                        <span th:text="${chapter.description}" class="chapter-description"></span>
-                    </a>
+            <div class="container-xxl pt-3 pb-5">
+                <div class="row mt-3">
+                    <div class="col-12 mt-3 text-center">
+                        <h1 class="display-5 pb-2 title-page d-inline-block fs-2">Toàn bộ chương</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-8 p-3 pe-0">
+                                <input type="text" class="form-control" placeholder="Tên chương">
+                            </div>
+                            <div class="col-4 p-3">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary d-block"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 p-3">
+                                <h5>Trạng thái học tập</h5>
+                            </div>
+                            <div class="col-12 px-3 py-1 border-bottom">
+                                <span class="ms-1">Hoàn thành</span>
+                                <span class="badge bg-success float-end">4</span>
+                            </div>
+                            <div class="col-12 px-3 py-1 border-bottom">
+                                <span class="ms-1">Đang học</span>
+                                <span class="badge bg-info float-end">5</span>
+                            </div>
+                            <div class="col-12 px-3 py-1">
+                                <span class="ms-1">Chưa học</span>
+                                <span class="badge bg-secondary float-end">4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <select class="form-control">
+                                    <option>-- Phân loại---</option>
+                                    <option>Hoàn thành</option>
+                                    <option>Đang học</option>
+                                    <option>Chưa học</option>
+                                </select>
+                            </div>
+                            <div class="col-8 d-flex align-items-center justify-content-end">
+                                <span>Showing <strong>1–9</strong> of <strong>10</strong> results</span>
+                            </div>
+                        </div>
+                        <div class="row mt-3 g-3">
+                            <div class="col-3" th:each="chapter : ${listChapter}">
+                                <div class="header-chapter bg-primary text-center p-3">
+                                    <h1 th:text="|Chương ${chapter.name}|" class="text-light display-5 fs-3 d-block font-weight-400 m-0"></h1>
+                                </div>
+                                <div class="single-chapter shadow p-3 text-center">
+                                    
+                                    <p th:text="${chapter.content}" class="d-block"></p>
+                                    <p th:text="|${chapter.listQuestion.size} Câu hỏi|" class="btn btn-trans rounded-pill"></p>
+                                    <p th:text="${chapter.description}" class="chapter-description d-block"></p>
+                                    <a th:href="@{/learn/{chapterId}(chapterId=${chapter.chapterId})}" class="btn btn-primary">Học chương này</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-9 offset-3 d-flex justify-content-center">
+                        <nav aria-label="...">
+                          <ul class="pagination">
+                            <li class="page-item disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active" aria-current="page">
+                              <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#">Next</a>
+                            </li>
+                          </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
+        </th:block>
     </body>
 </html>

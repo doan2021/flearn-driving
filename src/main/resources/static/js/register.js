@@ -59,6 +59,22 @@ $("#register-form").validate({
 			equalTo: "Mật khẩu không khớp, vui lòng kiểm tra lại!"
 		}
 	},
+    errorClass:'text-danger',
+    highlight: function (element) {
+        $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element) {
+        $(element).removeClass('is-invalid');
+    },
+    errorPlacement: function (error, element) {
+        switch (element.attr("name")) {
+        case 'birthday':
+            error.insertAfter($("#birthday-place"));
+            break;
+        default:
+            error.insertAfter(element);
+        }
+    },
 	submitHandler: function(form) {
 		form.submit();
 	}

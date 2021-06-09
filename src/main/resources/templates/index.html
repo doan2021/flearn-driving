@@ -3,7 +3,7 @@
     layout:decorate="~{layout/layout}">
     <head>
         <meta charset="utf-8"/>
-        <title>Dashboard</title>
+        <title>Trang chủ</title>
         <link rel="stylesheet" th:href="@{../css/index.css}">
     </head>
     <body>
@@ -18,25 +18,22 @@
                         aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="https://img.lovepik.com/photo/40031/4791.jpg_wh860.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                    <div class="carousel-caption text-center">
+                        <h1>Search content</h1>
+                    </div>
+                    <div class="carousel-item active" data-bs-interval="20000">
+                        <div class="img-slide">
+                            <img th:src="@{../image/slide-1.jpg}" class=" w-100">
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img th:src="@{../image/background-login.jpg}" alt="..." style="width: 100%;">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                        <div class="img-slide">
+                            <img th:src="@{../image/slide-2.jpg}" class="w-100">
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img th:src="@{../image/background-login.jpg}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <div class="img-slide">
+                            <img th:src="@{../image/slide-3.jpg}" class="img-slide w-100">
                         </div>
                     </div>
                 </div>
@@ -51,164 +48,206 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-    
-            <div class="section tabbar_menu">
+            <div>
                 <div class="container-xxl">
                     <div class="row">
-                        <div class="tab_menu col-12 ">
-                            <ul class="row m-0 p-0">
-                                <li class="col-2">
-                                    <a href="#" class="d-block">
-                                        <span class="icon">
-                                            <i class="fas fa-newspaper"></i>
-                                        </span>
-                                        <span>Thông Tin</span>
-                                    </a>
-                                </li>
-                                <li class="col-2"><a href="#"><span class="icon"><i
-                                                class="fas fa-graduation-cap"></i></span><span>Học</span></a></li>
-                                <li class="col-2"><a href="#"><span class="icon"><i
-                                                class="fas fa-diagnoses"></i></span><span>Thi
-                                            Thử</span></a></li>
-                                <li class="col-2"><a href="#"><span class="icon"><i
-                                                class="fas fa-map-marker-alt"></i></span><span>Địa
-                                            Chỉ</span></a></li>
-                                <li class="col-2"><a href="#"><span class="icon"><i
-                                                class="fas fa-phone-square-alt"></i></span><span>Điện Thoại</span></a>
-                                </li>
-                                <li class="col-2"><a href="#"><span class="icon"><i
-                                                class="fas fa-envelope"></i></span><span>Email</span></a></li>
-                            </ul>
+                        <div class="col-12 tab-menu">
+                            <div class="row">
+                                <div class="col-3">
+                                     <a href="#" class="item-menu rounded bg-white shadow py-5 text-center d-block">
+                                         <i class="fas fa-newspaper"></i>
+                                         <span>Tài liệu</span>
+                                     </a>
+                                </div>
+                                <div class="col-3">
+                                     <a th:href="@{/select-chapter}" class="item-menu rounded bg-white shadow py-5 text-center d-block">
+                                         <i class="fas fa-graduation-cap"></i>
+                                         <span>Học</span>
+                                     </a>
+                                </div>
+                                <div class="col-3">
+                                     <a href="#" class="item-menu rounded bg-white shadow py-5 text-center d-block">
+                                         <i class="fas fa-diagnoses"></i>
+                                         <span>Thi Thử</span>
+                                     </a>
+                                </div>
+                                <div class="col-3">
+                                     <a href="#" class="item-menu rounded bg-white shadow py-5 text-center d-block">
+                                         <i class="fas fa-map-marker-alt"></i>
+                                         <span>Đăng ký thi</span>
+                                     </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="learn">
+            <div class="py-5">
+             <div class="container-xxl learn-bg-red">
+                 <div class="row align-items-center">
+                     <div class="col-12">
+                         <span class="d-block subheading mb-3 text-danger">MỤC ĐÍCH &amp; LỢI ÍCH</span>
+                     </div>
+                     <div class="col-12">
+                         <h1 class="display-5 text-primary">Học B2 để làm gì</h1>
+                     </div>
+                     <div class="col-5">
+                         <p><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để đi lại thuận tiện trong công việc</p>
+                         <p class="mt-3"><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để đưa gia đình đi chơi , du lịch xa</p>
+                         <p class="mt-3"><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để kiếm thêm thu nhập cho gia đình</p>
+                         <a class="btn btn-primary mt-4">XEM THÊM</a>
+                     </div>
+                     <div class="col-7">
+                         <div class="learn-img">
+                             <img class="w-100 shadow" src="https://daylaixehanoi.vn/wp-content/uploads/2019/11/hoc-b2-de-lam-gi-731x400.jpg"/>
+                         </div>
+                     </div>
+                 </div>
+                </div>
+            </div>
+            <div class="py-5 bg-light">
                 <div class="container-xxl learn-bg-red">
                     <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="section-header text-left">
-                                <h1>Học B2 để làm gì</h1>
-                            </div>
-                            <div class="learn-text">
-                                <p><i class="fas fa-check-circle"></i> Để đi lại thuận tiện trong công việc</p>
-                                <p><i class="fas fa-check-circle"></i> Để đưa gia đình đi chơi , du lịch xa</p>
-                                <p><i class="fas fa-check-circle"></i> Để kiếm thêm thu nhập cho gia đình</p>
-                                <a class="btn rounded-pill" href="">Xem thêm</a>
-                            </div>
+                        <div class="col-12">
+                            <span class="d-block subheading mb-3 text-danger">LỘ TRÌNH HỌC TẬP</span>
                         </div>
-                        <div class="col-lg-7">
-                            <div class="learn-img">
-                                <img class="rounded shadow" src="https://daylaixehanoi.vn/wp-content/uploads/2019/11/hoc-b2-de-lam-gi-731x400.jpg"/>
+                        <div class="col-12">
+                            <h1 class="display-5 text-primary">Học theo Chương</h1>
+                        </div>
+                        <div class="col-lg-5 mt-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
+                                                <i class="fas fa-angle-right"></i>
+                                            </span> 
+                                        </div>
+                                        <div class="col-10 d-flex align-items-center">
+                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
+                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <a class="btn btn-primary" href="">XEM THÊM</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="chapter">
-                <div class="container-xxl learn-bg-red">
-                    <div class="row align-items-center">
-                        <div></div>
-                        <div class="col-lg-5">
-                            <div class="section-header text-left mb-4">
-                                <h1>Học theo Chương</h1>
-                            </div>
-                            <div class="chapter-text">
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        1</a>: Khái niệm
-                                    và quy tắc giao thông đường bộ
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        2</a>: Nghiệp vụ
-                                    vận tải
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        3</a>: Văn hóa
-                                    giao thông và đạo đức người lái xe
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        4</a>: Kỹ thuật
-                                    lái xe
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        5</a>: Cấu tạo và
-                                    sữa chữa
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        6</a>: Hệ thống
-                                    biển báo hiệu đường bộ
-    
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        7</a>: Giải thế
-                                    sa hình và kỹ năng xử lý tình huống giao thông
-                                </p>
-                                <p>
-                                    <i class="fas fa-chevron-right"></i> <a style="text-decoration: none" href="#">Chương
-                                        8</a>: Tình huống
-                                    mất an toàn giao thông
-                                </p>
-                                <a class="btn" href="">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-7 mt-4">
                             <div class="chapter-img">
                                 <div class="row mt-3">
                                     <div class="col-sm">
-                                        <div class="wrapper text-center rounded shadow" style="background:rgb(172, 166, 219); height: 70px;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 1</a>
                                         </div>
-    
                                     </div>
                                     <div class="col-sm">
-                                        <div class="wrapper text-center rounded shadow" style="background: #FFCCFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 2</a>
                                         </div>
                                     </div>
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #CCFFFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 3</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #99CCFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 4</a>
                                         </div>
                                     </div>
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #FFCCFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 5</a>
                                         </div>
                                     </div>
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #CCFFFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 6</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #99CCFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 7</a>
                                         </div>
                                     </div>
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #FFCCFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 8</a>
                                         </div>
                                     </div>
                                     <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow" style="background: #CCFFFF; height: 70px; text-align: center;">
+                                        <div class="wrapper text-center rounded shadow">
                                             <a class="third after" href="#" style=" text-decoration: none;">TỔNG HỢP</a>
                                         </div>
                                     </div>

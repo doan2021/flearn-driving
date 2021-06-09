@@ -8,6 +8,8 @@ public class AccountForm {
     private String confirmPassword;
     private int gender;
     private String email;
+    private String birthDay;
+    private String phoneNumber;
     private Long roleId;
 
     public String getUserName() {
@@ -73,4 +75,25 @@ public class AccountForm {
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
 }

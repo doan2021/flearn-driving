@@ -1,23 +1,18 @@
-.card-chapter {
-	background: #fff;
-    box-shadow: 0 2px 48px 0 rgb(0 0 0 / 10%);
-    border-radius: 10px;
-    display: block;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    text-decoration: none;
+.chapter-description {
+	text-decoration: none!important;
+	color: black;
 }
 
-.card-chapter span {
-	display: block;
+.single-chapter:hover {
+	background-color: #1f6f8b;
 }
 
-.card-chapter:hover {
-	margin-top: -5px;
-    transition: all 0.3s ease 0s;
+.single-chapter:hover span,button {
+    color: white;
 }
 
-.chapter-name {
-	display: block;
-	font-size: 22px;
+.header-page{
+    background-image: url('../image/bg-select-chapter.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
