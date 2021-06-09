@@ -37,7 +37,7 @@ $("#register-form").validate({
 			required: "Vui lòng nhập họ!"
 		},
 		email: {
-			required: "Vui lòng nhập Email!",
+			required: "\nVui lòng nhập Email!\n",
 			email: "Email chưa đúng định dạng, vui lòng kiểm tra lại!"
 		},
 		phoneNumber: {
@@ -57,6 +57,43 @@ $("#register-form").validate({
 		},
 		confirmPassword: {
 			equalTo: "Mật khẩu không khớp, vui lòng kiểm tra lại!"
+		}
+	},
+	errorClass: 'text-danger',
+	highlight: function(element) {
+		$(element).addClass('is-invalid');
+	},
+	unhighlight: function(element) {
+		$(element).removeClass('is-invalid');
+	},
+	errorPlacement: function(error, element) {
+		switch (element.attr("name")) {
+			case 'email':
+				error.insertAfter($("#email-place"));
+				break;
+				
+			case 'phoneNumber':
+				error.insertAfter($("#phoneNumber-place"));
+				break;
+
+			case 'birthday':
+				error.insertAfter($("#birthday-place"));
+				break;
+				
+			case 'userName':
+				error.insertAfter($("#userName-place"));
+				break;
+
+			case 'password':
+				error.insertAfter($("#password-place"));
+				break;
+				
+			case 'confirmPassword':
+				error.insertAfter($("#confirmPassword-place"));
+				break;
+				
+			default:
+				error.insertAfter(element);
 		}
 	},
 	submitHandler: function(form) {
