@@ -9,6 +9,8 @@
         <link th:href="@{../css/register.css}" rel="stylesheet" />
         <!--     Fonts and icons     -->
         <link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
+        
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     </head>
     <body>
         <th:block layout:fragment="content">
@@ -35,47 +37,47 @@
                                         <h2 class="display-5 text-primary">Đăng ký tài khoản</h2>
                                     </div>
                                 </div>
-                                <form class="row mt-4" th:action="@{/create-account}" th:object="${appUserForm}" method="POST">
+                                <form class="row mt-4" th:action="@{/create-account}" th:object="${appUserForm}" method="POST" id="register-form">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" th:field="*{firstName}" placeholder="Họ"/>
+                                        <input type="text" class="error form-control" th:field="*{lastName}" placeholder="Họ" name="lastName"/>
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control" th:field="*{lastName}" placeholder="Tên"/>
+                                        <input type="text" class="error form-control" th:field="*{firstName}" placeholder="Tên" name="firstName"/>
                                     </div>
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                            <input type="email" class="form-control" th:field="*{email}" placeholder="sample@email.com"/>
+                                            <input type="email" class="error form-control" th:field="*{email}" placeholder="sample@email.com" name="email"/>
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            <input type="text" class="form-control" th:field="*{email}" placeholder="Số điện thoại" />
+                                            <input type="text" class="error form-control" placeholder="Số điện thoại" name="phoneNumber"/>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
-                                            <input type="text" class="form-control" id="birthday" th:field="*{email}" placeholder="Chọn ngày sinh" autocomplete="off"/>
+                                            <input type="text" class="error form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
-                                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Tên đăng nhập"/>
+                                            <input type="text" class="error form-control" th:field="*{userName}" placeholder="Tên đăng nhập" name="userName"/>
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Mật khẩu">
+                                            <input type="password" class="error form-control" th:field="*{password}" placeholder="Mật khẩu" name="password">
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-retweet"></i></span>
-                                            <input type="password" class="form-control" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu">
+                                            <input type="password" class="error form-control" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu" name="confirmPassword" style="">
                                         </div>
                                     </div>
                                     <div class="col-12 mt-3">
@@ -98,7 +100,7 @@
                                     </div>
                                     <div class="col-12 mt-3 text-center">
                                         <input type="submit" value="Đăng ký" class="btn btn-primary"/>
-                                        <input type="reset" value="làm mới" class="btn btn-secondary"/> 
+                                        <input type="reset" value="Làm mới" class="btn btn-secondary"/> 
                                     </div>
                                 </form>
                             </div>
