@@ -87,10 +87,6 @@ body {
 	border-bottom: 2px solid #2063c6;
 }
 
-.area-title {
-	
-}
-
 .breadcrumb-item+.breadcrumb-item::before {
 	color: white;
 }

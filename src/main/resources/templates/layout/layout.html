@@ -31,14 +31,14 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-dark shadow py-4 fixed-top bd-transparent border-bottom" id="navbar">
+        <nav class="navbar navbar-expand-md navbar-dark shadow py-3 fixed-top bd-transparent border-bottom" id="navbar">
             <div class="container-xxl">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse text-center" id="navbarCollapse">
                     <a th:href="@{/}" class="banner">
-                        <img alt="" th:src="@{../assets/images/banner/logo-learn-car.png}">
+                        <img alt="" th:src="@{../assets/images/banner/logo-learn-car.png}" style="width:150px">
                     </a>
                     <ul class="navbar-nav ms-md-auto">
                         <li class="nav-item col-6 col-md-auto px-2" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
