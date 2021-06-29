@@ -8,247 +8,121 @@
     </head>
     <body>
         <th:block layout:fragment="content">
-            <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleCaptions" class="carousel slide carousel-inner" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-caption text-center">
-                        <h1>Search content</h1>
+                <div class="carousel-item active">
+                    <div class="mu-slider-img">
+                        <figure class="m-0">
+                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                        </figure>
                     </div>
-                    <div class="carousel-item active" data-bs-interval="20000">
-                        <div class="img-slide">
-                            <img th:src="@{../image/slide-1.jpg}" class=" w-100">
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <div class="img-slide">
-                            <img th:src="@{../image/slide-2.jpg}" class="w-100">
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <div class="img-slide">
-                            <img th:src="@{../image/slide-3.jpg}" class="img-slide w-100">
-                        </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="title-slide mb-0">Tài liệu</h4>
+                        <span class="line-slide bg-info"></span>
+                        <h2 class="content-slide">Những điều cần biết khi thi bằng lái xe</h2>
+                        <p>Toàn bộ 650 câu hỏi trắc nghiệm thì bằng lái xe</p>
+                        <a href="#" class="mu-read-more-btn text-decoration-none" tabindex="-1">Xem thêm</a>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
-                    data-bs-slide="prev">
+                <div class="carousel-item">
+                    <div class="mu-slider-img">
+                        <figure class="m-0">
+                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                        </figure>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="title-slide mb-0">Học tập</h4>
+                        <span class="line-slide bg-info"></span>
+                        <h2 class="content-slide">Chúng tôi sẽ giúp bạn tiến bộ</h2>
+                        <p>Chức năng học thông minh, giúp tiết kiệm thời gian học tập và ghi nhớ</p>
+                        <a href="#" class="mu-read-more-btn text-decoration-none" tabindex="-1">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="mu-slider-img">
+                        <figure class="m-0">
+                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                        </figure>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4 class="title-slide mb-0">Thi thử</h4>
+                        <span class="line-slide bg-info"></span>
+                        <h2 class="content-slide">Kiểm tra khả năng của bạn trước khi thi thực</h2>
+                        <p>Chế độ thi thử giúp bạn nắm rõ năng lực và những thiếu sót cần bổ xung</p>
+                        <a href="#" class="mu-read-more-btn text-decoration-none" tabindex="-1">Xem thêm</a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <div>
+
+            <section id="mu-service">
                 <div class="container-xxl">
                     <div class="row">
-                        <div class="col-12 tab-menu">
-                            <div class="row">
-                                <div class="col-3">
-                                     <a th:href="@{/document}" class="item-menu rounded bg-white shadow py-5 text-center d-block">
-                                         <i class="fas fa-newspaper"></i>
-                                         <span>Tài liệu</span>
-                                     </a>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="mu-service-area">
+                                <div class="mu-service-single shadow">
+                                    <a th:href="@{/document}"><span><i class="far fa-file-alt"></i></span></a>
+                                    <h3>Tài liệu</h3>
+                                    <p>Bao gồm tất cả những câu hỏi thi bằng lái các loại từ A1 đến F</p>
                                 </div>
-                                <div class="col-3">
-                                     <a th:href="@{/select-chapter}" class="item-menu rounded bg-white shadow py-5 text-center d-block">
-                                         <i class="fas fa-graduation-cap"></i>
-                                         <span>Học</span>
-                                     </a>
+                                <div class="mu-service-single shadow">
+                                    <span><i class="fas fa-graduation-cap"></i></span>
+                                    <h3>Học Online</h3>
+                                    <p>Giúp bạn học và nhớ những kiến thức liên quan</p>
                                 </div>
-                                <div class="col-3">
-                                     <a href="#" class="item-menu rounded bg-white shadow py-5 text-center d-block">
-                                         <i class="fas fa-diagnoses"></i>
-                                         <span>Thi Thử</span>
-                                     </a>
+                                <div class="mu-service-single shadow">
+                                    <span><i class="fas fa-diagnoses"></i></span>
+                                    <h3>Thi thử</h3>
+                                    <p>Kiểm tra năng lực và kết quả học tập của bạn</p>
                                 </div>
-                                <div class="col-3">
-                                     <a href="#" class="item-menu rounded bg-white shadow py-5 text-center d-block">
-                                         <i class="fas fa-map-marker-alt"></i>
-                                         <span>Đăng ký thi</span>
-                                     </a>
+                                <div class="mu-service-single shadow">
+                                    <span><i class="fas fa-map-marker-alt"></i></span>
+                                    <h3>Đăng ký thi</h3>
+                                    <p>Sau khi đã nắm chắc kiến thức, thì vào lấy bằng thôi!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="py-5">
-             <div class="container-xxl learn-bg-red">
-                 <div class="row align-items-center">
-                     <div class="col-12">
-                         <span class="d-block subheading mb-3 text-danger">MỤC ĐÍCH &amp; LỢI ÍCH</span>
-                     </div>
-                     <div class="col-12">
-                         <h1 class="display-5 text-primary">Học B2 để làm gì</h1>
-                     </div>
-                     <div class="col-5">
-                         <p><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để đi lại thuận tiện trong công việc</p>
-                         <p class="mt-3"><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để đưa gia đình đi chơi , du lịch xa</p>
-                         <p class="mt-3"><span class="text-primary me-3 icon-head"><i class="fas fa-check"></i></span> Để kiếm thêm thu nhập cho gia đình</p>
-                         <a class="btn btn-primary mt-4">XEM THÊM</a>
-                     </div>
-                     <div class="col-7">
-                         <div class="learn-img">
-                             <img class="w-100 shadow" src="https://daylaixehanoi.vn/wp-content/uploads/2019/11/hoc-b2-de-lam-gi-731x400.jpg"/>
-                         </div>
-                     </div>
-                 </div>
-                </div>
-            </div>
-            <div class="py-5 bg-light">
-                <div class="container-xxl learn-bg-red">
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <span class="d-block subheading mb-3 text-danger">LỘ TRÌNH HỌC TẬP</span>
-                        </div>
-                        <div class="col-12">
-                            <h1 class="display-5 text-primary">Học theo Chương</h1>
-                        </div>
-                        <div class="col-lg-5 mt-4">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
+            </section>
+            <section id="mu-about-us">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-about-us-area">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="mu-about-us-left">
+                                            <div class="mu-title">
+                                                <h2>GIỚI THIỆU VỀ CHÚNG TÔI</h2>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
+                                            <ul>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                                <li>Saepe a minima quod iste libero rerum dicta!</li>
+                                                <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
+                                                <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
+                                                <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
+                                            </ul>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="row">
-                                        <div class="col-2 d-flex align-items-center">
-                                            <span class="icon-head-chapter d-flex justify-content-center align-items-center shadow">
-                                                <i class="fas fa-angle-right"></i>
-                                            </span> 
-                                        </div>
-                                        <div class="col-10 d-flex align-items-center">
-                                            <span class="d-inline-block"><a class="text-primary fs-4 text-decoration-none" href="#">Chương 1</a><br>
-                                            <span>Khái niệm và quy tắc giao thông đường bộ</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-5">
-                                    <a class="btn btn-primary" href="">XEM THÊM</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 mt-4">
-                            <div class="chapter-img">
-                                <div class="row mt-3">
-                                    <div class="col-sm">
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 1</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 2</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 3</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 4</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 5</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="third after" href="#" style=" text-decoration: none;">CHƯƠNG 6</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="first after" href="#" style=" text-decoration: none;">CHƯƠNG 7</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="second after" href="#" style=" text-decoration: none;">CHƯƠNG 8</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm" >
-                                        <div class="wrapper text-center rounded shadow">
-                                            <a class="third after" href="#" style=" text-decoration: none;">TỔNG HỢP</a>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="mu-about-us-right">
+                                            <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
+                                                <img src="assets/img/about-us.jpg" alt="img">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -256,7 +130,195 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section id="mu-abtus-counter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-abtus-counter-area">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <div class="mu-abtus-counter-single">
+                                            <span class="fa fa-book"></span>
+                                                <h4 class="counter">568</h4>
+                                                <p>Chương</p>
+                                        </div>
+                                    </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="mu-abtus-counter-single">
+                                        <span class="fa fa-users"></span>
+                                        <h4 class="counter">3500</h4>
+                                        <p>Câu hỏi</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="mu-abtus-counter-single">
+                                        <span class="fa fa-flask"></span>
+                                        <h4 class="counter">65</h4>
+                                        <p>Người sử dụng</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="mu-abtus-counter-single no-border">
+                                        <span class="fa fa-user-secret"></span>
+                                        <h4 class="counter">250</h4>
+                                        <p>Loại bằng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+          <!-- Start features section -->
+        <section id="mu-features">
+          <div class="container-xxl">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="mu-features-area">
+                  <!-- Start Title -->
+                  <div class="mu-title">
+                    <h2>Chương quan trọng</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                  </div>
+                  <!-- End Title -->
+                  <!-- Start features content -->
+                  <div class="mu-features-content">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-4  col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-book"></span>
+                          <h4>Professional Courses</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#" class="btn btn-outline-primary rounded-0">Học chương</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-users"></span>
+                          <h4>Expert Teachers</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#">Học chương</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-laptop"></span>
+                          <h4>Online Learning</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#">Học chương</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-microphone"></span>
+                          <h4>Audio Lessons</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#">Học chương</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-film"></span>
+                          <h4>Video Lessons</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#">Học chương</a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="mu-single-feature">
+                          <span class="fa fa-certificate"></span>
+                          <h4>Professional Certificate</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                          <a href="#">Học chương</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End features content -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+          <section id="mu-latest-courses">
+            <div class="container-xxl">
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="mu-latest-courses-area">
+                    <!-- Start Title -->
+                    <div class="mu-title">
+                      <h2>Kỳ thi gần nhất</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                    </div>
+                    <!-- End Title -->
+                    <!-- Start latest course content -->
+                    <div class="mu-latest-courses-content row">
+                      <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="mu-latest-course-single">
+                          <figure class="mu-latest-course-img">
+                            <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                            <figcaption class="mu-latest-course-imgcaption">
+                              <a href="#">B2</a>
+                              <span><i class="far fa-clock"></i>90Days</span>
+                            </figcaption>
+                          </figure>
+                          <div class="mu-latest-course-single-content">
+                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
+                              <a class="mu-course-details" href="#">Details</a>
+                              <span class="mu-course-price" href="#">$165.00</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="mu-latest-course-single">
+                          <figure class="mu-latest-course-img">
+                            <a href="#"><img src="assets/img/courses/2.jpg" alt="img"></a>
+                            <figcaption class="mu-latest-course-imgcaption">
+                              <a href="#">B1</a>
+                              <span><i class="far fa-clock"></i>75Days</span>
+                            </figcaption>
+                          </figure>
+                          <div class="mu-latest-course-single-content">
+                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
+                              <a class="mu-course-details" href="#">Details</a>
+                              <span class="mu-course-price" href="#">$165.00</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="mu-latest-course-single">
+                          <figure class="mu-latest-course-img">
+                            <a href="#"><img src="assets/img/courses/3.jpg" alt="img"></a>
+                            <figcaption class="mu-latest-course-imgcaption">
+                              <a href="#">B1</a>
+                              <span><i class="far fa-clock"></i>45Days</span>
+                            </figcaption>
+                          </figure>
+                          <div class="mu-latest-course-single-content">
+                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
+                              <a class="mu-course-details" href="#">Details</a>
+                              <span class="mu-course-price" href="#">$165.00</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </th:block>
     </body>
 </html>
