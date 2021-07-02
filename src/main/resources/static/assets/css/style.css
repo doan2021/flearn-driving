@@ -1,24 +1,13 @@
 body {
 	background-color: #ffffff;
-	font-family: "Roboto", sans-serif;
+	font-family: "Montserrat", sans-serif;
 	color: #333333;
 	font-size: 16px;
 	overflow-x: hidden;
 }
 
-.no-padding {
-	padding: 0;
-}
-
-.no-border {
-	border: none;
-}
-
-/* MODULES - Individual site components */
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
+a {
+	text-decoration: none !important;
 }
 
 a:hover, a:focus {
@@ -37,8 +26,9 @@ h2 {
 	margin: 0;
 }
 
-img {
-	border: none;
+.btn {
+	padding: .6rem 1rem !important;
+	border-radius: 0 !important;
 }
 
 .mu-read-more-btn {
@@ -333,36 +323,34 @@ img {
 	width: 100%;
 }
 
-#mu-service .mu-service-area .mu-service-single {
-	position: relative; background-color : #01bafd;
+.menu-panel {
+	position: relative;
+	background-color: #01bafd;
 	color: #fff;
-	display: inline;
 	float: left;
-	padding: 35px 25px;
+	display: inline;
 	text-align: center;
-	background-color: #01bafd; color : #fff; display : inline; float : left;
-	padding : 35px 25px; text-align : center;
-	width: 25%
+	width: 25%;
+	z-index: 2;
+	min-height: 186px;
 }
 
-#mu-service .mu-service-area .mu-service-single:nth-child(2) {
+.menu-panel:nth-child(2) {
 	background-color: #2ecc71;
 }
 
-#mu-service .mu-service-area .mu-service-single:nth-child(3) {
+.menu-panel:nth-child(3) {
 	background-color: #45a0de;
 }
 
-#mu-service .mu-service-area .mu-service-single span {
+.icon-panel {
 	font-size: 30px;
 }
 
-#mu-service .mu-service-area .mu-service-single h3 {
-	font-size: 25px;
-}
-
-#mu-service .mu-service-area .mu-service-single p {
-	font-weight: lighter;
+.title-panel {
+	font-size: 30px;
+	font-family: "Montserrat", sans-serif;
+	display: block;
 }
 
 /*==================
@@ -489,7 +477,6 @@ img {
  ABOUT US COUNTER SECTION
 ====================*/
 #mu-abtus-counter {
-	background-image: url("../img/counter-bg.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	display: inline;
@@ -555,17 +542,19 @@ img {
 #mu-features .mu-features-area .mu-features-content {
 	display: inline;
 	float: left;
-	margin-top: 50px;
 	width: 100%;
 }
 
-#mu-features .mu-features-area .mu-features-content .mu-single-feature {
+.mu-single-feature {
 	display: inline;
 	float: left;
-	margin-bottom: 30px;
-	margin-top: 30px;
-	padding: 0 10px;
 	width: 100%;
+	transition: all 0.5s ease;
+}
+
+.mu-single-feature:hover {
+	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+	cursor: pointer;
 }
 
 #mu-features .mu-features-area .mu-features-content .mu-single-feature span
@@ -1169,194 +1158,6 @@ img {
 
 #mu-page-breadcrumb .mu-page-breadcrumb-area .breadcrumb li a {
 	color: #fff;
-}
-
-#mu-course-content {
-	background-color: #f8f8f8;
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-container {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-container .mu-latest-course-single
-	{
-	border: 1px solid #ccc;
-	margin-bottom: 30px;
-	min-height: 520px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar
-	{
-	background-color: #FFF;
-	display: inline;
-	float: left;
-	margin-bottom: 25px;
-	padding: 0 10px 10px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg
-	{
-	padding-left: 15px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label
-	{
-	color: #333;
-	display: inline-block;
-	font-size: 15px;
-	font-weight: normal;
-	padding: 5px 0 5px 15px;
-	position: relative;
-	text-transform: capitalize;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	-ms-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label:hover,
-	#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label:focus
-	{
-	margin-left: 5px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses
-	{
-	display: inline;
-	float: left;
-	margin-top: 10px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-left .media-object
-	{
-	width: 70px;
-	height: 60px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .media-heading
-	{
-	font-size: 16px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .media-heading a
-	{
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .popular-course-price
-	{
-	font-size: 14px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-archives li a:before
-	{
-	content: '\f0da';
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-archives li a span
-	{
-	margin-left: 5px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .tag-cloud
-	{
-	display: inline;
-	float: left;
-	margin-top: 5px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .tag-cloud a
-	{
-	border-bottom: 1px solid #ccc;
-	display: inline-block;
-	font-size: 15px;
-	letter-spacing: 0.3px;
-	margin: 0 5px 10px;
-	padding: 5px;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details {
-	background-color: #FFF;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single
-	{
-	border: none;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-imgcaption
-	{
-	background-color: #FFF;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content h2
-	{
-	line-height: 1.7;
-	margin-bottom: 20px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content h4
-	{
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 10px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content p
-	{
-	font-size: 15px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul
-	{
-	margin-bottom: 30px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul li
-	{
-	margin-bottom: 10px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul li span:first-child
-	{
-	display: inline-block;
-	min-width: 150px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content .table
-	{
-	margin-top: 10px;
 }
 
 .mu-pagination {
@@ -2287,12 +2088,6 @@ img {
 	bottom: 0;
 }
 
-.btn-primary {
-	background-color: #2063c6 !important;
-	border-color: #2063c6 !important;
-	color: white !important;
-}
-
 .cursor-poiter {
 	cursor: pointer;
 }
@@ -2310,8 +2105,8 @@ img {
 }
 
 .custom-spinner {
-	width: 4rem;
-	height: 4rem;
+	width: 4rem!important;
+	height: 4rem!important;
 }
 
 .btn-trans {
@@ -2421,9 +2216,6 @@ img {
 		{
 		font-size: 20px;
 	}
-	#mu-course-content .mu-course-content-area .mu-sidebar {
-		margin-top: 30px;
-	}
 	#mu-search .mu-search-area .mu-search-form input[type="search"] {
 		font-size: 30px;
 	}
@@ -2511,9 +2303,6 @@ img {
 		top: 30px;
 		margin-right: 0;
 		margin-top: 0;
-	}
-	#mu-course-content {
-		padding: 50px 0;
 	}
 	#mu-gallery {
 		padding: 50px 0;
