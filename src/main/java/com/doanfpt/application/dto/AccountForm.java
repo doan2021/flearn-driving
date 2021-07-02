@@ -3,6 +3,7 @@ package com.doanfpt.application.dto;
 public class AccountForm {
     private String userName;
     private String firstName;
+    private String middleName;
     private String lastName;
     private String password;
     private String confirmPassword;
@@ -94,6 +95,14 @@ public class AccountForm {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
 }

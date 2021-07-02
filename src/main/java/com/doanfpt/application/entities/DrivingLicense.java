@@ -22,6 +22,9 @@ public class DrivingLicense {
     @Column(name = "type")
     private String type;
     
+    @Column(name = "description")
+    private String description;
+    
     @Column(name = "number_year_expires")
     private Integer numberYearExpires;
 
