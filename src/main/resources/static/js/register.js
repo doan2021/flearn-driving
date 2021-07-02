@@ -71,7 +71,7 @@ $("#register-form").validate({
 			case 'email':
 				error.insertAfter($("#email-place"));
 				break;
-				
+
 			case 'phoneNumber':
 				error.insertAfter($("#phoneNumber-place"));
 				break;
@@ -79,7 +79,7 @@ $("#register-form").validate({
 			case 'birthday':
 				error.insertAfter($("#birthday-place"));
 				break;
-				
+
 			case 'userName':
 				error.insertAfter($("#userName-place"));
 				break;
@@ -87,11 +87,11 @@ $("#register-form").validate({
 			case 'password':
 				error.insertAfter($("#password-place"));
 				break;
-				
+
 			case 'confirmPassword':
 				error.insertAfter($("#confirmPassword-place"));
 				break;
-				
+
 			default:
 				error.insertAfter(element);
 		}

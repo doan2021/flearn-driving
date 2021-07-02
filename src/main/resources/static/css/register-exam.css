@@ -1,0 +1,124 @@
+.main-content {
+	margin-top: 170px;
+	background: #f2f2f2;
+	width: 1000px;
+    margin-bottom: 50px
+}
+
+.dieuKhoan {
+	font-style: italic;
+}
+
+.accept{
+	font-weight: bold;
+}
+
+.validationMessage {
+    color: #A80000;
+    font-size: 12px;
+    font-style: italic;
+    font-family: "Segoe UI";
+}
+
+.label {
+	color: red;
+  padding: 8px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+/* body {
+  background-color: #f9f9f9;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width:100%;
+  width: 350px;
+} */
+
+.progress-container::before {
+  content: ''; /* must be added when using the ::before pseudoselector */
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); 
+  height: 4px;
+  width: 100%;
+  z-index:-1;
+}
+
+
+.progress {
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); /* centers the line vertically along the y-axis */
+  height: 4px;
+  width: 0%;
+  z-index:-1;
+  transition: .4s ease;
+}
+
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty);
+  transition: .4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}

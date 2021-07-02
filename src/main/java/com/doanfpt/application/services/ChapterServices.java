@@ -19,10 +19,6 @@ public class ChapterServices {
         return chapterResponsitory.getOne(chapterId);
     }
     
-    public void saveChapter(Chapter chapter) {
-        chapterResponsitory.save(chapter);
-    }
-    
     public List<Chapter> getAllChapter() {
         List<Chapter> listChapter = new ArrayList<>();
         listChapter = chapterResponsitory.findAll();

@@ -4,3 +4,9 @@
 .display-none {
 	display: none;
 }
+
+.header-page{
+    background-image: url('../image/bg-learn.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

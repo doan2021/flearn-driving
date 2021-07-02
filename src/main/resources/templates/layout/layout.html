@@ -4,8 +4,7 @@
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>Layout page</title>
-        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Be Vietnam' rel='stylesheet'>
         <link rel="icon" type="image/ico" th:href="@{../image/favicon.ico}"/>
         <!--     Fonts and icons     -->
         <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
@@ -18,6 +17,7 @@
         <link th:href="@{../css/common.css}" rel="stylesheet" />
         <!-- JS Common -->
         <script th:src="@{../js/jquery.min.js}"></script>
+        <script th:src="@{../js/jquery.validate.min.js}"></script>
         <script th:src="@{../js/jquery-ui.min.js}"></script>
         <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
         <script th:src="@{../js/jquery-confirm.min.js}"></script>
@@ -25,68 +25,60 @@
         <script th:src="@{../js/vue.js}"></script>
         <script th:src="@{../js/common.js}"></script>
     </head>
-    <body class="bg-light">
+    <body class="bg-white">
         <div class="bg-loading bg-light justify-content-center align-items-center" id="loading">
-            <div class="spinner-border custom-spinner text-secondary">
+            <div class="spinner-border custom-spinner text-primary">
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <header class="navbar navbar-expand-md bd-navbar fixed-top">
-            <nav class="container-xxl">
-                <a class="navbar-brand p-0 me-2" th:href="@{/}"><i class="fas fa-home"></i></a>
-                <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link p-2" th:href="@{/}">Home</a>
-                    </li>
-                    <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link p-2" th:href="@{/create-question}">Question</a>
-                    </li>
-                    <li class="nav-item col-6 col-md-auto" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
-                        <a class="nav-link p-2" th:href="@{/create-exam}">Exam</a>
-                    </li>
-                    <li class="nav-item col-6 col-md-auto" sec:authorize="hasRole('ROLE_USER')">
-                        <a class="nav-link p-2" th:href="@{/select-chapter}">Chapter</a>
-                    </li>
-                    <li class="nav-item col-6 col-md-auto" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
-                        <a class="nav-link p-2" th:href="@{/view-documents}">Documents</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav flex-row flex-wrap ms-md-auto" th:if="${#request.userPrincipal == null}">
-                    <li class="nav-item col-6 col-md-auto dropdown">
-                        <div class="nav-link p-2">
-                            <a class="btn btn-secondary rounded-pill" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i></a>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav flex-row flex-wrap ms-md-auto" th:if="${#request.userPrincipal != null}">
-                    <li class="nav-item col-6 col-md-auto dropdown">
-                        <div class="nav-link p-2">
-                            <button class="btn btn-secondary rounded-pill"><i class="fas fa-bell"></i></button>
-                        </div>
-                    </li>
-                    <li class="nav-link p-2 dropdown">
-                        <button class="btn btn-secondary rounded-pill"  data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></button>
-                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            <li>
-                                <div class="dropdown-item col-12">
-                                    <img th:src="@{../image/no_image_user_icon.png}" class="w-50 rounded-pill mr-2"/>
-                                    <span th:utext="${#authentication.principal.fullName}"></span>
-                                </div>
-                            </li>
-                            <li><label class="dropdown-item border-bottom"></label></li>
-                            <li><a class="dropdown-item" type="button" th:href="@{/view-profile}">View profile</a></li>
-                            <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="row">
-                    <div class="col-12">
-                    </div>
+        <nav class="navbar navbar-expand-md navbar-dark shadow py-4 fixed-top bd-transparent border-bottom" id="navbar">
+            <div class="container-xxl">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navbarCollapse">
+                    <a th:href="@{/}" class="banner">
+                        <img alt="" th:src="@{../assets/images/banner/logo-learn-car.png}">
+                    </a>
+                    <ul class="navbar-nav ms-md-auto">
+                        <li class="nav-item col-6 col-md-auto px-2" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+                            <a class="nav-link p-2" th:href="@{/create-exam}">Thi thử</a>
+                        </li>
+                        <li class="nav-item col-6 col-md-auto px-2" sec:authorize="hasRole('ROLE_USER')">
+                            <a class="nav-link p-2" th:href="@{/select-chapter}">Học tập</a>
+                        </li>
+                        <li class="nav-item col-6 col-md-auto px-2">
+                            <a class="nav-link p-2" th:href="@{/view-documents}">Tài liệu</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-row flex-wrap" th:if="${#request.userPrincipal == null}">
+                        <li class="nav-item col-6 col-md-auto dropdown">
+                            <div class="nav-link p-2">
+                                <a class="btn btn-trans rounded-pill" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-row flex-wrap" th:if="${#request.userPrincipal != null}">
+                        <li class="nav-link p-2 dropdown">
+                            <button class="btn btn-trans rounded-pill"  data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                                <li>
+                                    <div class="dropdown-item col-12">
+                                        <img th:src="@{../image/no_image_user_icon.png}" class="w-50 rounded-pill mr-2"/>
+                                        <span th:utext="${#authentication.principal.fullName}"></span>
+                                    </div>
+                                </li>
+                                <li><label class="dropdown-item border-bottom"></label></li>
+                                <li><a class="dropdown-item" type="button" th:href="@{/view-profile}">View profile</a></li>
+                                <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
         <section layout:fragment="content"></section>
-        <footer class="text-center text-lg-start bg-light text-muted">
+        <footer class="text-center text-lg-start text-muted" style="background-color: #efefef;">
         <section class="p-4 border-bottom border-top">
             <div class="container-xxl d-flex justify-content-between">
                 <div class="me-5 d-none d-lg-block">
@@ -191,5 +183,6 @@
                 <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Onthibanglaib2.com</a>
             </div>
         </footer>
+        <th:block layout:fragment="script"></th:block>
     </body>
 </html>
