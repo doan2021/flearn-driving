@@ -1,24 +1,13 @@
 body {
 	background-color: #ffffff;
-	font-family: "Roboto", sans-serif;
+	font-family: "Montserrat", sans-serif;
 	color: #333333;
 	font-size: 16px;
 	overflow-x: hidden;
 }
 
-.no-padding {
-	padding: 0;
-}
-
-.no-border {
-	border: none;
-}
-
-/* MODULES - Individual site components */
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
+a {
+	text-decoration: none !important;
 }
 
 a:hover, a:focus {
@@ -37,8 +26,18 @@ h2 {
 	margin: 0;
 }
 
-img {
-	border: none;
+.btn {
+	padding: .6rem 1rem !important;
+	border-radius: 0 !important;
+}
+
+.form-control,.form-select {
+	border-radius: 0!important;
+	padding: .75rem .75rem!important;
+}
+
+.input-group-text {
+	border-radius: 0 !important;
 }
 
 .mu-read-more-btn {
@@ -222,101 +221,6 @@ img {
 	color: #fff;
 }
 
-/* ALL SECTION */
-/*scrol to top*/
-.scrollToTop {
-	border-radius: 4px;
-	bottom: 60px;
-	color: #fff;
-	display: none;
-	font-size: 30px;
-	line-height: 50px;
-	height: 50px;
-	font-family: "Montserrat", sans-serif;
-	padding: 5px 0;
-	position: fixed;
-	right: 20px;
-	text-align: center;
-	text-decoration: none;
-	width: 50px;
-	z-index: 999;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	-ms-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
-}
-
-.scrollToTop i {
-	display: block;
-}
-
-.scrollToTop span {
-	display: block;
-	text-transform: uppercase;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.scrollToTop:hover, .scrollToTop:focus {
-	color: #fff;
-}
-
-#mu-search {
-	background-color: rgba(0, 0, 0, 0.9);
-	height: 100%;
-	left: 0;
-	opacity: 1;
-	position: fixed;
-	top: 0;
-	transform: translateY(-100%) scale(0);
-	-webkit-transition: all 0.5s ease-in-out 0s;
-	-moz-transition: all 0.5s ease-in-out 0s;
-	-ms-transition: all 0.5s ease-in-out 0s;
-	-o-transition: all 0.5s ease-in-out 0s;
-	transition: all 0.5s ease-in-out 0s;
-	width: 100%;
-	z-index: 99999;
-}
-
-#mu-search .mu-search-area {
-	display: inline;
-	float: left;
-	width: 100%;
-	padding: 20% 0;
-	text-align: center;
-}
-
-#mu-search .mu-search-area .mu-search-close {
-	border: none;
-	color: #fff;
-	display: inline-block;
-	font-size: 25px;
-	outline: none;
-	height: 50px;
-	line-height: 50px;
-	position: absolute;
-	right: 100px;
-	text-align: center;
-	top: 50px;
-	width: 50px;
-}
-
-#mu-search .mu-search-area .mu-search-form input[type="search"] {
-	background: transparent none repeat scroll 0 0;
-	border: medium none;
-	color: #fff;
-	font-size: 45px;
-	font-family: "Montserrat", sans-serif;
-	height: 100px;
-	outline: medium none;
-	text-align: center;
-	width: 100%;
-}
-
-#mu-search.mu-search-open {
-	transform: translateY(0) scale(1);
-}
 /*==================
  SERVICE SECTION
 ====================*/
@@ -333,36 +237,34 @@ img {
 	width: 100%;
 }
 
-#mu-service .mu-service-area .mu-service-single {
-	position: relative; background-color : #01bafd;
+.menu-panel {
+	position: relative;
+	background-color: #01bafd;
 	color: #fff;
-	display: inline;
 	float: left;
-	padding: 35px 25px;
+	display: inline;
 	text-align: center;
-	background-color: #01bafd; color : #fff; display : inline; float : left;
-	padding : 35px 25px; text-align : center;
-	width: 25%
+	width: 25%;
+	z-index: 2;
+	min-height: 186px;
 }
 
-#mu-service .mu-service-area .mu-service-single:nth-child(2) {
+.menu-panel:nth-child(2) {
 	background-color: #2ecc71;
 }
 
-#mu-service .mu-service-area .mu-service-single:nth-child(3) {
+.menu-panel:nth-child(3) {
 	background-color: #45a0de;
 }
 
-#mu-service .mu-service-area .mu-service-single span {
+.icon-panel {
 	font-size: 30px;
 }
 
-#mu-service .mu-service-area .mu-service-single h3 {
-	font-size: 25px;
-}
-
-#mu-service .mu-service-area .mu-service-single p {
-	font-weight: lighter;
+.title-panel {
+	font-size: 30px;
+	font-family: "Montserrat", sans-serif;
+	display: block;
 }
 
 /*==================
@@ -489,7 +391,6 @@ img {
  ABOUT US COUNTER SECTION
 ====================*/
 #mu-abtus-counter {
-	background-image: url("../img/counter-bg.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	display: inline;
@@ -555,17 +456,19 @@ img {
 #mu-features .mu-features-area .mu-features-content {
 	display: inline;
 	float: left;
-	margin-top: 50px;
 	width: 100%;
 }
 
-#mu-features .mu-features-area .mu-features-content .mu-single-feature {
+.mu-single-feature {
 	display: inline;
 	float: left;
-	margin-bottom: 30px;
-	margin-top: 30px;
-	padding: 0 10px;
 	width: 100%;
+	transition: all 0.5s ease;
+}
+
+.mu-single-feature:hover {
+	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+	cursor: pointer;
 }
 
 #mu-features .mu-features-area .mu-features-content .mu-single-feature span
@@ -753,386 +656,6 @@ img {
 	{
 	color: #333;
 }
-
-/*==================
- TEACHER SECTION
-====================*/
-#mu-our-teacher {
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content {
-	display: inline;
-	float: left;
-	margin-top: 50px;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single
-	{
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single:hover .mu-our-teacher-img .mu-our-teacher-social
-	{
-	opacity: 1;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single:hover .mu-our-teacher-img .mu-our-teacher-social a
-	{
-	-moz-transform: translateY(0%);
-	-o-transform: translateY(0%);
-	-ms-transform: translateY(0%);
-	-webkit-transform: translateY(0%);
-	transform: translateY(0%);
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img
-	{
-	background-color: #ccc;
-	display: inline;
-	position: relative;
-	float: left;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img img
-	{
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img .mu-our-teacher-social
-	{
-	bottom: 0;
-	left: 0;
-	opacity: 0;
-	overflow: hidden;
-	padding-top: 43.5%;
-	position: absolute;
-	right: 0;
-	text-align: center;
-	top: 0;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img .mu-our-teacher-social a
-	{
-	border: 2px solid #fff;
-	color: #fff;
-	display: inline-block;
-	font-size: 18px;
-	height: 40px;
-	line-height: 40px;
-	margin: 0 5px;
-	width: 40px;
-	-moz-transform: translateY(-1000%);
-	-o-transform: translateY(-1000%);
-	-ms-transform: translateY(-1000%);
-	-webkit-transform: translateY(-1000%);
-	transform: translateY(-1000%);
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img .mu-our-teacher-social a:hover,
-	#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-our-teacher-img .mu-our-teacher-social a:focus
-	{
-	background-color: #FFF;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-ourteacher-single-content
-	{
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-ourteacher-single-content h4
-	{
-	margin-bottom: 0;
-	margin-top: 20px;
-	text-transform: uppercase;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-ourteacher-single-content span
-	{
-	color: #000;
-	display: block;
-	font-size: 14px;
-	margin-bottom: 8px;
-	margin-top: 5px;
-}
-
-#mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single .mu-ourteacher-single-content p
-	{
-	font-size: 15px;
-}
-
-/*==================
- TESTIMONIAL SECTION
-====================*/
-#mu-testimonial {
-	background-attachment: fixed;
-	background-image: url("../img/testimonial-bg.jpg");
-	background-position: center center;
-	background-size: cover;
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	position: relative;
-	width: 100%;
-	z-index: 10;
-}
-
-#mu-testimonial:after {
-	background-color: rgba(0, 0, 0, 0.8);
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
-}
-
-#mu-testimonial .mu-testimonial-area {
-	display: inline;
-	float: left;
-	padding: 0 150px;
-	position: relative;
-	width: 100%;
-	z-index: 99;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item
-	{
-	display: inline;
-	float: left;
-	width: 100%;
-	outline: none;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote
-	{
-	background-color: #333;
-	border-radius: 4px;
-	display: inline;
-	float: left;
-	padding: 60px 30px;
-	width: 100%;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote blockquote
-	{
-	border: none;
-	text-align: center;
-	margin-bottom: 0;
-	position: relative;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote blockquote:before
-	{
-	content: '\f10d';
-	color: #fff;
-	font-family: fontAwesome;
-	font-style: italic;
-	left: 2%;
-	position: absolute;
-	top: 0;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-quote blockquote p
-	{
-	color: #fff;
-	font-size: 16px;
-	font-style: italic;
-	letter-spacing: 0.5px;
-	line-height: 1.8;
-	margin-bottom: 0;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-img
-	{
-	display: inline;
-	float: left;
-	width: 100%;
-	text-align: center;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-img img
-	{
-	background-color: #555;
-	border: 1px solid #888;
-	border-radius: 50%;
-	margin: -50px auto 5px;
-	padding: 0;
-	width: 120px;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-info
-	{
-	display: inline;
-	float: left;
-	width: 100%;
-	text-align: center;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-info h4
-	{
-	color: #fff;
-	font-size: 20px;
-	margin-bottom: 0px;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .mu-testimonial-item .mu-testimonial-info span
-	{
-	font-size: 14px;
-	letter-spacing: 0.3px;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .slick-dots li
-	{
-	background-color: #fff;
-	height: 8px;
-	width: 20px;
-}
-
-#mu-testimonial .mu-testimonial-area .mu-testimonial-content .slick-dots li button
-	{
-	display: none;
-}
-
-/*==================
- FROM BLOG SECTION
-====================*/
-#mu-from-blog {
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	width: 100%;
-}
-
-#mu-from-blog .mu-from-blog-area {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-from-blog .mu-from-blog-area .mu-from-blog-content {
-	display: inline;
-	float: left;
-	margin-top: 50px;
-	width: 100%;
-}
-
-.mu-blog-single-item {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-blog-single-item .mu-blog-single-img {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-blog-single-item .mu-blog-single-img a {
-	display: block;
-}
-
-.mu-blog-single-item .mu-blog-single-img a img {
-	width: 100%;
-}
-
-.mu-blog-single-item .mu-blog-single-img .mu-blog-caption {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-blog-single-item .mu-blog-single-img .mu-blog-caption h3 a {
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-.mu-blog-single-item .mu-blog-meta {
-	display: inline;
-	float: left;
-	margin-bottom: 15px;
-	width: 100%;
-	margin-top: 5px;
-}
-
-.mu-blog-single-item .mu-blog-meta a {
-	display: inline-block;
-	letter-spacing: 0.5px;
-	margin-right: 10px;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-.mu-blog-single-item .mu-blog-meta span {
-	display: inline-block;
-}
-
-.mu-blog-single-item .mu-blog-meta span i {
-	margin-right: 7px;
-}
-
-.mu-blog-single-item .mu-blog-description {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.mu-blog-single-item .mu-blog-description p {
-	font-size: 15px;
-	letter-spacing: 0.3px;
-	line-height: 1.7;
-}
-
-.mu-blog-single-item .mu-blog-description a {
-	border-color: #555;
-	color: #555;
-	font-size: 14px;
-	margin-top: 15px;
-}
-
-.mu-blog-single-item .mu-blog-description a:hover, .mu-blog-single-item .mu-blog-description a:focus
-	{
-	color: #fff;
-}
-
 /*==================
  COURSES PAGE
 ====================*/
@@ -1169,194 +692,6 @@ img {
 
 #mu-page-breadcrumb .mu-page-breadcrumb-area .breadcrumb li a {
 	color: #fff;
-}
-
-#mu-course-content {
-	background-color: #f8f8f8;
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-container {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-container .mu-latest-course-single
-	{
-	border: 1px solid #ccc;
-	margin-bottom: 30px;
-	min-height: 520px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar {
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar
-	{
-	background-color: #FFF;
-	display: inline;
-	float: left;
-	margin-bottom: 25px;
-	padding: 0 10px 10px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg
-	{
-	padding-left: 15px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label
-	{
-	color: #333;
-	display: inline-block;
-	font-size: 15px;
-	font-weight: normal;
-	padding: 5px 0 5px 15px;
-	position: relative;
-	text-transform: capitalize;
-	-webkit-transition: all 0.5s ease 0s;
-	-moz-transition: all 0.5s ease 0s;
-	-ms-transition: all 0.5s ease 0s;
-	-o-transition: all 0.5s ease 0s;
-	transition: all 0.5s ease 0s;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label:hover,
-	#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-catg li label:focus
-	{
-	margin-left: 5px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses
-	{
-	display: inline;
-	float: left;
-	margin-top: 10px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-left .media-object
-	{
-	width: 70px;
-	height: 60px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .media-heading
-	{
-	font-size: 16px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .media-heading a
-	{
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-popular-courses .media .media-body .popular-course-price
-	{
-	font-size: 14px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-archives li a:before
-	{
-	content: '\f0da';
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .mu-sidebar-archives li a span
-	{
-	margin-left: 5px;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .tag-cloud
-	{
-	display: inline;
-	float: left;
-	margin-top: 5px;
-	width: 100%;
-}
-
-#mu-course-content .mu-course-content-area .mu-sidebar .mu-single-sidebar .tag-cloud a
-	{
-	border-bottom: 1px solid #ccc;
-	display: inline-block;
-	font-size: 15px;
-	letter-spacing: 0.3px;
-	margin: 0 5px 10px;
-	padding: 5px;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details {
-	background-color: #FFF;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single
-	{
-	border: none;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-imgcaption
-	{
-	background-color: #FFF;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content h2
-	{
-	line-height: 1.7;
-	margin-bottom: 20px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content h4
-	{
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 10px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content p
-	{
-	font-size: 15px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul
-	{
-	margin-bottom: 30px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul li
-	{
-	margin-bottom: 10px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content ul li span:first-child
-	{
-	display: inline-block;
-	min-width: 150px;
-}
-
-#mu-course-content .mu-course-content-area .mu-course-details .mu-latest-course-single .mu-latest-course-single-content .table
-	{
-	margin-top: 10px;
 }
 
 .mu-pagination {
@@ -2287,12 +1622,6 @@ img {
 	bottom: 0;
 }
 
-.btn-primary {
-	background-color: #2063c6 !important;
-	border-color: #2063c6 !important;
-	color: white !important;
-}
-
 .cursor-poiter {
 	cursor: pointer;
 }
@@ -2310,8 +1639,8 @@ img {
 }
 
 .custom-spinner {
-	width: 4rem;
-	height: 4rem;
+	width: 4rem !important;
+	height: 4rem !important;
 }
 
 .btn-trans {
@@ -2421,9 +1750,6 @@ img {
 		{
 		font-size: 20px;
 	}
-	#mu-course-content .mu-course-content-area .mu-sidebar {
-		margin-top: 30px;
-	}
 	#mu-search .mu-search-area .mu-search-form input[type="search"] {
 		font-size: 30px;
 	}
@@ -2511,9 +1837,6 @@ img {
 		top: 30px;
 		margin-right: 0;
 		margin-top: 0;
-	}
-	#mu-course-content {
-		padding: 50px 0;
 	}
 	#mu-gallery {
 		padding: 50px 0;

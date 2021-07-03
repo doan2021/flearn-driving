@@ -17,7 +17,7 @@
                 <div class="carousel-item active">
                     <div class="mu-slider-img">
                         <figure class="m-0">
-                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                            <img th:src="@{../image/slide-1.jpg}" class="d-block" alt="..." width="100%" height="500px">
                         </figure>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
@@ -31,7 +31,7 @@
                 <div class="carousel-item">
                     <div class="mu-slider-img">
                         <figure class="m-0">
-                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                            <img th:src="@{../image/slide-2.jpg}" class="d-block" alt="..." width="100%" height="500px">
                         </figure>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
@@ -45,7 +45,7 @@
                 <div class="carousel-item">
                     <div class="mu-slider-img">
                         <figure class="m-0">
-                            <img src="assets/img/slider/1.jpg" class="d-block" alt="..." width="100%" height="500px">
+                            <img th:src="@{../image/slide-3.jpg}" class="d-block" alt="..." width="100%" height="500px">
                         </figure>
                     </div>
                     <div class="carousel-caption d-none d-md-block">
@@ -71,26 +71,26 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="mu-service-area">
-                                <div class="mu-service-single shadow">
-                                    <a th:href="@{/document}"><span><i class="far fa-file-alt"></i></span></a>
-                                    <h3>Tài liệu</h3>
-                                    <p>Bao gồm tất cả những câu hỏi thi bằng lái các loại từ A1 đến F</p>
-                                </div>
-                                <div class="mu-service-single shadow">
-                                    <span><i class="fas fa-graduation-cap"></i></span>
-                                    <h3>Học Online</h3>
-                                    <p>Giúp bạn học và nhớ những kiến thức liên quan</p>
-                                </div>
-                                <div class="mu-service-single shadow">
-                                    <span><i class="fas fa-diagnoses"></i></span>
-                                    <h3>Thi thử</h3>
-                                    <p>Kiểm tra năng lực và kết quả học tập của bạn</p>
-                                </div>
-                                <div class="mu-service-single shadow">
-                                    <span><i class="fas fa-map-marker-alt"></i></span>
-                                    <h3>Đăng ký thi</h3>
-                                    <p>Sau khi đã nắm chắc kiến thức, thì vào lấy bằng thôi!</p>
-                                </div>
+                                <a th:href="@{/document}" class="menu-panel shadow text-decoration-none p-4">
+                                    <span class="icon-panel"><i class="far fa-file-alt"></i></span>
+                                    <span class="title-panel">Tài liệu</span>
+                                    <span class="content-panel">Bao gồm tất cả những câu hỏi thi bằng lái các loại từ A1 đến F</span>
+                                </a>
+                                <a th:href="@{/select-chapter}" class="menu-panel shadow text-decoration-none p-4">
+                                    <span class="icon-panel"><i class="fas fa-graduation-cap"></i></span>
+                                    <span class="title-panel">Học tập</span>
+                                    <span class="content-panel">Trau dồi kiến thức, hành trang trước khi thi</span>
+                                </a>
+                                <a th:href="@{/trail-exam}" class="menu-panel shadow text-decoration-none p-4">
+                                    <span class="icon-panel"><i class="fas fa-diagnoses"></i></span>
+                                    <span class="title-panel">Thi thử</span>
+                                    <span class="content-panel">Kiểm tra thử năng lực của bạn, bổ sung nhưng kiến thức còn thiếu</span>
+                                </a>
+                                <a th:href="@{/exam}" class="menu-panel shadow text-decoration-none p-4">
+                                    <span class="icon-panel"><i class="fas fa-map-marker-alt"></i></span>
+                                    <span class="title-panel">Đăng ký thi</span>
+                                    <span class="content-panel">Chọn kỳ thi phù hợp, và vào thi thôi</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </section>
-            <section id="mu-abtus-counter">
+            <section id="mu-abtus-counter" th:style="|background-image: url('@{../image/bg-learn.jpg}')|">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -171,78 +171,72 @@
                 </div>
             </div>
         </section>
-          <!-- Start features section -->
         <section id="mu-features">
-          <div class="container-xxl">
-            <div class="row">
-              <div class="col-lg-12 col-md-12">
-                <div class="mu-features-area">
-                  <!-- Start Title -->
-                  <div class="mu-title">
-                    <h2>Chương quan trọng</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-                  </div>
-                  <!-- End Title -->
-                  <!-- Start features content -->
-                  <div class="mu-features-content">
-                    <div class="row">
-                      <div class="col-lg-4 col-md-4  col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-book"></span>
-                          <h4>Professional Courses</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#" class="btn btn-outline-primary rounded-0">Học chương</a>
+            <div class="container-xxl">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="mu-features-area">
+                            <div class="mu-title">
+                                <h2>Chương quan trọng</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
+                            </div>
+                            <div class="mu-features-content">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4  col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-book"></span>
+                                            <h4>Professional Courses</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-users"></span>
+                                            <h4>Expert Teachers</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-laptop"></span>
+                                            <h4>Online Learning</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-microphone"></span>
+                                            <h4>Audio Lessons</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-film"></span>
+                                            <h4>Video Lessons</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+                                        <div class="mu-single-feature border p-4">
+                                            <span class="fa fa-certificate"></span>
+                                            <h4>Professional Certificate</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
+                                            <a href="#" class="btn btn-primary">Học chương</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-users"></span>
-                          <h4>Expert Teachers</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#">Học chương</a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-laptop"></span>
-                          <h4>Online Learning</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#">Học chương</a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-microphone"></span>
-                          <h4>Audio Lessons</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#">Học chương</a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-film"></span>
-                          <h4>Video Lessons</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#">Học chương</a>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="mu-single-feature">
-                          <span class="fa fa-certificate"></span>
-                          <h4>Professional Certificate</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                          <a href="#">Học chương</a>
-                        </div>
-                      </div>
                     </div>
-                  </div>
-                  <!-- End features content -->
                 </div>
-              </div>
             </div>
-          </div>
         </section>
-        
           <section id="mu-latest-courses">
             <div class="container-xxl">
               <div class="row">

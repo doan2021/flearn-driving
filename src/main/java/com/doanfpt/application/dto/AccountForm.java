@@ -1,6 +1,7 @@
 package com.doanfpt.application.dto;
 
 public class AccountForm {
+
 	private String userName;
 	private String lastName;
 	private String middleName;
