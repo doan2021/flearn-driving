@@ -34,9 +34,4 @@ public class LearnController {
     public ResponeData submitAnswer(Long questionId, Long answerId) {
         return learnServices.checkResultAnswer(questionId, answerId);
     }
-
-    @PostMapping(value = {"/view-document"})
-    public String viewDocument(Model model) {
-        return "";
-    }
 }
