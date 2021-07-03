@@ -2,25 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
     <head>
         <title>Learn</title>
-        <link rel="stylesheet" th:href="@{../css/learn.css}">
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" th:href="@{../css/learn.css}">
     </head>
     <body>
         <th:block layout:fragment="content">
-			<section id="mu-page-breadcrumb">
-			  <div class="container-xxl">
-			    <div class="row">
-			      <div class="col-md-12">
-			        <div class="mu-page-breadcrumb-area">
-			          <h2>403</h2>
-			          <ol class="breadcrumb w-100 justify-content-center">
-			           <li class="breadcrumb-item"><a href="#">Home</a></li>
-			           <li class="active breadcrumb-item">403</li>
-			         </ol>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</section>
+            <section id="mu-page-breadcrumb">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-page-breadcrumb-area">
+                                <h2>Học tập</h2>
+                                <ol class="breadcrumb w-100 justify-content-center">
+                                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                                    <li class="active breadcrumb-item">Học tập</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div class="container-xxl pb-5" id="app-learn">
                 <input type="hidden" th:value="${chapterId}" id="chapterId"/>
                 <div v-if="dataResult != '' && dataResult.chapter.listQuestion.length != 0">
