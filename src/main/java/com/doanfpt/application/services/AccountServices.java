@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.doanfpt.application.dto.AccountForm;
 import com.doanfpt.application.entities.Account;
-import com.doanfpt.application.entities.AuthenticationProvider;
 import com.doanfpt.application.entities.Role;
+import com.doanfpt.application.enums.AuthenticationProvider;
 import com.doanfpt.application.model.AccountPrincipal;
 import com.doanfpt.application.responsitories.AccountsRespository;
 import com.doanfpt.application.responsitories.RoleRespository;

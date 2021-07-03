@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>Đăng ký thi</title>
+	<meta charset="utf-8" />
+	<!-- CSS Files -->
+	<link th:href="@{../css/regist-exam.css}" rel="stylesheet" />
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" th:href="@{../font-awesome/css/all.min.css}">
+
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<div class="header-page d-flex align-items-center">
+			<div class="container-xxl">
+				<div class="row">
+					<div class="col-12 py-5">
+						<span class="display-5 pb-3 d-inline-block text-light">Đăng ký thi</span>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb text-light">
+								<li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-xxl py-5">
+			<div class="row">
+				<div class="col-12 rounded shadow bg-white">
+					<div class="col-12 p-4">
+						<form>
+						<div class="row bs-wizard animate-box fadeInUp animated-fast">
+					        <div class="col-3 bs-wizard-step complete">
+					          <div class="progress">
+					            <div class="progress-bar"></div>
+					          </div>
+					          <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+					          <div class="bs-wizard-info text-center">
+					            <p>Chọn kỳ thi</p>
+					          </div>
+					        </div>
+					        <div class="col-3 bs-wizard-step active">
+					          <div class="progress">
+					            <div class="progress-bar"></div>
+					          </div>
+					          <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+					          <div class="bs-wizard-info text-center">
+					            <p>Cập nhật thông tin</p>
+					          </div>
+					        </div>
+					        <div class="col-3 bs-wizard-step disabled">
+					          <div class="progress">
+					            <div class="progress-bar"></div>
+					          </div>
+					          <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+					          <div class="bs-wizard-info text-center">
+					            <p>Bổ sung giấy tờ</p>
+					          </div>
+					        </div>
+					        <div class="col-3 bs-wizard-step disabled">
+					          <div class="progress">
+					            <div class="progress-bar"></div>
+					          </div>
+					          <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+					          <div class="bs-wizard-info text-center">
+					            <p>Hoàn tất</p>
+					          </div>
+					        </div>
+					      </div>
+							<div class="row mt-5">
+								<div class="main-title-container mb-3">
+									<h2>Cập nhật thông tin</h2>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="text-right w-100 mt-15">
+									<span class="validationMessage">* Trường bắt buộc</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="w-100 mb-3" dir="ltr">
+									<div class="warning-container">
+										<div>
+											<i class="fas fa-exclamation warning-icon" aria-hidden="true"></i>
+										</div>
+										<div class="warning-inner-container">
+											<span class="warning-text"><b class="bold">Quan trọng: </b>Vui lòng nhập tên chính xác như trên 
+												<a target="_blank" href="https://home.pearsonvue.com/Policies/1S/English">giấy tờ tùy thân do chính phủ cấp.</a> 
+												Bạn phải xuất trình các giấy tờ trước giờ thi, tên của bạn phải khớp với giấy tờ tùy thân mới có thể tham gia kỳ thi!
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-4">
+									<h3><span class="badge bg-warning text-dark rounded-pill">B2</span></h3>
+								</div>
+							</div>
+							<div class="row mt-4">
+								<div class="col-4">
+									<label class="lbl-font">Họ</label><span class="validationMessage"> *</span>
+									<input type="text" class="form-control" name="lastName" placeholder="Nguyễn"/>
+								</div>
+								<div class="col-4">
+									<label class="lbl-font">Tên đệm</label>
+									<input type="text" class="form-control" name="middletName" placeholder="Văn"/>
+								</div>
+								<div class="col-4">
+									<label class="lbl-font">Tên</label><span class="validationMessage"> *</span>
+									<input type="text" class="form-control" name="firstName" placeholder="A"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Giới tính</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="address-place">
+										<span class="input-group-text"><i class="fas fa-genderless"></i></span>
+										<select class="form-control">
+											<option> Chọn giới tính</option>
+											<option> Nam</option>
+											<option> Nữ</option>
+											<option> Khác</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Đơn vị công tác</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="address-place">
+										<span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+										<input type="text" class="form-control" id="address1" name="address1" placeholder="Nhập đơn vị công tác" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Địa chỉ 1</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="address-place">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<input type="text" class="form-control" id="address1" name="address1" placeholder="123 Ông Ích Khiêm" />
+									</div>
+								</div>
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Địa chỉ 2</label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<input type="text" class="form-control" placeholder="Nhập địa chỉ 2 nếu có" name="address2" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-4 mt-4">
+									<label class="lbl-font">Phường / Xã</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="address-place">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<select class="form-control">
+											<option> Chọn Phường / Xã</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-4 mt-4">
+									<label class="lbl-font">Quận / Huyện</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<select class="form-control">
+											<option> Chọn Quận / Huyện</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-4 mt-4">
+									<label class="lbl-font">Tỉnh / Thành phố</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="address-place">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<select class="form-control">
+											<option> Chọn Tỉnh / Thành phố</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 mt-4">
+									<label class="lbl-font">Email</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-envelope"></i></span>
+										<input type="email" class="form-control" placeholder="Nhập địa chỉ email"
+											name="email" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Số điện thoại</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-phone"></i></span>
+										<input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phoneNumber" />
+									</div>
+								</div>
+								<div class="col-6 mt-4">
+									<label class="lbl-font">Ngày sinh</label><span class="validationMessage"> *</span>
+									<div class="input-group" id="birthday-place">
+										<span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+										<input type="text" class="form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-3 mt-4">
+									<label class="lbl-font">Số CMND</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+										<input type="text" class="form-control" placeholder="Nhập số CMND" name="userName" />
+									</div>
+								</div>
+								<div class="col-2 mt-4">
+									<label class="lbl-font">Cấp ngày</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Nhập ngày cấp" name="userName" />
+									</div>
+								</div>
+								<div class="col-2 mt-4">
+									<label class="lbl-font">Tháng</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Nhập tháng cấp" name="userName" />
+									</div>
+								</div>
+								<div class="col-2 mt-4">
+									<label class="lbl-font">Năm</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Nhập năm cấp" name="userName" />
+									</div>
+								</div>
+								<div class="col-3 mt-4">
+									<label class="lbl-font">Nơi cấp</label><span class="validationMessage"> *</span>
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Nhập nơi cấp" name="userName" />
+									</div>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-9 mt-10 w-720">
+									<div class="form-check">
+	    								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    								<label class="form-check-label" for="exampleCheck1">Điều khoản 1: ...</label>
+  									</div>
+								</div>
+								<div class="col-md-9 mt-10 w-720 mt-2">
+									<div class="form-check">
+	    								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    								<label class="form-check-label" for="exampleCheck1">Điều khoản 2: ...</label>
+  									</div>
+								</div>
+								<div class="col-md-9 mt-10 w-720 mt-2">
+									<div class="form-check">
+	    								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    								<label class="form-check-label" for="exampleCheck1">Điều khoản 3: ...</label>
+  									</div>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-12 mt-3 text-center">
+									<input type="submit" value="Tiếp theo" class="btn btn-primary" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</th:block>
+</body>
+
+</html>
