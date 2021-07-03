@@ -13,7 +13,7 @@
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     </head>
     <body>
-        <th:block layout:fragment="content">
+         <th:block layout:fragment="content">
             <div class="header-page d-flex align-items-center">
                 <div class="container-xxl">
                     <div class="row">
@@ -45,66 +45,86 @@
                             </div>
                             <div class="col-8 p-4">
                                 <form class="row" th:action="@{/create-account}" th:object="${appUserForm}" method="POST" id="register-form">
-                                    <div class="col-6">
-                                        <input type="text" class="error form-control" th:field="*{lastName}" placeholder="Họ" name="lastName"/>
+                                	<div class="row">
+                                		<div class="col-4">
+                                			<label class="lbl-font">Họ</label><span class="validationMessage"> *</span>
+                                        	<input type="text" class="form-control" th:field="*{lastName}" placeholder="Họ" name="lastName"/>
+	                                    </div>
+	                                    <div class="col-4">
+	                                    	<label class="lbl-font">Tên đệm</label>
+	                                        <input type="text" class="form-control" th:field="*{middleName}" placeholder="Tên đệm" name="middleName"/>
+	                                    </div>
+	                                    <div class="col-4">
+	                                    	<label class="lbl-font">Tên</label><span class="validationMessage"> *</span>
+	                                        <input type="text" class="form-control" th:field="*{firstName}" placeholder="Tên" name="firstName"/>
+	                                    </div>
+                                	</div>
+                                    <div class="row mt-4">
+	                                    <div class="col-12">
+                                        	<label class="lbl-font">Địa chỉ Email</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group">
+	                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+	                                            <input type="email" class="form-control" th:field="*{email}" placeholder="sample@email.com" name="email"/>
+	                                        </div>
+	                                    </div>
                                     </div>
-                                    <div class="col-6">
-                                        <input type="text" class="error form-control" th:field="*{firstName}" placeholder="Tên" name="firstName"/>
+                                    <div class="row mt-4">
+	                                    <div class="col-12">
+	                                    	<label class="lbl-font">Ngày sinh</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group" id="birthday-place">
+	                                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+	                                            <input type="text" class="form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off"/>
+	                                        </div>
+	                                    </div>
                                     </div>
-                                    <div class="col-6 mt-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                            <input type="email" class="error form-control" th:field="*{email}" placeholder="sample@email.com" name="email"/>
-                                        </div>
+                                    <div class="row mt-4">
+	                                    <div class="col-12">
+	                                    	<label class="lbl-font">Tên đăng nhập</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group" id="username-place">
+	                                            <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+	                                            <input type="text" class="form-control" th:field="*{userName}" placeholder="Tên đăng nhập" name="userName"/>
+	                                        </div>
+	                                    </div>
                                     </div>
-                                    <div class="col-6 mt-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                            <input type="text" class="form-control" placeholder="Số điện thoại" name="phoneNumber"/>
-                                        </div>
+                                    <div class="row mt-4">
+	                                    <div class="col-6">
+	                                    	<label class="lbl-font">Mật khẩu</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group" id="password-place">
+	                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+	                                            <input type="password" class="form-control" th:field="*{password}" placeholder="Mật khẩu" name="password">
+	                                        </div>
+	                                    </div>
+                                    
+	                                    <div class="col-6">
+	                                    	<label class="lbl-font">Nhập lại mật khẩu</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group" id="cPasword-place">
+	                                            <span class="input-group-text"><i class="fas fa-retweet"></i></span>
+	                                            <input type="password" class="form-control" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu" name="confirmPassword">
+	                                        </div>
+	                                    </div>
+	                                </div>
+                                    <div class="row mt-4">
+                                    	<div class="col-6">
+                                    		<label class="lbl-font">Số điện thoại</label><span class="validationMessage"> *</span>
+	                                        <div class="input-group" id="phoneNumber-place">
+	                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+	                                            <input type="text" class="form-control" placeholder="Số điện thoại" name="phoneNumber"/>
+	                                        </div>
+	                                    </div>
+                                    	<div class="col-6">
+                                    		<label class="lbl-font">Giới tính</label><span class="validationMessage"> *</span>
+                                    		<div class="input-group" id="gender-place">
+                                    			<span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    			<select class="form-select" name="selectGender">
+                                    				<option value="default">Chọn giới tính</option>
+                                    				<option value="1">Nam</option>
+                                    				<option value="0">Nữ</option>
+                                    				<option value="2">Khác</option>
+                                    			</select>
+                                    		</div>
+                                    	</div>
                                     </div>
-                                    <div class="col-12 mt-4">
-                                        <div class="input-group" id="birthday-place">
-                                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
-                                            <input type="text" class="error form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
-                                            <input type="text" class="error form-control" th:field="*{userName}" placeholder="Tên đăng nhập" name="userName"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 mt-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                            <input type="password" class="error form-control" th:field="*{password}" placeholder="Mật khẩu" name="password">
-                                        </div>
-                                    </div>
-                                    <div class="col-6 mt-4">
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-retweet"></i></span>
-                                            <input type="password" class="error form-control" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu" name="confirmPassword" style="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <label class="d-block">Giới tính</label> 
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" id="male" value="1" th:field="*{gender}" th:checked="${gender} == 1"> 
-                                            <label for="male">Nam</label> 
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" id="female" value="0" th:field="*{gender}" th:checked="${gender} == 0"> 
-                                            <label for="female">Nữ</label> 
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" id="orther" value="2" th:field="*{gender}" th:checked="${gender} == 2"> 
-                                            <label for="orther">Khác</label> 
-                                            <span class="check"></span>
-                                        </div>
-                                    </div>
+                                        
                                     <div class="col-12 mt-3 text-center">
                                         <input type="submit" value="Đăng ký" class="btn btn-primary"/>
                                         <input type="reset" value="Làm mới" class="btn btn-secondary"/> 

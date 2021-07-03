@@ -50,13 +50,12 @@ public class AccountsController {
             return "register";
         }
         accountsServices.createAccount(appUserForm);
-        return "login";
+        return "register-successful";
     }
     
     @GetMapping(value = { "/view-profile" })
     public String viewProfile(Model model) {
         model.addAttribute("account", accountsServices.getAccountLogin());
-//        return "view-profile";
-        return "regist-exam";
+        return "view-profile";
     }
 }

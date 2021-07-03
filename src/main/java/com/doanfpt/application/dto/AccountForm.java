@@ -1,99 +1,108 @@
 package com.doanfpt.application.dto;
 
 public class AccountForm {
-    private String userName;
-    private String firstName;
-    private String lastName;
-    private String password;
-    private String confirmPassword;
-    private int gender;
-    private String email;
-    private String birthDay;
-    private String phoneNumber;
-    private Long roleId;
+	private String userName;
+	private String lastName;
+	private String middleName;
+	private String firstName;
+	private String password;
+	private String confirmPassword;
+	private int gender;
+	private String email;
+	private String birthDay;
+	private String phoneNumber;
+	private Long roleId;
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getMiddleName() {
+		return middleName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public Integer getGender() {
-        return gender;
-    }
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public Integer getGender() {
+		return gender;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
 
-    public Long getRoleId() {
-        return roleId;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getBirthDay() {
-        return birthDay;
-    }
+	public Long getRoleId() {
+		return roleId;
+	}
 
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public String getBirthDay() {
+		return birthDay;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
 
 }

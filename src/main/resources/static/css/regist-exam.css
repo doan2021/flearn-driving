@@ -36,13 +36,10 @@
     border-radius: 8px;
     background: #FFF4CE;
     border: 1px solid #797673;
-    width: 810px;
-    height: 60px;
     display: flex;
 }
 .bold {
-    font-family: 'Segoe UI';
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
 }
 a {
@@ -52,8 +49,7 @@ a {
     text-decoration: none;
 }
 .warning-text {
-    font-family: "Segoe UI";
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: #212121;
 }

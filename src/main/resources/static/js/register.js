@@ -27,6 +27,9 @@ $("#register-form").validate({
 		},
 		confirmPassword: {
 			equalTo: "#password"
+		},
+		selectGender: {
+			required: true
 		}
 	},
 	messages: {
@@ -57,6 +60,9 @@ $("#register-form").validate({
 		},
 		confirmPassword: {
 			equalTo: "Mật khẩu không khớp, vui lòng kiểm tra lại!"
+		},
+		selectGender: {
+			required: "Vui lòng chọn giới tính!"
 		}
 	},
     errorClass:'text-danger',
@@ -68,9 +74,27 @@ $("#register-form").validate({
     },
     errorPlacement: function (error, element) {
         switch (element.attr("name")) {
+		case 'email':
+            error.insertAfter($("#email-place"));
+            break;
         case 'birthday':
             error.insertAfter($("#birthday-place"));
             break;
+        case 'userName':
+            error.insertAfter($("#username-place"));
+            break;
+        case 'password':
+            error.insertAfter($("#password-place"));
+            break;
+        case 'confirmPassword':
+            error.insertAfter($("#cPassword-place"));
+            break;
+        case 'phoneNumber':
+            error.insertAfter($("#phoneNumber-place"));
+            break;
+        case 'gender':
+        	error.insertAfter($("#gender-place"));
+        	break;
         default:
             error.insertAfter(element);
         }
