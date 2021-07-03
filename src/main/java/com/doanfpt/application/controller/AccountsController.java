@@ -50,9 +50,9 @@ public class AccountsController {
         // Validate result
         if (result.hasErrors()) {
             return "register";
-        }
+        }              
         accountsServices.createAccount(accountForm);
-        return "login";
+        return "register-successful";
     }
 
     @GetMapping(value = { "/view-profile" })
