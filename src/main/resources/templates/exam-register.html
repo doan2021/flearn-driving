@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>Đăng kí Thi</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" th:href="@{../css/exam-register.css}">
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<div class="bg-primary header-page d-flex align-items-center" style="background-image: url('https://hocthilaixe.com/thumbs/1920x720x1/upload/news/hoc-phi-lai-xe-o-to-dung-chuan-1910x716-4646.jpg');background-size: cover;">
+			<div class="container-xxl">
+				<div class="row">
+					<div class="col-12 py-5">
+						<span class="display-5 pb-3 d-inline-block text-light">Đăng kí Thi</span>
+							<ol class="breadcrumb text-light">
+								<li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
+								<li class="breadcrumb-item">Đăng kí Thi</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-xxl ogiua">
+			<div class="">
+				<div class="row">
+					<h1 class="text-center">Danh sách các kì thi lái xe</h1>
+					<div class="row ">
+						<div class="col-3 filter">
+							<h3> Bộ lọc</h3>
+						</div>
+						<div class="col-9 form-search">
+							<div class="row ">
+								<div class="col-10">
+									<input type="text" class="form-control" placeholder="Tên các kì thi">
+								</div>
+								<div class="col-2 ">
+									<button class="btn btn-primary d-block bt-search ">
+										<i class="fas fa-search"></i>Tìm Kiếm
+									</button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Giấy phép lái xe hạng A</option>
+								<option value="1">A1</option>
+								<option value="2">A2</option>
+								<option value="2">A3</option>
+								<option value="2">A4</option>
+							</select>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Giấy phép lái xe hạng B</option>
+								<option value="1">B1</option>
+								<option value="2">B2</option>
+								
+							</select>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+							<label class="form-check-label" for="flexCheckChecked">
+								Giấy phép lái xe hạng C
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+							<label class="form-check-label" for="flexCheckChecked">
+								Giấy phép lái xe hạng D
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+							<label class="form-check-label" for="flexCheckChecked">
+								Giấy phép lái xe hạng E
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+							<label class="form-check-label" for="flexCheckChecked">
+								Giấy phép lái xe hạng F
+							</label>
+						</div>
+					</div>
+					<div class=" row col-9 ">
+						<div class="col-sm-4 cardRight ">
+							<div class="card">
+								<header class="card-header text-center">
+									<h4>Bằng lái xe B2</h4>
+								</header>
+
+								<div class="card-body">
+									<img class="img1"
+										src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a9b0a761272023.5a68e37fc70fe.png"
+										alt="">
+									<ul>
+										<li>Giá tiền : 100$</li>
+										<li>Ngày bắt đầu đăng kí : 23/06/2021   </li>
+										<li>Thời gian : 17h30 đến 18h</li>
+										<li>Giám thị coi thi : Nguyễn Văn A</li>
+									</ul>
+
+
+								</div>
+								<div class="card-footer text-muted">
+									<a href="#" class="btn btn-primary aline-center">Đăng kí </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 cardRight ">
+							<div class="card">
+								<header class="card-header text-center">
+									<h4>Bằng lái xe B2</h4>
+								</header>
+
+								<div class="card-body">
+									<img class="img1"
+										src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a9b0a761272023.5a68e37fc70fe.png"
+										alt="">
+									<ul>
+										<li>Giá tiền : 100$</li>
+										<li>Ngày : 23/06/2021 </li>
+										<li>Thời gian : 17h30 đến 18h</li>
+										<li>Giám thị coi thi : Nguyễn Văn A</li>
+									</ul>
+
+
+								</div>
+								<div class="card-footer text-muted">
+									<a href="#" class="btn btn-primary aline-center">Đăng kí </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 cardRight ">
+							<div class="card">
+								<header class="card-header text-center">
+									<h4>Bằng lái xe B2</h4>
+								</header>
+
+								<div class="card-body">
+									<img class="img1"
+										src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a9b0a761272023.5a68e37fc70fe.png"
+										alt="">
+									<ul>
+										<li>Giá tiền : 100$</li>
+										<li>Ngày : 23/06/2021 </li>
+										<li>Thời gian : 17h30 đến 18h</li>
+										<li>Giám thị coi thi : Nguyễn Văn A</li>
+									</ul>
+
+
+								</div>
+								<div class="card-footer text-muted">
+									<a href="#" class="btn btn-primary">Đăng kí </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-9 offset-3 d-flex justify-content-center">
+				<nav aria-label="...">
+					<ul class="pagination">
+						<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item active" aria-current="page">
+							<a class="page-link" href="#">2</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#">Next</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		</div>
+	</th:block>
+</body>
+
+</html>

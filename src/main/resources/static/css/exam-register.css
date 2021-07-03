@@ -1,0 +1,29 @@
+.cardRight:hover{
+	opacity: 0.9;
+	transform: scale(1.05);
+
+}
+.bt-search{
+	width: 100%;
+}
+.form-search{
+	margin: 2% auto;
+}
+.filter{
+	margin: 2% auto;
+}
+.card-header{
+	background-color:rgb(111, 145, 132);
+}
+.img1{
+	width: 30%;
+}
+.btn btn-primary{
+	border-radius:10rem;
+}
+.img2{
+	width: 100%;
+}
+.bg-primary{
+	width: 100%;
+}
