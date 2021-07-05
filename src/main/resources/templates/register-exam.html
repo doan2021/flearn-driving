@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+    <head>
+        <title>Đăng kí Thi</title>
+        <meta charset="utf-8" />
+        <link th:href="@{../css/register-exam.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <section class="mu-page-breadcrumb">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-page-breadcrumb-area">
+                                <h2>Đăng ký thi</h2>
+                                <ol class="breadcrumb w-100 justify-content-center">
+                                    <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+                                    <li class="active breadcrumb-item">Đăng ký thi</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div id="register-exam-app">
+                <div class="container-xxl py-5">
+                    <div class="row">
+                        <div class="col-12 shadow rounded border p-4">
+                            <div class="row bs-wizard animate-box fadeInUp animated-fast">
+                                <div class="col-3 bs-wizard-step" :class="[step1]">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <span class="bs-wizard-dot"></span>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Chọn kỳ thi</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step" :class="[step2]">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <span class="bs-wizard-dot"></span>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Cập nhật thông tin</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step disabled">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <span class="bs-wizard-dot"></span>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Bổ sung giấy tờ</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step disabled">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <span class="bs-wizard-dot"></span>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Hoàn tất</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5" v-if="step1 == 'active'">
+                                <div class="col-md-12">
+                                    <div class="mu-title">
+                                        <h2>Kỳ thi đang mở</h2>
+                                    </div>
+                                    <div class="row mt-5" v-if="pageContent != '' || pageContent.totalElements != 0">
+                                        <div class="col-4 mt-4" v-for="exam in pageContent.content" :key="exam.examId">
+                                            <div class="mu-single-feature border p-3 bg-white">
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="icon-single-feature">
+                                                        <i class="fas fa-laptop"></i>
+                                                    </span>
+                                                    <span class="text-danger fw-bold">{{ formatDate(exam.dateExam) }}</span>
+                                                </div>
+                                                <p>Loại bằng: {{ exam.drivingLicense.type }}</p>
+                                                <h4 class="text-primary">{{ displayValue(exam.name) }}</h4>
+                                                <div class="ps-2">
+                                                    <p class="m-0">Thời gian làm bài: {{ exam.drivingLicense.examMinutes }} phút</p>
+                                                    <p class="m-0">Số lượng câu hỏi: {{ exam.drivingLicense.numberQuestion }} câu</p>
+                                                    <p>Hạn đăng ký: {{ formatDate(exam.dateRegisExamEnd) }}</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                                    <button class="btn btn-primary w-50" @click="selectExam(exam.examId, exam.drivingLicense.type)"><i class="fas fa-plus"></i></button>
+                                                    <span>{{ displayCurrency(exam.drivingLicense.price) }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5" v-else>
+                                        <div class="col-12">
+                                            <h4 class="text-danger">Xin lỗi! Hiện không có kỳ thi nào đang mở.</h4>
+                                        </div>
+                                    </div>
+                                </div>
+	                            <div class="col-12">
+	                                <pagination :total="pageContent.totalElements" :total-pages="pageContent.totalPages" :current-page="pageContent.number" @pagechanged="searchListExam"></pagination>
+	                            </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-12 text-end">
+                                    <div class="mu-title">
+                                        <h2>Cập nhật thông tin</h2>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <span class="text-danger">* Trường bắt buộc</span>
+                                </div>
+                                <div class="col-12">
+                                    <div class="warning-container">
+                                        <div class="col-12 d-flex flex-row">
+                                            <span class="text-secondary p-3"><i class="fas fa-exclamation"></i></span>
+                                            <span class="warning-text py-1">
+                                                <b class="fw-bold">Quan trọng: </b>Vui lòng nhập tên chính xác như trên 
+                                                <a target="_blank" href="#">giấy tờ tùy thân do chính phủ cấp.</a> 
+                                                Bạn phải xuất trình các giấy tờ trước giờ thi, tên của bạn phải khớp với giấy tờ tùy thân mới có thể tham gia kỳ thi!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row mt-4">
+                                        <div class="col-4">
+                                            <h3><span class="badge bg-warning text-dark rounded-pill w-25">{{ formUpdateInfoDrivingLicense.typeDrivingLicense }}</span></h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-4">
+                                            <label class="fw-bold">Họ</label><span class="text-danger"> *</span>
+                                            <input type="text" class="form-control" name="lastName" placeholder="Nguyễn" v-model="$v.formUpdateInfoDrivingLicense.lastName.$model" :class="{ 'is-invalid': $v.formUpdateInfoDrivingLicense.lastName.$error }"/>
+                                            <div class="invalid-feedback" v-if="!$v.formUpdateInfoDrivingLicense.lastName.required">Vui lòng nhập họ.</div>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="fw-bold">Tên đệm</label>
+                                            <input type="text" class="form-control" name="middletName" placeholder="Văn" v-model="$v.formUpdateInfoDrivingLicense.middleName.$model" :class="{ 'is-invalid': $v.formUpdateInfoDrivingLicense.middleName.$error }"/>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="fw-bold">Tên</label><span class="text-danger"> *</span>
+                                            <input type="text" class="form-control" name="firstName" placeholder="A" v-model="$v.formUpdateInfoDrivingLicense.firstName.$model" :class="{ 'is-invalid': $v.formUpdateInfoDrivingLicense.firstName.$error }"/>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <label class="fw-bold">Giới tính</label><span class="text-danger"> *</span>
+                                            <select class="form-select" v-model="$v.formUpdateInfoDrivingLicense.gender.$model" :class="{ 'is-invalid': $v.formUpdateInfoDrivingLicense.gender.$error }">
+                                                <option value=""> Chọn giới tính</option>
+                                                <option value="1"> Nam</option>
+                                                <option value="0"> Nữ</option>
+                                                <option value="2"> Khác</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="fw-bold">Ngày sinh</label><span class="text-danger"> *</span>
+                                            <div class="input-group" id="birthday-place">
+                                                <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                                                <input type="text" class="form-control" id="birthday" name="birthday" placeholder="Chọn ngày sinh" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <label class="fw-bold">Địa chỉ 1</label><span class="text-danger"> *</span>
+                                            <div class="input-group" id="address-place">
+                                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                <input type="text" class="form-control" id="address1" name="address1" placeholder="Địa chỉ 1" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="fw-bold">Địa chỉ 2</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                <input type="text" class="form-control" placeholder="Địa chỉ 2" name="address2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-4">
+                                            <label class="fw-bold">Phường/xã</label><span class="text-danger"> *</span>
+                                            <select class="form-select" :disabled="listWard == null || listWard.length == 0" v-model="formUpdateInfoDrivingLicense.wardId">
+                                                <option value="">Chọn Phường/xã</option>
+                                                <option v-for="ward in listWard" :key="ward.wardId" :value="ward.wardId">{{ ward.wardName }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="fw-bold">Quận/huyện</label><span class="text-danger"> *</span>
+                                            <select class="form-select" :disabled="listDistrict == null || listDistrict.length == 0" v-model="districtId" @change="selectDistrict">
+                                                <option value="">Chọn Quận/huyện</option>
+                                                <option v-for="district in listDistrict" :key="district.districtId" :value="district.districtId">{{ district.districtName }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <label class="fw-bold">Tỉnh/thành phố</label><span class="text-danger"> *</span>
+                                            <select class="form-select" v-model="provinceId" @change="selectProvince">
+                                                <option value="">Chọn Tỉnh/thành phố</option>
+                                                <option v-for="province in listProvince" :key="province.provinceId" :value="province.provinceId">{{ province.provinceName }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label class="fw-bold">Email</label><span class="text-danger"> *</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" placeholder="Nhập địa chỉ email"
+                                                    name="email" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <label class="fw-bold">Số điện thoại</label><span class="text-danger"> *</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phoneNumber" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="fw-bold">Đơn vị công tác</label><span class="text-danger"> *</span>
+                                            <div class="input-group" id="address-place">
+                                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                                                <input type="text" class="form-control" id="address1" name="address1" placeholder="Nhập đơn vị công tác" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-6">
+                                            <label class="fw-bold">Số CMND</label><span class="text-danger"> *</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+                                                <input type="text" class="form-control" placeholder="Nhập số CMND" name="userName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="fw-bold">Nơi cấp</label><span class="text-danger"> *</span>
+                                            <select class="form-select">
+                                                <option value="">Chọn tỉnh</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <label class="fw-bold">Cấp ngày</label><span class="text-danger"> *</span>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Nhập ngày cấp" name="userName" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-md-9 mt-10 w-720">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Tôi đã đọc và đồng ý với <a th:href="@{/}">điều khoản</a></label>
+                                              </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-12 mt-3 text-center">
+                                            <input type="submit" value="Tiếp theo" class="btn btn-primary w-25" @click="nextStep3"/>
+                                            <input type="submit" value="Trở lại" class="btn btn-secondary w-25" @click="backStep1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+        <th:block layout:fragment="script">
+            <script th:src="@{../assets/js/pagination.js}"></script>
+            <script th:src="@{../js/register-exam.js}"></script>
+        </th:block>
+    </body>
+</html>

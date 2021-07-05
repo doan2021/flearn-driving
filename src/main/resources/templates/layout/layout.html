@@ -10,22 +10,13 @@
         <link rel="icon" type="image/ico" th:href="@{../image/favicon.ico}"/>
         <!-- CSS Common -->
         <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
-        <link th:href="@{../assets/css/theme-color/default-theme.css}" rel="stylesheet">
-        <link th:href="@{../assets/css/style.css}" rel="stylesheet">
         <link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
         <link th:href="@{../css/jquery-confirm.min.css}" rel="stylesheet" />
         <link th:href="@{../css/jquery-ui.min.css}" rel="stylesheet" />
         <link th:href="@{../css/jquery-ui.structure.min.css}" rel="stylesheet" />
         <link th:href="@{../css/jquery-ui.theme.min.css}" rel="stylesheet" />
-        <!-- JS Common -->
-        <script th:src="@{../js/jquery.min.js}"></script>
-        <script th:src="@{../js/jquery.validate.min.js}"></script>
-        <script th:src="@{../js/jquery-ui.min.js}"></script>
-        <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
-        <script th:src="@{../js/jquery-confirm.min.js}"></script>
-        <script th:src="@{../js/axios.min.js}"></script>
-        <script th:src="@{../js/vue.js}"></script>
-        <script th:src="@{../js/common.js}"></script>
+        <link th:href="@{../assets/css/theme-color/default-theme.css}" rel="stylesheet">
+        <link th:href="@{../assets/css/style.css}" rel="stylesheet">
     </head>
     <body>
         <div class="bg-loading bg-light justify-content-center align-items-center" id="loading">
@@ -33,33 +24,31 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <header id="mu-header" class="border-bottom">
+        <header class="border-bottom bg-light">
             <div class="container-xxl">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="mu-header-area">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="mu-header-top-left">
-                                        <div class="mu-top-email">
-                                            <i class="fas fa-envelope"></i>
-                                            <span>info@markups.io</span>
-                                        </div>
-                                        <div class="mu-top-phone">
-                                            <i class="fas fa-phone"></i>
-                                            <span>(568) 986 652</span>
-                                        </div>
-                                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 text-left d-flex justify-content-start py-3">
+                                <div class="me-4">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>tamduong633@gmail.com</span>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="mu-header-top-right">
-                                        <nav>
-                                            <ul class="mu-top-social-nav m-0">
-                                                <li th:if="${#request.userPrincipal != null}"><a th:href="@{/login}" class="text-dark"><i class="fas fa-sign-in-alt"></i></a></li>
-                                                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/logout}" class="text-dark"><i class="fas fa-sign-out-alt"></i></a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                                <div>
+                                    <i class="fas fa-phone"></i>
+                                    <span>(+84) 344 513 648</span>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end py-3">
+                                <div th:if="${#request.userPrincipal != null}">
+                                    <a th:href="@{/login}" class="text-dark">
+                                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                                    </a>
+                                </div>
+                                <div th:if="${#request.userPrincipal == null}">
+                                    <a th:href="@{/logout}" class="text-dark">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +56,7 @@
                 </div>
             </div>
         </header>
-        <section id="mu-menu">
+        <section>
             <nav class="navbar navbar-default navbar-expand-lg">
                 <div class="container-xxl">
                     <div class="navbar-header">
@@ -82,22 +71,34 @@
                             <li class="nav-item"><a th:href="@{/document}" class="nav-link px-3 text-secondary">Tài liệu</a></li>
                             <li class="nav-item"><a th:href="@{/select-chapter}" class="nav-link px-3 text-secondary">Học tập</a></li>
                             <li class="nav-item"><a th:href="@{/trial-exam}" class="nav-link px-3 text-secondary">Thi thử</a></li>
-                            <li class="nav-item"><a th:href="@{/regist-exam}" class="nav-link px-3 text-secondary">Đăng ký thi</a></li>
+                            <li class="nav-item"><a th:href="@{/register-exam}" class="nav-link px-3 text-secondary">Đăng ký thi</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </section>
         <section layout:fragment="content"></section>
-  <!-- Start footer -->
-  <footer id="mu-footer">
-    <div class="mu-footer-bottom">
-      <div class="container">
-        <div class="mu-footer-bottom-area">
-          <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+            <footer id="mu-footer">
+                <div class="mu-footer-bottom">
+                    <div class="container">
+                        <div class="mu-footer-bottom-area">
+                            <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        <!-- JS Common -->
+        <script th:src="@{../js/jquery.min.js}"></script>
+        <script th:src="@{../js/jquery.validate.min.js}"></script>
+        <script th:src="@{../js/jquery-ui.min.js}"></script>
+        <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{../js/jquery-confirm.min.js}"></script>
+        <script th:src="@{../assets/js/moment-with-locales.js}"></script>
+        <script th:src="@{../js/axios.min.js}"></script>
+        <script th:src="@{../js/vuelidate.min.js}"></script>
+        <script th:src="@{../js/validators.min.js}"></script>
+        <script th:src="@{../js/vue.js}"></script>
+        <script th:src="@{../js/common.js}"></script>
+        <th:block layout:fragment="script"></th:block>
     </body>
 </html>
