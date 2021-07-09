@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+    <head>
+        <title>Đăng ký thi</title>
+        <meta charset="utf-8" />
+        <!-- CSS Files -->
+        <link th:href="@{../css/regist-exam.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <section id="mu-page-breadcrumb">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-page-breadcrumb-area">
+                                <h2>Cập nhật thông tin</h2>
+                                <ol class="breadcrumb w-100 justify-content-center">
+                                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                                    <li class="active breadcrumb-item">Cập nhật thông tin</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container-xxl py-5">
+                <div class="row">
+                    <div class="col-12 shadow">
+                        <div class="col-12 p-4">
+                            <div class="row bs-wizard animate-box fadeInUp animated-fast">
+                                <div class="col-3 bs-wizard-step complete">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Chọn kỳ thi</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step complete">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Cập nhật thông tin</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step active">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Bổ sung giấy tờ</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 bs-wizard-step disabled">
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="https://www.free-css.com/free-css-templates" class="bs-wizard-dot"></a>
+                                    <div class="bs-wizard-info text-center">
+                                        <p>Hoàn tất</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <label class="lbl-font">CMND mặt trước</label><span class="validationMessage"> *</span>
+                                    <input class="form-control d-none" type="file" id="identityCardFront">
+                                    <label class="image-area mb-3 d-block" for="upload">
+                                        <img src="img" alt="" class="img-fluid">
+                                    </label>
+                                    <label class="image-area d-block" for="upload" style="height:150px"></label>
+                                </div>
+                                <div class="col-6">
+                                    <label class="lbl-font">CMND mặt sau</label><span class="validationMessage"> *</span>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                        <input type="text" class="form-control" placeholder="Nhập địa chỉ 2 nếu có" name="address2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-12 mt-3 text-center">
+                                    <input type="submit" value="Tiếp theo" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </body>
+</html>

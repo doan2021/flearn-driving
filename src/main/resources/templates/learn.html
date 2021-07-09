@@ -7,14 +7,15 @@
     </head>
     <body>
         <th:block layout:fragment="content">
-            <section id="mu-page-breadcrumb">
+            <section class="mu-page-breadcrumb">
                 <div class="container-xxl">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mu-page-breadcrumb-area">
                                 <h2>Học tập</h2>
                                 <ol class="breadcrumb w-100 justify-content-center">
-                                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                                    <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+                                    <li class="breadcrumb-item"><a th:href="@{/select-chapter}">Chọn chương</a></li>
                                     <li class="active breadcrumb-item">Học tập</li>
                                 </ol>
                             </div>
@@ -81,6 +82,8 @@
                     </div>
                 </div>
             </div>
+        </th:block>
+        <th:block layout:fragment="script">
             <script th:src="@{../js/learn.js}"></script>
         </th:block>
     </body>
