@@ -15,7 +15,7 @@ public interface QuestionsRespository  extends JpaRepository<Question, Long> {
 
     public Question findByNumber(int number);
     
-    public List<Question> findByChapter(Chapter chapter);
+    public List<Question> findByChapterAndIsDelete(Chapter chapter, Boolean isDelete);
     
     public List<Question> findByQuestionIdNotInAndChapter(List<Long> listIds, Chapter chapter);
     
