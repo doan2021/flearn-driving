@@ -1,11 +1,3 @@
-$(function() {
-    $("#birthday").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true
-    });
-});
-
 $("#register-form").validate({
 	rules: {
 		firstName: {

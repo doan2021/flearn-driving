@@ -120,3 +120,17 @@
 .bs-wizard>.bs-wizard-step.active>.bs-wizard-info p {
 	font-weight: 600;
 }
+
+.content-portrait {
+	height: 292px;
+	width: 100%;
+}
+
+.highlight {
+	content: '';
+	position: absolute;
+	width: 170px;
+	height: 230px;
+	border: 5px dashed lime;
+	border-radius: 50%;
+}
