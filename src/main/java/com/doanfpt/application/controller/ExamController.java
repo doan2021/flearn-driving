@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doanfpt.application.dto.FormSearchExam;
+import com.doanfpt.application.dto.RegisterExamForm;
 import com.doanfpt.application.respone.ResponeData;
 import com.doanfpt.application.services.AddressServices;
 import com.doanfpt.application.services.ExamService;
@@ -43,14 +45,14 @@ public class ExamController {
         responeData.putResult("listWard", addressServices.findAllWardByDistrictId(districtId));
         return responeData;
     }
-
-    @GetMapping(value = { "/update-info-driving-licence" })
-    public String visitPageRegistExam(Model model) {
-        return "update-info-driving-licence";
+    
+    @PostMapping(value = { "/register-exam" })
+    public @ResponseBody ResponeData registerExam(RegisterExamForm registerExamForm, Model model) {
+        return examServices.registerExam(registerExamForm);
     }
     
-    @GetMapping(value = { "/update-info-driving-licence1" })
-    public String visitPageRegistExam1(Model model) {
-        return "update-info-driving-licence1";
+    @GetMapping(value = { "/trial-exam" })
+    public String viewProfile(Model model) {
+        return "trial-exam";
     }
 }

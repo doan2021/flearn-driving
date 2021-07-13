@@ -1,114 +1,102 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Layout page</title>
-	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet'
-		type='text/css'>
-	<link rel="icon" type="image/ico" th:href="@{../image/favicon.ico}" />
-	<!-- CSS Common -->
-	<link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
-	<link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
-	<link th:href="@{../css/jquery-confirm.min.css}" rel="stylesheet" />
-	<link th:href="@{../css/jquery-ui.min.css}" rel="stylesheet" />
-	<link th:href="@{../css/jquery-ui.structure.min.css}" rel="stylesheet" />
-	<link th:href="@{../css/jquery-ui.theme.min.css}" rel="stylesheet" />
-	<link th:href="@{../assets/css/theme-color/default-theme.css}" rel="stylesheet">
-	<link th:href="@{../assets/css/style.css}" rel="stylesheet">
-</head>
-
-<body>
-	<th:block layout:fragment="content">
-		<section class="mu-page-breadcrumb">
-			<div class="container-xxl">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="mu-page-breadcrumb-area">
-							<h2>Học tập</h2>
-							<ol class="breadcrumb w-100 justify-content-center">
-								<li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
-								<li class="breadcrumb-item"><a th:href="@{/select-chapter}">Chọn chương</a></li>
-								<li class="active breadcrumb-item">Học tập</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="container-xxl pb-5" id="app-learn">
-			<input type="hidden" th:value="${chapterId}" id="chapterId" />
-			<div v-if="dataResult != '' && dataResult.chapter.listQuestion.length != 0">
-				<div class="row">
-					<div class="col-12">
-						<h2 class="display-4"><strong>Chương {{ dataResult.chapter.name }}</strong></h2>
-						<h3>{{ dataResult.chapter.content }}</h3>
-
-					</div>
-				</div>
-				<div class="row mt-5 p-2 justify-content-center bg-white rounded-3 shadow">
-					<div class="col-2 text-center">
-						<p><strong>{{ dataResult.rest }}</strong></p>
-						<span class="text-secondary">Rest</span>
-					</div>
-					<div class="col-1 text-center align-self-center text-secondary">
-						<i class="fas fa-chevron-right"></i>
-					</div>
-					<div class="col-2 text-center">
-						<p class="text-primary"><strong>{{ dataResult.familiar }}</strong></p>
-						<span class="text-secondary">Familiar</span>
-					</div>
-					<div class="col-1 text-center align-self-center text-secondary">
-						<i class="fas fa-chevron-right"></i>
-					</div>
-					<div class="col-2 text-center">
-						<p class="text-success"><strong>{{ dataResult.knowledge }}</strong></p>
-						<span class="text-secondary">Knowledge</span>
-					</div>
-				</div>
-				<div class="row bg-white rounded-3 shadow mt-3"
-					v-if="dataResult.questionRandom != '' && dataResult.questionRandom != null">
-					<div class="col-12 p-4">
-						<h4>Câu {{ dataResult.questionRandom.number }} <span class="badge bg-warning text-dark"
-								v-if="dataResult.questionRandom.paralysis">Câu điểm liệt</span></h4>
-						<p>{{ dataResult.questionRandom.content }}</p>
-					</div>
-					<div class="col-12 px-4">
-						<div v-for="image in dataResult.questionRandom.listImage" :key="image.imageId">
-							<img alt="" :src="image.url">
-						</div>
-					</div>
-					<div class="col-3 p-3" v-for="(answer, index) in dataResult.questionRandom.listAnswers"
-						:key="answer.answerId">
-						<div v-if="answer.true" class=" d-grid gap-2">
-							<button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)"
-								:class="answered ? 'display-none' : ''"><span
-									class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
-							<button class="btn btn-success" type="button" :class="!answered ? 'display-none' : ''"><i
-									class="far fa-smile-beam"></i> Correct</button>
-						</div>
-						<div v-else class=" d-grid gap-2">
-							<button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)"><span
-									class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div v-else>
-				<div class="row mt-5">
-					<div class="col-12">
-						<h3 class="text-danger">Không có câu hỏi nào trong chương này !</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</th:block>
-	<th:block layout:fragment="script">
-		<script th:src="@{../js/learn.js}"></script>
-	</th:block>
-</body>
-
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Layout page</title>
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <!-- CSS Common -->
+        <link th:href="@{../assets/font-awesome/css/all.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-confirm.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.structure.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.theme.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/theme-color/default-theme.css}" rel="stylesheet">
+        <link th:href="@{../assets/css/style.css}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="bg-loading bg-light justify-content-center align-items-center" id="loading">
+            <div class="spinner-border custom-spinner text-primary">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <header class="border-bottom bg-light">
+            <div class="container-xxl">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 text-left d-flex justify-content-start py-3">
+                                <div class="me-4">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>tamduong633@gmail.com</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-phone"></i>
+                                    <span>(+84) 344 513 648</span>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end py-3">
+                                <div th:if="${#request.userPrincipal != null}">
+                                    <a th:href="@{/login}" class="text-dark">
+                                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                                    </a>
+                                </div>
+                                <div th:if="${#request.userPrincipal == null}">
+                                    <a th:href="@{/logout}" class="text-dark">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <nav class="navbar navbar-default navbar-expand-lg">
+                <div class="container-xxl">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" th:href="@{/}"><img th:src="@{../assets/img/logo.png}" height="76"></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                        <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+                            <li class="active nav-item"><a th:href="@{/}" class="nav-link px-3 text-secondary">Trang chủ</a></li>
+                            <li class="nav-item"><a th:href="@{/document}" class="nav-link px-3 text-secondary">Tài liệu</a></li>
+                            <li class="nav-item"><a th:href="@{/select-chapter}" class="nav-link px-3 text-secondary">Học tập</a></li>
+                            <li class="nav-item"><a th:href="@{/trial-exam}" class="nav-link px-3 text-secondary">Thi thử</a></li>
+                            <li class="nav-item"><a th:href="@{/register-exam}" class="nav-link px-3 text-secondary">Đăng ký thi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <section layout:fragment="content"></section>
+            <footer id="mu-footer">
+                <div class="mu-footer-bottom">
+                    <div class="container">
+                        <div class="mu-footer-bottom-area">
+                            <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        <!-- JS Common -->
+        <script th:src="@{../assets/js/jquery.min.js}"></script>
+        <script th:src="@{../assets/js/jquery.validate.min.js}"></script>
+        <script th:src="@{../assets/js/jquery-ui.min.js}"></script>
+        <script th:src="@{../assets/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{../assets/js/jquery-confirm.min.js}"></script>
+        <script th:src="@{../assets/js/moment-with-locales.js}"></script>
+        <script th:src="@{../assets/js/axios.min.js}"></script>
+        <script th:src="@{../assets/js/vuelidate.min.js}"></script>
+        <script th:src="@{../assets/js/validators.min.js}"></script>
+        <script th:src="@{../assets/js/vue.js}"></script>
+        <script th:src="@{../js/common.js}"></script>
+        <th:block layout:fragment="script"></th:block>
+    </body>
 </html>
