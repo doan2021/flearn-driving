@@ -63,7 +63,6 @@ public class AccountsController {
     @GetMapping(value = { "/view-profile" })
     public String viewProfile(Model model) {
         model.addAttribute("account", accountsServices.getAccountLogin());
-//        return "view-profile";
-        return "trial-exam";
+        return "view-profile";
     }
 }

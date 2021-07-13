@@ -50,4 +50,9 @@ public class ExamController {
     public @ResponseBody ResponeData registerExam(RegisterExamForm registerExamForm, Model model) {
         return examServices.registerExam(registerExamForm);
     }
+    
+    @GetMapping(value = { "/trial-exam" })
+    public String viewProfile(Model model) {
+        return "trial-exam";
+    }
 }
