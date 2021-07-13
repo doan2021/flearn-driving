@@ -1,73 +1,25 @@
-#card {
-  width: 320px;
-  display: block;
-  margin: auto;
+body {
   text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
-}
+} 
+h1 {
+      display: inline-block;
+      font: bold 4.5em/1.5 Bebas, sans-serif;
+      color: #5CA17C;
+      font-size: 40px;
+      text-transform: uppercase;
+       background-image: linear-gradient(to bottom, #26BDA6, #FF9F65, #DED37E, #26BDA6);
+      background-size: auto 250%;
+      transition: background-position 0.5s;
+        -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 200px;
+      background-position: 0 100%;
+ }
+ h1:hover {
+      background-position: 0 0;
+      cursor: pointer;
+ }
 
-#upper-side {
-  padding: 2em;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: block;
-  color: #fff;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-}
-
-#checkmark {
-  font-weight: lighter;
-  fill: #fff;
-  margin: -3.5em auto auto 20px;
-}
-
-#status {
-  font-weight: lighter;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1em;
-  margin-top: -.2em;
-  margin-bottom: 0;
-}
-
-#lower-side {
-  padding: 2em 2em 5em 2em;
-  background: #45a0de;
-  display: block;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
-#message {
-  margin-top: -.5em;
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-#contBtn {
-  position: relative;
-  top: 1.5em;
-  text-decoration: none;
-  background: #696969;
-  color: #fff;
-  margin: auto;
-  padding: .8em 3em;
-  -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
-  -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
-  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
-  border-radius: 25px;
-  -webkit-transition: all .4s ease;
-		-moz-transition: all .4s ease;
-		-o-transition: all .4s ease;
-		transition: all .4s ease;
-}
-
-#contBtn:hover {
-  -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
-  -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
-  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
-  -webkit-transition: all .4s ease;
-		-moz-transition: all .4s ease;
-		-o-transition: all .4s ease;
-		transition: all .4s ease;
+ .div1 {
+	height: 168px;
 }

@@ -17,7 +17,7 @@ import com.doanfpt.application.responsitories.AccountsRespository;
  *
  */
 @Component
-public class AppUserValidator implements Validator {
+public class AccountValidator implements Validator {
 
     @Autowired
     private AccountsRespository appUserRespository;

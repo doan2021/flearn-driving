@@ -43,29 +43,33 @@
 											<li class="grid-item" th:each="chapter : ${listChapter}">
 												<div class="card-header">
 													<div class="card-header-image">
-														<img role="presentation"  alt="" th:src="@{../assets/images/banner/logo-learn-car.png}">
+														<img role="presentation" alt=""
+															th:src="@{../assets/images/banner/logo-learn-car.png}">
 													</div>
 												</div>
-												<div class="card-content">
-													<p class="card-content-super-title mt-0" th:text="|Chương ${chapter.name}|"></p>
-													<p class="card-content-super-title has-margin-top-none"  th:text="|Nội dung : ${chapter.content}|"> </p>			
-                                                    <p class="card-content-super-title has-margin-top-none"  th:text="|Mô tả    : ${chapter.description}|"> </p>			
-													<a class="card-content-title"
-														href="">
-														<h3 class="font-size-m margin-none" >
-														</h3>
-													</a>
-													<ul class="card-content-metadata has-margin-top-small has-bullets">
-														<li	class="has-margin-bottom-none has-margin-bottom-extra-small-tablet">Phần 1</li>
-														<li	class="has-margin-bottom-none has-margin-bottom-extra-small-tablet">Phần 2</li>													
-														<li	class="has-margin-bottom-none has-margin-bottom-extra-small-tablet">Phần 3</li>																										
-														<div class="card-footer-item">
-															<a class="btn btn-primary" href="#" role="button">Start</a>
-														</div>												
-													</ul>
-												</div>												
-											</li>
-										</ul>
+												<div>
+													<div class="vertical-box">
+														<div class="_1dm5vsw"
+															style="border-radius: 0px; min-height: 112px; margin: 2px 2px 1.125rem; padding: 0px; box-shadow: rgba(49, 49, 49, 0.24) 0px 1px 4px; border: 1px solid rgb(234, 234, 234);">
+															<div class="card-content">
+																<p class="card-content-super-title mt-0"
+																	th:text="|Chương ${chapter.name}|"></p>
+																<p class="card-content-super-title has-margin-top-none"
+																	th:text="|Nội dung : ${chapter.content}|"> </p>
+																<p class="card-content-super-title has-margin-top-none"
+																	th:text="|Mô tả    : ${chapter.description}|"> </p>
+																<a class="card-content-title" href="">
+																	<h3 class="font-size-m margin-none"></h3>
+																</a>
+																<div class="card-footer-item">
+																	<a class="btn btn-primary"
+																		th:href="@{${'/list-question?chapterId='} + ${chapter.chapterId}}"
+																		role="button">Start</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
 									</div>
 								</div>
 							</div>
