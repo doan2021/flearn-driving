@@ -55,4 +55,9 @@ public class ExamController {
     public String viewProfile(Model model) {
         return "trial-exam";
     }
+    
+    @GetMapping(value = { "/select-trial-exam" })
+    public String selectTrialExam(Model model) {
+        return "select-trial-exam";
+    }
 }
