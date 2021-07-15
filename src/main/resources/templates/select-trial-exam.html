@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Chọn đề</title>
+	<link rel="stylesheet" th:href="@{../css/trial-exam.css}">
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<form class="form2" name="form2" method="POST">
+			<div class="form-main row ms-5 me-5">
+				<!-- ================= PHẦN CÂU HỎI =======================-->
+				<div class="col-md-4 col-sm-12 col-xs-12 mt-4">
+					<div class="shadow panel panel-default border">
+						<div class="panel-body m-2">
+							<div class="text-center" style="margin-bottom: 10px;">
+								<strong style="font-size: 18pt; color: blue;">600 CÂU HỎI THI BẰNG B2</strong>
+							</div>
+							<div class="text-center mt-2">
+								<img th:src="@{../images/b2.png}" height="170" width="310">
+							</div>
+						</div>
+					</div>
+					<div class="shadow panel panel-default border">
+						<div class="m-4">
+							<p style="font-size: 12pt;">18 Bộ Đề thi thử lý thuyết B2 trực tuyến xây dựng theo 600 câu
+								hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
+							<p class="mt-2" style="font-size: 12pt;">Hỗ trợ học viên thi bằng lái xe B2 online cấp tốc
+								dưới dạng đề luyện thi thử với tính chính xác tuyệt đối. Cải tiến và ứng dụng rộng rãi
+								đa nền tảng, phù hợp với tất cả các thiết bị máy tính, laptop hay điện thoại thông minh.
+							</p>
+							<p class="mt-2" style="font-size: 12pt;">Việc ôn tập giấy phép lái xe dựa trên phầm mềm thi
+								thử bộ đề 600 câu hỏi trắc nghiệm sát hạch ô tô B2 trở nên dễ dàng do việc tổng hợp đầy
+								đủ các bộ đề thi sát hạch GPLX Ô tô dành cho hạng B2 từng xuất hiện trong các kỳ thi do
+								Sở GTVT tổ chức.</p>
+							<p class="mt-2" style="font-size: 12pt;">Phần mềm thi thử bằng lái xe B2 600 câu sẽ giúp học
+								viên có thể sử dụng ở mọi nơi, mọi thời điểm vô cùng dễ dàng và thuận lợi!</p>
+							<p class="mt-2" style="font-size: 12pt;">Bộ đề thi lý thuyết sát hạch lái xe B2 600 câu hỏi
+								này là hoàn toàn miễn phí, áp dụng dành cho học viên học lái xe B2 trên toàn quốc.</p>
+						</div>
+					</div>
+				</div>
+				<!-- ================= PHẦN CÂU TRẢ LỜI =======================-->
+				<div class="col-md-8 col-sm-12 col-xs-12">
+					<div class="shadow panel panel-default border mt-4">
+						<div class="panel-body m-2">
+							<div style="margin-bottom: 10px;" class="text-center">
+								<strong style="font-size: 18pt; color: blue;">THI ĐI CHỜ CHI</strong>
+							</div>
+							<div class="row mt-3">
+								<p>
+									Trong 18 đề thi sát hạch lái xe B2 mỗi đề gồm 35 câu hỏi, mỗi câu hỏi chỉ có duy
+									nhất 1 đáp án đúng. Cấu trúc 600 câu hỏi sát hạch lái xe B2 có đáp án áp dụng vào
+									mỗi đề thi thi thử lý thuyết B2 này sẽ gồm: 1 câu hỏi phần khái niệm; 7 câu hỏi về
+									quy tắc giao thông; 1 câu hỏi nghiệp vụ vận tải; 1 câu về tốc độ khoảng cách; 1 câu
+									hỏi về văn hóa & đạo đức người lái xe; 2 câu hỏi về kỹ thuật lái xe; 1 câu hỏi về
+									cấu tạo sữa chữa; 10 câu hỏi biển báo; 10 câu hỏi sa hình kèm theo 1 câu hỏi điểm
+									liệt (tình huống gây mất an toàn giao thông nghiêm trọng).
+								</p>
+							</div>
+							<div class="mt-2">
+								<ul>
+									<li>Số câu cần đạt: <span class="text-danger" style="font-weight: bold;"> 32/35 câu trở lên là đậu.</span></li>
+									<li>Thời gian làm bài: <span class="text-danger" style="font-weight: bold;"> 22 phút.</span></li>
+									<li><span class="text-danger" style="font-weight: bold;">Đặc biệt: KHÔNG LÀM SAI CÂU ĐIỂM LIỆT (câu hỏi *)</span></li>
+								</ul>
+							</div>
+							<div class="mt-2">
+								<p>
+									<span class="text-danger" style="font-weight: bold;"> Lưu ý:</span> Bộ đề thi lý
+									thuyết lái xe B2 này được xây dựng dựa trên tài liệu 600 câu hỏi thi GPLX do Bộ GTVT
+									ban hành.
+								</p>
+								<p>
+									Nếu học thuộc hết 18 đề thi thử bằng lái xe B2 này đồng nghĩa với việc bạn sẽ nắm
+									chắc việc thi đậu lý thuyết 100% mà không cần phải lo lắng.
+								</p>
+								<p>
+									Bộ đề thi thử 600 câu hỏi lý thuyết B2 online này đang trong quá trình hoàn thiện
+									nên sẽ có lỗi phát sinh, vì thế nếu có bất cứ đóng góp nào. Các bạn đừng ngần ngại
+									để lại comment bên dưới nhé!
+								</p>
+							</div>
+							<div class="answer mt-5 text-center">
+								<section aria-label="CHỌN ĐÁP ÁN ĐÚNG" class="true-answer">
+									<div aria-hidden="true"><strong style="color: deepskyblue;">BÂY GIỜ THÌ CHỌN ĐỀ VÀ THI THỬ THÔI <i class="far fa-smile-wink"></i></strong></div>
+								</section>
+							</div>
+							<div class="shadow panel panel-default border m-2">
+								<div class="panel-body">
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 1</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 2</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 3</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 4</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 5</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 6</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 7</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 8</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 9</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 10</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 11</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 12</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 13</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 14</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 15</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 16</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 17</button>
+									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
+										value="de1">Đề 18</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</form>
+	</th:block>
+	<th:block layout:fragment="script">
+		<script th:src="@{../js/choose-trial-exam.js}"></script>
+	</th:block>
+</body>
+
+</html>
