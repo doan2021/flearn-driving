@@ -7,24 +7,26 @@
 <link rel="stylesheet" th:href="@{../css/view-profile.css}">
 </head>
 <body>
-	<div class="container-xxl my-3" layout:fragment="content">
-		<div class="profile-header">
-			<div class="profile-header-cover"></div>
-
-			<div class="profile-header-content">
-				<div class="profile-header-img">
-					<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-						alt="" />
-				</div>
-
-				<div class="profile-header-info">
-					<h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
-					<p class="m-b-sm">Quản trị viên</p>
-					<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
-				</div>
-			</div>
-		</div>
-
+    <th:block layout:fragment="content">
+        <section class="mu-page-breadcrumb p-0">
+        <div class="container-xxl">
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+            <div class="profile-header-content">
+                <div class="profile-header-img">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        alt="" />
+                </div>
+                <div class="profile-header-info">
+                    <h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
+                    <p class="m-b-sm">Quản trị viên</p>
+                    <a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+	<div class="container-xxl my-3" >
 		<div class="profile-container">
 			<div class="row row-space-20">
 				<div class="col-md-8">
@@ -130,6 +132,6 @@
 			</div>
 		</div>
 	</div>
-
+    </th:block>
 </body>
 </html>

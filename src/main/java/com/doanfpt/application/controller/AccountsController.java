@@ -65,4 +65,9 @@ public class AccountsController {
         model.addAttribute("account", accountsServices.getAccountLogin());
         return "view-profile";
     }
+    
+    @GetMapping(value = { "/register-success" })
+    public String registerSuccess(Model model) {
+        return "register-successful";
+    }
 }
