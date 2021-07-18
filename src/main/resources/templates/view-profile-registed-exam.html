@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>Hồ sơ - Kỳ thi đã đăng ký</title>
+<link rel="stylesheet" th:href="@{../css/view-profile.css}">
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<section class="mu-page-breadcrumb p-0">
+			<div class="container-xxl">
+	            <div class="profile-header">
+					<div class="profile-header-cover"></div>
+		
+					<div class="profile-header-content">
+						<div class="profile-header-img">
+							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
+						</div>
+		
+						<div class="profile-header-info">
+							<h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
+							<p class="m-b-sm">Quản trị viên</p>
+							<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
+						</div>
+					</div>
+				</div>
+	        </div>
+		</section>
+		<div class="container-xxl my-3" >
+			<div class="profile-container">
+				<div class="row row-space-20">
+					<div class="col-md-8">
+						<div class="tab-content p-0">
+							<div class="tab-pane active show" id="profile-about">
+								<div class="mt-4">
+									<ul class="nav nav-tabs">
+									  <li class="nav-item">
+									    <a class="nav-link" aria-current="page" th:href="@{/view-profile}">Thông tin cá nhân</a>
+									  </li>
+									  <li class="nav-item">
+									    <a class="nav-link active" th:href="@{/view-profile-regist-exam}">Kỳ thi đã đăng ký</a>
+									  </li>
+									  <li class="nav-item">
+									    <a class="nav-link" th:href="@{/view-profile-learning-progress}">Tiến độ học tập</a>
+									  </li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="mt-5">
+											<strong style="font-size: large;">Thông tin chi tiết</strong>
+										</div>
+										<table class="table mt-4">
+										  <thead>
+										    <tr class="text-center">
+										      <th scope="col">Số thứ tự</th>
+										      <th scope="col">Tên kỳ thi</th>
+										      <th scope="col">Mô tả</th>
+										      <th scope="col">Ngày thi chính thức</th>
+										    </tr>
+										  </thead>
+										  <tbody class="text-center">
+										    <tr>
+										      <th scope="row">1</th>
+										      <td>B2</td>
+										      <td>Thi bằng lái xe ô tô</td>
+										      <td>16/07/2021</td>
+										    </tr>
+										    <tr>
+										      <th scope="row">2</th>
+										      <td>Jacob</td>
+										      <td>Thornton</td>
+										      <td>@fat</td>
+										    </tr>
+										    <tr>
+										      <th scope="row">3</th>
+										      <td>Larry</td>
+										      <td>the Bird</td>
+										      <td>@twitter</td>
+										    </tr>
+										  </tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="col-md-4 hidden-xs hidden-sm">
+						<ul class="profile-info-list mt-4">
+							<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
+							<li>
+								<div class="field">Ngày tạo:</div>
+								<div class="value">05/06/2021</div>
+							</li>
+							<li>
+								<div class="field">Lịch sử thi:</div> <a href="#">Click here</a>
+							</li>
+							<li>
+								<div class="field">Thống kê hiệu suất thi thử:</div> <a href="#">Click
+									here</a>
+							</li>
+							<li>
+								<div class="field">Kiểm tra nhanh:</div> <a href="#">Click
+									here</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+</body>
+</html>

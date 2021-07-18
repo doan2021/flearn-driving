@@ -65,4 +65,16 @@ public class AccountsController {
         model.addAttribute("account", accountsServices.getAccountLogin());
         return "view-profile";
     }
+    
+    @GetMapping(value = { "/view-profile-registed-exam" })
+    public String viewProfileRegistedExam(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-registed-exam";
+    }
+    
+    @GetMapping(value = { "/view-profile-learning-progress" })
+    public String viewProfileLearningProgress(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-learning-progress";
+    }
 }
