@@ -1,0 +1,136 @@
+.warning-container {
+	border-radius: 8px;
+	background: #FFF4CE;
+	border: 1px solid #797673;
+	display: flex;
+}
+
+.warning-text {
+	font-size: 16px;
+	font-weight: 400;
+	color: #212121;
+}
+
+.warning-icon {
+	color: #797673;
+	padding: 8px 16px 4px 16px;
+	font-size: 18px;
+}
+
+.ms-Icon {
+	display: inline-block;
+	font-family: FabricMDL2Icons;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.bs-wizard>.bs-wizard-step>.bs-wizard-dot {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	display: block;
+	background: #fbe8aa;
+	top: 10px;
+	left: 46%;
+	border-radius: 50%;
+}
+
+.bs-wizard>.bs-wizard-step>.bs-wizard-dot:after {
+	content: ' ';
+	width: 14px;
+	height: 14px;
+	background: #fbbd19;
+	border-radius: 50px;
+	position: absolute;
+	top: 8px;
+	left: 8px;
+}
+
+.bs-wizard>.bs-wizard-step {
+	padding: 0;
+	position: relative;
+}
+
+.progress {
+	height: 20px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 2px rgb(0 0 0/ 10%);
+	box-shadow: inset 0 1px 2px rgb(0 0 0/ 10%);
+}
+
+.bs-wizard>.bs-wizard-step>.progress {
+	position: relative;
+	border-radius: 0;
+	height: 8px;
+	box-shadow: none;
+	margin: 22px 0;
+	left: 46%;
+}
+
+.bs-wizard>.bs-wizard-step.complete>.progress>.progress-bar {
+	width: 100%;
+}
+
+.bs-wizard>.bs-wizard-step>.progress>.progress-bar {
+	width: 0;
+	box-shadow: none;
+	background: #fbe8aa;
+}
+
+.progress-bar {
+	float: left;
+	width: 0;
+	height: 100%;
+	font-size: 12px;
+	line-height: 20px;
+	color: #fff;
+	text-align: center;
+	background-color: #337ab7;
+	-webkit-box-shadow: inset 0 -1px 0 rgb(0 0 0/ 15%);
+	box-shadow: inset 0 -1px 0 rgb(0 0 0/ 15%);
+	-webkit-transition: width .6s ease;
+	-o-transition: width .6s ease;
+	transition: width .6s ease;
+}
+
+.bs-wizard>.bs-wizard-step>.progress>.progress-bar {
+	width: 0;
+	box-shadow: none;
+	background: #fbe8aa;
+}
+
+.bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot:after, .gototop {
+	opacity: 0;
+}
+
+.bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot {
+	background-color: #f5f5f5;
+}
+
+.bs-wizard>.bs-wizard-step.disabled a.bs-wizard-dot {
+	pointer-events: none;
+}
+
+.bs-wizard>.bs-wizard-step:last-child>.progress {
+	width: 0;
+}
+
+.bs-wizard>.bs-wizard-step.active>.bs-wizard-info p {
+	font-weight: 600;
+}
+
+.content-portrait {
+	height: 292px;
+	width: 100%;
+}
+
+.highlight {
+	content: '';
+	position: absolute;
+	width: 170px;
+	height: 230px;
+	border: 5px dashed lime;
+	border-radius: 50%;
+}

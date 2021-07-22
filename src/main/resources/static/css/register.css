@@ -9,3 +9,17 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.lbl-font {
+    font-weight: 600;
+    font-size: 16px;
+    color: #262626;
+    font-family: "Segoe UI";
+    padding-top: 12px;
+}
+.validationMessage {
+    color: #A80000;
+    font-size: 16px;
+    font-style: italic;
+    font-family: "Segoe UI";
+}

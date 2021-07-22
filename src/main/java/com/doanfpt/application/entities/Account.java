@@ -42,8 +42,14 @@ public class Account {
     @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "middle_name")
+    private String middleName;
+
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "birthday")
+    private Date birthDay;
 
     @Column(name = "gender")
     private Integer gender;
@@ -51,9 +57,15 @@ public class Account {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "number_phone", length = 10)
+    private String numberPhone;
+
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
@@ -86,7 +98,11 @@ public class Account {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Image> listImages;
+    private List<Document> listImages;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<DrivingLicenseInfo> listDrivingLicenseInfo;
 
     public Long getAccountId() {
         return accountId;
@@ -176,11 +192,11 @@ public class Account {
         this.listStatusLearn = listStatusLearn;
     }
 
-    public List<Image> getListImages() {
+    public List<Document> getListImages() {
         return listImages;
     }
 
-    public void setListImages(List<Image> listImages) {
+    public void setListImages(List<Document> listImages) {
         this.listImages = listImages;
     }
 
@@ -230,6 +246,54 @@ public class Account {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public String getNumberPhone() {
+        return numberPhone;
+    }
+
+    public void setNumberPhone(String numberPhone) {
+        this.numberPhone = numberPhone;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<DrivingLicenseInfo> getListDrivingLicenseProfiles() {
+        return listDrivingLicenseInfo;
+    }
+
+    public void setListDrivingLicenseProfiles(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
+        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
+    }
+
+    public List<DrivingLicenseInfo> getListDrivingLicenseInfo() {
+        return listDrivingLicenseInfo;
+    }
+
+    public void setListDrivingLicenseInfo(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
+        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
     }
 
 }

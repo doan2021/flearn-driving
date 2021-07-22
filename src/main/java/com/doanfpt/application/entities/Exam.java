@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,15 +31,18 @@ public class Exam {
     @Column(name = "is_trial")
     public boolean isTrial;
 
+    @Column(name = "date_regis_exam_end")
+    private Date dateRegisExamEnd;
+
     @Column(name = "date_exam")
-    private Date date_exam;
-    
+    private Date dateExam;
+
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
-    
+
     @Column(name = "create_by")
     private String createBy;
 
@@ -53,6 +58,14 @@ public class Exam {
     @JsonManagedReference
     @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
     private List<ExamResult> listExamResult;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
+    private List<DrivingLicenseInfo> listDrivingLicenseInfo;
+
+    @ManyToOne
+    @JoinColumn(name = "driving_license_id")
+    private DrivingLicense drivingLicense;
 
     public Long getExamId() {
         return examId;
@@ -70,14 +83,6 @@ public class Exam {
         this.name = name;
     }
 
-    public boolean isDelete() {
-        return isDelete;
-    }
-
-    public void setDelete(boolean isDelete) {
-        this.isDelete = isDelete;
-    }
-
     public boolean isTrial() {
         return isTrial;
     }
@@ -86,12 +91,68 @@ public class Exam {
         this.isTrial = isTrial;
     }
 
-    public Date getDate_exam() {
-        return date_exam;
+    public Date getDateRegisExamEnd() {
+        return dateRegisExamEnd;
     }
 
-    public void setDate_exam(Date date_exam) {
-        this.date_exam = date_exam;
+    public void setDateRegisExamEnd(Date dateRegisExamEnd) {
+        this.dateRegisExamEnd = dateRegisExamEnd;
+    }
+
+    public Date getDateExam() {
+        return dateExam;
+    }
+
+    public void setDateExam(Date dateExam) {
+        this.dateExam = dateExam;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
     public List<ExamResult> getListExamResult() {
@@ -102,4 +163,19 @@ public class Exam {
         this.listExamResult = listExamResult;
     }
 
+    public List<DrivingLicenseInfo> getListDrivingLicenseInfo() {
+        return listDrivingLicenseInfo;
+    }
+
+    public void setListDrivingLicenseInfo(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
+        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
+    }
+
+    public DrivingLicense getDrivingLicense() {
+        return drivingLicense;
+    }
+
+    public void setDrivingLicense(DrivingLicense drivingLicense) {
+        this.drivingLicense = drivingLicense;
+    }
 }

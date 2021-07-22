@@ -3,130 +3,147 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout}">
 <head>
-<title>View profile</title>
+<title>Hồ sơ - Thông tin cá nhân</title>
 <link rel="stylesheet" th:href="@{../css/view-profile.css}">
 </head>
 <body>
-	<div class="container-xxl my-3" layout:fragment="content">
-		<div class="profile-header">
-			<div class="profile-header-cover"></div>
-
-			<div class="profile-header-content">
-				<div class="profile-header-img">
-					<img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-						alt="" />
-				</div>
-
-				<div class="profile-header-info">
-					<h4 class="m-t-sm">[[${account.firstName}]]
-						[[${account.lastName}]]</h4>
-					<p class="m-b-sm">Quản trị viên</p>
-					<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="profile-container">
-			<div class="row row-space-20">
-				<div class="col-md-8">
-					<div class="tab-content p-0">
-						<div class="tab-pane active show" id="profile-about">
-							<table class="table table-profile">
-								<thead>
-									<tr>
-										<th colspan="2">THÔNG TIN CƠ BẢN</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="field">Tên</td>
-										<td class="value">
-											<div class="m-b-5">
-												<b>[[${account.firstName}]]</b>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="field">Họ</td>
-										<td class="value">
-											<div class="m-b-5">
-												<b>[[${account.lastName}]]</b>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="field">Tên đăng nhập</td>
-										<td class="value">[[${account.userName}]]</td>
-									</tr>
-									<tr>
-										<td class="field">Giới tính</td>
-										<td class="value" th:if="${account.gender} == null">Chưa
-											cập nhật</td>
-										<td class="value" th:if="${account.gender} == 1">Nam</td>
-										<td class="value" th:if="${account.gender} == 0">Nữ</td>
-									</tr>
-								</tbody>
-							</table>
-							<table class="table table-profile">
-								<thead>
-									<tr>
-										<th colspan="2">ĐỊA CHỈ LIÊN LẠC</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="field">Số điện thoại</td>
-										<td class="value">0931920700
-									</tr>
-									<tr>
-										<td class="field">Email</td>
-										<td class="value">[[${account.email}]]
-									</tr>
-									<tr>
-										<td class="field">Địa chỉ</td>
-										<td class="value">90 Bùi Lâm
-									</tr>
-									<tr>
-										<td class="field">Phường</td>
-										<td class="value">Nại Hiên Đông</td>
-									</tr>
-									<tr>
-										<td class="field">Quận</td>
-										<td class="value">Sơn Trà</td>
-									</tr>
-									<tr>
-										<td class="field">Thành phố</td>
-										<td class="value">Đà Nẵng</td>
-									</tr>
-								</tbody>
-							</table>
+	<th:block layout:fragment="content">
+		 <section class="mu-page-breadcrumb p-0">
+	        <div class="container-xxl">
+	            <div class="profile-header">
+					<div class="profile-header-cover"></div>
+		
+					<div class="profile-header-content">
+						<div class="profile-header-img">
+							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
+						</div>
+		
+						<div class="profile-header-info">
+							<h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
+							<p class="m-b-sm">Quản trị viên</p>
+							<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-md-4 hidden-xs hidden-sm">
-					<ul class="profile-info-list">
-						<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
-						<li>
-							<div class="field">Ngày tạo:</div>
-							<div class="value">05/06/2021</div>
-						</li>
-						<li>
-							<div class="field">Lịch sử thi:</div> <a href="#">Click here</a>
-						</li>
-						<li>
-							<div class="field">Thống kê hiệu suất thi thử:</div> <a href="#">Click
-								here</a>
-						</li>
-						<li>
-							<div class="field">Kiểm tra nhanh:</div> <a href="#">Click
-								here</a>
-						</li>
-					</ul>
+	        </div>
+	    </section>
+		<div class="container-xxl my-3" >
+			<div class="profile-container">
+				<div class="row row-space-20">
+					<div class="col-md-8">
+						<div class="tab-content p-0">
+							<div class="tab-pane active show" id="profile-about">
+								<div class="mt-4">
+									<ul class="nav nav-tabs">
+									  <li class="nav-item">
+									    <a class="nav-link active" aria-current="page" th:href="@{/view-profile}">Thông tin cá nhân</a>
+									  </li>
+									  <li class="nav-item">
+									    <a class="nav-link" th:href="@{/view-profile-registed-exam}">Kỳ thi đã đăng ký</a>
+									  </li>
+									  <li class="nav-item">
+									    <a class="nav-link" th:href="@{/view-profile-learning-progress}">Tiến độ học tập</a>
+									  </li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="mt-5">
+											<strong style="font-size: large;">Thông tin cơ bản</strong>
+										</div>
+										<table class="table table-profile mt-0">
+											<thead>
+												<tr>
+													<th colspan="2">
+														<span class="badge badge-pill badge-warning badge-lg">Người dùng</span>
+														<span class="badge badge-pill badge-success badge-lg">Quản trị viên</span>
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="field">Họ tên</td>
+													<td class="value">
+														<div class="m-b-5">
+															<b>[[${account.lastName}]] [[${account.firstName}]] </b>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="field">Tên đăng nhập</td>
+													<td class="value">[[${account.userName}]]</td>
+												</tr>
+												<tr>
+													<td class="field">Giới tính</td>
+													<td class="value" th:if="${account.gender} == null">Chưa
+														cập nhật</td>
+													<td class="value" th:if="${account.gender} == 1">Nam</td>
+													<td class="value" th:if="${account.gender} == 0">Nữ</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="mt-5">
+											<strong style="font-size: large;">Địa chỉ liên lạc</strong>
+										</div>
+										<table class="table table-profile">
+											<tr>
+												<td class="field">Số điện thoại</td>
+												<td class="value">0931920700
+											</tr>
+											<tr>
+												<td class="field">Email</td>
+												<td class="value">[[${account.email}]]
+											</tr>
+											<tr>
+												<td class="field">Địa chỉ</td>
+												<td class="value">90 Bùi Lâm
+											</tr>
+											<tr>
+												<td class="field">Phường</td>
+												<td class="value">Nại Hiên Đông</td>
+											</tr>
+											<tr>
+												<td class="field">Quận</td>
+												<td class="value">Sơn Trà</td>
+											</tr>
+											<tr>
+												<td class="field">Thành phố</td>
+												<td class="value">Đà Nẵng</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="col-md-4 hidden-xs hidden-sm">
+						<ul class="profile-info-list mt-4">
+							<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
+							<li>
+								<div class="field">Ngày tạo:</div>
+								<div class="value">05/06/2021</div>
+							</li>
+							<li>
+								<div class="field">Lịch sử thi:</div> <a href="#">Click here</a>
+							</li>
+							<li>
+								<div class="field">Thống kê hiệu suất thi thử:</div> <a href="#">Click
+									here</a>
+							</li>
+							<li>
+								<div class="field">Kiểm tra nhanh:</div> <a href="#">Click
+									here</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</th:block>
 </body>
 </html>

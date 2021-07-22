@@ -1,187 +1,102 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>Layout page</title>
-<link href='https://fonts.googleapis.com/css?family=Be Vietnam' rel='stylesheet'>
-        <link rel="icon" type="image/ico" th:href="@{../image/favicon.ico}"/>
-        <!--     Fonts and icons     -->
-        <link th:href="@{../font-awesome/css/all.min.css}" rel="stylesheet" />
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <!-- CSS Common -->
-        <link th:href="@{../bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
-        <link th:href="@{../css/jquery-confirm.min.css}" rel="stylesheet" />
-        <link th:href="@{../css/jquery-ui.min.css}" rel="stylesheet" />
-        <link th:href="@{../css/jquery-ui.structure.min.css}" rel="stylesheet" />
-        <link th:href="@{../css/jquery-ui.theme.min.css}" rel="stylesheet" />
-        <link th:href="@{../css/common.css}" rel="stylesheet" />
-        <!-- JS Common -->
-        <script th:src="@{../js/jquery.min.js}"></script>
-        <script th:src="@{../js/jquery.validate.min.js}"></script>
-        <script th:src="@{../js/jquery-ui.min.js}"></script>
-        <script th:src="@{../bootstrap/js/bootstrap.min.js}"></script>
-        <script th:src="@{../js/jquery-confirm.min.js}"></script>
-        <script th:src="@{../js/axios.min.js}"></script>
-        <script th:src="@{../js/vue.js}"></script>
-        <script th:src="@{../js/common.js}"></script>
+        <link th:href="@{../assets/font-awesome/css/all.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-confirm.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.structure.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/jquery-ui.theme.min.css}" rel="stylesheet" />
+        <link th:href="@{../assets/css/theme-color/default-theme.css}" rel="stylesheet">
+        <link th:href="@{../assets/css/style.css}" rel="stylesheet">
     </head>
-    <body class="bg-white">
+    <body>
         <div class="bg-loading bg-light justify-content-center align-items-center" id="loading">
             <div class="spinner-border custom-spinner text-primary">
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-dark shadow py-3 fixed-top bd-transparent border-bottom" id="navbar">
+        <header class="border-bottom bg-light">
             <div class="container-xxl">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse text-center" id="navbarCollapse">
-                    <a th:href="@{/}" class="banner">
-                        <img alt="" th:src="@{../assets/images/banner/logo-learn-car.png}" style="width:150px">
-                    </a>
-                    <ul class="navbar-nav ms-md-auto">
-                        <li class="nav-item col-6 col-md-auto px-2" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
-                            <a class="nav-link p-2" th:href="@{/create-exam}">Thi thử</a>
-                        </li>
-                        <li class="nav-item col-6 col-md-auto px-2" sec:authorize="hasRole('ROLE_USER')">
-                            <a class="nav-link p-2" th:href="@{/select-chapter}">Học tập</a>
-                        </li>
-                        <li class="nav-item col-6 col-md-auto px-2">
-                            <a class="nav-link p-2" th:href="@{/view-documents}">Tài liệu</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav flex-row flex-wrap" th:if="${#request.userPrincipal == null}">
-                        <li class="nav-item col-6 col-md-auto dropdown">
-                            <div class="nav-link p-2">
-                                <a class="btn btn-trans rounded-pill" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i></a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 text-left d-flex justify-content-start py-3">
+                                <div class="me-4">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>pass-do-an@gmail.com</span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-phone"></i>
+                                    <span>(+84) 344 513 648</span>
+                                </div>
                             </div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav flex-row flex-wrap" th:if="${#request.userPrincipal != null}">
-                        <li class="nav-link p-2 dropdown">
-                            <button class="btn btn-trans rounded-pill"  data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></button>
-                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                                <li>
-                                    <div class="dropdown-item col-12">
-                                        <img th:src="@{../image/no_image_user_icon.png}" class="w-50 rounded-pill mr-2"/>
-                                        <span th:utext="${#authentication.principal.fullName}"></span>
-                                    </div>
-                                </li>
-                                <li><label class="dropdown-item border-bottom"></label></li>
-                                <li><a class="dropdown-item" type="button" th:href="@{/view-profile}">View profile</a></li>
-                                <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                            <div class="col-6 d-flex justify-content-end py-3">
+                                <div th:if="${#request.userPrincipal != null}">
+                                    <a th:href="@{/login}" class="text-dark">
+                                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                                    </a>
+                                </div>
+                                <div th:if="${#request.userPrincipal == null}">
+                                    <a th:href="@{/logout}" class="text-dark">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <section layout:fragment="content"></section>
-        <footer class="text-center text-lg-start text-muted" style="background-color: #efefef;">
-        <section class="p-4 border-bottom border-top">
-            <div class="container-xxl d-flex justify-content-between">
-                <div class="me-5 d-none d-lg-block">
-                    <span>Hãy liên hệ với chúng tôi qua:</span>
-                </div>
-                <div class="icon-social">
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="" class="text-reset">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
+        </header>
         <section>
-          <div class="container-xxl text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-              <!-- Grid column -->
-              <div class="col-3 mb-4">
-                <!-- Content -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  <i class="fas fa-gem me-3"></i>Learn Car
-                </h6>
-                <p>
-                  Here you can use rows and columns to organize your footer content. Lorem ipsum
-                  dolor sit amet, consectetur adipisicing elit.
-                </p>
-              </div>
-              <div class="col-3 ps-5 mb-4">
-                <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  Products
-                </h6>
-                <p>
-                  <a href="#!" class="text-reset">Angular</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">React</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Vue</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Laravel</a>
-                </p>
-              </div>
-              <!-- Grid column -->
-        
-              <!-- Grid column -->
-              <div class="col-3 ps-5">
-                <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  Useful links
-                </h6>
-                <p>
-                  <a href="#!" class="text-reset">Pricing</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Settings</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Orders</a>
-                </p>
-                <p>
-                  <a href="#!" class="text-reset">Help</a>
-                </p>
-              </div>
-              <div class="col-3 ps-5 mb-4">
-                <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">
-                  Contact
-                </h6>
-                <p><i class="fas fa-home me-3"></i>24 Phạm Thế Hiển, Đà Nẵng</p>
-                <p>
-                  <i class="fas fa-envelope me-3"></i>
-                  Onthibanglaib2@gmail.com
-                </p>
-                <p><i class="fas fa-phone me-3"></i> + 0236 3456 789</p>
-                <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-              </div>
-              <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-          </div>
+            <nav class="navbar navbar-default navbar-expand-lg">
+                <div class="container-xxl">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" th:href="@{/}"><img th:src="@{../assets/img/logo.png}" height="76"></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                        <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+                            <li class="active nav-item"><a th:href="@{/}" class="nav-link px-3 text-secondary">Trang chủ</a></li>
+                            <li class="nav-item"><a th:href="@{/document}" class="nav-link px-3 text-secondary">Tài liệu</a></li>
+                            <li class="nav-item"><a th:href="@{/select-chapter}" class="nav-link px-3 text-secondary">Học tập</a></li>
+                            <li class="nav-item"><a th:href="@{/select-trial-exam}" class="nav-link px-3 text-secondary">Thi thử</a></li>
+                            <li class="nav-item"><a th:href="@{/register-exam}" class="nav-link px-3 text-secondary">Đăng ký thi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </section>
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                <span>© 2021 Copyright:</span>
-                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Onthibanglaib2.com</a>
-            </div>
-        </footer>
+        <section layout:fragment="content"></section>
+            <footer id="mu-footer">
+                <div class="mu-footer-bottom">
+                    <div class="container">
+                        <div class="mu-footer-bottom-area">
+                            <p>&copy; All Right Reserved. Designed by <a href="http://www.markups.io/" rel="nofollow">MarkUps.io</a></p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        <!-- JS Common -->
+        <script th:src="@{../assets/js/jquery.min.js}"></script>
+        <script th:src="@{../assets/js/jquery.validate.min.js}"></script>
+        <script th:src="@{../assets/js/jquery-ui.min.js}"></script>
+        <script th:src="@{../assets/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{../assets/js/jquery-confirm.min.js}"></script>
+        <script th:src="@{../assets/js/moment-with-locales.js}"></script>
+        <script th:src="@{../assets/js/axios.min.js}"></script>
+        <script th:src="@{../assets/js/vuelidate.min.js}"></script>
+        <script th:src="@{../assets/js/validators.min.js}"></script>
+        <script th:src="@{../assets/js/vue.js}"></script>
+        <script th:src="@{../js/common.js}"></script>
+        <th:block layout:fragment="script"></th:block>
     </body>
 </html>

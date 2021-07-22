@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>Login</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" th:href="@{../css/register-successful.css}" />
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<section id="mu-error">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="div1">
+							<h1>Đăng ký thành công!</h1>
+						</div>
+						<div class="div2">
+							<a class="mu-post-btn" th:href="@{/login}">Đăng nhập</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>

@@ -1,23 +1,42 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-<head>
-     <!-- Title -->
-     <title>Sorry, This Page Can't Be Accessed</title>
-     <meta charset="utf-8" />
-     <link rel="stylesheet" type="text/css" th:href="@{../css/403error.css}"/>
-</head>
-<body>
-    <div class="container-xxl" layout:fragment="content">
-          <div class="row mt-5">
-               <div class="col-md-2 text-center">
-                    <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 403</p>
-               </div>
-               <div class="col-md-10">
-                    <h3>OPPSSS!!!! Sorry...</h3>
-                    <p>Sorry, your access is refused due to security reasons of our server and also our sensitive data.<br/>Please go back to the previous page to continue browsing.</p>
-                    <a class="btn btn-danger" th:href="@{/}">Go back</a>
-               </div>
-          </div>
-     </div>
-</body>
+    <head>
+         <!-- Title -->
+         <title>Sorry, This Page Can't Be Accessed</title>
+         <meta charset="utf-8" />
+         <link rel="stylesheet" type="text/css" th:href="@{../css/403error.css}"/>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <section class="mu-page-breadcrumb">
+                <div class="container-xxl">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mu-page-breadcrumb-area">
+                                <h2>404</h2>
+                                <ol class="breadcrumb w-100 justify-content-center">
+                                    <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+                                    <li class="active breadcrumb-item">404</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="mu-error">
+                <div class="container">
+                  <div class="row">
+                   <div class="col-md-12">
+                      <div class="mu-error-area">
+                        <p>Oops! The page you requested was not found!</p>
+                        <span>The page you are looking for is not available or has been removed or changed.</span>
+                        <h2>403</h2>
+                        <a class="mu-post-btn" href="index.html">GO TO HOME</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+         </div>
+    </body>
 </html>

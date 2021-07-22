@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+	<meta charset="utf-8" />
+	<title>Tai Lieu</title>
+	<link rel="stylesheet" th:href="@{../css/trial-exam.css}">
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<form class="form2" name="form2" method="POST">
+			<div class="form-main row ms-5 me-5">
+				<!-- ================= PHẦN CÂU HỎI =======================-->
+				<div class="col-md-4 col-sm-12 col-xs-12 mt-4">
+					<div class="shadow panel panel-default border">
+						<div class="panel-body">
+							<div style="margin-bottom: 10px;">
+								<strong style="font-size: 14pt; color: blue;">Câu hỏi | Đề số 1</strong>
+							</div>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">1
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">2
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">3
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">4
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">5
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">6
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">7
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">8
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">9
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">10
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">11
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">12
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">13
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">14
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">15
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">16
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">17
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">18
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">19
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">20
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">21
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">22
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">23
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">24
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">25
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">26
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">27
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">28
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">29
+							</label>
+							<label class="btn btn-outline-dark btn-cauhoi clickcauhoi border active">
+								<input type="radio">30
+							</label>
+						</div>
+					</div>
+					<div class="shadow panel panel-default border">
+						<div class="text-center">
+							<strong style="font-size: 12pt; color: blue;">Thời gian còn lại:</strong>
+						</div>
+						<div class="text-center">
+							<strong style="font-size: 15pt; color: red;">10:00</strong>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="text-center">
+							<input class="btn btn-primary" type="submit" name="nopbai" id="nopbai" value="NỘP BÀI THI">
+						</div>
+					</div>
+				</div>
+				<!-- ================= PHẦN CÂU TRẢ LỜI =======================-->
+				<div class="col-md-8 col-sm-12 col-xs-12">
+					<div class="shadow panel panel-default border mt-4">
+						<div class="panel-body">
+							<div style="margin-bottom: 10px;">
+								<strong style="font-size: 14pt; color: blue;">Câu hỏi 1</strong>
+							</div>
+							<div class="row mt-3">
+								<b>Xe nào dừng đúng theo quy tắc giao thông?</b>
+							</div>
+							<div class="row mt-3">
+								<img src="https://thibanglaixeonline.com/imagea2/592.jpg">
+							</div>
+							<div class="answer mt-4">
+								<section aria-label="CHỌN ĐÁP ÁN ĐÚNG" class="true-answer">
+									<div aria-hidden="true"><strong>CHỌN ĐÁP ÁN ĐÚNG</strong></div>
+								</section>
+							</div>
+							<div class="panel-body">
+								<div class="form-answer row rounded mt-3">
+									<div class="form-answer-first col-12">
+										<div aria-hidden="true">
+											<div class="one" style="background-color: #3B4747; color: white;">1</div>
+										</div>
+										<div aria-hidden="true" class="detail-answer">
+											<div class="detail-answer-inside">
+												<div class="answer-inside">Xe con</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-answer row rounded mt-3">
+									<div class="form-answer-first col-12">
+										<div aria-hidden="true">
+											<div class="one" style="background-color: #3B4747; color: white;">2</div>
+										</div>
+										<div aria-hidden="true" class="detail-answer">
+											<div class="detail-answer-inside">
+												<div class="answer-inside">Xe mô tô</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-answer row rounded mt-3">
+									<div class="form-answer-first col-12">
+										<div aria-hidden="true">
+											<div class="one" style="background-color: #3B4747; color: white;">2</div>
+										</div>
+										<div aria-hidden="true" class="detail-answer">
+											<div class="detail-answer-inside">
+												<div class="answer-inside">Cả 2 xe đều đúng</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<ul class="pager mt-4">
+										<li class="previous cautruoc">
+											<a href="#">Câu trước</a>
+										</li>
+										<li class="next causau">
+											<a href="#">Câu tiếp theo</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</th:block>
+	<th:block layout:fragment="script">
+		<script th:src="@{../js/trial-exam.js}"></script>
+	</th:block>
+</body>
+
+</html>

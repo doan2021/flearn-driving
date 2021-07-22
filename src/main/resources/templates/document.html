@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Tai Lieu</title>
+	<link rel="stylesheet" th:href="@{../css/document.css}">
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<div class="bg-primary header-page d-flex align-items-center">
+			<div class="container-xxl">
+				<div class="row">
+					<div class="col-12 py-5">
+						<span class="display-5 pb-3 d-inline-block text-light">Tài liệu
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb text-light">
+									<li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
+									<li class="breadcrumb-item">Chọn chương</li>
+								</ol>
+							</nav>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-xxl pt-3 pb-5">
+			<div class="row mt-3">
+				<div class="col-12 mt-3 text-center">
+					<h1 class="display-5 pb-2 title-page d-inline-block fs-2">Toàn bộ chương</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="has-background-alternating-grey-reversed">
+						<div class="modular-content-container">
+							<div class="section is-small is-uniform has-padding-top-large has-padding-top-small-tablet">
+								<div class="tabs-container has-padding-bottom-large">
+									<div class="has-padding-bottom-none">
+										<ul id="learning-paths-list" class="grid is-horizontal has-margin-left-none">
+											<li class="grid-item" th:each="chapter : ${listChapter}">
+												<div class="card-header">
+													<div class="card-header-image">
+														<img role="presentation" alt=""
+															th:src="@{../assets/images/banner/logo-learn-car.png}">
+													</div>
+												</div>
+												<div>
+													<div class="vertical-box">
+														<div class="_1dm5vsw"
+															style="border-radius: 0px; min-height: 112px; margin: 2px 2px 1.125rem; padding: 0px; box-shadow: rgba(49, 49, 49, 0.24) 0px 1px 4px; border: 1px solid rgb(234, 234, 234);">
+															<div class="card-content">
+																<p class="card-content-super-title mt-0"
+																	th:text="|Chương ${chapter.name}|"></p>
+																<p class="card-content-super-title has-margin-top-none"
+																	th:text="|Nội dung : ${chapter.content}|"> </p>
+																<p class="card-content-super-title has-margin-top-none"
+																	th:text="|Mô tả    : ${chapter.description}|"> </p>
+																<a class="card-content-title" href="">
+																	<h3 class="font-size-m margin-none"></h3>
+																</a>
+																<div class="card-footer-item">
+																	<a class="btn btn-primary"
+																		th:href="@{${'/list-question?chapterId='} + ${chapter.chapterId}}"
+																		role="button">Start</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+</body>
+
+</html>
