@@ -3,13 +3,20 @@
 }
 
 .form-check-input:checked {
-	background-color: forestgreen;
+	background-color: #fbceb5;
+	border-color: #fbceb5;
 }
 
+.form-check-input:focus {
+	border-color: #fbceb5;
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgb(251 206 181/ 20%);
+}
 
 .bg-login {
 	height: 100vh;
-	background-color: cadetblue;
+	background-image: linear-gradient(to bottom, rgb(0 0 0/ 0%) 0%,
+		rgb(0 0 0/ 51%) 100%), url(../images/bg0.jpg);
 }
 
 .heading-section {
@@ -22,6 +29,10 @@
 	color: rgba(255, 255, 255, 0.9);
 }
 
+.login-wrap h3 {
+	font-weight: 300;
+	color: #fff;
+}
 
 .btn-google {
 	width: 245px;
@@ -30,7 +41,7 @@
 .btn-google:hover {
 	background: #DC2A2D !important;
 	color: white;
-
+	border-color: #DC2A2D;
 }
 
 .btn-register {
@@ -41,10 +52,11 @@
 .btn-register:hover {
 	background: #FF4500 !important;
 	color: white;
-	}
+	border-color: #FF4500;
+}
 
 .btn-login {
-	background-color: #fbceb5;
+	background-color: goldenrod;
 }
 
 .btn-login:hover {
@@ -75,7 +87,7 @@
 	height: 50px;
 	color: #E0FFFF !important;
 	border: 1px solid transparent;
-	background: rgba(255, 255, 255, 0.2);
+	background: white;
 	-webkit-transition: 0.3s;
 	-o-transition: 0.3s;
 	transition: 0.3s;
@@ -88,23 +100,13 @@
 }
 
 .bg-image{
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../image/background-login.jpg) no-repeat center center fixed;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(../images/background-login.jpg) no-repeat center center fixed;
 }
 
 .form-control:hover, .form-control:focus {
-	background: transparent;
+	/*background: transparent;*/
 	outline: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border-color: rgba(255, 255, 255, 0.4);
 }
-.heading-section{
-	margin-top: 7%;
-}
-.d-flex{
-	margin-top: 20px;
-}
-.btn-info{
-	width: 180px;
-}
-
