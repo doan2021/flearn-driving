@@ -3,20 +3,13 @@
 }
 
 .form-check-input:checked {
-	background-color: #fbceb5;
-	border-color: #fbceb5;
+	background-color: forestgreen;
 }
 
-.form-check-input:focus {
-	border-color: #fbceb5;
-	outline: 0;
-	box-shadow: 0 0 0 0.25rem rgb(251 206 181/ 20%);
-}
 
 .bg-login {
 	height: 100vh;
-	background-image: linear-gradient(to bottom, rgb(0 0 0/ 0%) 0%,
-		rgb(0 0 0/ 51%) 100%), url(../image/bg.jpg);
+	background-color: cadetblue;
 }
 
 .heading-section {
@@ -29,10 +22,6 @@
 	color: rgba(255, 255, 255, 0.9);
 }
 
-.login-wrap h3 {
-	font-weight: 300;
-	color: #fff;
-}
 
 .btn-google {
 	width: 245px;
@@ -41,7 +30,7 @@
 .btn-google:hover {
 	background: #DC2A2D !important;
 	color: white;
-	border-color: #DC2A2D;
+
 }
 
 .btn-register {
@@ -52,8 +41,7 @@
 .btn-register:hover {
 	background: #FF4500 !important;
 	color: white;
-	border-color: #FF4500;
-}
+	}
 
 .btn-login {
 	background-color: #fbceb5;
@@ -110,3 +98,13 @@
 	box-shadow: none;
 	border-color: rgba(255, 255, 255, 0.4);
 }
+.heading-section{
+	margin-top: 7%;
+}
+.d-flex{
+	margin-top: 20px;
+}
+.btn-info{
+	width: 180px;
+}
+
