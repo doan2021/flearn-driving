@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Tai Lieu</title>
-	<link rel="stylesheet" th:href="@{../css/list-question.css}">
+	<link rel="stylesheet">
 </head>
 
 <body>
@@ -15,10 +15,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mu-page-breadcrumb-area">
-                            <h2>Học tập</h2>
                             <ol class="breadcrumb w-100 justify-content-center">
                                 <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-                                <li class="active breadcrumb-item">Học tập</li>
+                                <h1>Học tập</h1>
                             </ol>
                         </div>
                     </div>
@@ -27,13 +26,13 @@
         </section>
 		<div class="container-xxl pt-3 pb-5">
 			<div class="row mt-3">
-				<div class="col-12 mt-3 text-center">
-					<h1 class="display-5 pb-2 title-page d-inline-block fs-2" th:text="|Chương ${chapter.name}|"> </h1>
-					<p th:text="${chapter.content}"> </p>
+				<div class="col-12 mt-3 text-center justify-content-between">
+					<h1 class="display-5 pb-2 title-page d-inline-block fs-2 justify-content-between" th:text="|Chương ${chapter.name}|"> </h1>
+					<h2 th:text="${chapter.content}"></h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-12" th:each="question : ${listQuestion}">
+			<div class="row" style="border-radius: 0px; min-height: 112px; margin: 2px 2px 1.125rem; padding: 0px; box-shadow: rgba(49, 49, 49, 0.24) 0px 1px 4px; border: 1px solid rgb(234, 234, 234);">
+				<div class="card-list col-̣9 col-sm-9 col-md-9 " th:each="question : ${listQuestion}">
 					<h3 th:text="|Câu ${question.number} ${question.content}|"></h3>
 					<p th:each="answer : ${question.listAnswers}" th:text="${answer.content}" th:class="${answer.isTrue} ? text-danger"></p>
 				</div>
