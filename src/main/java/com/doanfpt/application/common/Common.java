@@ -7,41 +7,52 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.doanfpt.application.entities.Document;
 import com.doanfpt.application.model.AccountPrincipal;
 
 public class Common {
 
-    public static float percentQuestion(int correctNumber, int incorrectNumber) {
-        return (correctNumber * 100.0f) / (correctNumber + incorrectNumber);
-    }
-    
-    public static String getFirstName(String fullNameGoogle) {
-        if (fullNameGoogle == null || "".equals(fullNameGoogle)) {
-            return fullNameGoogle;
-        }
-        String[] name = fullNameGoogle.split(" ");
-        return name[name.length - 1];
-    }
-    
-    public static String getLastName(String fullNameGoogle) {
-        if (fullNameGoogle == null || "".equals(fullNameGoogle)) {
-            return fullNameGoogle;
-        }
-        String[] name = fullNameGoogle.split(" ");
-        String lastName = "";
-        for(int i =0; i< name.length -1; i++) {
-            if (i == name.length -2) {
-                lastName = lastName.concat(name[i]);
-            } else {
-                lastName = lastName.concat(name[i]).concat(" ");
-            }
-        }
-        return lastName;
-    }
+	public static float percentQuestion(int correctNumber, int incorrectNumber) {
+		return (correctNumber * 100.0f) / (correctNumber + incorrectNumber);
+	}
+
+	public static String getFirstName(String fullNameGoogle) {
+		if (fullNameGoogle == null || "".equals(fullNameGoogle)) {
+			return fullNameGoogle;
+		}
+		String[] name = fullNameGoogle.split(" ");
+		return name[name.length - 1];
+	}
+
+	public static String getLastName(String fullNameGoogle) {
+		if (fullNameGoogle == null || "".equals(fullNameGoogle)) {
+			return fullNameGoogle;
+		}
+		String[] name = fullNameGoogle.split(" ");
+		String lastName = "";
+		for (int i = 0; i < name.length - 1; i++) {
+			if (i == name.length - 2) {
+				lastName = lastName.concat(name[i]);
+			} else {
+				lastName = lastName.concat(name[i]).concat(" ");
+			}
+		}
+		return lastName;
+	}
+
+	public static boolean isValidEmailAddress(String email) {
+		String ePattern = "^[A-Za-z0-9+_.-]+@(.+)$";
+		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+		java.util.regex.Matcher m = p.matcher(email);
+		return m.matches();
+	}
+
     
     public static Date stringToDate(String dateString) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -61,6 +72,15 @@ public class Common {
         return cal.getTime();
     }
     
+    public static Date getLastOfTheDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.HOUR, 11);
+        cal.add(Calendar.MINUTE, 59);
+        cal.add(Calendar.SECOND, 59);
+        return cal.getTime();
+    }
+    
     public static String getUsernameLogin() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         AccountPrincipal loginedUser = (AccountPrincipal) auth.getPrincipal();
@@ -71,18 +91,34 @@ public class Common {
         return new Date();
     }
     
-    public static String writeFile(MultipartFile fileImage, String urlClassPath, String urlUploadFolder) {
+    public static String dateToString(Date date, String format) {
+        return DateFormatUtils.format(date, format);
+    }
+    
+    
+    public static void writeFile(Document document) {
         byte data[];
-        String fileName = fileImage.getOriginalFilename();
         try {
-            data = fileImage.getBytes();
-            File file = new File(urlClassPath + urlUploadFolder + "/" + fileName);
+            File theDir = new File(document.getPath()); 
+            if (!theDir.exists()) {
+                theDir.mkdirs();
+            }
+            data = document.getData().getBytes();
+            File file = new File(document.getPath() + "/" + document.getFileName());
             FileOutputStream out = new FileOutputStream(file);
             out.write(data);
             out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return urlUploadFolder + "/" + fileName;
     }
+
+    public static String generateFileName(MultipartFile multipartFile, String label) {
+        // Init extension new
+        String extension = MimeTypes.lookupExt(multipartFile.getContentType());
+        // Remove extension old
+        String fileName = FilenameUtils.removeExtension(multipartFile.getOriginalFilename());
+        return Common.dateToString(Common.getSystemDate(), Constant.PATTERN_FORMAT_DATE_TIME) + "_" + label + "_" + fileName + "." + extension;
+    }
+
 }

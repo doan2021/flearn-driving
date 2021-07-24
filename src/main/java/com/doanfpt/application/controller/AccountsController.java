@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.doanfpt.application.dto.AccountForm;
+import com.doanfpt.application.dto.AccountUpdateForm;
 import com.doanfpt.application.services.AccountServices;
 import com.doanfpt.application.services.RoleServices;
-import com.doanfpt.application.validator.AppUserValidator;
+import com.doanfpt.application.validator.AccountValidator;
 
 @Controller
 public class AccountsController {
@@ -26,7 +27,7 @@ public class AccountsController {
     RoleServices roleServices;
 
     @Autowired
-    private AppUserValidator appUserValidator;
+    private AccountValidator accountValidator;
 
     @InitBinder
     protected void initBinder(WebDataBinder dataBinder) {
@@ -35,7 +36,11 @@ public class AccountsController {
             return;
         }
         if (target.getClass() == AccountForm.class) {
-            dataBinder.setValidator(appUserValidator);
+            dataBinder.setValidator(accountValidator);
+        }
+        
+        if (target.getClass() == AccountUpdateForm.class) {
+            dataBinder.setValidator(accountValidator);
         }
     }
 
@@ -59,5 +64,17 @@ public class AccountsController {
     public String viewProfile(Model model) {
         model.addAttribute("account", accountsServices.getAccountLogin());
         return "view-profile";
+    }
+    
+    @GetMapping(value = { "/view-profile-registed-exam" })
+    public String viewProfileRegistedExam(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-registed-exam";
+    }
+    
+    @GetMapping(value = { "/view-profile-learning-progress" })
+    public String viewProfileLearningProgress(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-learning-progress";
     }
 }

@@ -4,7 +4,9 @@
 package com.doanfpt.application.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "driving_license_info")
@@ -91,6 +95,10 @@ public class DrivingLicenseInfo {
     @ManyToOne
     @JoinColumn(name = "driving_license_id")
     private DrivingLicense drivingLicense;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "drivingLicenseInfo", cascade = CascadeType.ALL)
+    private List<Document> listDocuments;
 
     public Long getDrivingLicenseInfoId() {
         return drivingLicenseInfoId;
@@ -250,6 +258,14 @@ public class DrivingLicenseInfo {
 
     public void setIssueDate(Date issueDate) {
         this.issueDate = issueDate;
+    }
+
+    public List<Document> getListDocuments() {
+        return listDocuments;
+    }
+
+    public void setListDocuments(List<Document> listDocuments) {
+        this.listDocuments = listDocuments;
     }
 
 }

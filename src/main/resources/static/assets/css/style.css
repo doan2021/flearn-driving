@@ -44,6 +44,15 @@ h2 {
 	border-radius: 0 !important;
 }
 
+.form-check-input[type=checkbox] {
+    border-radius: 0 !important;
+}
+
+.form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+}
+
 .read-more-btn {
 	border: 1px solid #fff;
 	color: #fff;
@@ -1534,8 +1543,8 @@ h2 {
 
 .line-slide {
 	display: inline-block;
-	height: 1px;
-	width: 100px;
+    height: 2px;
+    width: 150px;
 }
 
 .content-slide {
@@ -1600,18 +1609,6 @@ h2 {
 	border: 2px dashed rgb(134 134 134/ 70%);
 	padding: 1rem;
 	position: relative;
-}
-
-.image-area::before {
-	content: 'Tải lên ảnh';
-	color: #b3b3b3;
-	font-weight: bold;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 0.8rem;
-	z-index: 1;
 }
 
 .image-area img {
