@@ -207,8 +207,8 @@ new Vue({
                 }).then(function (respone) {
                     _this.message = respone.data.result.message;
                     if (respone.data.result.status == 'success') {
-                        this.step3 = 'complete';
-                        this.step4 = 'active';
+                        _this.step3 = 'complete';
+                        _this.step4 = 'active';
                     } else {
                         alert(_this.message);
                     }

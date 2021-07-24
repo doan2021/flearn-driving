@@ -338,8 +338,8 @@
                                             </div>
                                             <div class="col-4">
                                                 <label class="image-area d-flex justify-content-center align-items-center fw-bold text-secondary content-portrait" :class="$hasError($v.formUploadDocument.imagePortrait)">
-                                                    <span>Ảnh chân dung</span>
-                                                    <img id="image-tag" :src="imagePortraitSrc" class="w-100"/>
+                                                    <span v-if="imagePortraitSrc == '' || imagePortraitSrc == 'null'">Ảnh chân dung</span>
+                                                    <img id="image-tag" :src="imagePortraitSrc" class="w-100" v-else/>
                                                 </label>
                                                 <div class="invalid-feedback" v-if="!$v.formUploadDocument.imagePortrait.required">Vui lòng chụp ảnh chân dung.</div>
                                                 <div class="row">
@@ -367,15 +367,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-5">
+                            <div class="row mt-5" v-if="step4 == 'active'">
                                 <div class="col-md-12">
                                     <div class="mu-title">
                                         <h2>ĐĂNG KÝ HOÀN TẤT</h2>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-5 text-center">
-                                    <h1 class="text-success"><i class="fas fa-clipboard-check"></i></h1>
-                                    <p class="mt-4">Bạn có thể xem lại kỳ thi đã đăng ký tại thông tin cá nhân</p>
+                                    <h1 class="text-success panel-success"><i class="fas fa-check-circle"></i></h1>
+                                    <p class="fs-3">Thành công</p>
+                                    <p class="mt-4">Bạn có thể xem lại tại hồ sơ cá nhân</p>
                                 </div>
                                 <div class="col-12 mt-5 text-center">
                                     <a th:href="@{/}" class="btn btn-primary w-25">Về trang chủ</a>

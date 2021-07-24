@@ -28,14 +28,14 @@ public class Exam {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "is_trial")
-    public boolean isTrial;
-
     @Column(name = "date_regis_exam_end")
     private Date dateRegisExamEnd;
 
     @Column(name = "date_exam")
     private Date dateExam;
+
+    @Column(name = "status")
+    private Integer status;
 
     @Column(name = "description")
     private String description;
@@ -81,14 +81,6 @@ public class Exam {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isTrial() {
-        return isTrial;
-    }
-
-    public void setTrial(boolean isTrial) {
-        this.isTrial = isTrial;
     }
 
     public Date getDateRegisExamEnd() {
@@ -178,4 +170,13 @@ public class Exam {
     public void setDrivingLicense(DrivingLicense drivingLicense) {
         this.drivingLicense = drivingLicense;
     }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
 }

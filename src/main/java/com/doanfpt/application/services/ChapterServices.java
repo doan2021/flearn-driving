@@ -27,4 +27,8 @@ public class ChapterServices {
         }
         return new ArrayList<Chapter>();
     }
+    
+    public Integer countChapter() {
+        return chapterResponsitory.countChapter();
+    }
 }

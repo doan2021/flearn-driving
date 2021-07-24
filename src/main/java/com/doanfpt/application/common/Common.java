@@ -75,7 +75,7 @@ public class Common {
     public static Date getLastOfTheDate(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        cal.add(Calendar.HOUR, 11);
+        cal.add(Calendar.HOUR, 23);
         cal.add(Calendar.MINUTE, 59);
         cal.add(Calendar.SECOND, 59);
         return cal.getTime();
@@ -94,7 +94,6 @@ public class Common {
     public static String dateToString(Date date, String format) {
         return DateFormatUtils.format(date, format);
     }
-    
     
     public static void writeFile(Document document) {
         byte data[];
