@@ -13,4 +13,6 @@ public interface AccountsRespository extends JpaRepository<Account, Long> {
     Account findByEmail(String email);
 
     Boolean existsByUserName(String userName);
+
+	public Account findByAccountIdAndIsDelete(Long accountId, boolean isNotDelete);
 }

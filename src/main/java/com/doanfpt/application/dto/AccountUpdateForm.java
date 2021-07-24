@@ -1,18 +1,27 @@
 package com.doanfpt.application.dto;
 
-public class AccountUpdateForm {
+import org.springframework.web.multipart.MultipartFile;
 
+public class AccountUpdateForm {
+	private Long accountId;
 	private String userName;
-	private String lastName;
-	private String middleName;
 	private String firstName;
+	private String middleName;
+	private String lastName;
 	private String password;
 	private String confirmPassword;
-	private int gender;
+	private Integer gender;
 	private String email;
 	private String birthDay;
-	private String phoneNumber;
+	private String numberPhone;
 	private Long roleId;
+	private MultipartFile image;
+	private Boolean isUpdate;
+	private String description;
+	private String createAt;
+	private String createBy;
+	private String updateAt;
+	private String updateBy;
 
 	public String getUserName() {
 		return userName;
@@ -22,28 +31,20 @@ public class AccountUpdateForm {
 		this.userName = userName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getPassword() {
@@ -86,6 +87,14 @@ public class AccountUpdateForm {
 		this.roleId = roleId;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getBirthDay() {
 		return birthDay;
 	}
@@ -94,16 +103,80 @@ public class AccountUpdateForm {
 		this.birthDay = birthDay;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getNumberPhone() {
+		return numberPhone;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setNumberPhone(String numberPhone) {
+		this.numberPhone = numberPhone;
 	}
 
 	public void setGender(int gender) {
 		this.gender = gender;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
+	public Boolean getIsUpdate() {
+		return isUpdate;
+	}
+
+	public void setIsUpdate(Boolean isUpdate) {
+		this.isUpdate = isUpdate;
+	}
+
+	public String getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(String createAt) {
+		this.createAt = createAt;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public String getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(String updateAt) {
+		this.updateAt = updateAt;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
 	}
 
 }

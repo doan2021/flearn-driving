@@ -15,7 +15,7 @@ import com.doanfpt.application.common.Common;
  *
  */
 public class ValidationApplicationUtils extends ValidationUtils {
-	
+	/* validation email - Account */
 	public static void rejectEmailIncorrectFormat(Errors errors, String field, String errorCode) {
 		rejectIfEmptyOrWhitespace(errors, field, errorCode, null, null);
 	}
@@ -25,6 +25,20 @@ public class ValidationApplicationUtils extends ValidationUtils {
 		Assert.notNull(errors, "Errors object must not be null");
 		Object value = errors.getFieldValue(field);
 		if (Common.isValidEmailAddress(value.toString())) {
+			errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
+		}
+	}
+
+	/* validation phonenumber - Account */
+	public static void rejectPhoneNumberIncorrectFormat(Errors errors, String field, String errorCode) {
+		rejectPhoneNumberIncorrectFormat(errors, field, errorCode, null, null);
+	}
+
+	public static void rejectPhoneNumberIncorrectFormat(Errors errors, String field, String errorCode,
+			@Nullable Object[] errorArgs, @Nullable String defaultMessage) {
+		Assert.notNull(errors, "Errors object must not be null");
+		Object value = errors.getFieldValue(field);
+		if (!Common.isValidPhoneNumber(value.toString())) {
 			errors.rejectValue(field, errorCode, errorArgs, defaultMessage);
 		}
 	}
