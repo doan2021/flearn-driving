@@ -18,9 +18,10 @@
 							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
 						</div>
 						<div class="profile-header-info">
-							<h4 class="m-t-sm">[[${accountUpdateForm.lastName}]] [[${accountUpdateForm.middleName}]] [[${accountUpdateForm.firstName}]]</h4>
+							<h4 class="m-t-sm">[[${accountUpdateForm.lastName}]] [[${accountUpdateForm.middleName}]]
+								[[${accountUpdateForm.firstName}]]</h4>
 							<p class="m-b-sm">Quản trị viên</p>
-							<a th:href="@{/view-profile-update}" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
+							<a th:href="@{/update-account}" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
 						</div>
 					</div>
 				</div>
@@ -230,6 +231,11 @@
 													<h6>[[${accountUpdateForm.description}]]</h6>
 												</div>
 											</div>
+										</div>
+									</div>
+									<div class="row mb-5 mt-4">
+										<div class="col-12 text-center">
+											<button type="submit" class="btn btn-primary">Cập nhật hồ sơ</button>
 										</div>
 									</div>
 								</form>

@@ -12,12 +12,10 @@
 			<div class="container-xxl">
 	            <div class="profile-header">
 					<div class="profile-header-cover"></div>
-		
 					<div class="profile-header-content">
 						<div class="profile-header-img">
 							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
 						</div>
-		
 						<div class="profile-header-info">
 							<h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
 							<p class="m-b-sm">Quản trị viên</p>
@@ -67,18 +65,6 @@
 										      <td>Thi bằng lái xe ô tô</td>
 										      <td>16/07/2021</td>
 										    </tr>
-										    <tr>
-										      <th scope="row">2</th>
-										      <td>Jacob</td>
-										      <td>Thornton</td>
-										      <td>@fat</td>
-										    </tr>
-										    <tr>
-										      <th scope="row">3</th>
-										      <td>Larry</td>
-										      <td>the Bird</td>
-										      <td>@twitter</td>
-										    </tr>
 										  </tbody>
 										</table>
 									</div>
@@ -92,18 +78,19 @@
 							<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
 							<li>
 								<div class="field">Ngày tạo:</div>
-								<div class="value">05/06/2021</div>
+								<div th:text="${#dates.format(account.createAt, 'dd-MM-yyyy')}"></div>
 							</li>
 							<li>
-								<div class="field">Lịch sử thi:</div> <a href="#">Click here</a>
+								<div class="field">Người tạo:</div>
+								<div class="value">[[${account.createBy}]]</div>
 							</li>
 							<li>
-								<div class="field">Thống kê hiệu suất thi thử:</div> <a href="#">Click
-									here</a>
+								<div class="field">Ngày cập nhật lần cuối:</div>
+								<div th:text="${#dates.format(account.updateAt, 'dd-MM-yyyy')}"></div>
 							</li>
 							<li>
-								<div class="field">Kiểm tra nhanh:</div> <a href="#">Click
-									here</a>
+								<div class="field">Người cập nhật lần cuối:</div>
+								<div class="value">[[${account.updateBy}]]</div>
 							</li>
 						</ul>
 					</div>

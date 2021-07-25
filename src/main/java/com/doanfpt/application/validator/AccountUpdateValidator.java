@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.doanfpt.application.dto.AccountForm;
+import com.doanfpt.application.dto.AccountUpdateForm;
 import com.doanfpt.application.utils.ValidationApplicationUtils;
 
 /**
@@ -19,16 +19,18 @@ public class AccountUpdateValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return clazz == AccountForm.class;
+        return clazz == AccountUpdateForm.class;
     }
 
     @Override
     public void validate(Object target, Errors errors) {
         // Kiểm tra các field của AppUserForm.
-        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "NotEmpty.appUserForm.userName");
-        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty.appUserForm.firstName");
-        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty.appUserForm.lastName");
-        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.appUserForm.email");
-        ValidationApplicationUtils.rejectEmailIncorrectFormat(errors, "email", "Pattern.appUserForm.email");
+        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty.accountForm.firstName");
+        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty.accountForm.lastName");
+        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "numberPhone", "NotEmpty.accountForm.numberPhone");
+        ValidationApplicationUtils.rejectPhoneNumberIncorrectFormat(errors, "numberPhone", "Pattern.accountForm.numberPhone");
+        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "birthDay", "NotEmpty.accountForm.birthDay");
+        ValidationApplicationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.accountForm.email");
+        ValidationApplicationUtils.rejectEmailIncorrectFormat(errors, "email", "Pattern.accountForm.email");
     }
 }

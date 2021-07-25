@@ -91,3 +91,51 @@
 .profile-container {
 	padding: 1.5625rem;
 }
+
+.col-6 {
+    max-width: 50%;
+    flex: 0 0 50%;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.form-control-label {
+    font-size: .875rem;
+    font-weight: 600;
+    color: #525f7f;
+}
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.input-group {
+    transition: all .15s ease-in-out;
+    border-radius: .25rem;
+    box-shadow: 0 3px 2px rgb(233 236 239 / 5%);
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.input-group-prepend {
+    margin-right: -1px;
+}
+.input-group-prepend, .input-group-append {
+    display: flex;
+}
+.input-group > .form-control:not(:first-child), .input-group > .custom-select:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-control {
+    font-size: .875rem;
+    height: calc(1.5em + 1.25rem + 5px);
+    transition: all .15s ease-in-out;
+}
