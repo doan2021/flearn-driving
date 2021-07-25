@@ -243,8 +243,6 @@ h2 {
  ABOUT SECTION
 ====================*/
 #mu-about-us {
-	display: inline;
-	float: left;
 	width: 100%;
 	padding: 100px 0;
 }
@@ -363,8 +361,6 @@ h2 {
 #mu-abtus-counter {
 	background-repeat: no-repeat;
 	background-size: 100%;
-	display: inline;
-	float: left;
 	padding: 100px 0;
 	width: 100%;
 }

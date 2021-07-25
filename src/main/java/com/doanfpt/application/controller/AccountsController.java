@@ -96,16 +96,22 @@ public class AccountsController {
 			return "403";
 		}
 	}
+  
+    @GetMapping(value = { "/view-profile" })
+    public String viewProfile(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile";
+    }
 
-	@GetMapping(value = { "/view-profile-registed-exam" })
-	public String viewProfileRegistedExam(Model model) {
-		model.addAttribute("account", accountsServices.getAccountLogin());
-		return "view-profile-registed-exam";
-	}
-
-	@GetMapping(value = { "/view-profile-learning-progress" })
-	public String viewProfileLearningProgress(Model model) {
-		model.addAttribute("account", accountsServices.getAccountLogin());
-		return "view-profile-learning-progress";
-	}
+    @GetMapping(value = { "/view-profile-registed-exam" })
+    public String viewProfileRegistedExam(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-registed-exam";
+    }
+    
+    @GetMapping(value = { "/view-profile-learning-progress" })
+    public String viewProfileLearningProgress(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLogin());
+        return "view-profile-learning-progress";
+    }
 }

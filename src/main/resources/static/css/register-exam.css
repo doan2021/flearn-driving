@@ -134,3 +134,7 @@
 	border: 5px dashed lime;
 	border-radius: 50%;
 }
+
+.panel-success {
+	font-size: 200px;
+}
