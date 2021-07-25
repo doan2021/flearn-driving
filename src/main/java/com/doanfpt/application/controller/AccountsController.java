@@ -70,6 +70,12 @@ public class AccountsController {
 		model.addAttribute("accountUpdateForm", accountsServices.getAccountLogin());
 		return "view-profile";
 	}
+	
+	@GetMapping(value = { "/view-profile-update" })
+	public String viewProfileUpdate(Model model) {
+		model.addAttribute("accountUpdateForm", accountsServices.getAccountLogin());
+		return "view-profile-update";
+	}
 
 	@PostMapping(value = { "/update-account-view" })
 	public String updateAccountView(@Validated AccountUpdateForm accountUpdateForm, BindingResult result, Model model) {
