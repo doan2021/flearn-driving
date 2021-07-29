@@ -1,11 +1,11 @@
 package com.doanfpt.application.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.doanfpt.application.common.Constant;
 import com.doanfpt.application.entities.Chapter;
 import com.doanfpt.application.responsitories.ChapterResponsitory;
 
@@ -20,11 +20,6 @@ public class ChapterServices {
     }
     
     public List<Chapter> getAllChapter() {
-        List<Chapter> listChapter = new ArrayList<>();
-        listChapter = chapterResponsitory.findAll();
-        if (listChapter != null) {
-            return listChapter;
-        }
-        return new ArrayList<Chapter>();
+        return chapterResponsitory.findByIsDeleteOrderByName(Constant.IS_NOT_DELETE);
     }
 }
