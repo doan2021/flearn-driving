@@ -22,4 +22,8 @@ public class ChapterServices {
     public List<Chapter> getAllChapter() {
         return chapterResponsitory.findByIsDeleteOrderByName(Constant.IS_NOT_DELETE);
     }
+    
+    public Integer countChapter() {
+        return chapterResponsitory.countChapter();
+    }
 }

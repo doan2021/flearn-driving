@@ -7,17 +7,31 @@
 	<title>Chọn đề</title>
 	<link rel="stylesheet" th:href="@{../css/trial-exam.css}">
 </head>
-
 <body>
 	<th:block layout:fragment="content">
+		<section class="mu-page-breadcrumb">
+            <div class="container-xxl">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mu-page-breadcrumb-area">
+                            <h2>Chọn đề thi</h2>
+                            <ol class="breadcrumb w-100 justify-content-center">
+                                <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
+                                <li class="active breadcrumb-item"><a th:href="@{/select-trial-exam}">Chọn đề thi</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 		<form class="form2" name="form2" method="POST">
 			<div class="form-main row ms-5 me-5">
 				<!-- ================= PHẦN CÂU HỎI =======================-->
 				<div class="col-md-4 col-sm-12 col-xs-12 mt-4">
 					<div class="shadow panel panel-default border">
 						<div class="panel-body m-2">
-							<div class="text-center" style="margin-bottom: 10px;">
-								<strong style="font-size: 18pt; color: blue;">600 CÂU HỎI THI BẰNG B2</strong>
+							<div class="fs-3 text-center text-primary" style="margin-bottom: 10px;">
+								<strong>600 CÂU HỎI THI BẰNG B2</strong>
 							</div>
 							<div class="text-center mt-2">
 								<img th:src="@{../images/b2.png}" height="170" width="310">
@@ -47,8 +61,8 @@
 				<div class="col-md-8 col-sm-12 col-xs-12">
 					<div class="shadow panel panel-default border mt-4">
 						<div class="panel-body m-2">
-							<div style="margin-bottom: 10px;" class="text-center">
-								<strong style="font-size: 18pt; color: blue;">THI ĐI CHỜ CHI</strong>
+							<div style="margin-bottom: 10px;" class="fs-3 text-center text-primary">
+								<strong>THI ĐI CHỜ CHI</strong>
 							</div>
 							<div class="row mt-3">
 								<p>
@@ -84,49 +98,39 @@
 									để lại comment bên dưới nhé!
 								</p>
 							</div>
-							<div class="answer mt-5 text-center">
-								<section aria-label="CHỌN ĐÁP ÁN ĐÚNG" class="true-answer">
-									<div aria-hidden="true"><strong style="color: deepskyblue;">BÂY GIỜ THÌ CHỌN ĐỀ VÀ THI THỬ THÔI <i class="far fa-smile-wink"></i></strong></div>
-								</section>
+							<div class=" fs-5 mt-5 text-center text-info">
+								<div aria-hidden="true"><strong>BÂY GIỜ THÌ CHỌN ĐỀ VÀ THI THỬ THÔI <i class="far fa-smile-wink"></i></strong></div>
 							</div>
-							<div class="shadow panel panel-default border m-2">
-								<div class="panel-body">
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 1</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 2</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 3</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 4</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 5</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 6</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 7</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 8</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 9</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 10</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 11</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 12</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 13</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 14</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 15</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 16</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 17</button>
-									<button type="submit" class="btn btn-success btn-thongtin" style="width: 75px; height: 45px;" name="chondethi"
-										value="de1">Đề 18</button>
+							<div class=" fs-5 m-3 text-center text-info">
+								<select class="mdb-select md-form">
+							        <option value="" disabled selected>Chọn loại bằng</option>
+							        <option value="1">A1</option>
+							        <option value="2">A2</option>
+							        <option value="3">B2</option>
+							        <option value="3">C</option>
+							        <option value="3">D</option>
+							      </select>
+							</div>
+							<div class="shadow panel panel-default border">
+								<div class="panel-body m-2">
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 1</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 2</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 3</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 4</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 5</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 6</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 7</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 8</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 9</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 10</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 11</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 12</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 13</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 14</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 15</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 16</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 17</button>
+									<button style="width: 80px;" type="submit" class="btn btn-outline-dark m-2" name="chondethi" value="de1">Đề 18</button>
 								</div>
 							</div>
 						</div>
