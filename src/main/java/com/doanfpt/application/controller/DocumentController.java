@@ -24,8 +24,8 @@ public class DocumentController {
         return "document";
     }
     
-    @GetMapping(value = { "/list-question" })
-    public String visitListQuestonPage(Long chapterId, Model model) {
+    @GetMapping(value = { "/detail-document" })
+    public String visitDetailDocumentPage(Long chapterId, Model model) {
     	Chapter chapter = chapterServices.getOne(chapterId);
     	model.addAttribute("chapter", chapter);
     	model.addAttribute("listQuestion", questionServices.getQuestionsInChapter(chapter));

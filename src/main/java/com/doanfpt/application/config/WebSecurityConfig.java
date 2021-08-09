@@ -36,10 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
-    
+
     @Autowired
     private Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
-    
+
     @Autowired
     private CustomOAuth2AccountService oAuth2AccountService;
 
@@ -67,22 +67,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         // Các trang không yêu cầu login
-        http.authorizeRequests()
-        .antMatchers("/oauth2/**").permitAll()
-        .antMatchers("/", "/index", "/login").permitAll();
+        http.authorizeRequests().antMatchers("/oauth2/**").permitAll().antMatchers("/", 
+                "/index", 
+                "/login",
+                "/register",
+                "/create-account",
+                "/document",
+                "/list-question"
+                ).permitAll();
         // Trang yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
         // Nếu chưa login, nó sẽ redirect tới trang /login.
-        http.authorizeRequests()
-        .antMatchers(
-                "/list-data"
-                , "/submit-answer"
-                , "/learn/{chapterId}")
-        .access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
-        // Trang chỉ dành cho ADMIN
-        http.authorizeRequests().antMatchers("/create-question").access("hasRole('ROLE_ADMIN')");
-        // Khi người dùng đã login, với vai trò XX.
-        // Nhưng truy cập vào trang yêu cầu vai trò YY,
-        // Ngoại lệ AccessDeniedException sẽ ném ra.
+        http.authorizeRequests().antMatchers("/learn/**", 
+                "/view-profile", 
+                "/view-profile-update", 
+                "/update-account-view",
+                "/view-profile-registed-exam",
+                "/view-profile-learning-progress",
+                "/select-chapter",
+                "/register-exam",
+                "/search-exam",
+                "/load-district",
+                "/load-ward",
+                "/register-exam",
+                "/trial-exam",
+                "/select-trial-exam",
+                "/load-page-learn",
+                "/submit-answer",
+                "/trial-exam"
+                ).access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
         // Cấu hình cho Login Form.
         http.authorizeRequests().and().formLogin()
@@ -94,18 +106,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")//
                 .passwordParameter("password")
                 // Cấu hình cho Logout Page.
-                .and()
-                .oauth2Login()
-                    .loginPage("/login")
-                    .userInfoEndpoint().userService(oAuth2AccountService)
-                    .and()
-                    .successHandler(oauth2LoginSuccessHandler)
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+                .and().oauth2Login().loginPage("/login").userInfoEndpoint().userService(oAuth2AccountService).and()
+                .successHandler(oauth2LoginSuccessHandler).and().logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
         // Cấu hình Remember Me 24h
         http.authorizeRequests().and() //
                 .rememberMe().tokenRepository(this.persistentTokenRepository()) //
-                .tokenValiditySeconds(1 * 24 * 60 * 60); // 
+                .tokenValiditySeconds(1 * 24 * 60 * 60); //
     }
 
     @Bean
