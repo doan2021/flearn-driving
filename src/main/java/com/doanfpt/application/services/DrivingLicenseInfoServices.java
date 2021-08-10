@@ -16,4 +16,8 @@ public class DrivingLicenseInfoServices {
     public Boolean checkExistsDrivingLicenseInfo(Exam exam, Account account) {
         return drivingLicenseInfoResponsitory.existsByExamAndAccount(exam, account);
     }
+    
+    public Integer countDrivingLicenseInfo() {
+		return drivingLicenseInfoResponsitory.countDrivingLicenseInfo();
+	}
 }

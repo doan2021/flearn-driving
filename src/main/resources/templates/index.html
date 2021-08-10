@@ -1,617 +1,693 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layout/layout}">
-    <head>
-      <meta charset="utf-8">
-      <meta content="width=device-width, initial-scale=1.0" name="viewport">
-      <title>Trang chủ</title>
-    </head>
-    <body>
-    <th:block layout:fragment="content">
-      <section id="hero" class="d-flex align-items-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-              <h1 data-aos="fade-up">Học lái xe mùa dịch</h1>
-              <h2 data-aos="fade-up" data-aos-delay="400">Thế nào cho an toàn</h2>
-              <div data-aos="fade-up" data-aos-delay="800">
-                <a th:href="@{/select-chapter}" class="btn-get-started scrollto">Xem thêm</a>
-              </div>
-            </div>
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-              <img th:src="@{../assets/img/index-img.png}" class="img-fluid animated" alt="">
-            </div>
-          </div>
-        </div>
-      </section><!-- End Hero -->
-    
-      <main id="main">
-        <!-- ======= About Us Section ======= -->
-        <section id="about" class="about">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>LỜI GIỚI THIỆU</h2>
-            </div>
-    
-            <div class="row content">
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                </ul>
-              </div>
-              <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </div>
-            </div>
-    
-          </div>
-        </section><!-- End About Us Section -->
-    
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts">
-          <div class="container">
-    
-            <div class="row">
-              <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start" data-aos="fade-right" data-aos-delay="150">
-                <img src="assets/img/counts-img.svg" alt="" class="img-fluid">
-              </div>
-    
-              <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left" data-aos-delay="300">
-                <div class="content d-flex flex-column justify-content-center">
-                  <div class="row">
-                    <div class="col-md-6 d-md-flex align-items-md-stretch">
-                      <div class="count-box">
-                        <i class="bi bi-people"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Người dùng</strong> đang sử dụng và học tập</p>
-                      </div>
-                    </div>
-    
-                    <div class="col-md-6 d-md-flex align-items-md-stretch">
-                      <div class="count-box">
-                        <i class="bi bi-journal-richtext"></i>
-                        <span data-purecounter-start="0" th:data-purecounter-end="${numberOfChapter}" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Chương</strong> được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
-                      </div>
-                    </div>
-    
-                    <div class="col-md-6 d-md-flex align-items-md-stretch">
-                      <div class="count-box">
-                        <i class="bi bi-clock"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Lượt đăng ký thi</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                      </div>
-                    </div>
-    
-                    <div class="col-md-6 d-md-flex align-items-md-stretch">
-                      <div class="count-box">
-                        <i class="bi bi-award"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                        <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+	layout:decorate="~{layout/layout}">
 
-        <section id="services" class="services">
-          <div class="container">
-            <div class="section-title" data-aos="fade-up">
-              <h2>DỊCH VỤ</h2>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <div class="icon"><i class="bx bx-file"></i></div>
-                  <h4 class="title"><a th:href="@{/document}">Tài liệu</a></h4>
-                  <p class="description">Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
-                </div>
-              </div>
-    
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon"><i class="bx bx-file"></i></div>
-                  <h4 class="title"><a  th:href="@{/document}">Học tập</a></h4>
-                  <p class="description">Trau dồi kiến thức, hành trang trước khi thi</p>
-                </div>
-              </div>
-    
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <div class="icon"><i class="bx bx-tachometer"></i></div>
-                  <h4 class="title"><a href="">Thi thử</a></h4>
-                  <p class="description">Kiểm tra thử năng lực của bạn, bổ sung nhưng kiến thức còn thiếu</p>
-                </div>
-              </div>
-    
-              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                  <div class="icon"><i class="bx bx-world"></i></div>
-                  <h4 class="title"><a href="">Đăng ký thi</a></h4>
-                  <p class="description">Chọn kỳ thi phù hợp, và vào thi thôi</p>
-                </div>
-              </div>
-    
-            </div>
-    
-          </div>
-        </section><!-- End Services Section -->
-    
-        <!-- ======= More Services Section ======= -->
-        <section id="more-services" class="more-services">
-          <div class="container">
-            <div class="section-title" data-aos="fade-up">
-              <h2>CHƯƠNG QUAN TRỌNG</h2>
-              <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
-            </div>
-            <div class="row">
-              <div class="col-md-6 d-flex align-items-stretch">
-                <div class="card" style='background-image: url("assets/img/more-services-1.jpg");' data-aos="fade-up" data-aos-delay="100">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="">Lobira Duno</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua.</p>
-                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                <div class="card" style='background-image: url("assets/img/more-services-2.jpg");' data-aos="fade-up" data-aos-delay="200">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="">Limere Radses</a></h5>
-                    <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem.</p>
-                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-                  </div>
-                </div>
-    
-              </div>
-              <div class="col-md-6 d-flex align-items-stretch mt-4">
-                <div class="card" style='background-image: url("assets/img/more-services-3.jpg");' data-aos="fade-up" data-aos-delay="100">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="">Nive Lodo</a></h5>
-                    <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores.</p>
-                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 d-flex align-items-stretch mt-4">
-                <div class="card" style='background-image: url("assets/img/more-services-4.jpg");' data-aos="fade-up" data-aos-delay="200">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="">Pale Treda</a></h5>
-                    <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem.</p>
-                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-          </div>
-        </section><!-- End More Services Section -->
-    
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials section-bg">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>NHẬN XÉT CỦA NGƯỜI DÙNG</h2>
-              <p>Lời đánh giá khách quan của những người dùng đã sử dụng trang web</p>
-            </div>
-    
-            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-              <div class="swiper-wrapper">
-    
-                <div class="swiper-slide">
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                      <h3>Center Nguyễn</h3>
-                      <h4>Người qua đường</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-    
-                <div class="swiper-slide">
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                      <h3>Dũng</h3>
-                      <h4>Người qua đường</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-    
-                <div class="swiper-slide">
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                      <h3>Hoàng Đặng</h3>
-                      <h4>Người qua đường</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-    
-                <div class="swiper-slide">
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                      <h3>Quang Anh</h3>
-                      <h4>Người qua đường</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-    
-                <div class="swiper-slide">
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                      <h3>Hiếu Lê</h3>
-                      <h4>Người qua đường</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                </div><!-- End testimonial item -->
-    
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-    
-          </div>
-        </section><!-- End Testimonials Section -->
-    
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>KỲ THI PHỔ BIẾN</h2>
-              <p>Hạng bằng quan trọng và cần thiết trong đời sống</p>
-            </div>
-    
-            <div class="row" data-aos="fade-up" data-aos-delay="200">
-              <div class="col-lg-12 d-flex justify-content-center">
-                <ul id="portfolio-flters">
-                  <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".filter-app">App</li>
-                  <li data-filter=".filter-card">Card</li>
-                  <li data-filter=".filter-web">Web</li>
-                </ul>
-              </div>
-            </div>
-    
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 1</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 2</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Card 2</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Web 2</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>App 3</h4>
-                    <p>App</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Card 1</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Card 3</h4>
-                    <p>Card</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                  <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Web 3</h4>
-                    <p>Web</p>
-                    <div class="portfolio-links">
-                      <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-    
-          </div>
-        </section><!-- End Portfolio Section -->
-    
-        <!-- ======= Team Section ======= -->
-        <section id="team" class="team section-bg">
-          <div class="container">
-    
-            <div class="section-title" data-aos="fade-up">
-              <h2>ĐỘI NGŨ PHÁT TRIỂN</h2>
-              <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
-            </div>
-    
-            <div class="row">
-    
-              <div class="col-lg col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                  <div class="member-img">
-                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
-                  </div>
-                </div>
-              </div>
-                <div class="col-lg col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                  <div class="member-img">
-                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="200">
-                  <div class="member-img">
-                    <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Sarah Jhonson</h4>
-                    <span>Product Manager</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="300">
-                  <div class="member-img">
-                    <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-lg col-md-6 d-flex align-items-stretch">
-                <div class="member" data-aos="fade-up" data-aos-delay="400">
-                  <div class="member-img">
-                    <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter"></i></a>
-                      <a href=""><i class="bi bi-facebook"></i></a>
-                      <a href=""><i class="bi bi-instagram"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-    
-          </div>
-        </section>
-    
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-          <div class="container">
-            <div class="section-title" data-aos="fade-up">
-              <h2>LIÊN LẠC VỚI CHÚNG TÔI</h2>
-            </div>
-            <div class="row">
-              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="contact-about">
-                  <h3>Flearn Driving</h3>
-                  <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-                  <div class="social-links">
-                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                <div class="info">
-                  <div>
-                    <i class="ri-map-pin-line"></i>
-                    <p>A108 Adam Street<br>New York, NY 535022</p>
-                  </div>
-                  <div>
-                    <i class="ri-mail-send-line"></i>
-                    <p>info@example.com</p>
-                  </div>
-                  <div>
-                    <i class="ri-phone-line"></i>
-                    <p>+1 5589 55488 55s</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                  <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                  </div>
-                  <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-                  <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </th:block>
-    </body>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Trang chủ</title>
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<section id="hero" class="d-flex align-items-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+						<h1 data-aos="fade-up">Học lái xe mùa dịch</h1>
+						<h2 data-aos="fade-up" data-aos-delay="400">Thế nào cho an toàn</h2>
+						<div data-aos="fade-up" data-aos-delay="800">
+							<a th:href="@{/select-chapter}" class="btn-get-started scrollto">Xem thêm</a>
+						</div>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+						<img th:src="@{../assets/img/index-img.png}" class="img-fluid animated" alt="">
+					</div>
+				</div>
+			</div>
+		</section><!-- End Hero -->
+
+		<main id="main">
+			<!-- ======= About Us Section ======= -->
+			<section id="about" class="about">
+				<div class="container">
+
+					<div class="section-title" data-aos="fade-up">
+						<h2>LỜI GIỚI THIỆU</h2>
+					</div>
+
+					<div class="row content mt-3">
+						<div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+							<p>
+								Chúng tôi là <b>FLearnDriving</b> - một trang web phục vụ cho người dùng học và thi bằng lái xe
+								một cách hiệu quả nhất .
+							</p>
+							<p> <b>FLearnDriving</b> đáp ứng cho những bạn không có thời gian để học lý thuyết tại các trung tâm có
+								thể học lý thuyết một cách thoải mái nhất ở bất kì khung giờ và các địa điểm khác nhau.
+							</p>
+							<p> Hệ thống giúp các bạn học có thể củng cố kiến thức dựa trên các bộ đề đã tạo sẵn . Và có
+								thể đăng kí thi thật qua các trung tâm lái xe đã liên kết .
+							</p>
+						</div>
+						<div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+							<h3>
+								Học lái xe B2 để làm gì?
+							</h3>
+							<ul>
+								<li><i class="ri-check-double-line"></i> Để đi lại , du lịch cho thuận tiện</li>
+								<li><i class="ri-check-double-line"></i> Để làm Taxi , Grap , Go Viet kiếm thêm thu nhập
+								</li>
+								<li><i class="ri-check-double-line"></i> Để lái xe số sàn , số tự động có thể nâng hạng
+									bằng C D E</li>
+								<li><i class="ri-check-double-line"></i> Để chở sếp , giao lưu đối tác , để thể hiện
+									đẳng cấp</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</section><!-- End About Us Section -->
+
+			<!-- ======= Counts Section ======= -->
+			<section id="counts" class="counts">
+				<div class="container">
+
+					<div class="row">
+						<div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+							data-aos="fade-right" data-aos-delay="150">
+							<img src="assets/img/counts-img.svg" alt="" class="img-fluid">
+						</div>
+
+						<div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
+							data-aos-delay="300">
+							<div class="content d-flex flex-column justify-content-center">
+								<div class="row">
+									<div class="col-md-6 d-md-flex align-items-md-stretch">
+										<div class="count-box">
+											<i class="bi bi-people"></i>
+											<span data-purecounter-start="0"
+												th:data-purecounter-end="${numberOfAccount}"
+												data-purecounter-duration="1" class="purecounter"></span>
+											<p><strong>Người dùng</strong> đang sử dụng và học tập</p>
+										</div>
+									</div>
+
+									<div class="col-md-6 d-md-flex align-items-md-stretch">
+										<div class="count-box">
+											<i class="bi bi-book"></i>
+											<span data-purecounter-start="0"
+												th:data-purecounter-end="${numberOfChapter}"
+												data-purecounter-duration="1" class="purecounter"></span>
+											<p><strong>Chương</strong> được xây dựng theo 600 câu hỏi sát hạch lái xe ô
+												tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
+										</div>
+									</div>
+
+									<div class="col-md-6 d-md-flex align-items-md-stretch">
+										<div class="count-box">
+											<i class="bi bi-patch-question"></i>
+											<span data-purecounter-start="0"
+												th:data-purecounter-end="${numberOfQuestion}"
+												data-purecounter-duration="1" class="purecounter"></span>
+											<p><strong>Câu hỏi</strong> đã được phê duyệt của Tổng Cục Đường Bộ VN ban
+												hành từ này 01/08/2020.</p>
+										</div>
+									</div>
+
+									<div class="col-md-6 d-md-flex align-items-md-stretch">
+										<div class="count-box">
+											<i class="bi bi-journal-richtext"></i>
+											<span data-purecounter-start="0"
+												th:data-purecounter-end="${numberOfDrivingLicenseInfo}"
+												data-purecounter-duration="1" class="purecounter"></span>
+											<p><strong>Lượt đăng kí thi</strong> chính thức liên kết đến các trung tâm
+												lái xe đã có nhiều năm kinh nghiệm trong ngành giao thông-vận tải.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="services" class="services">
+				<div class="container">
+					<div class="section-title" data-aos="fade-up">
+						<h2>DỊCH VỤ</h2>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+								<div class="icon"><i class="bi bi-book"></i></div>
+								<h4 class="title"><a th:href="@{/document}">Tài liệu</a></h4>
+								<p class="description">Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục
+									Đường Bộ VN ban hành từ này 01/08/2020.</p>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+								<div class="icon"><i class="bx bx-file"></i></div>
+								<h4 class="title"><a th:href="@{/document}">Học tập</a></h4>
+								<p class="description">Trau dồi kiến thức, hành trang trước khi thi</p>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+								<div class="icon"><i class="bx bx-tachometer"></i></div>
+								<h4 class="title"><a href="">Thi thử</a></h4>
+								<p class="description">Kiểm tra thử năng lực của bạn, bổ sung những kiến thức còn thiếu
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+								<div class="icon"><i class="bi bi-journal-richtext"></i></div>
+								<h4 class="title"><a href="">Đăng ký thi</a></h4>
+								<p class="description">Chọn kỳ thi phù hợp, và vào thi thôi</p>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section><!-- End Services Section -->
+
+			<!-- ======= More Services Section ======= -->
+			<section id="more-services" class="more-services">
+				<div class="container">
+					<div class="section-title" data-aos="fade-up">
+						<h2>CHƯƠNG QUAN TRỌNG</h2>
+						<p>Chương có tỉ lệ ra nhiều trong các kì thi</p>
+					</div>
+					<div class="row">
+						<div class="col-md-6 d-flex align-items-stretch">
+							<div class="card" style='background-image: url("assets/img/more-services-1.jpg");'
+								data-aos="fade-up" data-aos-delay="100">
+								<div class="card-body">
+									<h5 class="card-title"><a href="">Lobira Duno</a></h5>
+									<p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
+										tempor ut labore et dolore magna aliqua.</p>
+									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+							<div class="card" style='background-image: url("assets/img/more-services-2.jpg");'
+								data-aos="fade-up" data-aos-delay="200">
+								<div class="card-body">
+									<h5 class="card-title"><a href="">Limere Radses</a></h5>
+									<p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+										doloremque laudantium, totam rem.</p>
+									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-md-6 d-flex align-items-stretch mt-4">
+							<div class="card" style='background-image: url("assets/img/more-services-3.jpg");'
+								data-aos="fade-up" data-aos-delay="100">
+								<div class="card-body">
+									<h5 class="card-title"><a href="">Nive Lodo</a></h5>
+									<p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut
+										fugit, sed quia magni dolores.</p>
+									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 d-flex align-items-stretch mt-4">
+							<div class="card" style='background-image: url("assets/img/more-services-4.jpg");'
+								data-aos="fade-up" data-aos-delay="200">
+								<div class="card-body">
+									<h5 class="card-title"><a href="">Pale Treda</a></h5>
+									<p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro
+										quisquam laudantium voluptatem.</p>
+									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section><!-- End More Services Section -->
+
+			<!-- ======= Testimonials Section ======= -->
+			<section id="testimonials" class="testimonials section-bg">
+				<div class="container">
+
+					<div class="section-title" data-aos="fade-up">
+						<h2>NHẬN XÉT CỦA NGƯỜI DÙNG</h2>
+						<p>Lời đánh giá khách quan của những người dùng đã sử dụng trang web</p>
+					</div>
+
+					<div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+						<div class="swiper-wrapper">
+
+							<div class="swiper-slide">
+								<div class="testimonial-wrap">
+									<div class="testimonial-item">
+										<img th:src="@{../assets/img/team/to.jpg}" class="testimonial-img" alt="">
+										<h3>Center Nguyễn</h3>
+										<h4>tamntde130089@gmail.com</h4>
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											Giao diện đẹp , bắt mắt . Các câu hỏi và nội dung đúng theo các bộ đề của Bộ
+											giao thông vận tải đề ra.
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+									</div>
+								</div>
+							</div><!-- End testimonial item -->
+
+							<div class="swiper-slide">
+								<div class="testimonial-wrap">
+									<div class="testimonial-item">
+										<img th:src="@{../assets/img/team/TuBinh.png}" class="testimonial-img" alt="">
+										<h3>Tú Bình</h3>
+										<h4>tubinh@gmail.com</h4>
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											Phần học của trang web có tính năng tốt , giúp tôi rất nhiều do việc học từ
+											dễ đến khó một cách nhanh chóng . Cảm ơn người đã tạo ra một website thật bổ
+											ích!
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+									</div>
+								</div>
+							</div><!-- End testimonial item -->
+
+							<div class="swiper-slide">
+								<div class="testimonial-wrap">
+									<div class="testimonial-item">
+										<img th:src="@{../assets/img/team/datle.jpg}" class="testimonial-img" alt="">
+										<h3>Đạt Lê</h3>
+										<h4>datlv@gmail.com</h4>
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											Tôi rất vui khi đã tìm ra được trang web bổ ích như thế này . Thật là hữu
+											ích và thuận lợi cho cả việc học và thi.
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+									</div>
+								</div>
+							</div><!-- End testimonial item -->
+
+							<div class="swiper-slide">
+								<div class="testimonial-wrap">
+									<div class="testimonial-item">
+										<img th:src="@{../assets/img/team/Dan1.jpg}" class="testimonial-img" alt="">
+										<h3>Hương Giang</h3>
+										<h4>huonggiang@gmail.com</h4>
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											Thật tiện lợi , cho dù tôi đang làm việc hay đi chơi tôi cũng có thể học
+											những kiến thức về bằng lái xe này.
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+									</div>
+								</div>
+							</div><!-- End testimonial item -->
+
+							<div class="swiper-slide">
+								<div class="testimonial-wrap">
+									<div class="testimonial-item">
+										<img th:src="@{../assets/img/team/xuanhong.jpg}" class="testimonial-img" alt="">
+										<h3>Xuân Hồng</h3>
+										<h4>hongnxt@gmail.com</h4>
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											Tôi rất chán ghét khi cầm sách vở để học thuộc lòng . Tình cờ tôi tìm được
+											website trên internet như thế này , giúp tôi đã vượt qua được kì thi lái xe
+											một cách dễ dàng .
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+									</div>
+								</div>
+							</div><!-- End testimonial item -->
+
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+
+				</div>
+			</section><!-- End Testimonials Section -->
+
+			<!-- ======= Portfolio Section ======= -->
+			<section id="portfolio" class="portfolio">
+				<div class="container">
+
+					<div class="section-title" data-aos="fade-up">
+						<h2>KỲ THI PHỔ BIẾN</h2>
+						<p>Hạng bằng quan trọng và cần thiết trong đời sống</p>
+					</div>
+
+					<div class="row" data-aos="fade-up" data-aos-delay="200">
+						<div class="col-lg-12 d-flex justify-content-center">
+							<ul id="portfolio-flters">
+								<li data-filter="*" class="filter-active">All</li>
+								<li data-filter=".filter-app">App</li>
+								<li data-filter=".filter-card">Card</li>
+								<li data-filter=".filter-web">Web</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>App 1</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-web">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Web 3</h4>
+									<p>Web</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>App 2</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Card 2</h4>
+									<p>Card</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-web">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Web 2</h4>
+									<p>Web</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>App 3</h4>
+									<p>App</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Card 1</h4>
+									<p>Card</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Card 3</h4>
+									<p>Card</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 portfolio-item filter-web">
+							<div class="portfolio-wrap">
+								<img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4>Web 3</h4>
+									<p>Web</p>
+									<div class="portfolio-links">
+										<a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
+											class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+										<a href="portfolio-details.html" title="More Details"><i
+												class="bx bx-link"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section><!-- End Portfolio Section -->
+
+			<!-- ======= Team Section ======= -->
+			<section id="team" class="team section-bg">
+				<div class="container">
+
+					<div class="section-title" data-aos="fade-up">
+						<h2>ĐỘI NGŨ PHÁT TRIỂN</h2>
+						<p>Chúng tôi là FLearnDriving đã cùng nhau tạo ra sản phẩm</p>
+					</div>
+
+					<div class="row">
+
+						<div class="col-lg col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="100">
+								<div class="member-img">
+									<img th:src="@{../assets/img/team/hieu.jpg}" style="height: 100%;width: 100%;"
+										alt="">
+
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4>Lê Minh Hiếu</h4>
+									<span>Dev Member</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="100">
+								<div class="member-img">
+									<img th:src="@{../assets/img/team/QuangAnh.jpg}" style="height: 100%;width: 100%;"
+										alt="">
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4>Phạm Quang Anh</h4>
+									<span>Test Member</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="200">
+								<div class="member-img">
+									<img th:src="@{../assets/img/team/dung.jpg}" style="height: 100%;width: 100%;"
+										alt="">
+
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4>Võ Mạnh Dũng</h4>
+									<span>Dev Leader</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="300">
+								<div class="member-img">
+									<img th:src="@{../assets/img/team/tam.jpg}" style="height: 100%;width: 100%;"
+										alt="">
+
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4>Nguyễn Trung Tâm</h4>
+									<span>Analysis Leader</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg col-md-6 d-flex align-items-stretch">
+							<div class="member" data-aos="fade-up" data-aos-delay="400">
+								<div class="member-img">
+									<img th:src="@{../assets/img/team/hoang.jpg}" style="height: 100%;width: 100%;"
+										alt="">
+
+									<div class="social">
+										<a href=""><i class="bi bi-twitter"></i></a>
+										<a href=""><i class="bi bi-facebook"></i></a>
+										<a href=""><i class="bi bi-instagram"></i></a>
+										<a href=""><i class="bi bi-linkedin"></i></a>
+									</div>
+								</div>
+								<div class="member-info">
+									<h4>Đặng Quang Hoàng</h4>
+									<span>Test Leader</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- ======= Contact Section ======= -->
+			<section id="contact" class="contact">
+				<div class="container">
+					<div class="section-title" data-aos="fade-up">
+						<h2>LIÊN LẠC VỚI CHÚNG TÔI</h2>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+							<div class="contact-about">
+								<h3>Flearn Driving</h3>
+
+								<div class="social-links">
+									<a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+									<a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+									<a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+									<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+							<div class="info">
+								<div>
+									<i class="ri-map-pin-line"></i>
+									<p>476 Núi Thành<br>Hải Châu , Đà Nẵng 535022</p>
+								</div>
+								<div>
+									<i class="ri-mail-send-line"></i>
+									<p>FLearnDriving@gmail.com</p>
+								</div>
+								<div>
+									<i class="ri-phone-line"></i>
+									<p>0-899-222-998</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+							<form action="forms/contact.php" method="post" role="form" class="php-email-form">
+								<div class="form-group">
+									<input type="text" name="name" class="form-control" id="name"
+										placeholder="Tên của bạn" required>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" name="email" id="email"
+										placeholder="Email của bạn" required>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" name="subject" id="subject"
+										placeholder="Số điện thoại" required>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn"
+										required></textarea>
+								</div>
+								<div class="my-3">
+									<div class="loading">Loading</div>
+									<div class="error-message"></div>
+									<div class="sent-message">Your message has been sent. Thank you!</div>
+								</div>
+								<div class="text-center"><button type="submit">Gửi thông tin</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</th:block>
+</body>
+
 </html>

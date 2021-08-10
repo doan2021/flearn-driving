@@ -27,4 +27,8 @@ public class QuestionServices {
 	public Object getQuestionsInChapter(Chapter chapter) {
 		return questionsRespository.findByChapterAndIsDelete(chapter, Constant.IS_NOT_DELETE);
 	}
+	
+	public Integer countQuestion() {
+		return questionsRespository.countQuestion();
+	}
 }
