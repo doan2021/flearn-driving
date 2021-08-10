@@ -21,13 +21,13 @@ import com.doanfpt.application.validator.AccountUpdateValidator;
 @Controller
 public class AccountsController {
 
-	@Autowired
-	AccountServices accountsServices;
+    @Autowired
+    AccountServices accountsServices;
 
-	@Autowired
-	RoleServices roleServices;
-	
-	@Autowired
+    @Autowired
+    RoleServices roleServices;
+
+    @Autowired
     private AccountUpdateValidator accountUpdateValidator;
 
 	@Autowired
@@ -102,7 +102,7 @@ public class AccountsController {
         model.addAttribute("account", accountsServices.getAccountLoginInfo());
         return "view-profile-registed-exam";
     }
-    
+
     @GetMapping(value = { "/view-profile-learning-progress" })
     public String viewProfileLearningProgress(Model model) {
         model.addAttribute("account", accountsServices.getAccountLoginInfo());

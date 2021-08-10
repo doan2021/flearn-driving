@@ -37,7 +37,7 @@ public class Exam {
     @Column(name = "status")
     private Integer status;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "is_delete", columnDefinition = "boolean default false")
@@ -58,10 +58,6 @@ public class Exam {
     @JsonManagedReference
     @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
     private List<ExamResult> listExamResult;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
-    private List<DrivingLicenseInfo> listDrivingLicenseInfo;
 
     @ManyToOne
     @JoinColumn(name = "driving_license_id")
@@ -153,14 +149,6 @@ public class Exam {
 
     public void setListExamResult(List<ExamResult> listExamResult) {
         this.listExamResult = listExamResult;
-    }
-
-    public List<DrivingLicenseInfo> getListDrivingLicenseInfo() {
-        return listDrivingLicenseInfo;
-    }
-
-    public void setListDrivingLicenseInfo(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
-        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
     }
 
     public DrivingLicense getDrivingLicense() {

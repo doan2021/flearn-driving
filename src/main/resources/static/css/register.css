@@ -1,25 +1,17 @@
-.bg-register {
-    background-image: linear-gradient(rgb(255 255 255 / 65%) 0%, rgb(255 255 255 / 51%) 100%),url('../image/signup.jpg');
+.bg-register-right {
+    border-radius: 1rem;
+    background-image: url('../assets/img/register-bg.png');
     background-position: center;
-    background-repeat: no-repeat;background-size: cover;
-}
-
-.header-page{
-    background-image: url('../image/bg-select-chapter.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.lbl-font {
-    font-weight: 600;
-    font-size: 16px;
-    color: #262626;
-    font-family: "Segoe UI";
-    padding-top: 12px;
-}
-.validationMessage {
-    color: #A80000;
-    font-size: 16px;
-    font-style: italic;
-    font-family: "Segoe UI";
+.content-register {
+    border-radius: 1rem;
+    min-height: 648px;
+    background-image: url('../assets/img/register-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 102px;
 }

@@ -124,7 +124,6 @@ public class ExamService {
             MultipartFile multipartFile = registerExamForm.getIdentityCardImageFront();
             // Init object document
             Document identityCardImageFront = new Document();
-            identityCardImageFront.setData(multipartFile);
             identityCardImageFront.setDrivingLicenseInfo(drivingLicenseInfo);
             identityCardImageFront.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IDENTITY_CARD_IMAGE_FRONT_LABEL));
             identityCardImageFront.setOriginFileName(multipartFile.getOriginalFilename());
@@ -147,7 +146,6 @@ public class ExamService {
             // Get file to client
             MultipartFile multipartFile = registerExamForm.getIdentityCardImageBack();
             Document identityCardImageBack = new Document();
-            identityCardImageBack.setData(multipartFile);
             identityCardImageBack.setDrivingLicenseInfo(drivingLicenseInfo);
             identityCardImageBack.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IDENTITY_CARD_IMAGE_BACK_LABEL));
             identityCardImageBack.setOriginFileName(multipartFile.getOriginalFilename());
@@ -169,7 +167,6 @@ public class ExamService {
         } else {
             MultipartFile multipartFile = registerExamForm.getImagePortrait();
             Document imagePortrait = new Document();
-            imagePortrait.setData(multipartFile);
             imagePortrait.setDrivingLicenseInfo(drivingLicenseInfo);
             imagePortrait.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IMAGE_PORTRAIT_LABEL));
             imagePortrait.setOriginFileName(multipartFile.getOriginalFilename());
@@ -191,7 +188,6 @@ public class ExamService {
         } else {
             MultipartFile multipartFile = registerExamForm.getHealthCertificationFile();
             Document healthCertificationFile = new Document();
-            healthCertificationFile.setData(multipartFile);
             healthCertificationFile.setDrivingLicenseInfo(drivingLicenseInfo);
             healthCertificationFile.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_HEALTH_CERTIFICATION_FILE_LABEL));
             healthCertificationFile.setOriginFileName(multipartFile.getOriginalFilename());
@@ -206,9 +202,6 @@ public class ExamService {
             listDocuments.add(healthCertificationFile);
         }
         documentRespository.saveAll(listDocuments);
-        for (Document document : listDocuments) {
-            Common.writeFile(document);
-        }
         responeData.putResult("status", "success");
         responeData.putResult("message", "Đăng ký thành công!");
         return responeData;

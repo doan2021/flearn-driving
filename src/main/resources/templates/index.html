@@ -2,316 +2,616 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/layout}">
     <head>
-        <meta charset="utf-8"/>
-        <title>Trang chủ</title>
-        <link rel="stylesheet" th:href="@{../css/index.css}">
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Trang chủ</title>
     </head>
     <body>
-        <th:block layout:fragment="content">
-            <div id="carouselExampleCaptions" class="carousel slide carousel-inner" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-item active">
-                    <div class="mu-slider-img">
-                        <figure class="m-0">
-                            <img th:src="@{../image/slide-1.jpg}" class="d-block" alt="..." width="100%" height="500px">
-                        </figure>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4 class="title-slide mb-0">Tài liệu</h4>
-                        <span class="line-slide bg-info"></span>
-                        <h2 class="content-slide">Những điều cần biết khi thi bằng lái xe</h2>
-                        <p>Toàn bộ 650 câu hỏi trắc nghiệm thì bằng lái xe</p>
-                        <a href="#" class="btn btn-primary">Xem thêm</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="mu-slider-img">
-                        <figure class="m-0">
-                            <img th:src="@{../image/slide-2.jpg}" class="d-block" alt="..." width="100%" height="500px">
-                        </figure>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4 class="title-slide mb-0">Học tập</h4>
-                        <span class="line-slide bg-info"></span>
-                        <h2 class="content-slide">Chúng tôi sẽ giúp bạn tiến bộ</h2>
-                        <p>Chức năng học thông minh, giúp tiết kiệm thời gian học tập và ghi nhớ</p>
-                        <a href="#" class="btn btn-primary">Xem thêm</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="mu-slider-img">
-                        <figure class="m-0">
-                            <img th:src="@{../image/slide-3.jpg}" class="d-block" alt="..." width="100%" height="500px">
-                        </figure>
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4 class="title-slide mb-0">Thi thử</h4>
-                        <span class="line-slide bg-info"></span>
-                        <h2 class="content-slide">Kiểm tra khả năng của bạn trước khi thi</h2>
-                        <p>Chế độ thi thử giúp bạn nắm rõ năng lực và những thiếu sót cần bổ xung</p>
-                        <a href="#" class="btn btn-primary">Xem thêm</a>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+    <th:block layout:fragment="content">
+      <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1 data-aos="fade-up">Học lái xe mùa dịch</h1>
+              <h2 data-aos="fade-up" data-aos-delay="400">Thế nào cho an toàn</h2>
+              <div data-aos="fade-up" data-aos-delay="800">
+                <a th:href="@{/select-chapter}" class="btn-get-started scrollto">Xem thêm</a>
+              </div>
             </div>
-            <section id="mu-service">
-                <div class="container-xxl">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="mu-service-area">
-                                <a th:href="@{/document}" class="menu-panel shadow text-decoration-none p-4">
-                                    <span class="icon-panel"><i class="far fa-file-alt"></i></span>
-                                    <span class="title-panel">Tài liệu</span>
-                                    <span class="content-panel">Bao gồm tất cả những câu hỏi thi bằng lái các loại từ A1 đến F</span>
-                                </a>
-                                <a th:href="@{/select-chapter}" class="menu-panel shadow text-decoration-none p-4">
-                                    <span class="icon-panel"><i class="fas fa-graduation-cap"></i></span>
-                                    <span class="title-panel">Học tập</span>
-                                    <span class="content-panel">Trau dồi kiến thức, hành trang trước khi thi</span>
-                                </a>
-                                <a th:href="@{/trial-exam}" class="menu-panel shadow text-decoration-none p-4">
-                                    <span class="icon-panel"><i class="fas fa-diagnoses"></i></span>
-                                    <span class="title-panel">Thi thử</span>
-                                    <span class="content-panel">Kiểm tra thử năng lực của bạn, bổ sung nhưng kiến thức còn thiếu</span>
-                                </a>
-                                <a th:href="@{/register-exam}" class="menu-panel shadow text-decoration-none p-4">
-                                    <span class="icon-panel"><i class="fas fa-map-marker-alt"></i></span>
-                                    <span class="title-panel">Đăng ký thi</span>
-                                    <span class="content-panel">Chọn kỳ thi phù hợp, và vào thi thôi</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="mu-about-us">
-                <div class="container-xxl mt-5">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-about-us-area">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="mu-about-us-left">
-                                            <div class="mu-title">
-                                                <h2>GIỚI THIỆU VỀ CHÚNG TÔI</h2>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
-                                            <ul>
-                                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                                <li>Saepe a minima quod iste libero rerum dicta!</li>
-                                                <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
-                                                <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
-                                                <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="mu-about-us-right">
-                                            <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
-                                                <img src="assets/img/about-us.jpg" alt="img">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="mu-abtus-counter" th:style="|background-image: url('@{../images/assets/background-index1.jpg}')|">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-abtus-counter-area">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <div class="mu-abtus-counter-single">
-                                            <span class="fa fa-book"></span>
-                                                <h4 class="counter" th:text="${numberOfChapter}"></h4>
-                                                <p>Chương</p>
-                                        </div>
-                                    </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <div class="mu-abtus-counter-single">
-                                        <span class="fa fa-users"></span>
-                                        <h4 class="counter">3500</h4>
-                                        <p>Câu hỏi</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <div class="mu-abtus-counter-single">
-                                        <span class="fa fa-flask"></span>
-                                        <h4 class="counter">65</h4>
-                                        <p>Người sử dụng</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <div class="mu-abtus-counter-single no-border">
-                                        <span class="fa fa-user-secret"></span>
-                                        <h4 class="counter">250</h4>
-                                        <p>Loại bằng</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+              <img th:src="@{../assets/img/index-img.png}" class="img-fluid animated" alt="">
             </div>
-        </section>
-        <section>
-            <div class="container-xxl">
-                <div class="row my-5">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="mu-features-area">
-                            <div class="mu-title">
-                                <h2>Chương quan trọng</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-                            </div>
-                            <div class="mu-features-content">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4  col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-book"></span>
-                                            <h4>Professional Courses</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-users"></span>
-                                            <h4>Expert Teachers</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-laptop"></span>
-                                            <h4>Online Learning</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-microphone"></span>
-                                            <h4>Audio Lessons</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-film"></span>
-                                            <h4>Video Lessons</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
-                                        <div class="mu-single-feature border p-4">
-                                            <span class="fa fa-certificate"></span>
-                                            <h4>Professional Certificate</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                                            <a href="#" class="btn btn-primary">Học chương</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </section><!-- End Hero -->
+    
+      <main id="main">
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>LỜI GIỚI THIỆU</h2>
             </div>
-        </section>
-          <section id="mu-latest-courses">
-            <div class="container-xxl">
-              <div class="row">
-                <div class="col-lg-12 col-md-12">
-                  <div class="mu-latest-courses-area">
-                    <!-- Start Title -->
-                    <div class="mu-title">
-                      <h2>Kỳ thi gần nhất</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-                    </div>
-                    <!-- End Title -->
-                    <!-- Start latest course content -->
-                    <div class="mu-latest-courses-content row">
-                      <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="mu-latest-course-single">
-                          <figure class="mu-latest-course-img">
-                            <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
-                            <figcaption class="mu-latest-course-imgcaption">
-                              <a href="#">B2</a>
-                              <span><i class="far fa-clock"></i>90Days</span>
-                            </figcaption>
-                          </figure>
-                          <div class="mu-latest-course-single-content">
-                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
-                              <a class="mu-course-details" href="#">Details</a>
-                              <span class="mu-course-price" href="#">$165.00</span>
-                            </div>
-                          </div>
-                        </div>
+    
+            <div class="row content">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+              </div>
+            </div>
+    
+          </div>
+        </section><!-- End About Us Section -->
+    
+        <!-- ======= Counts Section ======= -->
+        <section id="counts" class="counts">
+          <div class="container">
+    
+            <div class="row">
+              <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start" data-aos="fade-right" data-aos-delay="150">
+                <img src="assets/img/counts-img.svg" alt="" class="img-fluid">
+              </div>
+    
+              <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left" data-aos-delay="300">
+                <div class="content d-flex flex-column justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                      <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Người dùng</strong> đang sử dụng và học tập</p>
                       </div>
-                      <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="mu-latest-course-single">
-                          <figure class="mu-latest-course-img">
-                            <a href="#"><img src="assets/img/courses/2.jpg" alt="img"></a>
-                            <figcaption class="mu-latest-course-imgcaption">
-                              <a href="#">B1</a>
-                              <span><i class="far fa-clock"></i>75Days</span>
-                            </figcaption>
-                          </figure>
-                          <div class="mu-latest-course-single-content">
-                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
-                              <a class="mu-course-details" href="#">Details</a>
-                              <span class="mu-course-price" href="#">$165.00</span>
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+    
+                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                      <div class="count-box">
+                        <i class="bi bi-journal-richtext"></i>
+                        <span data-purecounter-start="0" th:data-purecounter-end="${numberOfChapter}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Chương</strong> được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
                       </div>
-                      <div class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="mu-latest-course-single">
-                          <figure class="mu-latest-course-img">
-                            <a href="#"><img src="assets/img/courses/3.jpg" alt="img"></a>
-                            <figcaption class="mu-latest-course-imgcaption">
-                              <a href="#">B1</a>
-                              <span><i class="far fa-clock"></i>45Days</span>
-                            </figcaption>
-                          </figure>
-                          <div class="mu-latest-course-single-content">
-                            <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                            <div class="mu-latest-course-single-contbottom d-flex justify-content-between">
-                              <a class="mu-course-details" href="#">Details</a>
-                              <span class="mu-course-price" href="#">$165.00</span>
-                            </div>
-                          </div>
-                        </div>
+                    </div>
+    
+                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                      <div class="count-box">
+                        <i class="bi bi-clock"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Lượt đăng ký thi</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                      <div class="count-box">
+                        <i class="bi bi-award"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                        <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        </th:block>
+          </div>
+        </section>
+
+        <section id="services" class="services">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>DỊCH VỤ</h2>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a th:href="@{/document}">Tài liệu</a></h4>
+                  <p class="description">Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
+                </div>
+              </div>
+    
+              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon"><i class="bx bx-file"></i></div>
+                  <h4 class="title"><a  th:href="@{/document}">Học tập</a></h4>
+                  <p class="description">Trau dồi kiến thức, hành trang trước khi thi</p>
+                </div>
+              </div>
+    
+              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <div class="icon"><i class="bx bx-tachometer"></i></div>
+                  <h4 class="title"><a href="">Thi thử</a></h4>
+                  <p class="description">Kiểm tra thử năng lực của bạn, bổ sung nhưng kiến thức còn thiếu</p>
+                </div>
+              </div>
+    
+              <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <div class="icon"><i class="bx bx-world"></i></div>
+                  <h4 class="title"><a href="">Đăng ký thi</a></h4>
+                  <p class="description">Chọn kỳ thi phù hợp, và vào thi thôi</p>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+        </section><!-- End Services Section -->
+    
+        <!-- ======= More Services Section ======= -->
+        <section id="more-services" class="more-services">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>CHƯƠNG QUAN TRỌNG</h2>
+              <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card" style='background-image: url("assets/img/more-services-1.jpg");' data-aos="fade-up" data-aos-delay="100">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="">Lobira Duno</a></h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua.</p>
+                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                <div class="card" style='background-image: url("assets/img/more-services-2.jpg");' data-aos="fade-up" data-aos-delay="200">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="">Limere Radses</a></h5>
+                    <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem.</p>
+                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+                  </div>
+                </div>
+    
+              </div>
+              <div class="col-md-6 d-flex align-items-stretch mt-4">
+                <div class="card" style='background-image: url("assets/img/more-services-3.jpg");' data-aos="fade-up" data-aos-delay="100">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="">Nive Lodo</a></h5>
+                    <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores.</p>
+                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex align-items-stretch mt-4">
+                <div class="card" style='background-image: url("assets/img/more-services-4.jpg");' data-aos="fade-up" data-aos-delay="200">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="">Pale Treda</a></h5>
+                    <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem.</p>
+                    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </section><!-- End More Services Section -->
+    
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials section-bg">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>NHẬN XÉT CỦA NGƯỜI DÙNG</h2>
+              <p>Lời đánh giá khách quan của những người dùng đã sử dụng trang web</p>
+            </div>
+    
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                      <h3>Center Nguyễn</h3>
+                      <h4>Người qua đường</h4>
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                      <h3>Dũng</h3>
+                      <h4>Người qua đường</h4>
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                      <h3>Hoàng Đặng</h3>
+                      <h4>Người qua đường</h4>
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                      <h3>Quang Anh</h3>
+                      <h4>Người qua đường</h4>
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+                <div class="swiper-slide">
+                  <div class="testimonial-wrap">
+                    <div class="testimonial-item">
+                      <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                      <h3>Hiếu Lê</h3>
+                      <h4>Người qua đường</h4>
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div><!-- End testimonial item -->
+    
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+    
+          </div>
+        </section><!-- End Testimonials Section -->
+    
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>KỲ THI PHỔ BIẾN</h2>
+              <p>Hạng bằng quan trọng và cần thiết trong đời sống</p>
+            </div>
+    
+            <div class="row" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-flters">
+                  <li data-filter="*" class="filter-active">All</li>
+                  <li data-filter=".filter-app">App</li>
+                  <li data-filter=".filter-card">Card</li>
+                  <li data-filter=".filter-web">Web</li>
+                </ul>
+              </div>
+            </div>
+    
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>App 1</h4>
+                    <p>App</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Web 3</h4>
+                    <p>Web</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>App 2</h4>
+                    <p>App</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Card 2</h4>
+                    <p>Card</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Web 2</h4>
+                    <p>Web</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>App 3</h4>
+                    <p>App</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Card 1</h4>
+                    <p>Card</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Card 3</h4>
+                    <p>Card</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="portfolio-wrap">
+                  <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+                  <div class="portfolio-info">
+                    <h4>Web 3</h4>
+                    <p>Web</p>
+                    <div class="portfolio-links">
+                      <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+        </section><!-- End Portfolio Section -->
+    
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team section-bg">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>ĐỘI NGŨ PHÁT TRIỂN</h2>
+              <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                  <div class="member-img">
+                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Executive Officer</span>
+                  </div>
+                </div>
+              </div>
+                <div class="col-lg col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                  <div class="member-img">
+                    <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Executive Officer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="200">
+                  <div class="member-img">
+                    <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Sarah Jhonson</h4>
+                    <span>Product Manager</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="300">
+                  <div class="member-img">
+                    <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>William Anderson</h4>
+                    <span>CTO</span>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="400">
+                  <div class="member-img">
+                    <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                    <div class="social">
+                      <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4>Amanda Jepson</h4>
+                    <span>Accountant</span>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+        </section>
+    
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>LIÊN LẠC VỚI CHÚNG TÔI</h2>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-about">
+                  <h3>Flearn Driving</h3>
+                  <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                  <div class="social-links">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="info">
+                  <div>
+                    <i class="ri-map-pin-line"></i>
+                    <p>A108 Adam Street<br>New York, NY 535022</p>
+                  </div>
+                  <div>
+                    <i class="ri-mail-send-line"></i>
+                    <p>info@example.com</p>
+                  </div>
+                  <div>
+                    <i class="ri-phone-line"></i>
+                    <p>+1 5589 55488 55s</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                  <div class="form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                  </div>
+                  <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                  </div>
+                  <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </th:block>
     </body>
 </html>

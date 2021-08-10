@@ -64,8 +64,15 @@ public class Account {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "address")
+    private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "ward_id", nullable = true)
+    private Ward ward;
 
     @Column(name = "is_delete", columnDefinition = "boolean default false")
     private boolean isDelete;
@@ -90,19 +97,7 @@ public class Account {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<HistoryAnswer> listHistoryAnswer;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<StatusLearn> listStatusLearn;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<Document> listImages;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<DrivingLicenseInfo> listDrivingLicenseInfo;
 
     public Long getAccountId() {
         return accountId;
@@ -174,22 +169,6 @@ public class Account {
 
     public void setDelete(boolean isDelete) {
         this.isDelete = isDelete;
-    }
-
-    public List<HistoryAnswer> getListHistoryAnswer() {
-        return listHistoryAnswer;
-    }
-
-    public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
-        this.listHistoryAnswer = listHistoryAnswer;
-    }
-
-    public List<StatusLearn> getListStatusLearn() {
-        return listStatusLearn;
-    }
-
-    public void setListStatusLearn(List<StatusLearn> listStatusLearn) {
-        this.listStatusLearn = listStatusLearn;
     }
 
     public List<Document> getListImages() {
@@ -280,20 +259,20 @@ public class Account {
         this.description = description;
     }
 
-    public List<DrivingLicenseInfo> getListDrivingLicenseProfiles() {
-        return listDrivingLicenseInfo;
+    public String getAddress() {
+        return address;
     }
 
-    public void setListDrivingLicenseProfiles(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
-        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public List<DrivingLicenseInfo> getListDrivingLicenseInfo() {
-        return listDrivingLicenseInfo;
+    public Ward getWard() {
+        return ward;
     }
 
-    public void setListDrivingLicenseInfo(List<DrivingLicenseInfo> listDrivingLicenseInfo) {
-        this.listDrivingLicenseInfo = listDrivingLicenseInfo;
+    public void setWard(Ward ward) {
+        this.ward = ward;
     }
 
 }

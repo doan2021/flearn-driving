@@ -1,8 +1,5 @@
 package com.doanfpt.application.common;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.doanfpt.application.entities.Document;
 import com.doanfpt.application.model.AccountPrincipal;
 
 public class Common {
@@ -91,23 +87,6 @@ public class Common {
 
 	public static String dateToString(Date date, String format) {
 		return DateFormatUtils.format(date, format);
-	}
-
-	public static void writeFile(Document document) {
-		byte data[];
-		try {
-			File theDir = new File(document.getPath());
-			if (!theDir.exists()) {
-				theDir.mkdirs();
-			}
-			data = document.getData().getBytes();
-			File file = new File(document.getPath() + "/" + document.getFileName());
-			FileOutputStream out = new FileOutputStream(file);
-			out.write(data);
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public static String generateFileName(MultipartFile multipartFile, String label) {

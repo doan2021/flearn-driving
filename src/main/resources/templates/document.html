@@ -1,81 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+    layout:decorate="~{layout/layout}">
 
 <head>
-	<meta charset="utf-8" />
-	<title>Tai Lieu</title>
-	<link rel="stylesheet" th:href="@{../css/document.css}">
+    <meta charset="utf-8" />
+    <title>Tai Lieu</title>
+    <link rel="stylesheet" th:href="@{../css/document.css}">
 </head>
 
 <body>
-	<th:block layout:fragment="content">
-		<div class="bg-primary header-page d-flex align-items-center">
-			<div class="container-xxl">
-				<div class="row">
-					<div class="col-12 py-5">
-						<span class="display-5 pb-3 d-inline-block text-light">Tài liệu
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb text-light">
-									<li class="breadcrumb-item"><a th:href="@{/}" class="text-light">Trang chủ</a></li>
-									<li class="breadcrumb-item">Chọn chương</li>
-								</ol>
-							</nav>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container-xxl pt-3 pb-5">
-			<div class="row mt-3">
-				<div class="col-12 mt-3">
-					<div class="text-center m-3">
-						<h1 class="display-5 pb-2 title-page d-inline-block fs-2">Toàn bộ chương</h1>
-					</div>
-					<div class="row mb-0">
-						<div class="col-12">
-							<div class="has-background-alternating-grey-reversed">
-								<div class="modular-content-container">
-									<div class="section is-small is-uniform has-padding-top-large has-padding-top-small-tablet">
-										<div class="tabs-container has-padding-bottom-large">
-											<div class="has-padding-bottom-none">
-												<ul id="learning-paths-list" class="grid is-horizontal has-margin-left-none">
-													<div class="grid-item" th:each="chapter : ${listChapter}">
-														<div class="vertical-box">
-															<div class="card-heard row mt-5" style="border-radius: 0px; min-height: 112px; margin: 2px 2px 1.125rem; padding: 0px; box-shadow: rgba(49, 49, 49, 0.24) 0px 1px 4px; border: 1px solid rgb(234, 234, 234);">
-																<div class="card-content col-́3 col-sm-3 col-md-3 text-center">
-																	<img role="presentation" alt="" th:src="@{../assets/img/logo.png}" style="margin: 28px; height:100px ; width:260px">
-																</div>
-																<div class="card-body col-̣6 col-sm-6 col-md-6">
-																	<div>
-																		<strong>Chương: <span class="card-content-super-title mt-0" th:text="|${chapter.name}|"></span></strong>
-																	</div>
-																	<div class="mt-3">
-																		<strong>Nội dung: </strong><span class="card-content-super-title has-margin-top-none" th:text="|${chapter.content}|"></span>
-																	</div>
-																	<div class="mt-3">
-																		<strong>Mô tả: </strong><span class="card-content-super-title has-margin-top-none" th:text="|${chapter.description}|"> 
-																		</span>
-																	</div>
-																</div>
-																<div class="card-footer-item col-̣3 col-sm-3 col-md-3">
-																	<a class="btn btn-primary m-5" th:href="@{${'/list-question?chapterId='} + ${chapter.chapterId}}" role="button">Bắt đầu học</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> 
-	</th:block>
+    <th:block layout:fragment="content">
+        <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Tài liệu</h2>
+                    <ol>
+                        <li><a th:href="@{/}">Trang chủ</a></li>
+                        <li>Tài liệu</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section class="more-services mt-4">
+          <div class="container">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Toàn bộ chương</h2>
+              <p>Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 d-flex align-items-stretch mt-4" th:each="chapter : ${listChapter}">
+                <div class="card border" th:style="|background-image: url('@{../assets/img/no-photo.png}')|" data-aos="fade-up" data-aos-delay="100" th:if="${chapter.listImages.size == 0}">
+                  <div class="card-body">
+                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.name}|"></a></h4>
+                    <h5 class="card-title" th:text="${chapter.content}"></h5>
+                    <p class="card-text" th:text="${chapter.description}"></p>
+                    <div class="read-more"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Xem chi tiết</a></div>
+                  </div>
+                </div>
+                <div class="card border" th:style="|background-image: url('${chapter.listImages.get(0).path}')|" data-aos="fade-up" data-aos-delay="100" th:unless="${chapter.listImages.size == 0}">
+                  <div class="card-body">
+                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.name}|"></a></h4>
+                    <h5 class="card-title" th:text="${chapter.content}"></h5>
+                    <p class="card-text" th:text="${chapter.description}"></p>
+                    <div class="read-more"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Xem chi tiết</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </th:block>
 </body>
-
 </html>

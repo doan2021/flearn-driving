@@ -1,94 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+    layout:decorate="~{layout/layout}">
 
 <head>
-	<title>Login</title>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" th:href="@{../css/login.css}" />
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{../css/login.css}" />
 </head>
 
 <body>
-	<th:block layout:fragment="content">
-		<section class="mu-page-breadcrumb">
-			<div class="container-xxl">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="mu-page-breadcrumb-area">
-							<h2>Đăng nhập</h2>
-							<ol class="breadcrumb w-100 justify-content-center">
-								<li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
-								<li class="active breadcrumb-item">Đăng nhập</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="container-xl py-5">
-			<div class="shadow rounded border p-4">
-
-				<section class="ftco-section">
-
-					<div class="row justify-content-center">
-						<div class="text-center">
-							<h1 class="heading-section">Đăng nhập</h1>
-						</div>
-					</div>
-					<br>
-					<div class="row d-flex justify-content-center">
-						<div class="col-md-6 col-lg-4">
-							<div class="login-wrap p-0">
-								<form class="login" name='f' th:action="@{/j_spring_security_check}" method="POST">
-									<div class="form-group">
-										<input type="text" class="form-control rounded-pill" placeholder="Tên đăng nhập"
-											name="username" required>
-									</div>
-									<div class="form-group mt-3">
-										<input id="password-field" name="password" type="password"
-											class="form-control rounded-pill" placeholder="Mật khẩu" required> <span
-											toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password">
-										</span>
-									</div>
-
-									<div class="text-center text-danger mt-2" th:if="${#request.getParameter('error') == 'true'}">
-                                        <strong>Login Failed!!!</strong>
-                                        <span  th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}" th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Static summary</span>
-                                    </div>
-                                    <div class="form-group d-flex justify-content-between mt-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="rememberMe" id="remember-me">
-                                            <label class="form-check-label" for="remember-me">Nhớ mật khẩu</label>
+    <th:block layout:fragment="content">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 shadow content-login p-3 aos-init" data-aos="fade-right">
+                    <div class="row h-100">
+                        <div class="col-4 p-4">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+	                                <div class="text-center">
+	                                    <h1 class="heading-section">Đăng nhập</h1>
+	                                    <img alt="" th:src="@{../assets/img/login-img.png}"  width="220">
+	                                </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <form class="login" name='f' th:action="@{/j_spring_security_check}" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control bg-transparent" placeholder="Tên đăng nhập" name="username" required>
                                         </div>
-                                        <a href="#" style="color: rgb(0, 0, 0); text-decoration: none">Quên mật khẩu</a>
-                                    </div>
-                                    <div class="form-group d-grid gap-2 mt-3">
-														<button type="submit" name="submit"
-															class="btn btn-login">Sign
-															In</button>
-													</div>
-                                </form>
-                                <br>
-                                <h5 class="text-center "> Hoặc tài khoản </h5>
-                                <div class="social-login">
-               <a th:href="@{#}" class="btn facebook-btn social-btn" type="button"><span><i
-												class="fab fa-facebook-f"></i> Facebook</span> </a>
-										<a th:href="@{#}" class="btn google-btn social-btn" type="button"><span <i class="fab fa-google-plus-g"></i> Google</span> </a>
-            </div>
-            <br>
-                                 <h5 class="mb-4 text-center">Nếu bạn chưa có tài khoản, hãy đăng ký!</h5>
-                                <div class="d-flex justify-content-center mt-4">
-                                    <a th:href="@{/register}" class="btn btn-register "> 
-                                       <span class="log-in-google"><i class="fas fa-paper-plane"></i> ĐĂNG KÝ</span>
-                                    </a>
+                                        <div class="form-group mt-3">
+                                            <input id="password-field" name="password" type="password" class="form-control bg-transparent" placeholder="Mật khẩu" required>
+                                            <span class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                        </div>
+                                        <div class="text-center text-danger mt-2" th:if="${#request.getParameter('error') == 'true'}">
+                                            <strong>Đăng nhập thất bại!</strong>
+                                            <span>Tên đăng nhập hoặc mật khẩu không đúng!</span>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="rememberMe" id="remember-me">
+                                                <label class="form-check-label" for="remember-me">Nhớ mật khẩu</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group d-grid gap-2 mt-3">
+                                            <button type="submit" name="submit" class="btn btn-primary">Đăng nhập</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <span>Bạn chưa có tài khoản?</span>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <a th:href="@{/register}" class="btn btn-success w-100">Đăng ký</a>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <a th:href="@{/oauth2/authorization/google}" class="btn btn-danger w-100">Google+</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            </section>
+                        <div class="col-8 text-center bg-login-right">
                         </div>
-                    
- </div>
+                    </div>
+                </div>
+            </div>
+        </div>
      </th:block>
     </body>
 </html>

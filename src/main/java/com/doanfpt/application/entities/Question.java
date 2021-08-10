@@ -30,10 +30,10 @@ public class Question {
     @Column(name = "number")
     private int number;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "isParalysis", columnDefinition = "boolean default false")
+    @Column(name = "is_paralysis", columnDefinition = "Boolean default false")
     private boolean isParalysis;
 
     @Column(name = "is_delete", columnDefinition = "boolean default false")
@@ -63,10 +63,6 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<StatusLearn> listStatusLearn;
 
     public Long getQuestionId() {
         return questionId;
@@ -100,6 +96,10 @@ public class Question {
         this.isDelete = isDelete;
     }
 
+    public void setParalysis(boolean isParalysis) {
+        this.isParalysis = isParalysis;
+    }
+
     public List<Answer> getListAnswers() {
         return listAnswers;
     }
@@ -124,20 +124,12 @@ public class Question {
         this.chapter = chapter;
     }
 
-    public boolean isParalysis() {
+    public Boolean isParalysis() {
         return isParalysis;
     }
 
-    public void setParalysis(boolean isParalysis) {
+    public void setParalysis(Boolean isParalysis) {
         this.isParalysis = isParalysis;
-    }
-
-    public List<StatusLearn> getListStatusLearn() {
-        return listStatusLearn;
-    }
-
-    public void setListStatusLearn(List<StatusLearn> listStatusLearn) {
-        this.listStatusLearn = listStatusLearn;
     }
 
     public String getCreateBy() {
