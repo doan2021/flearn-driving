@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -92,23 +90,6 @@ public class AccountServices {
 		accountsRespository.save(account);
 	}
 
-	public Object getObjectUpdate(Long accountId) {
-		AccountForm accountForm = new AccountForm();
-		Account account = accountsRespository.findByAccountIdAndIsDelete(accountId, Constant.IS_NOT_DELETE);
-		accountForm.setAccountId(account.getAccountId());
-		accountForm.setFirstName(account.getFirstName());
-		accountForm.setMiddleName(account.getMiddleName());
-		accountForm.setLastName(account.getLastName());
-		accountForm.setUserName(account.getUserName());
-		accountForm.setBirthDay(account.getBirthDay() == null ? StringUtils.EMPTY : DateFormatUtils.format(account.getBirthDay(), Constant.FORMAT_DATE));
-		accountForm.setNumberPhone(account.getNumberPhone());
-		accountForm.setEmail(account.getEmail());
-		accountForm.setGender(account.getGender());
-		accountForm.setDescription(account.getDescription());
-		accountForm.setRoleId(account.getRole().getRoleId());
-		return accountForm;
-	}
-
 	@Transactional
 	public boolean updateAccount(AccountUpdateForm accountUpdateForm) {
 		if (accountUpdateForm == null) {
@@ -118,6 +99,7 @@ public class AccountServices {
 		if (account == null) {
 			return false;
 		}
+		account.setAccountId(accountUpdateForm.getAccountId());
 		account.setFirstName(accountUpdateForm.getFirstName());
 		account.setMiddleName(accountUpdateForm.getMiddleName());
 		account.setLastName(accountUpdateForm.getLastName());
@@ -125,9 +107,9 @@ public class AccountServices {
 		account.setEmail(accountUpdateForm.getEmail());
 		account.setNumberPhone(accountUpdateForm.getNumberPhone());
 		account.setGender(accountUpdateForm.getGender());
+		account.setDescription(accountUpdateForm.getDescription());
 		account.setUpdateBy(Common.getUsernameLogin());
 		account.setUpdateAt(Common.getSystemDate());
-		account.setDescription(accountUpdateForm.getDescription());
 		account.setCreateAt(Common.getSystemDate());
 		account.setCreateBy(Common.getUsernameLogin());
 		if (accountsRespository.save(account) == null) {
@@ -137,4 +119,25 @@ public class AccountServices {
 		}
 	}
 
+	public Object getAccountLoginInfo() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AccountPrincipal loginedUser = (AccountPrincipal) auth.getPrincipal();
+		AccountForm accountForm = new AccountForm();
+		Account account = accountsRespository.findByEmail(loginedUser.getEmail());
+		accountForm.setAccountId(account.getAccountId());
+		accountForm.setFirstName(account.getFirstName());
+		accountForm.setMiddleName(account.getMiddleName());
+		accountForm.setLastName(account.getLastName());
+		accountForm.setUserName(account.getUserName());
+		accountForm.setBirthDay(DateFormatUtils.format(account.getBirthDay(), Constant.FORMAT_DATE));
+		accountForm.setNumberPhone(account.getNumberPhone());
+		accountForm.setEmail(account.getEmail());
+		accountForm.setGender(account.getGender());
+		accountForm.setRoleId(account.getRole().getRoleId());
+		accountForm.setCreateAt(Common.getSystemDate());
+		accountForm.setCreateBy(Common.getUsernameLogin());
+		accountForm.setUpdateAt(Common.getSystemDate());
+		accountForm.setUpdateBy(Common.getUsernameLogin());
+		return accountForm;
+	}
 }

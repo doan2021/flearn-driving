@@ -67,13 +67,13 @@ public class AccountsController {
 
 	@GetMapping(value = { "/view-profile" })
 	public String viewProfile(Model model) {
-		model.addAttribute("accountUpdateForm", accountsServices.getAccountLogin());
+		model.addAttribute("accountUpdateForm", accountsServices.getAccountLoginInfo());
 		return "view-profile";
 	}
 	
 	@GetMapping(value = { "/view-profile-update" })
 	public String viewProfileUpdate(Model model) {
-		model.addAttribute("accountUpdateForm", accountsServices.getAccountLogin());
+		model.addAttribute("accountUpdateForm", accountsServices.getAccountLoginInfo());
 		return "view-profile-update";
 	}
 
@@ -81,7 +81,7 @@ public class AccountsController {
 	public String updateAccountView(@Validated AccountUpdateForm accountUpdateForm, BindingResult result, Model model) {
 		try {
 			if (result.hasErrors()) {
-				return "view-profile";
+				return "view-profile-update";
 			}
 			boolean updateSuccess = accountsServices.updateAccount(accountUpdateForm);
 			if (updateSuccess) {
@@ -90,28 +90,22 @@ public class AccountsController {
 				model.addAttribute("messageError", "Quá trình cập nhật thất bại!");
 			}
 			model.addAttribute("accountUpdateForm", accountUpdateForm);
-			return "view-profile";
+			return "view-profile-update";
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 			return "403";
 		}
 	}
-  
-    @GetMapping(value = { "/view-profile" })
-    public String viewProfile(Model model) {
-        model.addAttribute("account", accountsServices.getAccountLogin());
-        return "view-profile";
-    }
 
     @GetMapping(value = { "/view-profile-registed-exam" })
     public String viewProfileRegistedExam(Model model) {
-        model.addAttribute("account", accountsServices.getAccountLogin());
+        model.addAttribute("account", accountsServices.getAccountLoginInfo());
         return "view-profile-registed-exam";
     }
     
     @GetMapping(value = { "/view-profile-learning-progress" })
     public String viewProfileLearningProgress(Model model) {
-        model.addAttribute("account", accountsServices.getAccountLogin());
+        model.addAttribute("account", accountsServices.getAccountLoginInfo());
         return "view-profile-learning-progress";
     }
 }
