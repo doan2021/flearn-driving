@@ -1,4 +1,4 @@
-package com.doanfpt.application.security.oauth;
+package com.doanfpt.application.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -7,9 +7,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import com.doanfpt.application.dto.AccountPrincipal;
 import com.doanfpt.application.entities.Account;
-import com.doanfpt.application.model.AccountPrincipal;
-import com.doanfpt.application.services.AccountServices;
 
 @Service
 public class CustomOAuth2AccountService extends DefaultOAuth2UserService {

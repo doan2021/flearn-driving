@@ -3,8 +3,8 @@ package com.doanfpt.application.component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.doanfpt.application.dto.DataSettingId;
 import com.doanfpt.application.entities.DataSetting;
-import com.doanfpt.application.model.DataSettingId;
 import com.doanfpt.application.responsitories.DataSettingRespository;
 
 @Component

@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.doanfpt.application.dto.AccountPrincipal;
 import com.doanfpt.application.entities.Account;
-import com.doanfpt.application.model.AccountPrincipal;
 import com.doanfpt.application.responsitories.AccountsRespository;
 
 @Service
