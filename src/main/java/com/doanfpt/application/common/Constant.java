@@ -26,9 +26,6 @@ public class Constant {
 
 	public static final long ROLE_ID_ADMIN = 1L;
 
-	public static final boolean IS_NOT_DELETE = false;
-
-	/** Rule format date */
 	public static final String FORMAT_DATE = "MM/dd/yyyy";
 
 	public static final String FORMAT_DATE_TIME = "MM/dd/yyyy HH:mm";
@@ -72,4 +69,6 @@ public class Constant {
 	public static final String PATTERN_EMAIL = "^(.+)@(\\S+)$";
 
 	public static final String PATTERN_PHONENUMBER = "^[0][0-9]{9}$";
+
+    public static final Long ROLE_ID_USER = 2L;
 }

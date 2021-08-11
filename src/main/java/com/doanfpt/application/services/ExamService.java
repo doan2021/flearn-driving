@@ -64,8 +64,7 @@ public class ExamService {
         if (formSearchExam.getPageNumber() == null) {
             formSearchExam.setPageNumber(0);
         }
-        Specification<Exam> conditions = Specification.where(ExamSpecification.isDelete(false)
-                .and(ExamSpecification.hasDateRegisExamEndFrom(Common.getSystemDate())));
+        Specification<Exam> conditions = Specification.where(ExamSpecification.hasDateRegisExamEndFrom(Common.getSystemDate()));
         PageRequest pageable = PageRequest.of(formSearchExam.getPageNumber(), 9);
         Page<Exam> listExam = examRepository.findAll(conditions, pageable);
         responeData.putResult(Constant.PAGE_CONTENT_NAME, listExam);

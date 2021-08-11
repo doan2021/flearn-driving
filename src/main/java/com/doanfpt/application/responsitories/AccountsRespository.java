@@ -14,10 +14,10 @@ public interface AccountsRespository extends JpaRepository<Account, Long>, JpaSp
 
     Account findByEmail(String email);
 
-    Boolean existsByUserName(String userName);
+    boolean existsByUserName(String userName);
 
-	public Account findByAccountIdAndIsDelete(Long accountId, boolean isNotDelete);
+	public Account findByAccountId(Long accountId);
 	
-	@Query("SELECT count(a) FROM Account a WHERE a.isDelete = false and a.role.roleId = 2")
+	@Query("SELECT count(a) FROM Account a WHERE a.role.roleId = 2")
 	Integer countAccount();
 }

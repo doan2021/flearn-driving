@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -76,10 +78,9 @@ public class AccountServices {
 		account.setEmail(email);
 		account.setFirstName(firstName);
 		account.setLastName(lastName);
-		account.setDelete(false);
 		account.setAuthProvider(AuthenticationProvider.GOOGLE.toString());
-		account.setEncrytedPassword("");
-		Role role = roleRespository.getOne(new Long(2));
+		account.setEncrytedPassword(StringUtils.EMPTY);
+		Role role = roleRespository.getOne(Constant.ROLE_ID_USER);
 		account.setRole(role);
 		accountsRespository.save(account);
 	}
@@ -95,8 +96,7 @@ public class AccountServices {
 		if (accountUpdateForm == null) {
 			return false;
 		}
-		Account account = accountsRespository.findByAccountIdAndIsDelete(accountUpdateForm.getAccountId(),
-				Constant.IS_NOT_DELETE);
+		Account account = accountsRespository.findByAccountId(accountUpdateForm.getAccountId());
 		if (account == null) {
 			return false;
 		}
