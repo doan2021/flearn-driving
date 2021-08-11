@@ -1,11 +1,8 @@
 package com.doanfpt.application.responsitories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-<<<<<<< HEAD
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-=======
 import org.springframework.data.jpa.repository.Query;
->>>>>>> 69cffd0d7f1c82870c781d82d176df4c81864003
 import org.springframework.stereotype.Repository;
 
 import com.doanfpt.application.entities.Account;
