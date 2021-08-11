@@ -16,8 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-import com.doanfpt.application.security.oauth.CustomOAuth2AccountService;
-import com.doanfpt.application.security.oauth.Oauth2LoginSuccessHandler;
+import com.doanfpt.application.component.Oauth2LoginSuccessHandler;
+import com.doanfpt.application.services.CustomOAuth2AccountService;
 import com.doanfpt.application.services.UserDetailsServiceImpl;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;

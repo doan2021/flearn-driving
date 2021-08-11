@@ -1,4 +1,4 @@
-package com.doanfpt.application.security.oauth;
+package com.doanfpt.application.component;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.doanfpt.application.common.Common;
 import com.doanfpt.application.common.Constant;
+import com.doanfpt.application.dto.AccountPrincipal;
 import com.doanfpt.application.entities.Account;
-import com.doanfpt.application.model.AccountPrincipal;
 import com.doanfpt.application.services.AccountServices;
 
 @Component

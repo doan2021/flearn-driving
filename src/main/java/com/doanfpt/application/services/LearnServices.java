@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.doanfpt.application.common.Constant;
+import com.doanfpt.application.dto.ResponeData;
 import com.doanfpt.application.entities.Account;
 import com.doanfpt.application.entities.Answer;
 import com.doanfpt.application.entities.Chapter;
 import com.doanfpt.application.entities.HistoryAnswer;
 import com.doanfpt.application.entities.Question;
 import com.doanfpt.application.entities.StatusLearn;
-import com.doanfpt.application.respone.ResponeData;
 import com.doanfpt.application.responsitories.AccountsRespository;
 import com.doanfpt.application.responsitories.AnswerRespository;
 import com.doanfpt.application.responsitories.ChapterResponsitory;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doanfpt.application.dto.FormSearchExam;
 import com.doanfpt.application.dto.RegisterExamForm;
-import com.doanfpt.application.respone.ResponeData;
+import com.doanfpt.application.dto.ResponeData;
 import com.doanfpt.application.services.AddressServices;
 import com.doanfpt.application.services.DrivingLicenseServices;
 import com.doanfpt.application.services.ExamService;

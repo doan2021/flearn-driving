@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.doanfpt.application.respone.ResponeData;
+import com.doanfpt.application.dto.ResponeData;
 import com.doanfpt.application.services.ChapterServices;
 import com.doanfpt.application.services.LearnServices;
 
