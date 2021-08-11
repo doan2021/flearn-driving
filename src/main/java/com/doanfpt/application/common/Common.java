@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -93,7 +92,7 @@ public class Common {
 		// Init extension new
 		String extension = MimeTypes.lookupExt(multipartFile.getContentType());
 		// Remove extension old
-		String fileName = FilenameUtils.removeExtension(multipartFile.getOriginalFilename());
+		String fileName = multipartFile.getOriginalFilename().substring(0, multipartFile.getOriginalFilename().lastIndexOf("."));
 		return Common.dateToString(Common.getSystemDate(), Constant.PATTERN_FORMAT_DATE_TIME) + "_" + label + "_"
 				+ fileName + "." + extension;
 	}

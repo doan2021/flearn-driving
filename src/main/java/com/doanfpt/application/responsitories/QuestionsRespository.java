@@ -13,11 +13,8 @@ import com.doanfpt.application.entities.Question;
 @Repository
 public interface QuestionsRespository extends JpaRepository<Question, Long> {
 
-	public Question findByNumber(int number);
+	public List<Question> findByChapter(Chapter chapter);
 
-	public List<Question> findByChapterAndIsDelete(Chapter chapter, Boolean isDelete);
-
-	public List<Question> findByQuestionIdNotInAndChapter(List<Long> listIds, Chapter chapter);
 
 	public List<Question> findByQuestionIdIn(List<Long> listIds);
 
@@ -26,6 +23,6 @@ public interface QuestionsRespository extends JpaRepository<Question, Long> {
 			+ "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
 	public List<Question> getListQuestionRest(Chapter chapter, Account account);
 
-	@Query("SELECT count(q) FROM Question q WHERE q.isDelete = false")
+	@Query("SELECT count(q) FROM Question q")
 	Integer countQuestion();
 }

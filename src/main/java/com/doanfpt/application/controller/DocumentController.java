@@ -20,7 +20,7 @@ public class DocumentController {
 
     @GetMapping(value = { "/document" })
     public String viewProfile(Model model) {
-    	model.addAttribute("listChapter", chapterServices.getAllChapter());
+    	model.addAttribute("listChapter", chapterServices.findAllChapter());
         return "document";
     }
     

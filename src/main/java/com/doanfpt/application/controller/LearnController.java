@@ -41,7 +41,7 @@ public class LearnController {
 
     @GetMapping(value = { "/select-chapter" })
     public String selectChapter(Model model) {
-        model.addAttribute("listChapter", chapterServices.getAllChapter());
+        model.addAttribute("listChapter", chapterServices.findAllChapter());
         return "select-chapter";
     }
 }
