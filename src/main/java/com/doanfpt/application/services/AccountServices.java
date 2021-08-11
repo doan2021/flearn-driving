@@ -137,4 +137,7 @@ public class AccountServices {
 		}
 	}
 
+    public Integer countAccount() {
+        return accountsRespository.countAccount();
+    }
 }

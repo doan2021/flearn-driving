@@ -11,23 +11,21 @@ import com.doanfpt.application.entities.Chapter;
 import com.doanfpt.application.entities.Question;
 
 @Repository
-public interface QuestionsRespository  extends JpaRepository<Question, Long> {
+public interface QuestionsRespository extends JpaRepository<Question, Long> {
 
-    public Question findByNumber(int number);
-    
-    public List<Question> findByChapterAndIsDelete(Chapter chapter, Boolean isDelete);
-    
-    public List<Question> findByQuestionIdNotInAndChapter(List<Long> listIds, Chapter chapter);
-    
-    public List<Question> findByQuestionIdIn(List<Long> listIds);
+	public Question findByNumber(int number);
 
-    @Query("SELECT q "
-            + "FROM Question q "
-            + "WHERE q.chapter = :chapter "
-            + "    AND q NOT IN (SELECT sl.question "
-            + "                  FROM StatusLearn sl "
-            + "                  WHERE sl.account = :account "
-            + "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
-    public List<Question> getListQuestionRest(Chapter chapter, Account account);
+	public List<Question> findByChapterAndIsDelete(Chapter chapter, Boolean isDelete);
 
+	public List<Question> findByQuestionIdNotInAndChapter(List<Long> listIds, Chapter chapter);
+
+	public List<Question> findByQuestionIdIn(List<Long> listIds);
+
+	@Query("SELECT q " + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
+			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
+			+ "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
+	public List<Question> getListQuestionRest(Chapter chapter, Account account);
+
+	@Query("SELECT count(q) FROM Question q WHERE q.isDelete = false")
+	Integer countQuestion();
 }
