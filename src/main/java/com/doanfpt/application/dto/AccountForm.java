@@ -1,5 +1,7 @@
 package com.doanfpt.application.dto;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class AccountForm {
@@ -18,6 +20,10 @@ public class AccountForm {
 	private MultipartFile image;
 	private Boolean isUpdate;
 	private String description;
+	private Date createAt;
+	private String createBy;
+	private Date updateAt;
+	private String updateBy;
 
 	public String getUserName() {
 		return userName;
@@ -141,6 +147,38 @@ public class AccountForm {
 
 	public void setIsUpdate(Boolean isUpdate) {
 		this.isUpdate = isUpdate;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
 	}
 
 }
