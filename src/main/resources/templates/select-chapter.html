@@ -1,111 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
-    <head>
-        <title>Chọn chương</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" th:href="@{../css/select-chapter.css}">
-    </head>
-    <body>
-        <th:block layout:fragment="content">
-            <section class="mu-page-breadcrumb">
-                <div class="container-xxl">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-page-breadcrumb-area">
-                                <h2>Chọn chương</h2>
-                                <ol class="breadcrumb w-100 justify-content-center">
-                                    <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
-                                    <li class="active breadcrumb-item">Chọn chương</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="mt-5">
-                <div class="container-xxl">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-9">
-                            <div class="mu-features-area">
-                                <div class="mu-title">
-                                    <h2>Toàn bộ chương</h2>
-                                </div>
-                                <div class="mu-features-content">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-6 mt-3" th:each="chapter : ${listChapter}">
-                                            <div class="mu-single-feature border p-4 bg-white">
-                                                <span class="icon-single-feature"><i class="fas fa-book"></i></span>
-                                                <h4 th:text="|Chương ${chapter.name}|"></h4>
-                                                <p th:text="${chapter.description}"></p>
-                                                <a th:href="@{'/learn/' + ${chapter.chapterId}}" class="btn btn-primary">Học chương</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="mu-pagination col-9 text-center mt-5">
-                                            <ul class="pagination">
-                                                <li class="page-item">
-                                                    <a href="#" class="page-link ms-0">
-                                                        <span class="fa fa-angle-left"></span> Prev 
-                                                    </a>
-                                                </li>
-                                                <li class="active page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item">
-                                                    <a href="#" aria-label="Next" class="page-link">
-                                                        Next <span class="fa fa-angle-right"></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <aside class="mu-sidebar">
-                                <div class="mu-single-sidebar">
-                                    <div class="mu-title">
-                                        <h2>Bộ lọc</h2>
-                                    </div>
-                                    <ul class="mu-sidebar-catg">
-                                        <li>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Hoàn thành</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Hoàn thành</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Hoàn thành</label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="mu-single-sidebar">
-                                    <h3>Archives</h3>
-                                    <ul class="mu-sidebar-catg mu-sidebar-archives">
-                                        <li><a href="#">May <span>(25)</span></a></li>
-                                        <li><a href="">June <span>(35)</span></a></li>
-                                        <li><a href="">July <span>(20)</span></a></li>
-                                        <li><a href="">August <span>(125)</span></a></li>
-                                        <li><a href="">September <span>(45)</span></a></li>
-                                        <li><a href="">October <span>(85)</span></a></li>
-                                    </ul>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </th:block>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>Chọn chương</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" th:href="@{../css/select-chapter.css}">
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+		<section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>Chọn chương</h2>
+					<ol>
+						<li><a th:href="@{/}">Trang chủ</a></li>
+						<li>Chọn chương</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+		<section class="more-services mt-4">
+			<div class="container">
+				<div class="section-title" data-aos="fade-up">
+					<h2>Toàn bộ chương</h2>
+					<p>Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này
+						01/08/2020.</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6 d-flex align-items-stretch mt-4" th:each="chapter : ${listChapter}">
+						<div class="card border" th:style="|background-image: url('@{../assets/img/no-photo.png}')|"
+							data-aos="fade-up" data-aos-delay="100" th:if="${chapter.listImages.size == 0}">
+							<div class="card-body">
+								<h4 class="card-title"><a
+										th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}"
+										th:text="|Chương ${chapter.name}|"></a></h4>
+								<h5 class="card-title" th:text="${chapter.content}"></h5>
+								<p class="card-text" th:text="${chapter.description}"></p>
+								<div class="read-more">
+									<a th:href="@{'/learn/' + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Học ngay và luôn!</a></div>
+							</div>
+						</div>
+						<div class="card border" th:style="|background-image: url('${chapter.listImages.get(0).path}')|" data-aos="fade-up" data-aos-delay="100" th:unless="${chapter.listImages.size == 0}">
+							<div class="card-body">
+								<h4 class="card-title">
+									<a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.name}|"></a></h4>
+								<h5 class="card-title" th:text="${chapter.content}"></h5>
+								<p class="card-text" th:text="${chapter.description}"></p>
+								<div class="read-more">
+									<a th:href="@{'/learn/' + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Học ngay và luôn!</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</th:block>
+</body>
+
 </html>

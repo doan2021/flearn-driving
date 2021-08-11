@@ -119,6 +119,7 @@ public class AccountServices {
 		}
 	}
 
+<<<<<<< HEAD
 	public Object getAccountLoginInfo() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		AccountPrincipal loginedUser = (AccountPrincipal) auth.getPrincipal();
@@ -140,4 +141,9 @@ public class AccountServices {
 		accountForm.setUpdateBy(Common.getUsernameLogin());
 		return accountForm;
 	}
+=======
+    public Integer countAccount() {
+        return accountsRespository.countAccount();
+    }
+>>>>>>> 69cffd0d7f1c82870c781d82d176df4c81864003
 }

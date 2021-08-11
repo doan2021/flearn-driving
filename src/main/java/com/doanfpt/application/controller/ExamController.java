@@ -11,6 +11,7 @@ import com.doanfpt.application.dto.FormSearchExam;
 import com.doanfpt.application.dto.RegisterExamForm;
 import com.doanfpt.application.respone.ResponeData;
 import com.doanfpt.application.services.AddressServices;
+import com.doanfpt.application.services.DrivingLicenseServices;
 import com.doanfpt.application.services.ExamService;
 
 @Controller
@@ -21,6 +22,9 @@ public class ExamController {
     
     @Autowired
     AddressServices addressServices;
+    
+    @Autowired
+    DrivingLicenseServices drivingLicenseServices;
 
     @GetMapping(value = { "/register-exam" })
     public String visitExamPage(Model model) {
@@ -51,13 +55,4 @@ public class ExamController {
         return examServices.registerExam(registerExamForm);
     }
     
-    @GetMapping(value = { "/trial-exam" })
-    public String viewProfile(Model model) {
-        return "trial-exam";
-    }
-    
-    @GetMapping(value = { "/select-trial-exam" })
-    public String selectTrialExam(Model model) {
-        return "select-trial-exam";
-    }
 }
