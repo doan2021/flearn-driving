@@ -1,75 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout-lib}">
     <head>
-        <title>Learn</title>
+        <title>Học tập</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" th:href="@{../css/learn.css}">
     </head>
     <body>
         <th:block layout:fragment="content">
-            <section class="mu-page-breadcrumb">
-                <div class="container-xxl">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mu-page-breadcrumb-area">
-                                <h2>Học tập</h2>
-                                <ol class="breadcrumb w-100 justify-content-center">
-                                    <li class="breadcrumb-item"><a th:href="@{/}">Trang chủ</a></li>
-                                    <li class="breadcrumb-item"><a th:href="@{/select-chapter}">Chọn chương</a></li>
-                                    <li class="active breadcrumb-item">Học tập</li>
-                                </ol>
-                            </div>
-                        </div>
+            <div id="app-learn">
+                <section class="p-3 bg-white shadow-custom">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-outline-secondary"><i class="bi bi-house-fill"></i></a>
+                        <h3 class="my-0"><strong class="me-3">Chương {{ dataResult.chapter.index }}</strong><span>{{ dataResult.chapter.name }}</span></h3>
+                        <a href="#" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
                     </div>
-                </div>
-            </section>
-            <div class="container-xxl pb-5" id="app-learn">
+                </section>
                 <input type="hidden" th:value="${chapterId}" id="chapterId"/>
-                <div v-if="dataResult != '' && dataResult.chapter.listQuestion.length != 0">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="display-4"><strong>Chương {{ dataResult.chapter.name }}</strong></h2>
-                            <h3>{{ dataResult.chapter.name }}</h3>
-                            
-                        </div>
-                    </div>
-                    <div class="row mt-5 p-2 justify-content-center bg-white rounded-3 shadow">
+                <div v-if="dataResult != '' && dataResult.chapter.listQuestion.length != 0" class="container p-4 mt-5 bg-white shadow-custom rounded rounded-3">
+                    <div class="row justify-content-center">
                         <div class="col-2 text-center">
-                            <p><strong>{{ dataResult.rest }}</strong></p>
-                            <span class="text-secondary">Rest</span>
+                            <p class="fs-3 fw-bold m-0">{{ dataResult.rest }}</p>
+                            <span class="text-secondary fw-bold">Chưa học</span>
                         </div>
                         <div class="col-1 text-center align-self-center text-secondary">
                             <i class="fas fa-chevron-right"></i>
                         </div>
                         <div class="col-2 text-center">
-                            <p class="text-primary"><strong>{{ dataResult.familiar }}</strong></p>
-                            <span class="text-secondary">Familiar</span>
+                            <p class="text-primary fs-3 fw-bold m-0">{{ dataResult.familiar }}</p>
+                            <span class="text-secondary fw-bold">Quen thuộc</span>
                         </div>
                         <div class="col-1 text-center align-self-center text-secondary">
                             <i class="fas fa-chevron-right"></i>
                         </div>
                         <div class="col-2 text-center">
-                            <p class="text-success"><strong>{{ dataResult.knowledge }}</strong></p>
-                            <span class="text-secondary">Knowledge</span>
+                            <p class="text-success fs-3 fw-bold m-0">{{ dataResult.knowledge }}</p>
+                            <span class="text-secondary fw-bold">Nắm chắc</span>
                         </div>
                     </div>
-                    <div class="row bg-white rounded-3 shadow mt-3" v-if="dataResult.questionRandom != '' && dataResult.questionRandom != null">
-                        <div class="col-12 p-4">
+                    <div class="row mt-5" v-if="dataResult.questionRandom != '' && dataResult.questionRandom != null">
+                        <div class="col-12 px-4">
                             <h4>Câu {{ dataResult.questionRandom.number }} <span class="badge bg-warning text-dark" v-if="dataResult.questionRandom.paralysis">Câu điểm liệt</span></h4>
                             <p>{{ dataResult.questionRandom.content }}</p>
                         </div>
                         <div class="col-12 px-4">
                             <div v-for="image in dataResult.questionRandom.listImage" :key="image.imageId">
-                                <img alt="" :src="image.url">
+                                <img alt="" :src="image.path">
                             </div>
                         </div>
-                        <div class="col-3 p-3" v-for="(answer, index) in dataResult.questionRandom.listAnswers" :key="answer.answerId">
-                            <div v-if="answer.true" class=" d-grid gap-2">
-                                <button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)" :class="answered ? 'display-none' : ''"><span class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
-                                <button class="btn btn-success" type="button" :class="!answered ? 'display-none' : ''"><i class="far fa-smile-beam"></i> Correct</button>
-                            </div>
-                            <div v-else class=" d-grid gap-2">
-                                <button class="btn btn-outline-secondary" @click="submitAnswer(answer.answerId)"><span class="badge bg-secondary">{{ index + 1 }}</span> {{ answer.content }}</button>
+                        <div class="col-12 px-4 mt-3">
+                            <span class="text-secondary fw-bold">Chọn đáp án</span>
+                        </div>
+                        <div class="col-12 col-md mt-3" v-for="(answer, index) in dataResult.questionRandom.listAnswers" :key="answer.answerId">
+                            <div class="answer-content border border-2 h-100 rounded rounded-3 p-3 pt-4 cursor-pointer" @click="submitAnswer(answer.answerId)">
+                                <span class="fw-bold index-answer d-flex justify-content-center align-items-center rounded-circle">{{ index + 1 }}</span> 
+                                <div>
+                                    {{ answer.content }}
+                                </div>
                             </div>
                         </div>
                     </div>

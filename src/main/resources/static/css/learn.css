@@ -1,12 +1,21 @@
-.image-question {
-    width: 250px;
-}
-.display-none {
-	display: none;
+.answer-content:hover {
+	border-color: #3498db!important;
+	background-color: #3498db17!important;
+	transition: all 0.4s;
 }
 
-.header-page{
-    background-image: url('../image/bg-learn.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+.answer-content:hover .index-answer {
+    background-color: #3498db;
+    color: #FFF;
+    transition: all 0.4s;
+}
+
+.index-answer {
+    position: absolute;
+    margin-top: -40px;
+    background-color: #FFF;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #dee2e6;
 }
