@@ -50,10 +50,6 @@ public class Question {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Answer> listAnswers;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Document> listImage;
 
     @JsonBackReference
@@ -87,14 +83,6 @@ public class Question {
 
     public void setParalysis(boolean isParalysis) {
         this.isParalysis = isParalysis;
-    }
-
-    public List<Answer> getListAnswers() {
-        return listAnswers;
-    }
-
-    public void setListAnswers(List<Answer> listAnswers) {
-        this.listAnswers = listAnswers;
     }
 
     public List<Document> getListImage() {

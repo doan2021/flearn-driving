@@ -23,6 +23,7 @@ import com.doanfpt.application.responsitories.ChapterResponsitory;
 import com.doanfpt.application.responsitories.HistoryAnswerRespository;
 import com.doanfpt.application.responsitories.QuestionsRespository;
 import com.doanfpt.application.responsitories.StatusLearnRespository;
+import com.doanfpt.management.application.exception.BusinessException;
 
 @Service
 public class LearnServices {
@@ -83,11 +84,13 @@ public class LearnServices {
         if (listQuestionKnowledge != null && listQuestionKnowledge.size() != 0) {
             knowledge = listQuestionKnowledge.size();
         }
+        List<Answer> listAnswer = answerRespository.findByQuestion(questionRandom);
         // Get list status learn
         responeData.putResult("rest", rest);
         responeData.putResult("familiar", familiar);
         responeData.putResult("knowledge", knowledge);
         responeData.putResult("questionRandom", questionRandom);
+        responeData.putResult("listAnswer", listAnswer);
         responeData.putResult("chapter", chapter);
         return responeData;
     }
@@ -95,16 +98,17 @@ public class LearnServices {
     @Transactional
     public ResponeData checkResultAnswer(Long answerId) {
         ResponeData responeData = new ResponeData();
-        Answer answer = new Answer();
-        answer = answerRespository.getOne(answerId);
+        Answer answer = answerRespository.findByAnswerId(answerId);
+        if (answer == null) {
+            throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Câu trả lời không tồn tại!");
+        }
         if (answer.isTrue()) {
-            responeData.setStatus(Constant.STR_TRUE);
-            responeData.setMessage("Correct !!");
+            responeData.putResult("answerTrue", true);
         } else {
-            responeData.setStatus(Constant.STR_FALSE);
-            responeData.setMessage("Incorrect !!");
+            responeData.putResult("answerTrue", false);
         }
         setHistoryAnswer(answer);
+        responeData.putResult("answerId", answerId);
         return responeData;
     }
 

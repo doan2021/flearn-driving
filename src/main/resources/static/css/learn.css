@@ -10,6 +10,46 @@
     transition: all 0.4s;
 }
 
+.answer-true {
+	background-color: #0bbd6b21!important;
+	border-color: #0bbd6b!important;
+}
+
+.answer-true:hover {
+    background-color: #0bbd6b21!important;
+    border-color: #0bbd6b!important;
+}
+
+.answer-true:hover .index-answer {
+    background-color: #0bbd6b;
+    color: #FFF;
+}
+
+.answer-true .index-answer {
+	background-color: #0bbd6b;
+	color: #FFF;
+}
+
+.answer-false {
+	background-color: #dc354526!important;
+	border-color: #ff495a!important;
+}
+
+.answer-false:hover {
+    background-color: #dc354526!important;
+    border-color: #ff495a!important;
+}
+
+.answer-false:hover .index-answer {
+    background-color: #ff495a;
+    color: #FFF!important;
+}
+
+.answer-false .index-answer {
+    background-color: #ff495a;
+    color: #FFF!important;
+}
+
 .index-answer {
     position: absolute;
     margin-top: -40px;

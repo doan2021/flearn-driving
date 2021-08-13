@@ -29,7 +29,7 @@ public class LearnController {
 
     @PostMapping(value = { "/load-page-learn" })
     @ResponseBody
-    public ResponeData index(Long chapterId) {
+    public ResponeData initPageLearn(Long chapterId) {
         return learnServices.getQuestionInChapter(chapterId);
     }
 

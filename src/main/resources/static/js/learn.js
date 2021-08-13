@@ -3,10 +3,18 @@ var pageListData = new Vue({
     data: {
         chapterId: $('#chapterId').val(),
         dataResult: '',
+        currentQuestion : '',
+        listAnswer      : [],
         resultAnswer: '',
-        answerCorrect : ''
+        answerIdSelect: ''
     },
     mounted() {
+    	var _this = this;
+    	window.onkeydown = function() {
+    		if (_this.resultAnswer != null && _this.resultAnswer != '' && !_this.resultAnswer.result.answerTrue) {
+    			_this.initPage();
+    		}
+    	}
         this.initPage();
     },
     methods: {
@@ -22,7 +30,10 @@ var pageListData = new Vue({
                 }
                 axios(config).then(function (response) {
                     _this.dataResult = response.data.result;
-                    _this.answerCorrect = _this.getAnswerCorrect()
+                    _this.currentQuestion = response.data.result.questionRandom;
+                    _this.listAnswer = response.data.result.listAnswer;
+                    _this.resultAnswer = '',
+                    _this.answerIdSelect = ''
                     $('#preloader').fadeOut();
                 })
                 .catch(function (error) {
@@ -30,34 +41,28 @@ var pageListData = new Vue({
                     $('#preloader').fadeOut();
                 });
         },
-        getAnswerCorrect : function() {
-            return this.dataResult.questionRandom.listAnswers.filter(function (item) {
-                if (item.true) {
-                    return item;
-                }
-            })[0].content;
-        },
         submitAnswer: function(answerId){
         	$('#preloader').fadeIn();
+        	this.answerIdSelect = answerId;
             var _this = this;
             var config = {
                     url: "/submit-answer", 
                     method: "POST",
                     params: {
-                        answerId : answerId
+                        answerId : this.answerIdSelect
                     }
                 }
                 axios(config).then(function (response) {
                     _this.resultAnswer = response.data;
-                    if (_this.resultAnswer.status == 'true') {
-                        
-                    } else {
-                        
-                    }
                     $('#preloader').fadeOut();
+                    if (_this.resultAnswer.result.answerTrue) {
+                        setTimeout(function(){
+                        	_this.initPage();
+                        }, 2000);
+                    }
                 })
                 .catch(function (error) {
-                    $('#loading').fadeOut();
+                    $('#preloader').fadeOut();
                     console.log(error);
                 });
         }
