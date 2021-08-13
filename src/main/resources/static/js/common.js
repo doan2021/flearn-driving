@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('#loading').fadeOut(1000);
+	$('#preloader').fadeOut(1000);
 });
 
 Vue.prototype.$text = function(propertyName) {

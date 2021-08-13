@@ -26,25 +26,25 @@ import com.doanfpt.application.responsitories.StatusLearnRespository;
 
 @Service
 public class LearnServices {
-    
+
     @Autowired
     ChapterResponsitory chapterResponsitory;
-    
+
     @Autowired
     QuestionsRespository questionsRespository;
-    
+
     @Autowired
     AnswerRespository answerRespository;
-    
+
     @Autowired
     AccountsRespository accountRespository;
-    
+
     @Autowired
     HistoryAnswerRespository historyAnswerRespository;
-    
+
     @Autowired
     AccountServices accountsServices;
-    
+
     @Autowired
     StatusLearnRespository statusLearnRespository;
 
@@ -67,23 +67,22 @@ public class LearnServices {
         if (listQuestionRest != null && listQuestionRest.size() != 0) {
             questionRandom = listQuestionRest.get(rand.nextInt(listQuestionRest.size()));
         } else if (listQuestionFamiliar != null && listQuestionFamiliar.size() != 0) {
-                questionRandom = listQuestionFamiliar.get(rand.nextInt(listQuestionFamiliar.size()));
+            questionRandom = listQuestionFamiliar.get(rand.nextInt(listQuestionFamiliar.size()));
         } else {
             questionRandom = listQuestionKnowledge.get(rand.nextInt(listQuestionKnowledge.size()));
         }
-        
+
         if (listQuestionRest != null && listQuestionRest.size() != 0) {
             rest = listQuestionRest.size();
         }
-        
+
         if (listQuestionFamiliar != null && listQuestionFamiliar.size() != 0) {
             familiar = listQuestionFamiliar.size();
         }
-        
+
         if (listQuestionKnowledge != null && listQuestionKnowledge.size() != 0) {
             knowledge = listQuestionKnowledge.size();
         }
-        
         // Get list status learn
         responeData.putResult("rest", rest);
         responeData.putResult("familiar", familiar);
@@ -92,12 +91,10 @@ public class LearnServices {
         responeData.putResult("chapter", chapter);
         return responeData;
     }
-    
+
     @Transactional
-    public ResponeData checkResultAnswer(Long questionId, Long answerId) {
+    public ResponeData checkResultAnswer(Long answerId) {
         ResponeData responeData = new ResponeData();
-        Question question = new Question();
-        question = questionsRespository.getOne(questionId);
         Answer answer = new Answer();
         answer = answerRespository.getOne(answerId);
         if (answer.isTrue()) {
@@ -107,17 +104,17 @@ public class LearnServices {
             responeData.setStatus(Constant.STR_FALSE);
             responeData.setMessage("Incorrect !!");
         }
-        setHistoryAnswer(question, answer);
+        setHistoryAnswer(answer);
         return responeData;
     }
-    
-    public void setHistoryAnswer(Question question, Answer answer) {
+
+    public void setHistoryAnswer(Answer answer) {
         Account account = accountsServices.getAccountLogin();
         // Set status learn
-        StatusLearn statusLearn = statusLearnRespository.findByQuestionAndAccount(question, account);
+        StatusLearn statusLearn = statusLearnRespository.findByQuestionAndAccount(answer.getQuestion(), account);
         if (statusLearn == null) {
             statusLearn = new StatusLearn();
-            statusLearn.setQuestion(question);
+            statusLearn.setQuestion(answer.getQuestion());
             statusLearn.setAccount(account);
             if (answer.isTrue()) {
                 statusLearn.setCorrectNumberOfTimes(1);
@@ -129,13 +126,14 @@ public class LearnServices {
                 statusLearn.setStatusQuestion(1);
             }
         } else {
-            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(question, account);
+            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(answer.getQuestion(),
+                    account);
             if (answer.isTrue()) {
                 if (statusLastQuestion.get(0)) {
                     statusLearn.setStatusQuestion(3);
                 }
                 statusLearn.setCorrectNumberOfTimes(statusLearn.getCorrectNumberOfTimes() + 1);
-               } else {
+            } else {
                 if (statusLearn.getCorrectNumberOfTimes() > 0) {
                     statusLearn.setStatusQuestion(2);
                 } else {

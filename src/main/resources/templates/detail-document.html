@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title th:text="|Chương ${chapter.name}|"></title>
+    <title th:text="|Chương ${chapter.index}|"></title>
     <link rel="stylesheet">
 </head>
 
@@ -13,11 +13,11 @@
         <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2 th:text="|Chương ${chapter.name}|"></h2>
+                    <h2 th:text="|Chương ${chapter.index}|"></h2>
                     <ol>
                         <li><a th:href="@{/}">Trang chủ</a></li>
                         <li><a th:href="@{/document}">Tài liệu</a></li>
-                        <li th:text="|Chương ${chapter.name}|"></li>
+                        <li th:text="|Chương ${chapter.index}|"></li>
                     </ol>
                 </div>
             </div>

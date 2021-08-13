@@ -35,8 +35,8 @@ public class LearnController {
 
     @PostMapping(value = { "/submit-answer" })
     @ResponseBody
-    public ResponeData submitAnswer(Long questionId, Long answerId) {
-        return learnServices.checkResultAnswer(questionId, answerId);
+    public ResponeData submitAnswer(Long answerId) {
+        return learnServices.checkResultAnswer(answerId);
     }
 
     @GetMapping(value = { "/select-chapter" })
