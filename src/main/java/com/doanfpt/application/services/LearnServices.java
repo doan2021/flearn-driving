@@ -130,8 +130,7 @@ public class LearnServices {
                 statusLearn.setStatusQuestion(1);
             }
         } else {
-            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(answer.getQuestion(),
-                    account);
+            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(answer.getQuestion(), account);
             if (answer.isTrue()) {
                 if (statusLastQuestion.get(0)) {
                     statusLearn.setStatusQuestion(3);

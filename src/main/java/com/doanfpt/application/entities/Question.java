@@ -52,6 +52,10 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Document> listImage;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Answer> listAnswers;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "chapter_id")
@@ -139,6 +143,14 @@ public class Question {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public List<Answer> getListAnswers() {
+        return listAnswers;
+    }
+
+    public void setListAnswers(List<Answer> listAnswers) {
+        this.listAnswers = listAnswers;
     }
 
 }

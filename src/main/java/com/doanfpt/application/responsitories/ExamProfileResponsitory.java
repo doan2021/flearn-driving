@@ -5,14 +5,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.doanfpt.application.entities.Account;
-import com.doanfpt.application.entities.DrivingLicenseInfo;
 import com.doanfpt.application.entities.Exam;
+import com.doanfpt.application.entities.ExamProfile;
 
 @Repository
-public interface DrivingLicenseInfoResponsitory extends JpaRepository<DrivingLicenseInfo, Long> {
+public interface ExamProfileResponsitory extends JpaRepository<ExamProfile, Long> {
 
 	public Boolean existsByExamAndAccount(Exam exam, Account account);
 
-	@Query("SELECT count(d) FROM DrivingLicenseInfo d WHERE d.status = 3")
+	@Query("SELECT count(d) FROM ExamProfile d WHERE d.status = 3")
 	Integer countDrivingLicenseInfo();
 }
