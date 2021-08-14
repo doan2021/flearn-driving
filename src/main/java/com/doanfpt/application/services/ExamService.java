@@ -21,12 +21,12 @@ import com.doanfpt.application.dto.RegisterExamForm;
 import com.doanfpt.application.dto.ResponeData;
 import com.doanfpt.application.entities.Account;
 import com.doanfpt.application.entities.Document;
-import com.doanfpt.application.entities.DrivingLicenseInfo;
 import com.doanfpt.application.entities.Exam;
+import com.doanfpt.application.entities.ExamProfile;
 import com.doanfpt.application.entities.Province;
 import com.doanfpt.application.entities.Ward;
 import com.doanfpt.application.responsitories.DocumentRespository;
-import com.doanfpt.application.responsitories.DrivingLicenseInfoResponsitory;
+import com.doanfpt.application.responsitories.ExamProfileResponsitory;
 import com.doanfpt.application.responsitories.ExamRepository;
 import com.doanfpt.application.responsitories.ProvinceResponsitory;
 import com.doanfpt.application.responsitories.WardResponsitory;
@@ -42,7 +42,7 @@ public class ExamService {
     private AddressServices addressServices;
     
     @Autowired
-    DrivingLicenseInfoResponsitory drivingLicenseInfoResponsitory;
+    ExamProfileResponsitory examProfileResponsitory;
     
     @Autowired
     WardResponsitory wardResponsitory;
@@ -83,33 +83,33 @@ public class ExamService {
         Account account = accountServices.getAccountLogin();
         Exam exam = examRepository.getOne(registerExamForm.getExamId());
         // Kiểm tra người dùng đã đăng ký kì thi này chưa
-        Boolean exists = drivingLicenseInfoResponsitory.existsByExamAndAccount(exam, account);
+        Boolean exists = examProfileResponsitory.existsByExamAndAccount(exam, account);
         if (exists) {
             responeData.putResult("status", "exists");
             responeData.putResult("message", "Bạn đã đăng ký kì thi này rồi!");
             return responeData;
         }
-        DrivingLicenseInfo drivingLicenseInfo = new DrivingLicenseInfo();
-        drivingLicenseInfo.setExam(exam);
-        drivingLicenseInfo.setAccount(account);
-        drivingLicenseInfo.setStatus(Constant.STS_SUBMITTED);
-        drivingLicenseInfo.setLastName(registerExamForm.getLastName());
-        drivingLicenseInfo.setMiddleName(registerExamForm.getMiddleName());
-        drivingLicenseInfo.setFirstName(registerExamForm.getFirstName());
-        drivingLicenseInfo.setGender(registerExamForm.getGender());
-        drivingLicenseInfo.setBirthDay(Common.stringToDate(registerExamForm.getBirthDay()));
-        drivingLicenseInfo.setAddress1(registerExamForm.getAddress1());
-        drivingLicenseInfo.setAddress2(registerExamForm.getAddress2());
+        ExamProfile examProfile = new ExamProfile();
+        examProfile.setExam(exam);
+        examProfile.setAccount(account);
+        examProfile.setStatus(Constant.STS_SUBMITTED);
+        examProfile.setLastName(registerExamForm.getLastName());
+        examProfile.setMiddleName(registerExamForm.getMiddleName());
+        examProfile.setFirstName(registerExamForm.getFirstName());
+        examProfile.setGender(registerExamForm.getGender());
+        examProfile.setBirthDay(Common.stringToDate(registerExamForm.getBirthDay()));
+        examProfile.setAddress1(registerExamForm.getAddress1());
+        examProfile.setAddress2(registerExamForm.getAddress2());
         Ward ward = wardResponsitory.getOne(registerExamForm.getWardId());
-        drivingLicenseInfo.setWard(ward);
-        drivingLicenseInfo.setEmail(registerExamForm.getEmail());
-        drivingLicenseInfo.setNumberPhone(registerExamForm.getNumberPhone());
-        drivingLicenseInfo.setWorkingUnit(registerExamForm.getWorkingUnit());
-        drivingLicenseInfo.setIdentityCardNumber(registerExamForm.getIdentityCardNumber());
+        examProfile.setWard(ward);
+        examProfile.setEmail(registerExamForm.getEmail());
+        examProfile.setNumberPhone(registerExamForm.getNumberPhone());
+        examProfile.setWorkingUnit(registerExamForm.getWorkingUnit());
+        examProfile.setIdentityCardNumber(registerExamForm.getIdentityCardNumber());
         Province province = provinceResponsitory.getOne(registerExamForm.getPlaceOfIssue());
-        drivingLicenseInfo.setPlaceOfIssue(province);
-        drivingLicenseInfo.setIssueDate(Common.stringToDate(registerExamForm.getIssueDate()));
-        drivingLicenseInfoResponsitory.save(drivingLicenseInfo);
+        examProfile.setPlaceOfIssue(province);
+        examProfile.setIssueDate(Common.stringToDate(registerExamForm.getIssueDate()));
+        examProfileResponsitory.save(examProfile);
         
         // Handle document
         List<Document> listDocuments = new ArrayList<>();
@@ -123,7 +123,6 @@ public class ExamService {
             MultipartFile multipartFile = registerExamForm.getIdentityCardImageFront();
             // Init object document
             Document identityCardImageFront = new Document();
-            identityCardImageFront.setDrivingLicenseInfo(drivingLicenseInfo);
             identityCardImageFront.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IDENTITY_CARD_IMAGE_FRONT_LABEL));
             identityCardImageFront.setOriginFileName(multipartFile.getOriginalFilename());
             identityCardImageFront.setExtension(MimeTypes.lookupExt(multipartFile.getContentType()));
@@ -145,7 +144,6 @@ public class ExamService {
             // Get file to client
             MultipartFile multipartFile = registerExamForm.getIdentityCardImageBack();
             Document identityCardImageBack = new Document();
-            identityCardImageBack.setDrivingLicenseInfo(drivingLicenseInfo);
             identityCardImageBack.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IDENTITY_CARD_IMAGE_BACK_LABEL));
             identityCardImageBack.setOriginFileName(multipartFile.getOriginalFilename());
             identityCardImageBack.setExtension(MimeTypes.lookupExt(multipartFile.getContentType()));
@@ -166,7 +164,6 @@ public class ExamService {
         } else {
             MultipartFile multipartFile = registerExamForm.getImagePortrait();
             Document imagePortrait = new Document();
-            imagePortrait.setDrivingLicenseInfo(drivingLicenseInfo);
             imagePortrait.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_IMAGE_PORTRAIT_LABEL));
             imagePortrait.setOriginFileName(multipartFile.getOriginalFilename());
             imagePortrait.setExtension(MimeTypes.lookupExt(multipartFile.getContentType()));
@@ -187,7 +184,6 @@ public class ExamService {
         } else {
             MultipartFile multipartFile = registerExamForm.getHealthCertificationFile();
             Document healthCertificationFile = new Document();
-            healthCertificationFile.setDrivingLicenseInfo(drivingLicenseInfo);
             healthCertificationFile.setFileName(Common.generateFileName(multipartFile, Constant.DOCUMENT_HEALTH_CERTIFICATION_FILE_LABEL));
             healthCertificationFile.setOriginFileName(multipartFile.getOriginalFilename());
             healthCertificationFile.setExtension(MimeTypes.lookupExt(multipartFile.getContentType()));
