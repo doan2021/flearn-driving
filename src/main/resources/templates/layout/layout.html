@@ -22,6 +22,9 @@
     </head>
     <body>
         <header id="header" class="fixed-top d-flex align-items-center">
+            <div id="preloader" style="display:none">
+                <div id="loader"></div>
+            </div>
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="logo">
                     <h1>
@@ -35,7 +38,7 @@
                         <li><a class="nav-link scrollto active fw-bold" th:href="@{/}">Trang chủ</a></li>
                         <li><a class="nav-link scrollto fw-bold" th:href="@{/document}">Tài liệu</a></li>
                         <li><a class="nav-link scrollto fw-bold" th:href="@{/select-chapter}">Học tập</a></li>
-                        <li><a class="nav-link scrollto fw-bold" th:href="@{/select-trial-exam}">Thi thử</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:href="@{/select-exam-question}">Thi thử</a></li>
                         <li><a class="nav-link scrollto fw-bold" th:href="@{/register-exam}">Đăng ký thi</a></li>
                         <li th:if="${#request.userPrincipal == null}"><a class="getstarted scrollto" th:href="@{/login}">Đăng nhập</a></li>
                         <li class="dropdown" th:if="${#request.userPrincipal != null}">
