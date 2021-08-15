@@ -1,0 +1,11 @@
+.exam-question:hover {
+	border-color: #3498db!important;
+	background-color: #3498db17!important;
+	transition: all 0.4s;
+}
+
+.exam-question.active {
+    border-color: #3498db!important;
+    background-color: #3498db17!important;
+    transition: all 0.4s;
+}
