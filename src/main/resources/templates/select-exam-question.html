@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout}">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chọn đề thi</title>
+    <link rel="stylesheet" th:href="@{../css/select-exam-question.css}">
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Chọn đề thi</h2>
+                    <ol>
+                        <li><a th:href="@{/}">Trang chủ</a></li>
+                        <li>Chọn đề thi</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section class="more-services mt-4 portfolio-details" id="app-select-exam-question" v-cloak>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-xl-4">
+                        <div class="portfolio-info">
+                            <h3>CHỌN HẠNG BẰNG</h3>
+                            <div class="services p-0">
+                                <div class="row">
+                                    <div class="col-12 mt-3" v-for="(drivingLicense, index) in listDrivingLicense">
+                                        <div class="icon-box aos-init aos-animate cursor-pointer" @click="selectDrivingLicense(drivingLicense)" :class="{active : drivingLicense == drivingLicenseCurrent}" data-aos="fade-up" data-aos-delay="100">
+                                            <h4 class="title m-0">{{ drivingLicense.name }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-8 mt-4 mt-xl-0">
+                        <div class="portfolio-info">
+                           <h3>THI ĐI CHỜ CHI</h3>
+                            <p>{{ drivingLicenseCurrent.description }}</p>
+                            <ul class="mt-4">
+                                <li>Số câu hỏi: <span class="text-danger" style="font-weight: bold;"> {{ drivingLicenseCurrent.numberQuestion }} Câu</span></li>
+                                <li>Số câu đạt : <span class="text-danger" style="font-weight: bold;"> {{ drivingLicenseCurrent.numberQuestionCorect }} Câu</span></li>
+                                <li>Số câu liệt : <span class="text-danger" style="font-weight: bold;"> {{ drivingLicenseCurrent.numberQuestionParalysis }} Câu</span></li>
+                                <li>Thời gian làm bài: <span class="text-danger" style="font-weight: bold;"> {{ drivingLicenseCurrent.examMinutes }} phút.</span></li>
+                                <li><span class="text-danger" style="font-weight: bold;">Đặc biệt: KHÔNG LÀM SAI CÂU ĐIỂM LIỆT (câu hỏi *)</span></li>
+                                
+                            </ul>
+                            <p class="mt-4">
+                                <span class="text-danger" style="font-weight: bold;"> Lưu ý:</span> Bộ đề thi lý
+                                thuyết lái xe {{ drivingLicenseCurrent.name }} này được xây dựng dựa trên tài liệu 600 câu hỏi thi GPLX do Bộ GTVT
+                                ban hành.
+                            </p>
+                            <p class="fw-bold">Chọn đề thi</p>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-3 text-center mt-3" v-for="examQuestion in listExamQuestions" v-if="listExamQuestions != null && listExamQuestions != '' && listExamQuestions.length != 0">
+                                    <div class="exam-question border border-2 h-100 rounded rounded-3 p-3 cursor-pointer" @click="selectExamQuestion(examQuestion.examQuestionsId)" :class="{ active : examQuestion.examQuestionsId == examQuestionsIdCurrent }">
+                                        <span class="fw-bold rounded-circle"></span>
+                                        <span>{{ examQuestion.name }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12" v-if="listExamQuestions == null || listExamQuestions == '' || listExamQuestions.length == 0">
+                                    <span class="text-danger">Không có đề thi nào thuộc hạng bằng này!</span>
+                                </div>
+                            </div>
+                            <div class="row mt-4" v-if="examQuestionsIdCurrent != '' && examQuestionsIdCurrent != null">
+                                <div class="col-12 text-center">
+                                    <a v-bind:href="'/trial-exam?examQuestion=' + examQuestionsIdCurrent" class="btn btn-primary">Vào thi</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+    <th:block layout:fragment="script">
+        <script th:src="@{../js/select-exam-question.js}"></script>
+    </th:block>
+</body>
+
+</html>

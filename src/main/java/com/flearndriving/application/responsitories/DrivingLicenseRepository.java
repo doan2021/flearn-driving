@@ -6,5 +6,5 @@ import com.flearndriving.application.entities.DrivingLicense;
 
 public interface DrivingLicenseRepository extends JpaRepository<DrivingLicense, Long> {
 
-
+    public DrivingLicense findByDrivingLicenseId(Long drivingLicenseId);
 }

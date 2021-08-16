@@ -20,6 +20,9 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+[v-cloak] {
+  display: none;
+}
 
 #preloader {
     position: fixed;
@@ -777,6 +780,15 @@ section {
   border-radius: 0px;
 }
 
+.services .icon-box.active::before {
+  background: #2272a7;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+}
+
 .services .icon {
   margin: 0 auto 20px auto;
   padding-top: 10px;
@@ -812,6 +824,18 @@ section {
 }
 
 .services .icon-box:hover .title a, .services .icon-box:hover .description {
+  color: #fff;
+}
+
+.services .icon-box:hover .title, .services .icon-box:hover .description {
+  color: #fff;
+}
+
+.services .icon-box.active .title a, .services .icon-box:hover .description {
+  color: #fff;
+}
+
+.services .icon-box.active .title, .services .icon-box:hover .description {
   color: #fff;
 }
 
