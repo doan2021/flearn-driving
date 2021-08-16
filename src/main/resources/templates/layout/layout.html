@@ -29,7 +29,7 @@
                 <div class="logo">
                     <h1>
                         <a th:href="@{/}">
-                            <img alt="" th:src="@{../assets/img/finallogo.png}">
+                            <img alt="" th:src="@{../assets/img/slogofinal.png}" style="max-height: 80px;">
                         </a>
                     </h1>
                 </div>
@@ -43,11 +43,11 @@
                         <li th:if="${#request.userPrincipal == null}"><a class="getstarted scrollto" th:href="@{/login}">Đăng nhập</a></li>
                         <li class="dropdown" th:if="${#request.userPrincipal != null}">
                             <a href="#" class="nav-link fw-bold">
-                                <img alt="" class="border border-2 border-secondary rounded-circle" th:src="@{../assets/img/finallogo.png}" width="36" height="36">
+                                <img alt="" class="border border-2 border-secondary rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU" width="36" height="36">
                             </a>
                             <ul class="pb-0">
                                 <li><span class="px-4 fw-bold" style="font-size: 12px">Xin chào!</span></li>
-                                <li><span class="px-4 fw-bold">Minh tâm</span></li>
+                                <li><span class="px-4 fw-bold" >Trung Tâm</span></li>
                                 <li class=""><a th:href="@{/view-profile}"><i class="bi bi-person-fill"></i>Hồ sơ</a></li>
                                 <li class="border-top"><a th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i><span>Đăng xuất</span></a></li>
                             </ul>

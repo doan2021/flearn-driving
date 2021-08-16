@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.dto.AccountUpdateForm;
+import com.flearndriving.application.entities.Chapter;
+import com.flearndriving.application.entities.DrivingLicense;
 import com.flearndriving.application.services.AccountServices;
+import com.flearndriving.application.services.ChapterServices;
+import com.flearndriving.application.services.DrivingLicenseServices;
+import com.flearndriving.application.services.QuestionServices;
 import com.flearndriving.application.services.RoleServices;
 import com.flearndriving.application.validator.AccountUpdateValidator;
 import com.flearndriving.application.validator.AccountValidator;
@@ -21,14 +26,14 @@ import com.flearndriving.application.validator.AccountValidator;
 @Controller
 public class AccountsController {
 
-    @Autowired
-    AccountServices accountsServices;
+	@Autowired
+	AccountServices accountsServices;
 
-    @Autowired
-    RoleServices roleServices;
+	@Autowired
+	RoleServices roleServices;
 
-    @Autowired
-    private AccountUpdateValidator accountUpdateValidator;
+	@Autowired
+	private AccountUpdateValidator accountUpdateValidator;
 
     @Autowired
     private AccountValidator accountValidator;
@@ -97,15 +102,30 @@ public class AccountsController {
         }
     }
 
-    @GetMapping(value = { "/view-profile-registed-exam" })
-    public String viewProfileRegistedExam(Model model) {
-        model.addAttribute("account", accountsServices.getAccountLoginInfo());
-        return "view-profile-registed-exam";
-    }
+	@GetMapping(value = { "/view-profile-registed-exam" })
+	public String viewProfileRegistedExam(Model model) {
+		model.addAttribute("account", accountsServices.getAccountLoginInfo());
+		return "view-profile-registed-exam";
+	}
 
-    @GetMapping(value = { "/view-profile-learning-progress" })
-    public String viewProfileLearningProgress(Model model) {
-        model.addAttribute("account", accountsServices.getAccountLoginInfo());
-        return "view-profile-learning-progress";
-    }
+	@GetMapping(value = { "/view-profile-learning-progress" })
+	public String viewProfileLearningProgress(Model model) {
+		model.addAttribute("account", accountsServices.getAccountLoginInfo());
+		return "view-profile-learning-progress";
+	}
+
+	@GetMapping(value = { "/view-history-trial-test" })
+	public String viewHistoryTrialTest(Model model) {
+		model.addAttribute("account", accountsServices.getAccountLoginInfo());
+		return "view-history-trial-test";
+	}
+
+	@GetMapping(value = { "/detail-history-trial-test" })
+	public String detailHistoryTrialTest(Model model) {
+		model.addAttribute("account", accountsServices.getAccountLoginInfo());
+//		DrivingLicense drivingLicense = drivingLicenseServices.getOne(drivingLicenseId);
+//		model.addAttribute("drivingLicense", drivingLicense);
+//		model.addAttribute("listQuestionInDrivingLicense", drivingLicenseServices.getQuestionsInDrivingLicense(drivingLicense));
+		return "detail-history-trial-test";
+	}
 }
