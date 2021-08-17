@@ -47,7 +47,7 @@ new Vue({
         selectQuestion: function(index) {
         	this.questionCurrentIndex = index;
         },
-        submitExam: function() {
+        submitAnswer: function() {
         	
         }
     }
