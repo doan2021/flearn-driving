@@ -1,10 +1,6 @@
-$(document).ready(function() {
-	$('#preloader').fadeOut(1000);
+$(window).on('load', function () {
+	$('#preloader').fadeOut();
 });
-
-Vue.prototype.$text = function(propertyName) {
-	alert(propertyName);
-}
 
 Vue.prototype.$formatDate = function(value) {
 	return moment(value).format('MM/DD/YYYY');

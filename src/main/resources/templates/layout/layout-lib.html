@@ -21,7 +21,7 @@
         <link th:href="@{../assets/css/style.css}" rel="stylesheet">
     </head>
     <body style="background-color: #f7fbfe;">
-        <div id="preloader" style="display:none">
+        <div id="preloader">
             <div id="loader"></div>
         </div>
         <section layout:fragment="content"></section>
@@ -29,13 +29,11 @@
         <script th:src="@{../assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
         <script th:src="@{../assets/vendor/glightbox/js/glightbox.min.js}"></script>
         <script th:src="@{../assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
-        <script th:src="@{../assets/vendor/php-email-form/validate.js}"></script>
         <script th:src="@{../assets/vendor/purecounter/purecounter.js}"></script>
         <script th:src="@{../assets/vendor/swiper/swiper-bundle.min.js}"></script>
         <script th:src="@{../assets/js/jquery.min.js}"></script>
         <script th:src="@{../assets/js/jquery.validate.min.js}"></script>
         <script th:src="@{../assets/js/jquery-ui.min.js}"></script>
-        <script th:src="@{../assets/js/jquery-confirm.min.js}"></script>
         <script th:src="@{../assets/js/moment-with-locales.js}"></script>
         <script th:src="@{../assets/vendor/aos/aos.js}"></script>
         <script th:src="@{../assets/js/axios.min.js}"></script>
@@ -43,6 +41,7 @@
         <script th:src="@{../assets/js/validators.min.js}"></script>
         <script th:src="@{../assets/js/vue.js}"></script>
         <script th:src="@{../assets/js/main.js}"></script>
+        <script th:src="@{../js/common.js}"></script>
         <th:block layout:fragment="script"></th:block>
     </body>
 </html>
