@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.dto.AccountUpdateForm;
 import com.flearndriving.application.services.AccountServices;
+import com.flearndriving.application.services.ChapterServices;
+import com.flearndriving.application.services.QuestionServices;
 import com.flearndriving.application.services.RoleServices;
 import com.flearndriving.application.validator.AccountUpdateValidator;
 import com.flearndriving.application.validator.AccountValidator;
@@ -32,6 +34,12 @@ public class AccountsController {
 
     @Autowired
     private AccountValidator accountValidator;
+    
+    @Autowired
+    ChapterServices chapterServices;
+    
+    @Autowired
+    QuestionServices questionServices;
 
     @InitBinder
     protected void initBinder(WebDataBinder dataBinder) {
@@ -104,8 +112,9 @@ public class AccountsController {
     }
 
     @GetMapping(value = { "/view-profile-learning-progress" })
-    public String viewProfileLearningProgress(Model model) {
+    public String viewProfileLearningProgressLong(Model model) {
         model.addAttribute("account", accountsServices.getAccountLoginInfo());
+        model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
         return "view-profile-learning-progress";
     }
 }

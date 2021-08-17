@@ -139,6 +139,9 @@ public class AccountServices {
 		accountForm.setCreateBy(Common.getUsernameLogin());
 		accountForm.setUpdateAt(Common.getSystemDate());
 		accountForm.setUpdateBy(Common.getUsernameLogin());
+		accountForm.setAddress(account.getAddress());
+		accountForm.setWard(account.getWard());
+		accountForm.setDescription(account.getDescription());
 		return accountForm;
 	}
 

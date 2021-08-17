@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.flearndriving.application.entities.Ward;
+
 public class AccountForm {
 	private Long accountId;
 	private String userName;
@@ -24,6 +26,16 @@ public class AccountForm {
 	private String createBy;
 	private Date updateAt;
 	private String updateBy;
+	private String address;
+	private Ward ward;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -179,6 +191,14 @@ public class AccountForm {
 
 	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
+	}
+
+	public Ward getWard() {
+		return ward;
+	}
+
+	public void setWard(Ward ward) {
+		this.ward = ward;
 	}
 
 }
