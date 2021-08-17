@@ -9,4 +9,7 @@ import com.flearndriving.application.entities.ExamQuestions;
 
 public interface ExamQuestionRepository extends JpaRepository<ExamQuestions, Long> {
     public List<ExamQuestions> findByDrivingLicense(DrivingLicense drivingLicense);
+
+    public ExamQuestions findByExamQuestionsId(Long examQuestionsId);
+
 }

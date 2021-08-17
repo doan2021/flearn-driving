@@ -33,9 +33,12 @@ Vue.component("countdown", {
         seconds: function() {
             var sec = this.totalTimes - (this.minutes * 60);
             return sec >= 10 ? sec : '0' + sec;
-        },
+        }
     },
     watch: {
+        totalTime: function(val) {
+        	this.totalTimes = val;
+        },
         totalTimes: function(value) {
             if (value == 0) {
                 this.timerPause();
@@ -47,9 +50,6 @@ Vue.component("countdown", {
                 this.message = 'Chuẩn bị nộp bài';
             }
         }
-    },
-    mounted: function() {
-        this.timerRun();
     },
     methods: {
         timerRun() {
