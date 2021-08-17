@@ -44,7 +44,7 @@ public class HistoryAnswer {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "exam_result_id")
-    private TrailExamResult trailExamResult;
+    private TrialExamResult trailExamResult;
 
     @JsonBackReference
     @ManyToOne
@@ -99,11 +99,11 @@ public class HistoryAnswer {
         this.answer = answer;
     }
 
-    public TrailExamResult getTrailExamResult() {
+    public TrialExamResult getTrailExamResult() {
         return trailExamResult;
     }
 
-    public void setTrailExamResult(TrailExamResult trailExamResult) {
+    public void setTrailExamResult(TrialExamResult trailExamResult) {
         this.trailExamResult = trailExamResult;
     }
 
