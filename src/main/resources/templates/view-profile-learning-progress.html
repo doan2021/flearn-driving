@@ -53,18 +53,22 @@
 								<div class="mt-4">
 									<ul class="nav nav-tabs">
 										<li class="nav-item">
-											<a class="nav-link " aria-current="page" th:href="@{/view-profile}">Thông tin cá nhân</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" th:href="@{/view-profile-registed-exam}">Kỳ thi đã đăng ký</a>
+											<a class="nav-link" aria-current="page"
+												th:href="@{/view-profile}">Thông tin cá nhân</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link active" th:href="@{/view-profile-learning-progress}">Tiến độ học tập</a>
 										</li>
+										<li class="nav-item">
+											<a class="nav-link" th:href="@{/view-history-trial-test}">Lịch sử thi thử</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" th:href="@{/view-profile-registed-exam}">Kì thi thật đã đăng ký</a>
+										</li>
 									</ul>
 								</div>
 								<div class="container portfolio-details">
-									<div class="row mt-5" >
+									<div class="row mt-2" >
 										<div class="col-6 mt-4" th:each="learningProgress : ${listLearningProgressChapter}">
 											<div class="portfolio-info h-100">
 												<div class="text-center">
@@ -99,9 +103,9 @@
 														<p class="m-0 fw-bold text-primary">Nắm vững: [[${learningProgress.knowledge}]]</p>
 														<p class="m-0 fw-bold text-success">Quen thuộc: [[${learningProgress.familier}]]</p>
 														<p class="m-0 fw-bold text-danger">Chưa học: [[${learningProgress.rest}]]</p>
-															<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-danger mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter < 99}">Học tiếp</a>
-															<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-primary mt-3" th:if="${learningProgress.progressChapter == 0}">Bắt đầu</a>
-															<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-success mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter > 99}">Ôn lại</a>
+														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-danger mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter < 99}">Học tiếp</a>
+														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-primary mt-3" th:if="${learningProgress.progressChapter == 0}">Bắt đầu</a>
+														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-success mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter > 99}">Ôn lại</a>
 													</div>
 												</div>
 											</div>

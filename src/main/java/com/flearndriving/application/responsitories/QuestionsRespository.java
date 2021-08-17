@@ -13,21 +13,22 @@ import com.flearndriving.application.entities.Question;
 @Repository
 public interface QuestionsRespository extends JpaRepository<Question, Long> {
 
-	public List<Question> findByChapter(Chapter chapter);
+    public List<Question> findByChapter(Chapter chapter);
 
+    public List<Question> findByQuestionIdIn(List<Long> listIds);
 
-	public List<Question> findByQuestionIdIn(List<Long> listIds);
+    @Query("SELECT q " + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
+            + "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
+            + "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
+    public List<Question> getListQuestionRest(Chapter chapter, Account account);
 
-	@Query("SELECT q " + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
-			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
-			+ "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
-	public List<Question> getListQuestionRest(Chapter chapter, Account account);
-
-	@Query("SELECT count(q) FROM Question q")
-	Integer countQuestion();
+    @Query("SELECT count(q) FROM Question q")
+    Integer countQuestion();
 
 	@Query("SELECT q " + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
 			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
 			+ "                      AND (sl.statusQuestion = 1 or sl.statusQuestion = 2))")
 	public List<Question> getListQuestionKnowledge(Chapter chapter, Account account);
+    @Query("SELECT eqd.question FROM ExamQuestionsDetail eqd WHERE eqd.examQuestions.examQuestionsId = :examQuestionsId")
+    public List<Question> getListQuestionByExamQuestionsId(Long examQuestionsId);
 }

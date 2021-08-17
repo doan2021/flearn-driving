@@ -1,181 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+    layout:decorate="~{layout/layout-lib}">
 <head>
-	<meta charset="utf-8" />
-	<title>Thi Thử</title>
-	<link rel="stylesheet" th:href="@{../css/trial-exam.css}">
+    <meta charset="utf-8" />
+    <title>Thi Thử</title>
+    <link rel="stylesheet" th:href="@{../css/trial-exam.css}">
 </head>
 <body>
-	<th:block layout:fragment="content">
-		<form class="form2" name="form2" method="POST">
-			<div class="form-main row ms-5 me-5">
-				<!-- ================= PHẦN CÂU HỎI =======================-->
-				<div class="col-md-4 col-sm-12 col-xs-12 mt-4">
-					<div class="shadow panel panel-default border">
-						<div class="panel-body">
-							<div style="margin-bottom: 10px;" class="fs-3 text-primary">
-								<strong>Câu hỏi | Đề số 1</strong>
-							</div>
-							<div class="m-2">
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									1
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									2
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									3
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									4
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									5
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									6
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									7
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									8
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									9
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									10
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									11
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									12
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									13
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									14
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									15
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									16
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									17
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									18
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									19
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									20
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									21
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									22
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									23
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									24
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									25
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									26
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									27
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									28
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									29
-								</button>
-								<button class="btn btn-outline-success m-1" style="height: 50px; width: 50px;">
-									30
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="shadow panel panel-default border">
-						<div class="fs-4 text-center text-primary">
-							<strong>Thời gian còn lại:</strong>
-						</div>
-						<div class="fs-4 text-center text-danger">
-							<strong>10:00</strong>
-						</div>
-					</div>
-					<div class="panel-body text-center">
-						<input class="btn btn-success btn-lg" type="submit" name="nopbai" id="nopbai" value="NỘP BÀI THI">
-					</div>
-				</div>
-				<!-- ================= PHẦN CÂU TRẢ LỜI =======================-->
-				<div class="col-md-8 col-sm-12 col-xs-12">
-					<div class="shadow panel panel-default border mt-4">
-						<div class="panel-body">
-							<div style="margin-bottom: 10px;" class="fs-3 text-primary">
-								<strong>Câu hỏi 1</strong>
-							</div>
-							<div class="fs-5 row mt-3">
-								<b>Xe nào dừng đúng theo quy tắc giao thông?</b>
-							</div>
-							<div class="row mt-3">
-								<img src="https://thibanglaixeonline.com/imagea2/592.jpg">
-							</div>
-							<div class="fs-5 row mt-5">
-								<strong>CHỌN ĐÁP ÁN ĐÚNG</strong>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="btn-group btn-group-vertical col-12" role="group" aria-label="Basic radio toggle button group">
-									  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-									  <label class="btn btn-outline-secondary w-100 mt-3 text-start" for="btnradio1">1 - Xe tải</label>
-									
-									  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-									  <label class="btn btn-outline-secondary w-100 mt-3 text-start" for="btnradio2">2 - Xe con</label>
-									
-									  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-									  <label class="btn btn-outline-secondary w-100 mt-3 text-start" for="btnradio3">3 - Cả 2 xe đều đúng</label>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-6">
-										<div class="text-start">
-											<button class="btn btn-primary w-25"><i class="fas fa-backward"></i></a></button>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="text-end">
-											<button class="btn btn-primary w-25"><i class="fas fa-forward"></i></a></button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</th:block>
-	<th:block layout:fragment="script">
-		<script th:src="@{../js/trial-exam.js}"></script>
-	</th:block>
+    <th:block layout:fragment="content">
+        <section class="p-3 bg-white shadow-custom">
+            <div class="d-flex justify-content-between align-items-center">
+                <a th:href="@{/}" class="btn btn-outline-secondary"><i class="bi bi-house-fill"></i></a>
+                <h3 class="my-0"><strong class="me-3">ĐỀ SỐ 1</strong><span></span></h3>
+                <a th:href="@{/select-chapter}" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
+            </div>
+        </section>
+        <div class="container portfolio-details" id="app-trial-exam" v-cloak>
+            <input type="hidden" th:value="${examQuestionsId}" id="examQuestionsId">
+            <div class="row">
+                <div class="col-12 col-xl-4">
+                    <div class="portfolio-info">
+                        <h3>Thời gian làm bài</h3>
+                        <countdown :total-time="examMinutes * 60" @timeout="submitExam" ref="countdown"></countdown>
+                    </div>
+                    <div class="portfolio-info mt-3">
+                        <h3>Danh sách câu hỏi</h3>
+                        <div class="row">
+                            <div class="col-3 mt-3" v-for="(question,index) in listQuestions">
+                                <div class="border border-2 rounded rounded-3 p-1 text-center h-100 question-index cursor-pointer" @click="selectQuestion(index)" :class="{ active : listSelectAnswers[index] != null , select : index == questionCurrentIndex }">
+                                    Câu {{ index + 1 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info mt-3">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-success" @click="submitAnswer">Nộp bài</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-8 mt-3 mt-xl-0">
+                    <div class="portfolio-info">
+                        <h3>Câu {{ questionCurrentIndex + 1}}</h3>
+                        <div class="row">
+                            <div class="col-12" v-if="listQuestions != null && listQuestions != ''">
+                                <p>{{ listQuestions[questionCurrentIndex].content }}</p>
+	                            <div class="row">
+	                                <div class="col-12 my-4" v-if="listQuestions[questionCurrentIndex].listAnswer == '' || listQuestions[questionCurrentIndex].listAnswer == null">
+	                                    <span class="text-secondary fw-bold">Chọn đáp án</span>
+	                                </div>
+	                                <div class="col-12 col-xl mt-3 mt-xl-3" v-for="(answer, index) in listQuestions[questionCurrentIndex].listAnswers">
+	                                    <div class="answer-content border border-2 w-100 h-100 rounded rounded-3 p-3 pt-4 cursor-pointer" :class="{ active : listSelectAnswers[questionCurrentIndex] == answer.answerId }" @click="selectAnswer(answer.answerId)">
+	                                        <span class="fw-bold index-answer d-flex justify-content-center align-items-center rounded-circle">{{ index + 1 }}</span> 
+	                                        {{ answer.content }}
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </div>
+	                        <div class="col-6 text-start mt-4">
+	                            <button class="btn btn-primary" @click="previousQuestion" v-if="questionCurrentIndex != 0"><i class="bi bi-chevron-left"></i>Câu Trước</button>
+	                        </div>
+	                        <div class="col-6 text-end mt-4">
+	                            <button class="btn btn-primary" @click="nextQuestion" v-if="questionCurrentIndex != listQuestions.length-1">Câu sau<i class="bi bi-chevron-right"></i></button>
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <th:block layout:fragment="script">
+        <script th:src="@{../assets/js/countdown.js}"></script>
+        <script th:src="@{../js/trial-exam.js}"></script>
+    </th:block>
 </body>
 
 </html>
