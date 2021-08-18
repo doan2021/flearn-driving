@@ -27,38 +27,50 @@
 			<div class="container">
 				<div class="row gy-4">
 					<div class="col-lg-4">
-						<div class="portfolio-info" th:if="${trialExamResult.isPass}">
+						<div class="portfolio-info" th:if="${trialExamResult.pass}">
 							<span class="stamp is-approved">Đạt</span>
 						</div>
-						<div class="portfolio-info" th:unless="${trialExamResult.isPass}">
+						<div class="portfolio-info" th:unless="${trialExamResult.pass}">
 						<span class="stamp is-nope">Không đạt</span>
 						</div>
 					</div>
 					<div class="col-lg-8">
 						<div class="portfolio-info">
-						 <!--<form th:action="@{/detail-history-trial-test}" th:object="${drivingLicense}" method="POST">-->
-							<!--<input type="hidden" th:field =*{drivingLicenseId} >-->
-							<h3>Chi tiết thi thử</h3>
-							<ul class="mb-0">
-								<li><strong>Số câu hỏi</strong>:</li>
-								<li><strong>Câu điểm liệt</strong>:</li>
-								<li><strong>Số câu trả lời đúng</strong>:</li>
-								<li><strong>Số câu trả lời sai</strong>:</li>
-							</ul>
-						<!-- </form>-->
+							<div class="row">
+								<div class="col-9">
+								<h3>Chi tiết thi thử</h3>
+								</div>
+								<div class="col-3 text-center text-primary fw-bold">
+								<h1 th:text="${trialExamResult.examQuestions.drivingLicense.name}"></h1>
+								</div>
+							</div>
+							<div class="row">
+								<ul class="mb-0 col-6">
+									<li><strong>Số câu hỏi</strong>: [[${trialExamResult.examQuestions.drivingLicense.numberQuestion}]]</li>
+									<li><strong>Câu điểm liệt</strong>: [[${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}]]</li>
+									<li><strong>Số câu trả lời đúng</strong>: <span th:with="filtered=${trialExamResult.listHistoryAnswer.?[correct]}">[[${filtered.size}]]</span></li>
+									<li><strong>Số câu trả lời sai</strong>: <span th:with="filtered=${trialExamResult.listHistoryAnswer.?[!correct]}">[[${filtered.size}]]</span></li>
+								</ul>
+								<ul class="col-6">
+									<li><strong>Thời gian làm bài</strong>: [[|${trialExamResult.examQuestions.drivingLicense.examMinutes} phút|]]</li>
+									<li><strong>Ngày thi</strong>: [[${trialExamResult.createAt}]]</li>
+									<li><strong>Điểm</strong>: [[${trialExamResult.point}]]</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row mt-4" ư>
+				<div class="row mt-4">
 					<div class="col-lg-12">
 						<div class="portfolio-info">
 							<h3>Câu hỏi trong đề thi</h3>
-							<div class="mt-5">
-								<h5>Câu 1 Phần của đường bộ được sử dụng cho các phương tiện giao thông qua lại là gì?
-								</h5>
-								<p class="text-success">1 Phần mặt đường và lề đường.</p>
-								<p class="text-danger">1 Phần mặt đường và lề đường.</p>
-								<p>1 Phần mặt đường và lề đường.</p>
+							<div class="mt-5" th:each="historyAnswer, stat : ${trialExamResult.listHistoryAnswer}">
+								<h4>
+									<span class="fw-bold me-3" th:text="|Câu ${stat.index + 1}|"></span>
+									<span th:text="${historyAnswer.answer.question.content}"></span>
+								</h4>
+								<p th:each="answer : ${historyAnswer.answer.question.listAnswers}" th:text="${answer.content}" th:classappend="${answer.true} ? 'text-success'" th:unless="${answer.answerId == historyAnswer.answer.answerId && !answer.true}"></p>
+								<p th:each="answer : ${historyAnswer.answer.question.listAnswers}" th:text="${answer.content}" class="text-danger" th:if="${answer.answerId == historyAnswer.answer.answerId && !answer.true}"></p>
 							</div>
 						</div>
 					</div>
