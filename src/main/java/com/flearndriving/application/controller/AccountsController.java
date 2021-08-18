@@ -10,13 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.dto.AccountUpdateForm;
-import com.flearndriving.application.dto.ResponeData;
-import com.flearndriving.application.entities.DrivingLicense;
-import com.flearndriving.application.entities.TrialExamResult;
+import com.flearndriving.application.entities.Chapter;
 import com.flearndriving.application.services.AccountServices;
 import com.flearndriving.application.services.ChapterServices;
 import com.flearndriving.application.services.DrivingLicenseServices;
@@ -125,9 +122,11 @@ public class AccountsController {
 	}
 
 	@GetMapping(value = { "/view-profile-learning-progress" })
-	public String viewProfileLearningProgressLong(Model model) {
+	public String viewProfileLearningProgressLong(Model model, Chapter chapter) {
 		model.addAttribute("account", accountsServices.getAccountLoginInfo());
 		model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
+		model.addAttribute("listChapter", chapterServices.countChapter());
+		model.addAttribute("listLearnedChapter", chapterServices.countLearnedChapter());
 		return "view-profile-learning-progress";
 	}
 

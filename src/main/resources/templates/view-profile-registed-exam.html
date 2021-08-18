@@ -3,28 +3,46 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout}">
 <head>
-<title>Hồ sơ - Kỳ thi đã đăng ký</title>
+<title>Hồ sơ - Kỳ thi thật đã đăng ký</title>
 <link rel="stylesheet" th:href="@{../css/view-profile.css}">
 </head>
 <body>
 	<th:block layout:fragment="content">
-		<section class="mu-page-breadcrumb p-0">
-			<div class="container-xxl">
-	            <div class="profile-header">
-					<div class="profile-header-cover"></div>
-					<div class="profile-header-content">
-						<div class="profile-header-img">
-							<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" />
-						</div>
-						<div class="profile-header-info">
-							<h4 class="m-t-sm">[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
-							<p class="m-b-sm">Quản trị viên</p>
-							<a href="#" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
-						</div>
-					</div>
+		<section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+			<div class="container">
+				<div class="d-flex justify-content-between align-items-center">
+					<h2>Kỳ thi thật đã đăng ký</h2>
+					<ol>
+						<li><a th:href="@{/}">Trang chủ</a></li>
+						<li>Kỳ thi thật đã đăng ký</li>
+					</ol>
 				</div>
-	        </div>
+			</div>
 		</section>
+		<div class="container emp-profile">
+			<form method="post">
+				<div class="row">
+					<div class="col-md-4">
+	                    <div class="profile-img">
+	                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+	                        <div class="file btn btn-lg btn-primary">
+	                            Đổi hình ảnh
+	                            <input type="file" name="file"/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <div class="profile-head">
+                            <h4>[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
+                            <h5>Quản trị viên</h5>
+	                    </div>
+	                </div>
+	                <div class="col-md-2">
+                        <a th:href="@{/view-profile-update}" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
+                    </div>
+				</div>
+			</form>
+		</div>
 		<div class="container-xxl my-3" >
 			<div class="profile-container">
 				<div class="row row-space-20">
@@ -75,28 +93,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
-	
-					<div class="col-md-4 hidden-xs hidden-sm">
-						<ul class="profile-info-list mt-4">
-							<li class="title"><h5>THÔNG TIN KHÁC</h5></li>
-							<li>
-								<div class="field">Ngày tạo:</div>
-								<div th:text="${#dates.format(account.createAt, 'dd-MM-yyyy')}"></div>
-							</li>
-							<li>
-								<div class="field">Người tạo:</div>
-								<div class="value">[[${account.createBy}]]</div>
-							</li>
-							<li>
-								<div class="field">Ngày cập nhật lần cuối:</div>
-								<div th:text="${#dates.format(account.updateAt, 'dd-MM-yyyy')}"></div>
-							</li>
-							<li>
-								<div class="field">Người cập nhật lần cuối:</div>
-								<div class="value">[[${account.updateBy}]]</div>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>
