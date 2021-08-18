@@ -20,4 +20,6 @@ public class DrivingLicenseServices {
     public List<DrivingLicense> findAllDrivingLicense() {
         return drivingLicenseRepository.findAll();
     }
+	
+	
 }

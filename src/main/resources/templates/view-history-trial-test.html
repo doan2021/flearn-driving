@@ -56,66 +56,51 @@
 									</ul>
 								</div>
 								<div class="col-12 mt-5">
-									<table class="table table-bordered mt-4" >
-										<thead class="mt-1" style="background-color: rgb(213, 213, 213);">
-											<tr class="text-center" >
-												<th scope="col"></th>
-												<th scope="col" >Tên đề thi</th>
-												<th scope="col">Ngày thi</th>
-												<th scope="col">Số câu hỏi</th>
-												<th scope="col">Số câu trả lời đúng</th>
-												<th scope="col">Số câu trả lời sai</th>
-												<th scope="col">Câu điểm liệt</th>
-												<th scope="col">Thời gian làm bài thực tế</th>
-												<th scope="col">Kết quả</th>
-												<th scope="col">Chi tiết</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="text-center">
-												<th scope="row">1</th>
-												<td>Đề số 1</td>
-												<td>16/06/2021</td>
-												<td>35</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td><button type="button" class="btn btn-xs btn-primary mb-3">Chi tiết</button>
-												</td>
+									<!--<form class="row mt-3" th:action="@{/view-history-trial-test}" th:object="${drivingLicenseForm}" method="POST">-->
+										<!--<input type="hidden" th:field="*{drivingLicenseId}">-->
+										<table class="table table-bordered mt-4">
+											<thead class="mt-1" style="background-color: rgb(213, 213, 213);">
+												<tr class="text-center">
+													<th scope="col"></th>
+													<th scope="col">Loại bằng</th>
+													<th scope="col">Tên đề thi</th>
+													<th scope="col">Ngày thi</th>
+													<th scope="col">Số câu hỏi</th>
+													<th scope="col">Trả lời đúng</th>
+													<th scope="col">Trả lời sai</th>
+													<th scope="col">Câu liệt</th>
+													<th scope="col">Thời gian làm bài</th>
+													<th scope="col">Điểm</th>
+													<th scope="col">Kết quả</th>
+													<th scope="col">Chi tiết</th>
+												</tr>
+											</thead>
+											<tbody >
+												<tr class="text-center" th:each="trialExamResult,stat : ${listTrialExamResult}">
+													<td th:text="${stat.index + 1}"></td>
+													<th th:text="${trialExamResult.examQuestions.drivingLicense.name}"></th>
+													<td th:text="${trialExamResult.examQuestions.name}"></td>
+													<td>16/06/2021</td>
+													<td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestion}"></td>
+													<td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionCorect}"></td>
+													<td>Không đạt</td>
+													<td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}"></td>
+													<td th:text="|${trialExamResult.examQuestions.drivingLicense.examMinutes} phút|"></td>
+													<td th:text="${trialExamResult.point}"></td>
+													<td>
+														<span th:if="${trialExamResult.isPass == fasle}">Không đạt</span>
+														<span th:if="${trialExamResult.isPass == true}">Đạt</span>
+													</td>
+													
+													<td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{/detail-history-trial-test}">Chi
+															tiết</a>
+													</td>
 
-											</tr>
-											<tr class="text-center">
-												<th scope="row">1</th>
-												<td>Đề số 1</td>
-												<td>16/06/2021</td>
-												<td>35</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td><button type="button" class="btn btn-xs btn-primary mb-3">Chi tiết</button>
-												</td>
-
-											</tr>
-											<tr class="text-center">
-												<th scope="row">1</th>
-												<td>Đề số 1</td>
-												<td>16/06/2021</td>
-												<td>35</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td>Không đạt</td>
-												<td><button type="button" class="btn btn-xs btn-primary mb-3">Chi tiết</button>
-												</td>
-
-											</tr>
-										</tbody>
-									</table>
+												</tr>
+												
+											</tbody>
+										</table>
+									<!--</form>-->
 								</div>
 							</div>
 						</div>
