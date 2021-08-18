@@ -14,10 +14,13 @@ public class DrivingLicenseServices {
     DrivingLicenseRepository drivingLicenseRepository;
 
     public DrivingLicense getOne(Long drivingLicenseId) {
-        return drivingLicenseRepository.getOne(drivingLicenseId);
+    	DrivingLicense drivingLicense = drivingLicenseRepository.findByDrivingLicenseId(drivingLicenseId);
+        return drivingLicense;
     }
 
     public List<DrivingLicense> findAllDrivingLicense() {
         return drivingLicenseRepository.findAll();
     }
+	
+	
 }

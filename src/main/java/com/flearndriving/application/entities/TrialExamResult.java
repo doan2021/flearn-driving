@@ -1,5 +1,6 @@
 package com.flearndriving.application.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,102 +18,135 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "trail_exam_result")
+@Table(name = "trial_exam_result")
 public class TrialExamResult {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trail_exam_result_id")
-    private Long trailExamResultId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "trial_exam_result_id")
+	private Long trialExamResultId;
 
-    @Column(name = "point")
-    private double point;
+	@Column(name = "point")
+	private double point;
 
-    @Column(name = "is_pass")
-    private boolean isPass;
+	@Column(name = "is_pass")
+	private boolean isPass;
 
-    @Column(name = "time_exam_start")
-    private String timeExamStart;
+	@Column(name = "time_exam")
+	private Integer timeExam;
 
-    @Column(name = "time_exam_end")
-    private String timeExamEnd;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "trialExamResult", cascade = CascadeType.ALL)
+	private List<HistoryAnswer> listHistoryAnswer;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "trailExamResult", cascade = CascadeType.ALL)
-    private List<HistoryAnswer> listHistoryAnswer;
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "account_id")
+	private Account account;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "exam_questions_id")
+	private ExamQuestions examQuestions;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "exam_questions_id")
-    private ExamQuestions examQuestions;
+	@Column(name = "create_by")
+	private String createBy;
 
-    public Long getTrailExamResultId() {
-        return trailExamResultId;
-    }
+	@Column(name = "create_at")
+	private Date createAt;
 
-    public void setTrailExamResultId(Long trailExamResultId) {
-        this.trailExamResultId = trailExamResultId;
-    }
+	@Column(name = "update_by")
+	private String updateBy;
 
-    public double getPoint() {
-        return point;
-    }
+	@Column(name = "update_at")
+	private Date updateAt;
 
-    public void setPoint(double point) {
-        this.point = point;
-    }
+	public double getPoint() {
+		return point;
+	}
 
-    public boolean isPass() {
-        return isPass;
-    }
+	public void setPoint(double point) {
+		this.point = point;
+	}
 
-    public void setPass(boolean isPass) {
-        this.isPass = isPass;
-    }
+	public boolean isPass() {
+		return isPass;
+	}
 
-    public String getTimeExamStart() {
-        return timeExamStart;
-    }
+	public void setPass(boolean isPass) {
+		this.isPass = isPass;
+	}
 
-    public void setTimeExamStart(String timeExamStart) {
-        this.timeExamStart = timeExamStart;
-    }
+	public List<HistoryAnswer> getListHistoryAnswer() {
+		return listHistoryAnswer;
+	}
 
-    public String getTimeExamEnd() {
-        return timeExamEnd;
-    }
+	public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
+		this.listHistoryAnswer = listHistoryAnswer;
+	}
 
-    public void setTimeExamEnd(String timeExamEnd) {
-        this.timeExamEnd = timeExamEnd;
-    }
+	public Account getAccount() {
+		return account;
+	}
 
-    public List<HistoryAnswer> getListHistoryAnswer() {
-        return listHistoryAnswer;
-    }
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
-    public void setListHistoryAnswer(List<HistoryAnswer> listHistoryAnswer) {
-        this.listHistoryAnswer = listHistoryAnswer;
-    }
+	public ExamQuestions getExamQuestions() {
+		return examQuestions;
+	}
 
-    public Account getAccount() {
-        return account;
-    }
+	public void setExamQuestions(ExamQuestions examQuestions) {
+		this.examQuestions = examQuestions;
+	}
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
+	public Long getTrialExamResultId() {
+		return trialExamResultId;
+	}
 
-    public ExamQuestions getExamQuestions() {
-        return examQuestions;
-    }
+	public void setTrialExamResultId(Long trialExamResultId) {
+		this.trialExamResultId = trialExamResultId;
+	}
 
-    public void setExamQuestions(ExamQuestions examQuestions) {
-        this.examQuestions = examQuestions;
-    }
+	public Integer getTimeExam() {
+		return timeExam;
+	}
+
+	public void setTimeExam(Integer timeExam) {
+		this.timeExam = timeExam;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public String getUpdateBy() {
+		return updateBy;
+	}
+
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}
+
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
+	}
 
 }
