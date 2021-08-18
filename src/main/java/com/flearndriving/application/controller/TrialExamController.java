@@ -20,7 +20,8 @@ public class TrialExamController {
     ExamQuestionsServices examQuestionsServices;
     
     @GetMapping(value = { "/trial-exam" })
-    public String trialTest(Model model) {
+    public String trialTest(Long examQuestionsId, Model model) {
+        model.addAttribute("examQuestionsId", examQuestionsId);
         return "trial-exam";
     }
 
@@ -42,6 +43,15 @@ public class TrialExamController {
     public ResponeData selectDrivingLicense(Long drivingLicenseId) {
         ResponeData responeData = new ResponeData();
         responeData.putResult("listExamQuestions", examQuestionsServices.findExamQuestionByDrivingLicenseId(drivingLicenseId));
+        return responeData;
+    }
+    
+    @GetMapping(value = { "/init-trial-exam" })
+    @ResponseBody
+    public ResponeData initTrialExamPage(Long examQuestionsId) {
+        ResponeData responeData = new ResponeData();
+        responeData.putResult("examQuestions", examQuestionsServices.findOneExamQuestions(examQuestionsId));
+        responeData.putResult("listQuestions", examQuestionsServices.findListQuestionByExamQuestionsId(examQuestionsId));
         return responeData;
     }
 }

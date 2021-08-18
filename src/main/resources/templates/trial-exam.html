@@ -15,27 +15,56 @@
                 <a th:href="@{/select-chapter}" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
             </div>
         </section>
-        <div class="container portfolio-details" id="app-trial-exam">
+        <div class="container portfolio-details" id="app-trial-exam" v-cloak>
+            <input type="hidden" th:value="${examQuestionsId}" id="examQuestionsId">
             <div class="row">
-                <div class="col-12 col-lg-4">
+                <div class="col-12 col-xl-4">
                     <div class="portfolio-info">
                         <h3>Thời gian làm bài</h3>
-                        <countdown :total-time="examMinutes * 60" @timeout="submitExam"></countdown>
+                        <countdown :total-time="examMinutes * 60" @timeout="submitExam" ref="countdown"></countdown>
                     </div>
                     <div class="portfolio-info mt-3">
                         <h3>Danh sách câu hỏi</h3>
                         <div class="row">
-                            <div class="col-3">
-                                Câu 1
+                            <div class="col-3 mt-3" v-for="(question,index) in listQuestions">
+                                <div class="border border-2 rounded rounded-3 p-1 text-center h-100 question-index cursor-pointer" @click="selectQuestion(index)" :class="{ active : listSelectAnswers[index] != null , select : index == questionCurrentIndex }">
+                                    Câu {{ index + 1 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info mt-3">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-success" @click="submitAnswer">Nộp bài</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-8 mt-3 mt-lg-0">
+                <div class="col-12 col-xl-8 mt-3 mt-xl-0">
                     <div class="portfolio-info">
-                        <h3>Câu 1</h3>
-                        <div>
-                            <p>Xe nào dừng đúng theo quy tắc giao thông?</p>
+                        <h3>Câu {{ questionCurrentIndex + 1}}</h3>
+                        <div class="row">
+                            <div class="col-12" v-if="listQuestions != null && listQuestions != ''">
+                                <p>{{ listQuestions[questionCurrentIndex].content }}</p>
+	                            <div class="row">
+	                                <div class="col-12 my-4" v-if="listQuestions[questionCurrentIndex].listAnswer == '' || listQuestions[questionCurrentIndex].listAnswer == null">
+	                                    <span class="text-secondary fw-bold">Chọn đáp án</span>
+	                                </div>
+	                                <div class="col-12 col-xl mt-3 mt-xl-3" v-for="(answer, index) in listQuestions[questionCurrentIndex].listAnswers">
+	                                    <div class="answer-content border border-2 w-100 h-100 rounded rounded-3 p-3 pt-4 cursor-pointer" :class="{ active : listSelectAnswers[questionCurrentIndex] == answer.answerId }" @click="selectAnswer(answer.answerId)">
+	                                        <span class="fw-bold index-answer d-flex justify-content-center align-items-center rounded-circle">{{ index + 1 }}</span> 
+	                                        {{ answer.content }}
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </div>
+	                        <div class="col-6 text-start mt-4">
+	                            <button class="btn btn-primary" @click="previousQuestion" v-if="questionCurrentIndex != 0"><i class="bi bi-chevron-left"></i>Câu Trước</button>
+	                        </div>
+	                        <div class="col-6 text-end mt-4">
+	                            <button class="btn btn-primary" @click="nextQuestion" v-if="questionCurrentIndex != listQuestions.length-1">Câu sau<i class="bi bi-chevron-right"></i></button>
+	                        </div>
                         </div>
                     </div>
                 </div>

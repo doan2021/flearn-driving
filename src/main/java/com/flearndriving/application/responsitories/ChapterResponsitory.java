@@ -11,4 +11,6 @@ public interface ChapterResponsitory extends JpaRepository<Chapter, Long> {
 
     @Query("SELECT count(c) FROM Chapter c")
     Integer countChapter();
+
+	public Chapter findByChapterId(Long chapterId);
 }
