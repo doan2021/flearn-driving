@@ -118,6 +118,7 @@ public class AccountsController {
     public String viewProfileLearningProgressLong(Model model) {
         model.addAttribute("account", accountsServices.getAccountLoginInfo());
         model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
+        
         return "view-profile-learning-progress";
     }
 

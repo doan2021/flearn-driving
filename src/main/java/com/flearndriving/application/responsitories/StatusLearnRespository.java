@@ -43,5 +43,6 @@ public interface StatusLearnRespository extends JpaRepository<StatusLearn, Long>
 			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
 			+ "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
 	public int countQuestionRest(Chapter chapter, Account account);
+
     
 }
