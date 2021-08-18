@@ -27,15 +27,17 @@
 			<div class="container">
 				<div class="row gy-4">
 					<div class="col-lg-4">
-						<!--<div class="portfolio-info">
+						<div class="portfolio-info" th:if="${trialExamResult.isPass}">
 							<span class="stamp is-approved">Đạt</span>
-						</div>-->
-						<div class="portfolio-info" >
+						</div>
+						<div class="portfolio-info" th:unless="${trialExamResult.isPass}">
 						<span class="stamp is-nope">Không đạt</span>
 						</div>
 					</div>
 					<div class="col-lg-8">
 						<div class="portfolio-info">
+						 <!--<form th:action="@{/detail-history-trial-test}" th:object="${drivingLicense}" method="POST">-->
+							<!--<input type="hidden" th:field =*{drivingLicenseId} >-->
 							<h3>Chi tiết thi thử</h3>
 							<ul class="mb-0">
 								<li><strong>Số câu hỏi</strong>:</li>
@@ -43,6 +45,7 @@
 								<li><strong>Số câu trả lời đúng</strong>:</li>
 								<li><strong>Số câu trả lời sai</strong>:</li>
 							</ul>
+						<!-- </form>-->
 						</div>
 					</div>
 				</div>

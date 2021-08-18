@@ -88,11 +88,11 @@
 													<td th:text="|${trialExamResult.examQuestions.drivingLicense.examMinutes} phút|"></td>
 													<td th:text="${trialExamResult.point}"></td>
 													<td>
-														<span th:if="${trialExamResult.isPass == fasle}">Không đạt</span>
-														<span th:if="${trialExamResult.isPass == true}">Đạt</span>
+														<span th:if="${trialExamResult.pass}">Không đạt</span>
+														<span th:unless="${trialExamResult.pass}">Đạt</span>
 													</td>
 													
-													<td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{/detail-history-trial-test}">Chi
+													<td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trailExamResultId}}">Chi
 															tiết</a>
 													</td>
 
