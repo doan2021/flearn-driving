@@ -10,22 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.dto.AccountUpdateForm;
-import com.flearndriving.application.entities.Chapter;
-import com.flearndriving.application.entities.DrivingLicense;
+import com.flearndriving.application.entities.TrialExamResult;
 import com.flearndriving.application.services.AccountServices;
-import com.flearndriving.application.services.ChapterServices;
-import com.flearndriving.application.services.DrivingLicenseServices;
-import com.flearndriving.application.services.QuestionServices;
 import com.flearndriving.application.services.RoleServices;
+import com.flearndriving.application.services.TrialExamResultServices;
 import com.flearndriving.application.validator.AccountUpdateValidator;
 import com.flearndriving.application.validator.AccountValidator;
 
 @Controller
 public class AccountsController {
-
+	@Autowired
+    TrialExamResultServices trialExamResultServices;
 	@Autowired
 	AccountServices accountsServices;
 
@@ -117,15 +114,16 @@ public class AccountsController {
 	@GetMapping(value = { "/view-history-trial-test" })
 	public String viewHistoryTrialTest(Model model) {
 		model.addAttribute("account", accountsServices.getAccountLoginInfo());
+		model.addAttribute("listTrialExamResult", trialExamResultServices.findAllTrialExamResult());
 		return "view-history-trial-test";
 	}
 
 	@GetMapping(value = { "/detail-history-trial-test" })
-	public String detailHistoryTrialTest(Model model) {
+	public String detailHistoryTrialTest(Long trailExamResultId,Model model) {
 		model.addAttribute("account", accountsServices.getAccountLoginInfo());
-//		DrivingLicense drivingLicense = drivingLicenseServices.getOne(drivingLicenseId);
-//		model.addAttribute("drivingLicense", drivingLicense);
-//		model.addAttribute("listQuestionInDrivingLicense", drivingLicenseServices.getQuestionsInDrivingLicense(drivingLicense));
+		TrialExamResult trialExamResult = trialExamResultServices.getOne(trailExamResultId);
+		model.addAttribute("trialExamResult", trialExamResult);
+		model.addAttribute("listQuestionTrialExamResult", trialExamResultServices.getQuestionsInTrialExamResult(trialExamResult));
 		return "detail-history-trial-test";
 	}
 }
