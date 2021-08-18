@@ -139,8 +139,8 @@ public class AccountsController {
 	}
 
 	@GetMapping(value = { "/detail-history-trial-test" })
-	public String detailHistoryTrialTest(Long trailExamResultId, Model model) {
-		model.addAttribute("trialExamResult", trialExamResultServices.getOne(trailExamResultId));
+	public String detailHistoryTrialTest(Long trialExamResultId, Model model) {
+		model.addAttribute("trialExamResult", trialExamResultServices.getOne(trialExamResultId));
         return "detail-history-trial-test";
 	}
 }
