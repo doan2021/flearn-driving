@@ -22,7 +22,8 @@ Vue.component("countdown", {
         return {
             message: 'Thời gian còn lại',
             totalTimes: this.totalTime,
-            interval : null
+            interval : null,
+            timeLeft: 0
         }
     },
     computed: {
@@ -38,6 +39,7 @@ Vue.component("countdown", {
     watch: {
         totalTime: function(val) {
         	this.totalTimes = val;
+        	this.timeLeft = this.totalTime - this.totalTimes;
         },
         totalTimes: function(value) {
             if (value == 0) {

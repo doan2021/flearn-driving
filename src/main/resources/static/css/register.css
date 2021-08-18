@@ -8,10 +8,10 @@
 
 .content-register {
     border-radius: 1rem;
-    min-height: 648px;
+    min-height: 668px;
     background-image: url('../assets/img/register-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 102px;
+    margin-top: 124px;
 }
