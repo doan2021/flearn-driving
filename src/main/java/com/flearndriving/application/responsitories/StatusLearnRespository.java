@@ -32,4 +32,16 @@ public interface StatusLearnRespository extends JpaRepository<StatusLearn, Long>
             + "AND sl.statusQuestion = :statusQuestion")
     public List<Question> getListQuestionWithStatus(Chapter chapter, Account account, Integer statusQuestion);
     
+    @Query("   SELECT count(sl.question)"
+            + "FROM StatusLearn sl "
+            + "WHERE sl.question.chapter = :chapter "
+            + "AND sl.account = :account "
+            + "AND sl.statusQuestion = :statusQuestion")
+    public int countQuestionWithStatus(Chapter chapter, Account account, Integer statusQuestion);
+
+	@Query("SELECT count(*)" + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
+			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
+			+ "                      AND (sl.statusQuestion = 2 or sl.statusQuestion = 3))")
+	public int countQuestionRest(Chapter chapter, Account account);
+    
 }

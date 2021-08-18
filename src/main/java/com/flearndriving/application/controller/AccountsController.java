@@ -37,6 +37,12 @@ public class AccountsController {
 
     @Autowired
     private AccountValidator accountValidator;
+    
+    @Autowired
+    ChapterServices chapterServices;
+    
+    @Autowired
+    QuestionServices questionServices;
 
     @InitBinder
     protected void initBinder(WebDataBinder dataBinder) {
@@ -108,11 +114,12 @@ public class AccountsController {
 		return "view-profile-registed-exam";
 	}
 
-	@GetMapping(value = { "/view-profile-learning-progress" })
-	public String viewProfileLearningProgress(Model model) {
-		model.addAttribute("account", accountsServices.getAccountLoginInfo());
-		return "view-profile-learning-progress";
-	}
+    @GetMapping(value = { "/view-profile-learning-progress" })
+    public String viewProfileLearningProgressLong(Model model) {
+        model.addAttribute("account", accountsServices.getAccountLoginInfo());
+        model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
+        return "view-profile-learning-progress";
+    }
 
 	@GetMapping(value = { "/view-history-trial-test" })
 	public String viewHistoryTrialTest(Model model) {

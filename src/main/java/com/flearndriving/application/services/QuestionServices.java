@@ -18,6 +18,9 @@ public class QuestionServices {
     
     @Autowired
     ChapterResponsitory chapterResponsitory;
+    
+    @Autowired
+    AccountServices accountsServices;
 
     public List<Question> getAllQuestions() {
         return questionsRespository.findAll();
@@ -30,4 +33,5 @@ public class QuestionServices {
 	public Integer countQuestion() {
 		return questionsRespository.countQuestion();
 	}
+
 }

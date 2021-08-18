@@ -24,6 +24,15 @@ public class AccountUpdateForm {
 	private String createBy;
 	private Date updateAt;
 	private String updateBy;
+	private String address;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public String getUserName() {
 		return userName;

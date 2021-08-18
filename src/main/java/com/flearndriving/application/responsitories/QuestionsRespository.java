@@ -25,6 +25,10 @@ public interface QuestionsRespository extends JpaRepository<Question, Long> {
     @Query("SELECT count(q) FROM Question q")
     Integer countQuestion();
 
+	@Query("SELECT q " + "FROM Question q " + "WHERE q.chapter = :chapter " + "    AND q NOT IN (SELECT sl.question "
+			+ "                  FROM StatusLearn sl " + "                  WHERE sl.account = :account "
+			+ "                      AND (sl.statusQuestion = 1 or sl.statusQuestion = 2))")
+	public List<Question> getListQuestionKnowledge(Chapter chapter, Account account);
     @Query("SELECT eqd.question FROM ExamQuestionsDetail eqd WHERE eqd.examQuestions.examQuestionsId = :examQuestionsId")
     public List<Question> getListQuestionByExamQuestionsId(Long examQuestionsId);
 }
