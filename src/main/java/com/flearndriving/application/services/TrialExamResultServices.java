@@ -17,12 +17,11 @@ TrialExamResultResponsitory trialExamResultResponsitory;
 	}
 
 	public TrialExamResult getOne(Long trailExamResultId) {
-		// TODO Auto-generated method stub
 		return trialExamResultResponsitory.getOne(trailExamResultId);
 	}
-
-	public Object getQuestionsInTrialExamResult(TrialExamResult trialExamResult) {
-		// TODO Auto-generated method stub
-		return trialExamResultResponsitory.findByTrialExamResult(trialExamResult);
-	}
+//
+//	public Object getQuestionsInTrialExamResult(TrialExamResult trialExamResult) {
+//		// TODO Auto-generated method stub
+//		return trialExamResultResponsitory.findByTrialExamResult(trialExamResult);
+//	}
 }

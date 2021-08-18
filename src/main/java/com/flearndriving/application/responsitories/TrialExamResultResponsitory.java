@@ -11,6 +11,6 @@ import com.flearndriving.application.entities.TrialExamResult;
 @Repository
 public interface TrialExamResultResponsitory  extends JpaRepository<TrialExamResult, Long> {
 
-	public List<TrialExamResult> findByTrialExamResult(TrialExamResult trialExamResult);
+//	public List<TrialExamResult> findByTrialExamResult(TrialExamResult trialExamResult);
     
 }
