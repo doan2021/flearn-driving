@@ -20,6 +20,7 @@ import com.flearndriving.application.dto.AccountPrincipal;
 import com.flearndriving.application.dto.AccountUpdateForm;
 import com.flearndriving.application.entities.Account;
 import com.flearndriving.application.entities.Role;
+import com.flearndriving.application.exception.BusinessException;
 import com.flearndriving.application.responsitories.AccountsRespository;
 import com.flearndriving.application.responsitories.RoleRespository;
 import com.flearndriving.application.utils.EncrytedPasswordUtils;
@@ -92,14 +93,14 @@ public class AccountServices {
 	}
 
 	@Transactional
-	public boolean updateAccount(AccountUpdateForm accountUpdateForm) {
+	public void updateAccount(AccountUpdateForm accountUpdateForm) {
 		if (accountUpdateForm == null) {
-			return false;
+		    throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Dữ liệu truền vào không hợp lệ!");
 		}
 		Account account = accountsRespository.findByAccountId(accountUpdateForm.getAccountId());
-		if (account == null) {
-			return false;
-		}
+        if (account == null) {
+            throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Người dùng không tồn tại!");
+        }
 		account.setAccountId(accountUpdateForm.getAccountId());
 		account.setFirstName(accountUpdateForm.getFirstName());
 		account.setMiddleName(accountUpdateForm.getMiddleName());
@@ -113,11 +114,7 @@ public class AccountServices {
 		account.setUpdateAt(Common.getSystemDate());
 		account.setCreateAt(Common.getSystemDate());
 		account.setCreateBy(Common.getUsernameLogin());
-		if (accountsRespository.save(account) == null) {
-			return false;
-		} else {
-			return true;
-		}
+		accountsRespository.save(account);
 	}
 
 	public Object getAccountLoginInfo() {
