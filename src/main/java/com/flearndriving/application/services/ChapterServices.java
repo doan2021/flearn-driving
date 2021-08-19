@@ -64,4 +64,18 @@ public class ChapterServices {
 		int knowledge = statusLearnRespository.countQuestionWithStatus(chapter, account, 3);
 		return ((knowledge * 1.0) / chapter.getListQuestion().size()) * 100;
 	}
+
+	public List<LearningProgress> countLearnedChapter() {
+		List<LearningProgress> listLearningProgressChapter = new ArrayList<>();
+    	List<Chapter> listChapter = chapterResponsitory.findAll();
+    	for (Chapter lChapter : listChapter) {
+    		LearningProgress learningProgress = new LearningProgress();
+    		learningProgress.setChapter(lChapter);
+    		learningProgress.setProgressChapter(getNumberLearnProgress(lChapter));
+    		if (learningProgress.getProgressChapter() == 100) {
+				listLearningProgressChapter.add(learningProgress);
+			}
+    	}
+		return listLearningProgressChapter;
+	}
 }
