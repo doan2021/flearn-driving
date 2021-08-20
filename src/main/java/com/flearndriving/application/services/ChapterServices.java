@@ -70,7 +70,6 @@ public class ChapterServices {
     	List<Chapter> listChapter = chapterResponsitory.findAll();
     	for (Chapter lChapter : listChapter) {
     		LearningProgress learningProgress = new LearningProgress();
-    		learningProgress.setChapter(lChapter);
     		learningProgress.setProgressChapter(getNumberLearnProgress(lChapter));
     		if (learningProgress.getProgressChapter() == 100) {
 				listLearningProgressChapter.add(learningProgress);
