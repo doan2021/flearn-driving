@@ -134,6 +134,8 @@ public class AccountsController {
 	public String viewHistoryTrialTest(Model model) {
 		model.addAttribute("account", accountsServices.getAccountLoginInfo());
 		model.addAttribute("listTrialExamResult", trialExamResultServices.findAllTrialExamResult());
+		model.addAttribute("countTrialExamResult", trialExamResultServices.countTrialExamResult());
+		model.addAttribute("percentPass", trialExamResultServices.getPercentPass());
 		return "view-history-trial-test";
 	}
 
