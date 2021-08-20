@@ -14,6 +14,7 @@
         <link th:href="@{../assets/vendor/aos/aos.css}" rel="stylesheet">
         <link th:href="@{../assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
         <link th:href="@{../assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+        <link th:href="@{../assets/css/bootstrap-datepicker.css}" rel="stylesheet">
         <link th:href="@{../assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
         <link th:href="@{../assets/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
         <link th:href="@{../assets/vendor/remixicon/remixicon.css}" rel="stylesheet">
@@ -43,11 +44,12 @@
                         <li th:if="${#request.userPrincipal == null}"><a class="getstarted scrollto" th:href="@{/login}">Đăng nhập</a></li>
                         <li class="dropdown" th:if="${#request.userPrincipal != null}">
                             <a href="#" class="nav-link fw-bold">
-                                <img alt="" class="border border-2 border-secondary rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU" width="36" height="36">
+                                <img alt="" class="border border-2 border-secondary rounded-circle" th:src="${accountLogin.urlAvater}" width="36" height="36" th:unless="${#strings.isEmpty(accountLogin.urlAvater)}">
+                                <img th:src="@{../assets/img/avatar_default.png}" class="img-fluid" alt=""  width="36" height="36" th:if="${#strings.isEmpty(accountLogin.urlAvater)}">
                             </a>
                             <ul class="pb-0">
                                 <li><span class="px-4 fw-bold" style="font-size: 12px">Xin chào!</span></li>
-                                <li><span class="px-4 fw-bold" >Trung Tâm</span></li>
+                                <li><span class="px-4 fw-bold" th:text="|${accountLogin.lastName == null ? '' : accountLogin.lastName} ${accountLogin.middleName == null ? '' : accountLogin.middleName} ${accountLogin.firstName == null ? '' : accountLogin.firstName}|"></span></li>
                                 <li class=""><a th:href="@{/view-profile}"><i class="bi bi-person-fill"></i>Hồ sơ</a></li>
                                 <li class="border-top"><a th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i><span>Đăng xuất</span></a></li>
                             </ul>
@@ -77,7 +79,8 @@
         <script th:src="@{../assets/vendor/swiper/swiper-bundle.min.js}"></script>
         <script th:src="@{../assets/js/jquery.min.js}"></script>
         <script th:src="@{../assets/js/jquery.validate.min.js}"></script>
-        <script th:src="@{../assets/js/jquery-ui.min.js}"></script>
+        <script th:src="@{../assets/js/bootstrap-datepicker.min.js}"></script>
+        <script th:src="@{../assets/locales/bootstrap-datepicker.vi.min.js}"></script>
         <script th:src="@{../assets/js/moment-with-locales.js}"></script>
         <script th:src="@{../assets/vendor/aos/aos.js}"></script>
         <script th:src="@{../assets/js/axios.min.js}"></script>

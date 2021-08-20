@@ -11,9 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.flearndriving.application.common.Common;
 import com.flearndriving.application.common.Constant;
-import com.flearndriving.application.dto.AccountPrincipal;
+import com.flearndriving.application.dto.CustomOAuth2User;
 import com.flearndriving.application.entities.Account;
 import com.flearndriving.application.services.AccountServices;
 
@@ -26,13 +25,12 @@ public class Oauth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
-        AccountPrincipal accountDetail = (AccountPrincipal) authentication.getPrincipal();
-        String email = accountDetail.getEmail();
-        String fullName = accountDetail.getFullName();
+        CustomOAuth2User customOAuth2User = (CustomOAuth2User) authentication.getPrincipal();
+        String email = customOAuth2User.getEmail();
+        String fullName = customOAuth2User.getName();
         Account account = accountServices.findByEmail(email);
         if (account == null) {
-            accountServices.createAccountAfterOAuthLoginSuccess(email, Common.getFirstName(fullName),
-                    Common.getLastName(fullName), Constant.GOOGLE_PROVIDER);
+            accountServices.createAccountAfterOAuthLoginSuccess(email, fullName, Constant.GOOGLE_PROVIDER);
         } else {
             accountServices.updateAccountAfterOAuthLoginSuccess(account, Constant.GOOGLE_PROVIDER);
         }

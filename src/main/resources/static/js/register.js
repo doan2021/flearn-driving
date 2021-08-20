@@ -10,12 +10,12 @@ $("#register-form").validate({
 			required: true,
 			email: true
 		},
-		phoneNumber: {
+		numberPhone: {
 			required: true,
 			number: true,
 			rangelength: [10, 10]
 		},
-		birthday: {
+		birthDay: {
 			required: true
 		},
 		userName: {
@@ -26,9 +26,9 @@ $("#register-form").validate({
 			minlength: 8
 		},
 		confirmPassword: {
-			equalTo: "#password"
+			equalTo: password
 		},
-		selectGender: {
+		gender: {
 			required: true
 		}
 	},
@@ -41,14 +41,14 @@ $("#register-form").validate({
 		},
 		email: {
 			required: "Vui lòng nhập Email!",
-			email: "Email chưa đúng định dạng, vui lòng kiểm tra lại!"
+			email: "Email không đúng định dạng!"
 		},
-		phoneNumber: {
+		numberPhone: {
 			required: "Vui lòng nhập số điện thoại!",
-			rangelength: "Số điện thoại phải đủ 10 số, vui lòng kiểm tra lại!",
-			number: "Số điện thoại phải là số, vui lòng kiểm tra lại!"
+			rangelength: "Số điện thoại ít nhất 10 ký tự!",
+			number: "Số điện thoại phải là số!"
 		},
-		birthday: {
+		birthDay: {
 			required: "Vui lòng chọn ngày sinh!"
 		},
 		userName: {
@@ -56,12 +56,12 @@ $("#register-form").validate({
 		},
 		password: {
 			required: "Vui lòng nhập mật khẩu!",
-			minlength: "Mật khẩu phải trên 8 kí tự, vui lòng kiểm tra lại!"
+			minlength: "Mật khẩu phải trên 8 kí tự!"
 		},
 		confirmPassword: {
-			equalTo: "Mật khẩu không khớp, vui lòng kiểm tra lại!"
+			equalTo: "Mật khẩu không khớp!"
 		},
-		selectGender: {
+		gender: {
 			required: "Vui lòng chọn giới tính!"
 		}
 	},
@@ -71,33 +71,6 @@ $("#register-form").validate({
     },
     unhighlight: function (element) {
         $(element).removeClass('is-invalid');
-    },
-    errorPlacement: function (error, element) {
-        switch (element.attr("name")) {
-		case 'email':
-            error.insertAfter($("#email-place"));
-            break;
-        case 'birthday':
-            error.insertAfter($("#birthday-place"));
-            break;
-        case 'userName':
-            error.insertAfter($("#username-place"));
-            break;
-        case 'password':
-            error.insertAfter($("#password-place"));
-            break;
-        case 'confirmPassword':
-            error.insertAfter($("#cPassword-place"));
-            break;
-        case 'phoneNumber':
-            error.insertAfter($("#phoneNumber-place"));
-            break;
-        case 'gender':
-        	error.insertAfter($("#gender-place"));
-        	break;
-        default:
-            error.insertAfter(element);
-        }
     },
 	submitHandler: function(form) {
 		form.submit();

@@ -48,7 +48,7 @@ public class Question {
     @Column(name = "update_at")
     private Date updateAt;
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Document> listImage;
 

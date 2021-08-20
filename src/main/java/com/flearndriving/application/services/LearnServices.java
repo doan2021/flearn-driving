@@ -130,7 +130,7 @@ public class LearnServices {
                 statusLearn.setStatusQuestion(1);
             }
         } else {
-            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(answer.getQuestion(), account);
+            List<Boolean> statusLastQuestion = historyAnswerRespository.checkLastStatusQuestion(statusLearn);
             if (answer.isTrue()) {
                 if (statusLastQuestion.get(0)) {
                     statusLearn.setStatusQuestion(3);
@@ -152,7 +152,7 @@ public class LearnServices {
         historyAnswer.setDateAnswer(new Date());
         historyAnswer.setNote("Answer when learn");
         historyAnswer.setAnswer(answer);
-        historyAnswer.setAccount(account);
+        historyAnswer.setStatusLearn(statusLearn);
         historyAnswerRespository.save(historyAnswer);
     }
 }

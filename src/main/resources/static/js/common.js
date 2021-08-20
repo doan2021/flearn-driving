@@ -1,5 +1,16 @@
-$(window).on('load', function () {
+$(window).on('load', function() {
 	$('#preloader').fadeOut();
+});
+
+$(document).ready(function() {
+	$('.datepicker').datepicker({
+	    format: "dd/mm/yyyy",
+	    todayBtn: true,
+	    clearBtn: true,
+	    language: "vi",
+	    autoclose: true,
+	    todayHighlight: true
+	});
 });
 
 Vue.prototype.$formatDate = function(value) {
