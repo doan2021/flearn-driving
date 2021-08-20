@@ -1148,6 +1148,19 @@ section {
   color: #3498db;
 }
 
+.portfolio .portfolio-wrap .portfolio-links label {
+  color: #fff;
+  margin: 0 5px 0 0;
+  font-size: 28px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.portfolio .portfolio-wrap .portfolio-links label:hover {
+  color: #3498db;
+}
+
+
 .portfolio .portfolio-wrap:hover::before {
   opacity: 1;
 }

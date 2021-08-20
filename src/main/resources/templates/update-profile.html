@@ -3,7 +3,8 @@
 	layout:decorate="~{layout/layout}">
 
 <head>
-	<title>Cập nhật hồ sơ - Thông tin cá nhân</title>
+	<title>Cập nhật hồ sơ</title>
+    <meta charset="utf-8"/>
 	<link rel="stylesheet" th:href="@{../css/update-profile.css}">
 </head>
 
@@ -12,10 +13,10 @@
 		<section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
 			<div class="container">
 				<div class="d-flex justify-content-between align-items-center">
-					<h2>Cập nhật hồ sơ - Thông tin cá nhân</h2>
+					<h2>Cập nhật hồ sơ</h2>
 					<ol>
-						<li><a th:href="@{/view-profile}">Hồ sơ - Thông tin cá nhân</a></li>
-						<li>Cập nhật hồ sơ - Thông tin cá nhân</li>
+						<li><a th:href="@{/view-profile}">Hồ sơ</a></li>
+						<li>Cập nhật hồ sơ</li>
 					</ol>
 				</div>
 			</div>
@@ -47,7 +48,7 @@
 					<div class="col-md-12">
 						<div class="tab-content p-0">
 							<div class="tab-pane active show" id="profile-about">
-								<form id="view-profile-form" th:action="@{/update-account-view}" th:object="${accountUpdateForm}" method="POST" enctype="multipart/form-data">
+								<form id="view-profile-form" th:action="@{/update-profile}" th:object="${accountUpdateForm}" method="POST">
 									<input type="hidden" th:field="*{accountId}"/>
 									<div class="row">
 										<div class="col-6 mb-5 ">

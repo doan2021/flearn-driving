@@ -28,44 +28,59 @@
                                     </div>
                                 </div>
                                 <form class="row" th:action="@{/create-account}" th:object="${accountForm}" method="POST" id="register-form">
+                                    <div class="col-12">
+                                        <div class="alert alert-danger" th:if="${#fields.hasErrors()}">
+                                            <p class="m-0" th:if="${#fields.hasErrors('firstName')}" th:errors="*{lastName}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('numberPhone')}" th:errors="*{numberPhone}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+                                            <p class="m-0" th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}"></p>
+                                        </div>
+                                    </div>
                                     <div class="col-4 mt-3">
-                                        <label class="fw-bold">Họ</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent" th:field="*{lastName}" placeholder="Họ" name="lastName"/>
+                                        <label class="fw-bold">Họ<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control bg-transparent" th:field="*{lastName}" placeholder="Họ"/>
                                     </div>
                                     <div class="col-4 mt-3">
                                         <label class="fw-bold">Tên đệm</label>
-                                        <input type="text" class="form-control bg-transparent" th:field="*{middleName}" placeholder="Tên đệm" name="middleName"/>
+                                        <input type="text" class="form-control bg-transparent" th:field="*{middleName}" placeholder="Tên đệm"/>
                                     </div>
                                     <div class="col-4 mt-3">
-                                        <label class="fw-bold">Tên</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent" th:field="*{firstName}" placeholder="Tên" name="firstName"/>
+                                        <label class="fw-bold">Tên<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control bg-transparent" th:field="*{firstName}" placeholder="Tên"/>
                                     </div>
                                     <div class="col-12 mt-3">
-                                        <label class="fw-bold">Địa chỉ Email</label><span class="text-danger"> *</span>
-                                        <input type="email" class="form-control bg-transparent" th:field="*{email}" placeholder="sample@email.com" name="email"/>
+                                        <label class="fw-bold">Địa chỉ email<span class="text-danger"> *</span></label>
+                                        <input type="email" class="form-control bg-transparent" th:field="*{email}" placeholder="sample@email.com"/>
                                     </div>
                                     <div class="col-12 mt-3">
-                                        <label class="fw-bold">Ngày sinh</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent datepicker-area" id="birthday" th:field="*{birthDay}" placeholder="Chọn ngày sinh" autocomplete="off"/>
+                                        <label class="fw-bold">Ngày sinh<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control bg-transparent datepicker" th:field="*{birthDay}" placeholder="Chọn ngày sinh" autocomplete="off"/>
                                     </div>
                                     <div class="col-12 mt-3">
-                                        <label class="fw-bold">Tên đăng nhập</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent" th:field="*{userName}" placeholder="Tên đăng nhập" name="userName"/>
+                                        <label class="fw-bold">Tên đăng nhập<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control bg-transparent" th:field="*{userName}" placeholder="Tên đăng nhập"/>
                                     </div>
                                     <div class="col-6 mt-3">
-                                        <label class="fw-bold">Mật khẩu</label><span class="text-danger"> *</span>
-                                        <input type="password" class="form-control bg-transparent" th:field="*{password}" placeholder="Mật khẩu" name="password">
+                                        <label class="fw-bold">Mật khẩu<span class="text-danger"> *</span></label>
+                                        <input type="password" class="form-control bg-transparent" th:field="*{password}" placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-6 mt-3">
-                                        <label class="fw-bold">Nhập lại mật khẩu</label><span class="text-danger"> *</span>
-                                        <input type="password" class="form-control bg-transparent" th:field="*{confirmPassword}" placeholder="Nhập lại mật khẩu" name="confirmPassword">
+                                        <label class="fw-bold">Nhập lại mật khẩu<span class="text-danger"> *</span></label>
+                                        <input type="password" class="form-control bg-transparent" th:field="*{confirmPassword}" placeholder="Xác nhận mật khẩu">
                                     </div>
                                     <div class="col-6 mt-3">
-                                        <label class="fw-bold">Số điện thoại</label><span class="text-danger"> *</span>
+                                        <label class="fw-bold">Số điện thoại<span class="text-danger"> *</span></label>
                                         <input type="text" class="form-control bg-transparent" placeholder="Số điện thoại" th:field="*{numberPhone}"/>
                                     </div>
                                     <div class="col-6 mt-3">
-                                        <label class="fw-bold">Giới tính</label><span class="text-danger"> *</span>
+                                        <label class="fw-bold">Giới tính <span class="text-danger">*</span></label>
                                         <select class="form-select bg-transparent" th:field="*{gender}">
                                             <option value="">Chọn giới tính</option>
                                             <option value="1">Nam</option>
@@ -74,8 +89,8 @@
                                         </select>
                                     </div>
                                     <div class="col-12 mt-4 text-center">
-                                        <input type="submit" value="Đăng ký" class="btn btn-primary w-25"/>
-                                        <input type="reset" value="Làm mới" class="btn btn-secondary w-25"/> 
+                                        <button type="submit" class="btn btn-primary w-25">Đăng ký</button>
+                                        <a th:href="@{/register}" type="reset" class="btn btn-secondary w-25">Làm mới</a>
                                     </div>
                                 </form>
                             </div>
