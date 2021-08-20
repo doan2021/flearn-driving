@@ -20,15 +20,16 @@ import com.flearndriving.application.responsitories.TrialExamResultResponsitory;
 
 @Service
 public class TrialExamResultServices {
+
     @Autowired
     TrialExamResultResponsitory trialExamResultResponsitory;
-    
+
     @Autowired
     AnswerRespository answerRespository;
-    
+
     @Autowired
     ExamQuestionsServices examQuestionsServices;
-    
+
     @Autowired
     AccountServices accountServices;
 
@@ -58,7 +59,7 @@ public class TrialExamResultServices {
                 Long answerId = NumberUtils.toLong(strAnswerId);
                 Answer answer = answerRespository.getOne(answerId);
                 if (answer.isTrue()) {
-                    numberCorrect ++;
+                    numberCorrect++;
                 } else if (answer.getQuestion().isParalysis()) {
                     correctParalysis = false;
                 }
@@ -90,4 +91,20 @@ public class TrialExamResultServices {
         responeData.putResult("pass", isPass);
         return responeData;
     }
+
+    public int getPercentPass() {
+        // get account login
+        Account account = accountServices.getAccountLogin();
+        // gt count total by account login
+        // get count pass by account login
+        return trialExamResultResponsitory.countByAccountAndIsPass(account, true);
+    }
+
+    public int countTrialExamResult() {
+        // TODO Auto-generated method stub
+        Account account = accountServices.getAccountLogin();
+        int total = trialExamResultResponsitory.countByAccount(account);
+        return total;
+    }
+
 }
