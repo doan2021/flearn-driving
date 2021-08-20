@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flearndriving.application.dto.ResponeData;
+import com.flearndriving.application.services.AccountServices;
 import com.flearndriving.application.services.ChapterServices;
 import com.flearndriving.application.services.LearnServices;
 
@@ -20,6 +21,9 @@ public class LearnController {
 
     @Autowired
     ChapterServices chapterServices;
+    
+    @Autowired
+	AccountServices accountsServices;
 
     @GetMapping(value = { "/learn/{chapterId}" })
     public String learn(@PathVariable Long chapterId, Model model) {
@@ -41,7 +45,10 @@ public class LearnController {
 
     @GetMapping(value = { "/select-chapter" })
     public String selectChapter(Model model) {
-        model.addAttribute("listChapter", chapterServices.findAllChapter());
+    	model.addAttribute("account", accountsServices.getAccountLoginInfo());
+    	model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
+    	model.addAttribute("listChapter", chapterServices.countChapter());
+		model.addAttribute("listLearnedChapter", chapterServices.countLearnedChapter());
         return "select-chapter";
     }
 }

@@ -27,35 +27,84 @@
                         <p>Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục Đường Bộ VN ban hành từ này
                             01/08/2020.</p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 d-flex align-items-stretch mt-4" th:each="chapter : ${listChapter}">
-                            <div class="card border" th:style="|background-image: url('@{../assets/img/no-photo.png}')|"
-                                data-aos="fade-up" data-aos-delay="100" th:if="${chapter.listImages.size == 0}">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a
-                                            th:href="@{'/learn/' + ${chapter.chapterId}}"
-                                            th:text="|Chương ${chapter.index}|"></a></h4>
-                                    <h5 class="card-title" th:text="${chapter.name}"></h5>
-                                    <p class="card-text" th:text="${chapter.description}"></p>
-                                    <div class="read-more">
-                                        <a th:href="@{'/learn/' + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Học ngay và luôn!</a></div>
-                                </div>
-                            </div>
-                            <div class="card border" th:style="|background-image: url('${chapter.listImages.get(0).path}')|" data-aos="fade-up" data-aos-delay="100" th:unless="${chapter.listImages.size == 0}">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a th:href="@{'/learn/' + ${chapter.chapterId}}" th:text="|Chương ${chapter.index}|"></a></h4>
-                                    <h5 class="card-title" th:text="${chapter.name}"></h5>
-                                    <p class="card-text" th:text="${chapter.description}"></p>
-                                    <div class="read-more">
-                                        <a th:href="@{'/learn/' + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Học ngay và luôn!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="container portfolio-details">
+						<div class="row mt-2" >
+							<div class="fs-4 fw-bold m-4 text-center">
+								<span>Bạn đã hoàn thành <span class="text-danger fs-3">[[${listLearnedChapter.size}]] <span class="fs-3 text-dark">/</span> </span><span class="text-primary fs-3" th:text="${listChapter}"></span> chương!</span>
+							</div>
+							<div class="col-6 mt-4" th:each="learningProgress : ${listLearningProgressChapter}">
+								<div class="portfolio-info h-100">
+									<div class="text-center">
+										<h3 th:text="|Chương ${learningProgress.chapter.index}|"></h3>
+									</div>
+									<div class="text-center mb-2">
+										<span th:text="${learningProgress.chapter.name}"></span><span th:if="${learningProgress.progressChapter > 99}"></span>
+									</div>
+									<div class="row mt-4">
+										<div class="col-5 d-flex justify-content-center align-items-center">
+									        <div class="progress" th:data-value='${learningProgress.progressChapter}'>
+									          	<span class="progress-left">
+							                        <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
+							                        <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
+							                        <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
+									          	</span>
+									          	<span class="progress-right">
+							                        <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
+							                        <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
+							                        <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
+									          	</span>
+									          	<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+									            	<div class="fw-bold fs-4">
+									            		<span th:text="|${#numbers.formatDecimal(learningProgress.progressChapter, 1, 0)}%|"></span>
+									            	</div>
+									          	</div>
+									        </div>
+										</div>
+										<div class="col-2"></div>
+										<div class="col-5">
+											<p class="m-0 fw-bold">Số câu hỏi: [[${learningProgress.chapter.listQuestion.size}]]</p>
+											<p class="m-0 fw-bold text-primary">Nắm vững: [[${learningProgress.knowledge}]]</p>
+											<p class="m-0 fw-bold text-success">Quen thuộc: [[${learningProgress.familier}]]</p>
+											<p class="m-0 fw-bold text-danger">Chưa học: [[${learningProgress.rest}]]</p>
+											<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-danger mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter < 99}">Học tiếp</a>
+											<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-primary mt-3" th:if="${learningProgress.progressChapter == 0}">Bắt đầu</a>
+											<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-success mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter > 99}">Ôn lại</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </section>
         </th:block>
+        <th:block layout:fragment="script">
+        <script>
+            $(function() {
+			  $(".progress").each(function() {
+			    var value = $(this).attr('data-value');
+			    var left = $(this).find('.progress-left .progress-bar');
+			    var right = $(this).find('.progress-right .progress-bar');
+			
+			    if (value > 0) {
+			      if (value <= 50) {
+			        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+			      } else {
+			        right.css('transform', 'rotate(180deg)')
+			        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+			      }
+			    }
+			
+			  })
+			
+			  function percentageToDegrees(percentage) {
+			
+			    return percentage / 100 * 360
+			
+			  }
+			
+			});
+        </script>
+    </th:block>
     </body>
 </html>

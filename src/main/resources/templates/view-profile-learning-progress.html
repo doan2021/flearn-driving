@@ -69,6 +69,9 @@
 								</div>
 								<div class="container portfolio-details">
 									<div class="row mt-2" >
+										<div class="fs-4 fw-bold m-4">
+											<span>Bạn đã hoàn thành <span class="text-danger fs-3">[[${listLearnedChapter.size}]] <span class="fs-3 text-dark">/</span> </span><span class="text-primary fs-3" th:text="${listChapter}"></span> chương!</span>
+										</div>
 										<div class="col-6 mt-4" th:each="learningProgress : ${listLearningProgressChapter}">
 											<div class="portfolio-info h-100">
 												<div class="text-center">
