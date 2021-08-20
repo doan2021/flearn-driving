@@ -48,6 +48,8 @@ public class AccountServices {
 	public Account findByEmail(String email) {
 		return accountsRespository.findByEmail(email);
 	}
+	
+	
 
 	@Transactional
 	public void createAccount(AccountForm appUserForm) {
@@ -147,5 +149,10 @@ public class AccountServices {
 
 	public Integer countAccount() {
 		return accountsRespository.countAccount();
+	}
+
+	public Object findByUsername(String userName) {
+		// TODO Auto-generated method stub
+		return accountsRespository.findByUserName(userName);
 	}
 }

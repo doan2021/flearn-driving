@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.dto.AccountUpdateForm;
-import com.flearndriving.application.dto.ResponeData;
-import com.flearndriving.application.entities.DrivingLicense;
-import com.flearndriving.application.entities.TrialExamResult;
 import com.flearndriving.application.services.AccountServices;
 import com.flearndriving.application.services.ChapterServices;
 import com.flearndriving.application.services.DrivingLicenseServices;
@@ -135,6 +131,8 @@ public class AccountsController {
 	public String viewHistoryTrialTest(Model model) {
 		model.addAttribute("account", accountsServices.getAccountLoginInfo());
 		model.addAttribute("listTrialExamResult", trialExamResultServices.findAllTrialExamResult());
+		model.addAttribute("countTrialExamResult", trialExamResultServices.countTrialExamResult());
+		model.addAttribute("percentPass", trialExamResultServices.getPercentPass());
 		return "view-history-trial-test";
 	}
 
