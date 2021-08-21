@@ -20,135 +20,146 @@
 				</div>
 			</div>
 		</section>
-		<div class="container emp-profile">
-			<form method="post">
-				<div class="row">
-					<div class="col-md-4">
-	                    <div class="profile-img">
-	                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-	                        <div class="file btn btn-lg btn-primary">
-	                            Đổi hình ảnh
-	                            <input type="file" name="file"/>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-6">
-	                    <div class="profile-head">
-                            <h4>[[${account.lastName}]] [[${account.middleName}]] [[${account.firstName}]]</h4>
-                            <h5>Quản trị viên</h5>
-	                    </div>
-	                </div>
-	                <div class="col-md-2">
-                        <a th:href="@{/view-profile-update}" class="btn btn-xs btn-primary mb-3">Sửa thông tin</a>
-                    </div>
+		<div class="container my-5">
+			<div class="row gy-4">
+				<div class="col-12" th:if="${success != null}">
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong th:text="${success}"></strong>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
 				</div>
-			</form>
-		</div>
-		<div class="container-xxl mb-0">
-			<div class="profile-container">
-				<div class="row row-space-20">
-					<div class="col-md-12">
-						<div class="tab-content p-0">
-							<div class="tab-pane active show" id="profile-about">
-								<div class="mt-4">
-									<ul class="nav nav-tabs">
-										<li class="nav-item">
-											<a class="nav-link" aria-current="page"
-												th:href="@{/view-profile}">Thông tin cá nhân</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link active" th:href="@{/view-profile-learning-progress}">Tiến độ học tập</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" th:href="@{/view-history-trial-test}">Lịch sử thi thử</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" th:href="@{/view-profile-registed-exam}">Kì thi thật đã đăng ký</a>
-										</li>
-									</ul>
-								</div>
-								<div class="container portfolio-details">
-									<div class="row mt-2" >
-										<div class="fs-4 fw-bold m-4">
-											<span>Bạn đã hoàn thành <span class="text-danger fs-3">[[${listLearnedChapter.size}]] <span class="fs-3 text-dark">/</span> </span><span class="text-primary fs-3" th:text="${listChapter}"></span> chương!</span>
-										</div>
-										<div class="col-6 mt-4" th:each="learningProgress : ${listLearningProgressChapter}">
-											<div class="portfolio-info h-100">
-												<div class="text-center">
-													<h3 th:text="|Chương ${learningProgress.chapter.index}|"></h3>
-												</div>
-												<div class="text-center mb-2">
-													<span th:text="${learningProgress.chapter.name}"></span><span th:if="${learningProgress.progressChapter > 99}"></span>
-												</div>
-												<div class="row mt-4">
-													<div class="col-5 d-flex justify-content-center align-items-center">
-												        <div class="progress" th:data-value='${learningProgress.progressChapter}'>
-												          	<span class="progress-left">
-										                        <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
-										                        <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
-										                        <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
-												          	</span>
-												          	<span class="progress-right">
-										                        <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
-										                        <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
-										                        <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
-												          	</span>
-												          	<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-												            	<div class="fw-bold fs-4">
-												            		<span th:text="|${#numbers.formatDecimal(learningProgress.progressChapter, 1, 0)}%|"></span>
-												            	</div>
-												          	</div>
-												        </div>
-													</div>
-													<div class="col-2"></div>
-													<div class="col-5">
-														<p class="m-0 fw-bold">Số câu hỏi: [[${learningProgress.chapter.listQuestion.size}]]</p>
-														<p class="m-0 fw-bold text-primary">Nắm vững: [[${learningProgress.knowledge}]]</p>
-														<p class="m-0 fw-bold text-success">Quen thuộc: [[${learningProgress.familier}]]</p>
-														<p class="m-0 fw-bold text-danger">Chưa học: [[${learningProgress.rest}]]</p>
-														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-danger mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter < 99}">Học tiếp</a>
-														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-primary mt-3" th:if="${learningProgress.progressChapter == 0}">Bắt đầu</a>
-														<a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-success mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter > 99}">Ôn lại</a>
-													</div>
-												</div>
-											</div>
+				<div class="col-3 portfolio">
+					<div class="portfolio-container">
+						<div class="portfolio-item">
+							<div class="portfolio-wrap border rounded rounded-3">
+								<img th:src="${accountLogin.urlAvater}" class="img-fluid image-preview" alt=""
+									th:unless="${#strings.isEmpty(accountLogin.urlAvater)}">
+                                <img th:src="@{../assets/img/avatar_default.png}" class="img-fluid image-preview" alt="" th:if="${#strings.isEmpty(accountLogin.urlAvater)}">
+                                <div class="portfolio-info">
+                                    <h4>Ảnh đại diện</h4>
+                                    <div class="portfolio-links">
+                                         <a class="portfolio-lightbox" title="Xem ảnh đại diện"><i class="bi bi-arrow-up-right-square"></i></a>
+                                        <label class="cursor-pointer" title="Thay ảnh đại diện" for="avatar"><i class="bi bi-upload"></i></label>
+                                        <form th:action="@{/upload-avatar}" method="POST" enctype="multipart/form-data" id="formUploadAvatar">
+                                            <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div class="col-lg-9 portfolio-details p-0">
+                  <div class="portfolio-info h-100">
+                    <h3>Xin chào !</h3>
+                    <h4>
+                        [[${accountLogin.lastName}]] [[${accountLogin.middleName}]] [[${accountLogin.firstName}]]
+                    </h4>
+                    <div>
+                        [[${accountLogin.description}]]
+                    </div>
+                    <a th:href="@{/update-profile}" class="btn btn-sm btn-primary">Sửa thông tin</a>
+                  </div>
+                </div>
+          	</div>
+    	<div class="row">
+		   <div class="col-12">
+				<div class="mt-4">
+                    <ul class="nav nav-tabs ">
+                        <li class="nav-item">
+                            <a class="nav-link border-2 fw-bold py-3"  th:href="@{/view-profile}">Thông tin cá nhân</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link border-2 active fw-bold py-3" aria-current="page">Tiến độ học tập</span>
+                       	</li>
+                        <li class="nav-item">
+                            <a class="nav-link border-2 fw-bold py-3" th:href="@{/view-history-trial-test}">Lịch sử thi thử</a>
+                        </li>
+                       	<li class="nav-item">
+                            <a class="nav-link border-2 fw-bold py-3" th:href="@{/view-profile-registed-exam}">Kì thi thật đã đăng ký</a>
+                        </li>
+                    </ul>
+                </div>
+           	</div>
+			<div class="col-12 portfolio-details pt-0">
+				<div class="portfolio-info border border-2 border-top-0" style="border-radius: 0 0 0.5rem 0.5rem;">
+					<div class="fs-4 fw-bold m-4">
+						<span>Bạn đã hoàn thành <span class="text-danger fs-3">[[${listLearnedChapter.size}]] <span class="fs-3 text-dark">/</span> </span><span class="text-primary fs-3" th:text="${listChapter}"></span> chương!</span>
+					</div>
+					<div class="row">
+					<div class="col-6 mt-4" th:each="learningProgress : ${listLearningProgressChapter}">
+						<div class="portfolio-info h-100">
+							<div class="text-center">
+								<h3 th:text="|Chương ${learningProgress.chapter.index}|"></h3>
+							</div>
+							<div class="text-center mb-2">
+								<span th:text="${learningProgress.chapter.name}"></span><span th:if="${learningProgress.progressChapter > 99}"></span>
+							</div>
+					        <div class="row mt-4">
+				              <div class="col-5 d-flex justify-content-center align-items-center">
+						         <div class="progress" th:data-value='${learningProgress.progressChapter}'>
+									<span class="progress-left">
+								       <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
+								       <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
+								       <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
+									</span>
+								    <span class="progress-right">
+								        <span class="progress-bar border-danger" th:if="${learningProgress.progressChapter < 33}"></span>
+								        <span class="progress-bar border-success" th:if="${learningProgress.progressChapter >= 33 && learningProgress.progressChapter < 66}"></span>
+								        <span class="progress-bar border-primary" th:if="${learningProgress.progressChapter >= 66}"></span>
+									</span>
+									<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+										<div class="fw-bold fs-4">
+										    <span th:text="|${#numbers.formatDecimal(learningProgress.progressChapter, 1, 0)}%|"></span>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="col-5">
+							   <p class="m-0 fw-bold">Số câu hỏi: [[${learningProgress.chapter.listQuestion.size}]]</p>
+							   <p class="m-0 fw-bold text-primary">Nắm vững: [[${learningProgress.knowledge}]]</p>
+							   <p class="m-0 fw-bold text-success">Quen thuộc: [[${learningProgress.familier}]]</p>
+							   <p class="m-0 fw-bold text-danger">Chưa học: [[${learningProgress.rest}]]</p>
+							   <a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-danger mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter < 99}">Học tiếp</a>
+							   <a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-primary mt-3" th:if="${learningProgress.progressChapter == 0}">Bắt đầu</a>
+							   <a th:href="@{'/learn/' + ${learningProgress.chapter.chapterId}}" class="btn btn-success mt-3" th:if="${learningProgress.progressChapter > 0 && learningProgress.progressChapter > 99}">Ôn lại</a>
+							</div>
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
+		</div>
+    		</div>
 		</div>
 	</th:block>
     <th:block layout:fragment="script">
         <script>
-            $(function() {
-			  $(".progress").each(function() {
-			    var value = $(this).attr('data-value');
-			    var left = $(this).find('.progress-left .progress-bar');
-			    var right = $(this).find('.progress-right .progress-bar');
-			
-			    if (value > 0) {
-			      if (value <= 50) {
-			        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
-			      } else {
-			        right.css('transform', 'rotate(180deg)')
-			        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
-			      }
-			    }
-			
-			  })
-			
-			  function percentageToDegrees(percentage) {
-			
-			    return percentage / 100 * 360
-			
-			  }
-			
+			$(function () {
+				$(".progress").each(function () {
+					var value = $(this).attr('data-value');
+					var left = $(this).find('.progress-left .progress-bar');
+					var right = $(this).find('.progress-right .progress-bar');
+
+					if (value > 0) {
+						if (value <= 50) {
+							right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+						} else {
+							right.css('transform', 'rotate(180deg)')
+							left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+						}
+					}
+
+				})
+
+				function percentageToDegrees(percentage) {
+
+					return percentage / 100 * 360
+
+				}
+
 			});
-        </script>
+		</script>
     </th:block>
 </body>
 </html>
