@@ -56,16 +56,17 @@ public class AccountServices {
     }
 
     @Transactional
-    public void createAccount(AccountForm appUserForm) {
-        String encrytedPassword = EncrytedPasswordUtils.encrytePassword(appUserForm.getPassword());
+    public void createAccount(AccountForm accountForm) {
+        String encrytedPassword = EncrytedPasswordUtils.encrytePassword(accountForm.getPassword());
         Account account = new Account();
-        account.setUserName(appUserForm.getUserName());
-        account.setFirstName(appUserForm.getFirstName());
-        account.setMiddleName(appUserForm.getMiddleName());
-        account.setLastName(appUserForm.getLastName());
-        account.setEmail(appUserForm.getEmail());
-        account.setGender(appUserForm.getGender());
-        account.setNumberPhone(appUserForm.getNumberPhone());
+        account.setUserName(accountForm.getUserName());
+        account.setFirstName(accountForm.getFirstName());
+        account.setMiddleName(accountForm.getMiddleName());
+        account.setLastName(accountForm.getLastName());
+        account.setEmail(accountForm.getEmail());
+        account.setGender(accountForm.getGender());
+        account.setNumberPhone(accountForm.getNumberPhone());
+        account.setBirthDay(Common.stringToDate(accountForm.getBirthDay()));
         account.setEncrytedPassword(encrytedPassword);
         Role role = roleRespository.getOne(Constant.ROLE_ID_USER);
         account.setRole(role);

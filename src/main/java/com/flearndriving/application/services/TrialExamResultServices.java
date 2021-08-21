@@ -34,7 +34,8 @@ public class TrialExamResultServices {
     AccountServices accountServices;
 
     public List<TrialExamResult> findAllTrialExamResult() {
-        return trialExamResultResponsitory.findAll();
+        Account account = accountServices.getAccountLogin();
+        return trialExamResultResponsitory.findAllByAccount(account);
     }
 
     public TrialExamResult getOne(Long trailExamResultId) {
