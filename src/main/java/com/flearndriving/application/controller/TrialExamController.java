@@ -26,7 +26,7 @@ public class TrialExamController {
     
     @GetMapping(value = { "/trial-exam" })
     public String trialTest(Long examQuestionsId, Model model) {
-        model.addAttribute("examQuestions", examQuestionsServices.findOneExamQuestions(examQuestionsId));
+        model.addAttribute("examQuestionsId", examQuestionsId);
         return "trial-exam";
     }
 
@@ -55,8 +55,7 @@ public class TrialExamController {
     @ResponseBody
     public ResponeData initTrialExamPage(Long examQuestionsId) {
         ResponeData responeData = new ResponeData();
-        responeData.putResult("examQuestions", examQuestionsServices.findOneExamQuestions(examQuestionsId));
-        responeData.putResult("listQuestions", examQuestionsServices.findListQuestionByExamQuestionsId(examQuestionsId));
+        responeData.putResult("trialExamQuestion", examQuestionsServices.initTrialExam(examQuestionsId));
         return responeData;
     }
     

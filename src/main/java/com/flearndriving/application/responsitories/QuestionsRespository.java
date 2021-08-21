@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.flearndriving.application.dto.AnswerDto;
+import com.flearndriving.application.dto.QuestionDto;
 import com.flearndriving.application.entities.Account;
 import com.flearndriving.application.entities.Chapter;
 import com.flearndriving.application.entities.Question;
@@ -31,4 +33,17 @@ public interface QuestionsRespository extends JpaRepository<Question, Long> {
 	public List<Question> getListQuestionKnowledge(Chapter chapter, Account account);
     @Query("SELECT eqd.question FROM ExamQuestionsDetail eqd WHERE eqd.examQuestions.examQuestionsId = :examQuestionsId")
     public List<Question> getListQuestionByExamQuestionsId(Long examQuestionsId);
+    
+    @Query(value="SELECT new com.flearndriving.application.dto.AnswerDto(a.answerId,"
+            + " a.content)"
+            + " FROM Answer a"
+            + " WHERE a.question.questionId = :questionsId")
+    public List<AnswerDto> getListAnswerDtoByQuestionId(Long questionsId);
+    
+    @Query(value="SELECT new com.flearndriving.application.dto.QuestionDto(eqd.question.questionId,"
+            + " eqd.question.number,"
+            + " eqd.question.content)"
+            + " FROM ExamQuestionsDetail eqd"
+            + " WHERE eqd.examQuestions.examQuestionsId = :examQuestionsId")
+    public List<QuestionDto> getListQuestionDtoByExamQuestionsId(Long examQuestionsId);
 }

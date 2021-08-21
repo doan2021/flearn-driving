@@ -11,12 +11,12 @@
         <section class="p-3 bg-white shadow-custom">
             <div class="d-flex justify-content-between align-items-center">
                 <a th:href="@{/}" class="btn btn-outline-secondary"><i class="bi bi-house-fill"></i></a>
-                <h3 class="my-0"><strong class="me-3" th:text="${examQuestions.name}"></strong><span></span></h3>
+                <h3 class="my-0"><strong class="me-3">cHƯA LÀM</strong><span></span></h3>
                 <a th:href="@{/select-chapter}" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
             </div>
         </section>
         <div class="container portfolio-details" id="app-trial-exam" v-cloak>
-            <input type="hidden" th:value="${examQuestions.examQuestionsId}" id="examQuestionsId">
+            <input type="hidden" th:value="${examQuestionsId}" id="examQuestionsId">
             <div class="row" v-if="!isComplete">
                 <div class="col-12 col-xl-4">
                     <div class="portfolio-info">
@@ -42,8 +42,8 @@
                                 <p>{{ listQuestions[questionCurrentIndex].content }}</p>
                                 <div class="row">
                                     <div class="col-12 px-4">
-                                        <div v-for="image in listQuestions[questionCurrentIndex].listImage" :key="image.imageId">
-                                            <img alt="" :src="image.path">
+                                        <div v-for="url in listQuestions[questionCurrentIndex].listUrlImage" :key="url">
+                                            <img alt="" :src="url">
                                         </div>
                                     </div>
                                     <div class="col-12 my-4" v-if="listQuestions[questionCurrentIndex].listAnswer == '' || listQuestions[questionCurrentIndex].listAnswer == null">
