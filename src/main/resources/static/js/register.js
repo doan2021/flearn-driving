@@ -1,13 +1,19 @@
 $("#register-form").validate({
 	rules: {
 		firstName: {
-			required: true
+			required: true,
+			maxlength: 36
 		},
 		lastName: {
-			required: true
+			required: true,
+			maxlength: 36
+		},
+		middleName: {
+			maxlength: 36,
 		},
 		email: {
 			required: true,
+			maxlength: 255,
 			email: true
 		},
 		numberPhone: {
@@ -16,14 +22,17 @@ $("#register-form").validate({
 			rangelength: [10, 10]
 		},
 		birthDay: {
+			required: true,
+			maxlength: 10,
 			required: true
 		},
 		userName: {
-			required: true
+			required: true,
+			maxlength: 36
 		},
 		password: {
 			required: true,
-			minlength: 8
+			rangelength: [8, 36]
 		},
 		confirmPassword: {
 			equalTo: password
@@ -34,32 +43,40 @@ $("#register-form").validate({
 	},
 	messages: {
 		firstName: {
-			required: "Vui lòng nhập tên!"
+			required: "Vui lòng nhập tên!",
+			maxlength: "Tên không được nhập quá 36 ký tự!"
+		},
+		middleName: {
+			maxlength: "Tên đệm không được nhập quá 36 ký tự!"
 		},
 		lastName: {
-			required: "Vui lòng nhập họ!"
+			required: "Vui lòng nhập họ!",
+			maxlength: "Họ không được nhập quá 36 ký tự!"
 		},
 		email: {
 			required: "Vui lòng nhập Email!",
-			email: "Email không đúng định dạng!"
+			maxlength: "Email không được nhập quá 255 ký tự!",
+			email: "Email chưa đúng định dạng, vui lòng kiểm tra lại!"
 		},
 		numberPhone: {
 			required: "Vui lòng nhập số điện thoại!",
-			rangelength: "Số điện thoại ít nhất 10 ký tự!",
-			number: "Số điện thoại phải là số!"
+			rangelength: "Số điện thoại phải đủ 10 số, vui lòng kiểm tra lại!",
+			number: "Số điện thoại phải là số, vui lòng kiểm tra lại!",
 		},
 		birthDay: {
-			required: "Vui lòng chọn ngày sinh!"
+			required: "Vui lòng chọn ngày sinh!",
+			maxlength: "Ngày sinh phải đúng 10 ký tự!"
 		},
 		userName: {
-			required: "Vui lòng điền tên đăng nhập!"
+			required: "Vui lòng điền tên đăng nhập!",
+			maxlength: "Tên đăng nhập không được nhập quá 36 ký tự!"
 		},
 		password: {
 			required: "Vui lòng nhập mật khẩu!",
-			minlength: "Mật khẩu phải trên 8 kí tự!"
+			rangelength: "Mật khẩu phải trên 8 ký tự và dưới 36 ký tự!"
 		},
 		confirmPassword: {
-			equalTo: "Mật khẩu không khớp!"
+			equalTo: "Mật khẩu nhập lại không khớp, vui lòng kiểm tra lại!"
 		},
 		gender: {
 			required: "Vui lòng chọn giới tính!"
