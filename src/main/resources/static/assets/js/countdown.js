@@ -1,7 +1,7 @@
 Vue.component("countdown", {
     template:'<div class="row">'
             +'    <div class="col-12 text-center">'
-            +'        <div>{{ message }}</div>'
+            +'        <div :class="classMessage">{{ message }}</div>'
             +'        <span class="fw-bold text-primary fs-1">{{ minutes }}</span>'
             +'        <span class="fw-bold text-primary fs-3 mx-3">:</span>'
             +'        <span class="fw-bold text-primary fs-3">{{ seconds }}</span>'
@@ -21,6 +21,7 @@ Vue.component("countdown", {
     data: function () {
         return {
             message: 'Thời gian còn lại',
+            classMessage : '',
             totalTimes: this.totalTime,
             interval : null,
             timeLeft: 0
@@ -47,9 +48,11 @@ Vue.component("countdown", {
                 this.message = 'Đang nộp bài...';
                 this.$emit('timeout');
             } else if (value <= 30 && value > 10) {
-                this.message = 'Sắp hết giờ rồi';
+                this.message = 'Sắp hết giờ rồi, kiểm tra lại đáp án nhé!';
+                this.classMessage = 'text-warning fw-bold';
             } else if (value <= 10) {
-                this.message = 'Chuẩn bị nộp bài';
+                this.message = 'Chuẩn bị nộp bài, hệ thống sẽ tự động nộp bài khi hết giờ!';
+                this.classMessage = 'text-danger fw-bold';
             }
         }
     },

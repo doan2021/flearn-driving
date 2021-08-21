@@ -139,11 +139,10 @@ public class AccountServices {
         if (accountUpdateForm == null) {
             throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Dữ liệu truền vào không hợp lệ!");
         }
-        Account account = accountsRespository.findByAccountId(accountUpdateForm.getAccountId());
+        Account account = getAccountLogin();
         if (account == null) {
             throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Người dùng không tồn tại!");
         }
-        account.setAccountId(accountUpdateForm.getAccountId());
         account.setFirstName(accountUpdateForm.getFirstName());
         account.setMiddleName(accountUpdateForm.getMiddleName());
         account.setLastName(accountUpdateForm.getLastName());
@@ -154,8 +153,6 @@ public class AccountServices {
         account.setDescription(accountUpdateForm.getDescription());
         account.setUpdateBy(Common.getUsernameLogin());
         account.setUpdateAt(Common.getSystemDate());
-        account.setCreateAt(Common.getSystemDate());
-        account.setCreateBy(Common.getUsernameLogin());
         accountsRespository.save(account);
     }
 
@@ -190,14 +187,14 @@ public class AccountServices {
     
     @Transactional
     public void uploadAvatar(MultipartFile file) {
-        AccountLogin accountLogin = getBasicInfoAccountLogin();
-        if (accountLogin == null) {
+        Account account = getAccountLogin();
+        if (account == null) {
             throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Người dùng không tồn tại!");
         }
         if (file.isEmpty()) {
             throw new BusinessException(Constant.HTTPS_STATUS_CODE_500, "File không hợp lệ!");
         }
-        Document document = documentRespository.findByTypeAndAccountId(Constant.TYPE_DOCUMENT_AVATAR, accountLogin.getAccountId());
+        Document document = documentRespository.findByTypeAndAccountId(Constant.TYPE_DOCUMENT_AVATAR, account.getAccountId());
         if (document != null) {
             document.setFileName(Common.generateFileName(file, Constant.DOCUMENT_ORTHER_LABEL));
             document.setOriginFileName(file.getOriginalFilename());
@@ -223,6 +220,7 @@ public class AccountServices {
             document.setCreateAt(Common.getSystemDate());
             document.setCreateBy(Common.getUsernameLogin());
             document.setPath(amazonS3ClientService.uploadFileToS3Bucket(file, document.getFileName()));
+            document.setAccount(account);
         }
         documentRespository.save(document);
     }

@@ -1,6 +1,5 @@
-
 .stamp {
-  transform: rotate(12deg);
+	transform: rotate(12deg);
 	color: #555;
 	font-size: 3rem;
 	font-weight: 700;
@@ -10,24 +9,24 @@
 	text-transform: uppercase;
 	border-radius: 1rem;
 	font-family: 'Courier';
-	-webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
-  -webkit-mask-size: 944px 604px;
-  mix-blend-mode: multiply;
-  margin-left: 70px;
-  margin-top: 29px;
-  font-size: 550%;
+	-webkit-mask-image:
+		url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
+	-webkit-mask-size: 944px 604px;
+	mix-blend-mode: multiply;
+	margin-left: 70px;
+	margin-top: 29px;
+	font-size: 550%;
 }
 
 .is-nope {
-  color: #D23;
-  border: 0.5rem double #D23;
-  transform: rotate(3deg);
+	color: #D23;
+	border: 0.5rem double #D23;
+	transform: rotate(3deg);
 	-webkit-mask-position: 2rem 3rem;
-  font-size: 250%;
-  margin-top: 53px;
-  margin-bottom: 50px;
-  margin-left: 50px;
-    
+	font-size: 250%;
+	margin-top: 53px;
+	margin-bottom: 50px;
+	margin-left: 50px;
 }
 
 .is-approved {
@@ -35,6 +34,5 @@
 	border: 0.5rem solid #0A9928;
 	-webkit-mask-position: 13rem 6rem;
 	transform: rotate(-14deg);
-  border-radius: 0;
-} 
-
+	border-radius: 0;
+}

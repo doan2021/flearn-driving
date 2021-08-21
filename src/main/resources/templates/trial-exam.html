@@ -8,20 +8,21 @@
 </head>
 <body>
     <th:block layout:fragment="content">
+        <div id="app-trial-exam" v-cloak>
         <section class="p-3 bg-white shadow-custom">
             <div class="d-flex justify-content-between align-items-center">
                 <a th:href="@{/}" class="btn btn-outline-secondary"><i class="bi bi-house-fill"></i></a>
-                <h3 class="my-0"><strong class="me-3">cHƯA LÀM</strong><span></span></h3>
-                <a th:href="@{/select-chapter}" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
+                <h3 class="my-0"><strong class="me-3">{{ examQuestions.nameExamQuestions }}</strong><span></span></h3>
+                <a th:href="@{/select-exam-question}" class="btn btn-outline-secondary"><i class="bi bi-x-lg"></i></a>
             </div>
         </section>
-        <div class="container portfolio-details" id="app-trial-exam" v-cloak>
+        <div class="container portfolio-details">
             <input type="hidden" th:value="${examQuestionsId}" id="examQuestionsId">
             <div class="row" v-if="!isComplete">
                 <div class="col-12 col-xl-4">
                     <div class="portfolio-info">
                         <h3>Thời gian làm bài</h3>
-                        <countdown :total-time="examMinutes * 60" @timeout="submitAnswer" ref="countdown"></countdown>
+                        <countdown :total-time="examMinutes * 60" @timeout="postAnswer" ref="countdown"></countdown>
                     </div>
                     <div class="portfolio-info mt-3">
                         <h3 class="mb-0">Danh sách câu hỏi</h3>
@@ -36,7 +37,7 @@
                 </div>
                 <div class="col-12 col-xl-8 mt-3 mt-xl-0" v-if="listQuestions != null && listQuestions != ''">
                     <div class="portfolio-info">
-                        <h3>Câu {{ questionCurrentIndex + 1}} <span class="badge bg-warning text-dark" v-if="listQuestions[questionCurrentIndex].paralysis">Câu điểm liệt</span></h3>
+                        <h3>Câu {{ questionCurrentIndex + 1 }}</h3>
                         <div class="row">
                             <div class="col-12">
                                 <p>{{ listQuestions[questionCurrentIndex].content }}</p>
@@ -85,12 +86,16 @@
                         <h3>Hoàn thành</h3>
                         <div class="row">
 	                        <div class="col-12">
-	                            <h4 class="text-success" v-if="isPass">Amazing good job! tiếp tục giữ phong độ nhé!</h4>
+	                            <h4 class="text-success" v-if="resultExam.pass">Amazing good job! tiếp tục giữ phong độ nhé!</h4>
 	                            <h4 class="text-danger" v-else>Toạch! cố gắng ở lần tiếp theo nhé!</h4>
 	                        </div>
-	                        <div class="col-12 py-5 my-5">
-	                            <span class="stamp is-approved" v-if="isPass">Đạt</span>
+	                        <div class="col-12 py-5">
+	                            <span class="stamp is-approved" v-if="resultExam.pass">Đạt</span>
 	                            <span class="stamp is-nope" v-else>Không đạt</span>
+	                        </div>
+	                        <div class="col-12">
+                                <p>{{ resultExam.numberCorrect }} / {{ resultExam.totalQuestion }}</p>
+                                <p>{{ resultExam.cause }}</p>
 	                        </div>
 	                        <div class="col-12">
                                 <a href="/" class="btn btn-success"><i class="bi bi-house-fill"></i> Về trang chủ</a>
@@ -100,6 +105,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </th:block>
     <th:block layout:fragment="script">

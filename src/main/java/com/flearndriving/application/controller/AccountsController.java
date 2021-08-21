@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -72,43 +71,21 @@ public class AccountsController {
         }
     }
 
-    @GetMapping(value = { "/register" })
-    public String registerPage(Model model) {
-        model.addAttribute("accountForm", new AccountForm());
-        return "register";
-    }
-
-    @PostMapping(value = { "/create-account" })
-    public String createUser(@ModelAttribute("accountForm") @Validated AccountForm accountForm, BindingResult result,
-            Model model) {
-        if (result.hasErrors()) {
-            return "register";
-        }
-        accountsServices.createAccount(accountForm);
-        return "register-successful";
-    }
-
     @GetMapping(value = { "/view-profile" })
     public String viewProfile(Model model) {
         model.addAttribute("account", accountsServices.getAccountLogin());
+        model.addAttribute("accountUpdateForm", accountsServices.getAccountLoginInfo());
         return "view-profile";
     }
 
-    @GetMapping(value = { "/update-profile" })
-    public String visitUpdateProfilePage(Model model) {
-        model.addAttribute("accountUpdateForm", accountsServices.getAccountLoginInfo());
-        return "update-profile";
-    }
-
     @PostMapping(value = { "/update-profile" })
-    public String updateProfile(@Validated AccountUpdateForm accountUpdateForm, BindingResult result, Model model) {
+    public String updateProfile(@Validated AccountUpdateForm accountUpdateForm, BindingResult result, RedirectAttributes redirAttrs) {
         if (result.hasErrors()) {
             return "update-profile";
         }
         accountsServices.updateAccount(accountUpdateForm);
-        model.addAttribute(Constant.STATUS_SUCCESS, "Cập nhật hồ sơ thành công!");
-        model.addAttribute("accountUpdateForm", accountUpdateForm);
-        return "update-profile";
+        redirAttrs.addFlashAttribute(Constant.STATUS_SUCCESS, "Cập nhật thông tin thành công!");
+        return "redirect:view-profile";
     }
 
     @GetMapping(value = { "/view-profile-registed-exam" })
@@ -130,8 +107,8 @@ public class AccountsController {
     public String viewHistoryTrialTest(Model model) {
         model.addAttribute("account", accountsServices.getAccountLoginInfo());
         model.addAttribute("listTrialExamResult", trialExamResultServices.findAllTrialExamResult());
-        model.addAttribute("countTrialExamResult", trialExamResultServices.countTrialExamResult());
-        model.addAttribute("percentPass", trialExamResultServices.getPercentPass());
+        model.addAttribute("totalTrialExamResult", trialExamResultServices.countTrialExamResult());
+        model.addAttribute("numberOfPass", trialExamResultServices.getNumberOfPass());
         return "view-history-trial-test";
     }
 

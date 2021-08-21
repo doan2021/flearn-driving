@@ -10,7 +10,7 @@ new Vue({
         questionRest : 0,
         confirmSubmit: false,
         isComplete : false,
-        isPass : false
+        resultExam : ''
     },
     watch: {
         listSelectAnswers: function() {
@@ -44,6 +44,7 @@ new Vue({
                     _this.confirmSubmit = false;
                     _this.$refs.countdown.timerRun();
                     _this.isComplete = false;
+                    _this.resultExam = '';
                     $('#preloader').fadeOut();
                 })
                 .catch(function (error) {
@@ -81,7 +82,7 @@ new Vue({
             axios.post("/post-answer", formData, { headers : { 'Content-Type': 'application/json' }
             }).then(function (respone) {
             	$('#preloader').fadeOut();
-            	_this.isPass = respone.data.result.pass;
+            	_this.resultExam = respone.data.result;
             	_this.isComplete = true;
             });
 

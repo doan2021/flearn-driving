@@ -55,7 +55,10 @@ public class LearnServices {
         // Get user login
         Account account = accountsServices.getAccountLogin();
         // Get chapter
-        Chapter chapter = chapterResponsitory.getOne(chapterId);
+        Chapter chapter = chapterResponsitory.findByChapterId(chapterId);
+        if (chapter == null) {
+            throw new BusinessException(Constant.HTTPS_STATUS_CODE_NOT_FOUND, "Chương không tồn tại!");
+        }
         // Get list question in chapter
         Random rand = new Random();
         Question questionRandom = null;

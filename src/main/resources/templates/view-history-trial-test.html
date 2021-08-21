@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+    layout:decorate="~{layout/layout}">
 
-	<head>
-		<title>Lịch sử thi thử</title>
-		<link rel="stylesheet" th:href="@{../css/view-profile.css}">
-	</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Lịch sử thi thử</title>
+        <link rel="stylesheet" th:href="@{../css/view-profile.css}">
+    </head>
 
 <body>
-	<th:block layout:fragment="content">
-		<section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
-			<div class="container">
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>Lịch sử thi thử</h2>
-					<ol>
-						<li><a th:href="@{/}">Trang chủ</a></li>
-						<li>Lịch sử thi thử</li>
-					</ol>
-				</div>
-			</div>
-		</section>
-		<div class="container my-5">
-			<div class="row gy-4">
-				<div class="col-3 portfolio">
-	                <div class="portfolio-container">
-	                    <div class="portfolio-item">
-	                        <div class="portfolio-wrap border rounded rounded-3">
-	                            <img th:src="${accountLogin.urlAvater}" class="img-fluid image-preview" alt="" th:unless="${#strings.isEmpty(accountLogin.urlAvater)}">
-	                            <img th:src="@{../assets/img/avatar_default.png}" class="img-fluid image-preview" alt="" th:if="${#strings.isEmpty(accountLogin.urlAvater)}">
-	                            <div class="portfolio-info">
-	                                <h4>Ảnh đại diện</h4>
-	                                <div class="portfolio-links">
-	                                     <a class="portfolio-lightbox" title="Xem ảnh đại diện"><i class="bi bi-arrow-up-right-square"></i></a>
-	                                    <label class="cursor-pointer" title="Thay ảnh đại diện" for="avatar"><i class="bi bi-upload"></i></label>
-	                                    <form th:action="@{/upload-avatar}" method="POST" enctype="multipart/form-data" id="formUploadAvatar">
-	                                        <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()">
-	                                    </form>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-9 portfolio-details p-0">
-		              <div class="portfolio-info h-100">
-		                <h3>Xin chào !</h3>
-		                <h4>
-		                    [[${accountLogin.lastName}]] [[${accountLogin.middleName}]] [[${accountLogin.firstName}]]
-		                </h4>
-		                <div>
-		                    [[${accountLogin.description}]]
-		                </div>
-		                <a th:href="@{/update-profile}" class="btn btn-sm btn-primary">Sửa thông tin</a>
-		              </div>
-	            	</div>
-				</div>
-			<div class="row">
-				<div class="col-12">
+    <th:block layout:fragment="content">
+        <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Lịch sử thi thử</h2>
+                    <ol>
+                        <li><a th:href="@{/}">Trang chủ</a></li>
+                        <li>Lịch sử thi thử</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <div class="container my-5">
+            <div class="row gy-4">
+                <div class="col-3 portfolio">
+                    <div class="portfolio-container">
+                        <div class="portfolio-item">
+                            <div class="portfolio-wrap border rounded rounded-3">
+                                <img th:src="${accountLogin.urlAvater}" class="img-fluid image-preview" alt="" th:unless="${#strings.isEmpty(accountLogin.urlAvater)}">
+                                <img th:src="@{../assets/img/avatar_default.png}" class="img-fluid image-preview" alt="" th:if="${#strings.isEmpty(accountLogin.urlAvater)}">
+                                <div class="portfolio-info">
+                                    <h4>Ảnh đại diện</h4>
+                                    <div class="portfolio-links">
+                                         <a class="portfolio-lightbox" th:href="@{${accountLogin.urlAvater}}"><i class="bi bi-arrow-up-right-square"></i></a>
+                                        <label class="cursor-pointer" title="Thay ảnh đại diện" for="avatar"><i class="bi bi-upload"></i></label>
+                                        <form th:action="@{/upload-avatar}" method="POST" enctype="multipart/form-data" id="formUploadAvatar">
+                                            <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 portfolio-details p-0">
+                    <div class="portfolio-info h-100">
+                        <h3>Xin chào !</h3>
+                        <h4>[[${accountLogin.lastName}]] [[${accountLogin.middleName}]] [[${accountLogin.firstName}]]</h4>
+                        <div class="mt-3">Tài khoản: [[${account.userName}]]</div>
+                        <a th:href="@{/update-profile}" class="btn btn-sm btn-warning">Đổi mật khẩu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <div class="mt-4">
                         <ul class="nav nav-tabs ">
                             <li class="nav-item">
@@ -68,63 +65,62 @@
                             <li class="nav-item">
                                 <span class="nav-link border-2  active fw-bold py-3" aria-current="page">Lịch sử thi thử</span>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link border-2 fw-bold py-3" th:href="@{/view-profile-registed-exam}">Kì thi thật đã đăng ký</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
-			<div class="col-12 portfolio-details pt-0">
-            	<div class="portfolio-info border border-2 border-top-0" style="border-radius: 0 0 0.5rem 0.5rem;">
-					<div class="mt-5 row">
-						<h3><strong>Số lần thi thử</strong> : <span th:text="${countTrialExamResult}"></span></h3>
-						<h3><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${#numbers.formatDecimal(percentPass, 0, 2)} %|" class="text-danger fw-bold"></span></h3>
-					</div>
-					<div class="col-12 mt-5">
-						<table class="table table-bordered mt-4">
-							<thead class="mt-1" style="background-color: rgb(213, 213, 213);">
-								<tr class="text-center">
-									<th scope="col"></th>
-									<th scope="col">Loại bằng</th>
-									<th scope="col">Tên đề thi</th>
-									<th scope="col">Ngày thi</th>
-									<th scope="col">Số câu hỏi</th>
-									<th scope="col">Trả lời đúng</th>
-									<th scope="col">Trả lời sai</th>
-									<th scope="col">Câu liệt</th>
-									<th scope="col">Thời gian làm bài</th>
-									<th scope="col">Kết quả</th>
-									<th scope="col">Chi tiết</th>
-								</tr>
-							</thead>
-							<tbody >
-								<tr class="text-center" th:each="trialExamResult,stat : ${listTrialExamResult}">
-									<td th:text="${stat.index + 1}"></td>
-									<th th:text="${trialExamResult.examQuestions.drivingLicense.name}"></th>
-									<td th:text="${trialExamResult.examQuestions.name}"></td>
-									<td th:text="${#dates.format(trialExamResult.createAt, 'dd/MM/yyyy HH:mm')}"></td>
-									<td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestion}"></td>
-									<td th:with="filtered=${trialExamResult.listHistoryAnswer.?[correct]}">[[${filtered.size}]]</td>
-									<td th:with="filtered=${trialExamResult.listHistoryAnswer.?[!correct]}">[[${filtered.size}]]</td>
-									<td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}"></td>
-									<td th:text="|${trialExamResult.timeExam} phút|"></td>
-									<td>
-										<span th:if="${trialExamResult.pass}">Đạt</span>
-										<span th:unless="${trialExamResult.pass}">Không đạt</span>
-									</td>
-									
-									<td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trialExamResultId}}">Chi
-											tiết</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</th:block>
+            <div class="col-12 portfolio-details pt-0">
+                <div class="portfolio-info border border-2 border-top-0" style="border-radius: 0 0 0.5rem 0.5rem;">
+                    <h3 class="mt-4"><strong>Số lần thi thử</strong> : <span th:text="${totalTrialExamResult}"></span></h3>
+                    <h3 th:if="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${totalTrialExamResult} %|" class="text-danger fw-bold"></span></h3>
+                    <h3 th:unless="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${#numbers.formatDecimal(numberOfPass / totalTrialExamResult * 100 , 1, 0)} %|" class="text-danger fw-bold"></span></h3>
+                    <div class="col-12">
+                        <table class="table table-bordered mt-4">
+                            <thead class="mt-1" style="background-color: rgb(213, 213, 213);">
+                                <tr class="text-center">
+                                    <th scope="col"></th>
+                                    <th scope="col">Loại bằng</th>
+                                    <th scope="col">Tên đề thi</th>
+                                    <th scope="col">Ngày thi</th>
+                                    <th scope="col">Số câu hỏi</th>
+                                    <th scope="col">Trả lời đúng</th>
+                                    <th scope="col">Trả lời sai</th>
+                                    <th scope="col">Câu liệt</th>
+                                    <th scope="col">Thời gian làm bài</th>
+                                    <th scope="col">Kết quả</th>
+                                    <th scope="col">Chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr class="text-center" th:each="trialExamResult,stat : ${listTrialExamResult}" th:if="${listTrialExamResult.size != 0}">
+                                    <td th:text="${stat.index + 1}"></td>
+                                    <th th:text="${trialExamResult.examQuestions.drivingLicense.name}"></th>
+                                    <td th:text="${trialExamResult.examQuestions.name}"></td>
+                                    <td th:text="${#dates.format(trialExamResult.createAt, 'dd/MM/yyyy HH:mm')}"></td>
+                                    <td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestion}"></td>
+                                    <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[correct]}">[[${filtered.size}]]</td>
+                                    <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[!correct]}">[[${filtered.size}]]</td>
+                                    <td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}"></td>
+                                    <td th:text="|${trialExamResult.timeExam} phút|"></td>
+                                    <td>
+                                        <span th:if="${trialExamResult.pass}">Đạt</span>
+                                        <span th:unless="${trialExamResult.pass}">Không đạt</span>
+                                    </td>
+                                    
+                                    <td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trialExamResultId}}">Chi
+                                            tiết</a>
+                                    </td>
+                                </tr>
+                                <tr class="text-center" th:unless="${listTrialExamResult.size != 0}">
+                                    <td colspan="11"><span class="text-danger fw-bold">Bạn chưa thi thử lần nào!</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </th:block>
 </body>
 
 </html>

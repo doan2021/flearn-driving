@@ -1,516 +1,455 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+    layout:decorate="~{layout/layout}">
 
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>Trang chủ</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Trang chủ</title>
 </head>
 
 <body>
-	<th:block layout:fragment="content">
-		<section id="hero" class="d-flex align-items-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-						<h1 data-aos="fade-up">Học lái xe mùa dịch</h1>
-						<h2 data-aos="fade-up" data-aos-delay="400">Thế nào cho an toàn</h2>
-						<div data-aos="fade-up" data-aos-delay="800">
-							<a th:href="@{/select-chapter}" class="btn-get-started scrollto">Xem thêm</a>
-						</div>
-					</div>
-					<div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-						<img th:src="@{../assets/img/index-img.png}" class="img-fluid animated" alt="">
-					</div>
-				</div>
-			</div>
-		</section><!-- End Hero -->
+    <th:block layout:fragment="content">
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h1 data-aos="fade-up">Học lái xe mùa dịch</h1>
+                        <h2 data-aos="fade-up" data-aos-delay="400">Thế nào cho an toàn</h2>
+                        <div data-aos="fade-up" data-aos-delay="800">
+                            <a th:href="@{/select-chapter}" class="btn-get-started scrollto">Xem thêm</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                        <img th:src="@{../assets/img/index-img.png}" class="img-fluid animated" alt="">
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Hero -->
 
-		<main id="main">
-			<!-- ======= About Us Section ======= -->
-			<section id="about" class="about">
-				<div class="container">
+        <main id="main">
+            <!-- ======= About Us Section ======= -->
+            <section id="about" class="about">
+                <div class="container">
 
-					<div class="section-title" data-aos="fade-up">
-						<h2>LỜI GIỚI THIỆU</h2>
-					</div>
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>LỜI GIỚI THIỆU</h2>
+                    </div>
 
-					<div class="row content mt-3">
-						<div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
-							<p>
-								Chúng tôi là <b>FLearnDriving</b> - một trang web phục vụ cho người dùng học và thi bằng lái xe
-								một cách hiệu quả nhất .
-							</p>
-							<p> <b>FLearnDriving</b> đáp ứng cho những bạn không có thời gian để học lý thuyết tại các trung tâm có
-								thể học lý thuyết một cách thoải mái nhất ở bất kì khung giờ và các địa điểm khác nhau.
-							</p>
-							<p> Hệ thống giúp các bạn học có thể củng cố kiến thức dựa trên các bộ đề đã tạo sẵn . Và có
-								thể đăng kí thi thật qua các trung tâm lái xe đã liên kết .
-							</p>
-						</div>
-						<div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300" style="padding-left: 128px;">
-							<h3>
-								Học lái xe B2 để làm gì?
-							</h3>
-							<ul>
-								<li><i class="ri-check-double-line"></i> Để đi lại , du lịch cho thuận tiện</li>
-								<li><i class="ri-check-double-line"></i> Để làm Taxi , Grap , Go Viet kiếm thêm thu nhập
-								</li>
-								<li><i class="ri-check-double-line"></i> Để lái xe số sàn , số tự động có thể nâng hạng
-									bằng C D E</li>
-								<li><i class="ri-check-double-line"></i> Để chở sếp , giao lưu đối tác , để thể hiện
-									đẳng cấp</li>
-							</ul>
-						</div>
-					</div>
+                    <div class="row content mt-3">
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                            <p>
+                                Chúng tôi là <b>FLearnDriving</b> - một trang web phục vụ cho người dùng học và thi bằng lái xe
+                                một cách hiệu quả nhất .
+                            </p>
+                            <p> <b>FLearnDriving</b> đáp ứng cho những bạn không có thời gian để học lý thuyết tại các trung tâm có
+                                thể học lý thuyết một cách thoải mái nhất ở bất kì khung giờ và các địa điểm khác nhau.
+                            </p>
+                            <p> Hệ thống giúp các bạn học có thể củng cố kiến thức dựa trên các bộ đề đã tạo sẵn . Và có
+                                thể đăng kí thi thật qua các trung tâm lái xe đã liên kết .
+                            </p>
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300" style="padding-left: 128px;">
+                            <h3>
+                                Học lái xe B2 để làm gì?
+                            </h3>
+                            <ul>
+                                <li><i class="ri-check-double-line"></i> Để đi lại , du lịch cho thuận tiện</li>
+                                <li><i class="ri-check-double-line"></i> Để làm Taxi , Grap , Go Viet kiếm thêm thu nhập
+                                </li>
+                                <li><i class="ri-check-double-line"></i> Để lái xe số sàn , số tự động có thể nâng hạng
+                                    bằng C D E</li>
+                                <li><i class="ri-check-double-line"></i> Để chở sếp , giao lưu đối tác , để thể hiện
+                                    đẳng cấp</li>
+                            </ul>
+                        </div>
+                    </div>
 
-				</div>
-			</section><!-- End About Us Section -->
+                </div>
+            </section><!-- End About Us Section -->
 
-			<!-- ======= Counts Section ======= -->
-			<section id="counts" class="counts">
-				<div class="container">
+            <!-- ======= Counts Section ======= -->
+            <section id="counts" class="counts">
+                <div class="container">
 
-					<div class="row">
-						<div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start"
-							data-aos="fade-right" data-aos-delay="150">
-							<img src="assets/img/counts-img.svg" alt="" class="img-fluid">
-						</div>
+                    <div class="row">
+                        <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+                            data-aos="fade-right" data-aos-delay="150">
+                            <img src="assets/img/counts-img.svg" alt="" class="img-fluid">
+                        </div>
 
-						<div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
-							data-aos-delay="300">
-							<div class="content d-flex flex-column justify-content-center">
-								<div class="row">
-									<div class="col-md-6 d-md-flex align-items-md-stretch">
-										<div class="count-box">
-											<i class="bi bi-people"></i>
-											<span data-purecounter-start="0"
-												th:data-purecounter-end="${numberOfAccount}"
-												data-purecounter-duration="1" class="purecounter"></span>
-											<p><strong>Người dùng</strong> đang sử dụng và học tập</p>
-										</div>
-									</div>
+                        <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
+                            data-aos-delay="300">
+                            <div class="content d-flex flex-column justify-content-center">
+                                <div class="row">
+                                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                        <div class="count-box">
+                                            <i class="bi bi-people"></i>
+                                            <span data-purecounter-start="0"
+                                                th:data-purecounter-end="${numberOfAccount}"
+                                                data-purecounter-duration="1" class="purecounter"></span>
+                                            <p><strong>Người dùng</strong> đang sử dụng và học tập</p>
+                                        </div>
+                                    </div>
 
-									<div class="col-md-6 d-md-flex align-items-md-stretch">
-										<div class="count-box">
-											<i class="bx bx-file"></i>
-											<span data-purecounter-start="0"
-												th:data-purecounter-end="${numberOfChapter}"
-												data-purecounter-duration="1" class="purecounter"></span>
-											<p><strong>Chương</strong> được xây dựng theo 600 câu hỏi sát hạch lái xe ô
-												tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
-										</div>
-									</div>
+                                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                        <div class="count-box">
+                                            <i class="bx bx-file"></i>
+                                            <span data-purecounter-start="0"
+                                                th:data-purecounter-end="${numberOfChapter}"
+                                                data-purecounter-duration="1" class="purecounter"></span>
+                                            <p><strong>Chương</strong> được xây dựng theo 600 câu hỏi sát hạch lái xe ô
+                                                tô do Tổng Cục Đường Bộ VN ban hành từ này 01/08/2020.</p>
+                                        </div>
+                                    </div>
 
-									<div class="col-md-6 d-md-flex align-items-md-stretch">
-										<div class="count-box">
-											<i class="bi bi-patch-question"></i>
-											<span data-purecounter-start="0"
-												th:data-purecounter-end="${numberOfQuestion}"
-												data-purecounter-duration="1" class="purecounter"></span>
-											<p><strong>Câu hỏi</strong> đã được phê duyệt của Tổng Cục Đường Bộ VN ban
-												hành từ này 01/08/2020.</p>
-										</div>
-									</div>
+                                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                        <div class="count-box">
+                                            <i class="bi bi-layout-text-window-reverse"></i>
+                                            <span data-purecounter-start="0"
+                                                th:data-purecounter-end="${numberOfQuestion}"
+                                                data-purecounter-duration="1" class="purecounter"></span>
+                                            <p><strong>Câu hỏi</strong> đã được phê duyệt của Tổng Cục Đường Bộ VN ban
+                                                hành từ này 01/08/2020.</p>
+                                        </div>
+                                    </div>
 
-									<div class="col-md-6 d-md-flex align-items-md-stretch">
-										<div class="count-box">
-											<i class="bi bi-layout-text-window-reverse"></i>
-											<span data-purecounter-start="0"
-												th:data-purecounter-end="${numberOfDrivingLicenseInfo}"
-												data-purecounter-duration="1" class="purecounter"></span>
-											<p><strong>Lượt đăng kí thi</strong> chính thức liên kết đến các trung tâm
-												lái xe đã có nhiều năm kinh nghiệm trong ngành giao thông-vận tải.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+                                    <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                        <div class="count-box">
+                                            <i class="bi bi-alarm-fill"></i>
+                                            <span data-purecounter-start="0" th:data-purecounter-end="${numberOfTrialExam}" data-purecounter-duration="1" class="purecounter"></span>
+                                            <p><strong>Lượt thi thử</strong> dựa theo số liệu thống kê đến thời điển hiện tại.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-			<section id="services" class="services">
-				<div class="container">
-					<div class="section-title" data-aos="fade-up">
-						<h2>DỊCH VỤ</h2>
-					</div>
-					<div class="row">
-						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-							<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-								<div class="icon"><i class="bx bx-file"></i></div>
-								<h4 class="title"><a th:href="@{/document}">Tài liệu</a></h4>
-								<p class="description">Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục
-									Đường Bộ VN ban hành từ này 01/08/2020.</p>
-							</div>
-						</div>
+            <section id="services" class="services">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>DỊCH VỤ</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon"><i class="bx bx-file"></i></div>
+                                <h4 class="title"><a th:href="@{/document}">Tài liệu</a></h4>
+                                <p class="description">Được xây dựng theo 600 câu hỏi sát hạch lái xe ô tô do Tổng Cục
+                                    Đường Bộ VN ban hành từ này 01/08/2020.</p>
+                            </div>
+                        </div>
 
-						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-							<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-								<div class="icon"><i class="bi bi-ui-checks"></i></div>
-								<h4 class="title"><a th:href="@{/document}">Học tập</a></h4>
-								<p class="description">Trau dồi kiến thức, hành trang trước khi thi</p>
-							</div>
-						</div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon"><i class="bi bi-ui-checks"></i></div>
+                                <h4 class="title"><a th:href="@{/select-chapter}">Học tập</a></h4>
+                                <p class="description">Trau dồi kiến thức, hành trang trước khi thi</p>
+                            </div>
+                        </div>
 
-						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-							<div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-								<div class="icon"><i class="bi bi-alarm-fill"></i></div>
-								<h4 class="title"><a href="">Thi thử</a></h4>
-								<p class="description">Kiểm tra thử năng lực của bạn, bổ sung những kiến thức còn thiếu
-								</p>
-							</div>
-						</div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                                <div class="icon"><i class="bi bi-alarm-fill"></i></div>
+                                <h4 class="title"><a th:href="@{/select-exam-question}">Thi thử</a></h4>
+                                <p class="description">Kiểm tra thử năng lực của bạn, bổ sung những kiến thức còn thiếu
+                                </p>
+                            </div>
+                        </div>
 
-						<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-							<div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-								<div class="icon"><i class="bi bi-layout-text-window-reverse"></i></div>
-								<h4 class="title"><a href="">Đăng ký thi</a></h4>
-								<p class="description">Chọn kỳ thi phù hợp, và vào thi thôi</p>
-							</div>
-						</div>
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                                <div class="icon"><i class="bi bi-layout-text-window-reverse"></i></div>
+                                <h4 class="title"><a th:href="@{/register-exam}">Đăng ký thi</a></h4>
+                                <p class="description">Chọn kỳ thi phù hợp, và vào thi thôi</p>
+                            </div>
+                        </div>
 
-					</div>
+                    </div>
 
-				</div>
-			</section><!-- End Services Section -->
+                </div>
+            </section><!-- End Services Section -->
 
-			<!-- ======= More Services Section ======= -->
-			<section id="more-services" class="more-services">
-				<div class="container">
-					<div class="section-title" data-aos="fade-up">
-						<h2>CHƯƠNG QUAN TRỌNG</h2>
-						<p>Chương có tỉ lệ ra nhiều trong các kì thi</p>
-					</div>
-					<div class="row">
-						<div class="col-md-6 d-flex align-items-stretch">
-							<div class="card" style='background-image: url("assets/img/more-services-1.jpg");'
-								data-aos="fade-up" data-aos-delay="100">
-								<div class="card-body">
-									<h5 class="card-title"><a href="">Chương Khái niệm và quy tắc giao thông đường bộ</a></h5>
-									<p class="card-text">Gồm 26 câu, từ câu 167 đến câu 192, không có câu điểm liệt.</p>
-									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Xem chi tiết</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-							<div class="card" style='background-image: url("assets/img/more-services-2.jpg");'
-								data-aos="fade-up" data-aos-delay="200">
-								<div class="card-body">
-									<h5 class="card-title"><a href="">Chương Khái niệm và quy tắc giao thông đường bộ</a></h5>
-									<p class="card-text">Gồm 26 câu, từ câu 167 đến câu 192, không có câu điểm liệt.</p>
-									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Xem chi tiết</a>
-									</div>
-								</div>
-							</div>
+            <!-- ======= Testimonials Section ======= -->
+            <section id="testimonials" class="testimonials section-bg">
+                <div class="container">
 
-						</div>
-						<div class="col-md-6 d-flex align-items-stretch mt-4">
-							<div class="card" style='background-image: url("assets/img/more-services-3.jpg");'
-								data-aos="fade-up" data-aos-delay="100">
-								<div class="card-body">
-									<h5 class="card-title"><a href="">Chương Khái niệm và quy tắc giao thông đường bộ</a></h5>
-									<p class="card-text">Gồm 26 câu, từ câu 167 đến câu 192, không có câu điểm liệt.</p>
-									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Xem chi tiết</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 d-flex align-items-stretch mt-4">
-							<div class="card" style='background-image: url("assets/img/more-services-4.jpg");'
-								data-aos="fade-up" data-aos-delay="200">
-								<div class="card-body">
-									<h5 class="card-title"><a href="">Chương Khái niệm và quy tắc giao thông đường bộ</a></h5>
-									<p class="card-text">Gồm 26 câu, từ câu 167 đến câu 192, không có câu điểm liệt.</p>
-									<div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Xem chi tiết</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>NHẬN XÉT CỦA NGƯỜI DÙNG</h2>
+                        <p>Lời đánh giá khách quan của những người dùng đã sử dụng trang web</p>
+                    </div>
 
-				</div>
-			</section><!-- End More Services Section -->
+                    <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+                        <div class="swiper-wrapper">
 
-			<!-- ======= Testimonials Section ======= -->
-			<section id="testimonials" class="testimonials section-bg">
-				<div class="container">
+                            <div class="swiper-slide">
+                                <div class="testimonial-wrap">
+                                    <div class="testimonial-item">
+                                        <img th:src="@{../assets/img/team/to.jpg}" class="testimonial-img" alt="">
+                                        <h3>Center Nguyễn</h3>
+                                        <h4>tamntde130089@gmail.com</h4>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Giao diện đẹp , bắt mắt . Các câu hỏi và nội dung đúng theo các bộ đề của Bộ
+                                            giao thông vận tải đề ra.
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
 
-					<div class="section-title" data-aos="fade-up">
-						<h2>NHẬN XÉT CỦA NGƯỜI DÙNG</h2>
-						<p>Lời đánh giá khách quan của những người dùng đã sử dụng trang web</p>
-					</div>
+                            <div class="swiper-slide">
+                                <div class="testimonial-wrap">
+                                    <div class="testimonial-item">
+                                        <img th:src="@{../assets/img/team/TuBinh.png}" class="testimonial-img" alt="">
+                                        <h3>Tú Bình</h3>
+                                        <h4>tubinh@gmail.com</h4>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Phần học của trang web có tính năng tốt , giúp tôi rất nhiều do việc học từ
+                                            dễ đến khó một cách nhanh chóng . Cảm ơn người đã tạo ra một website thật bổ
+                                            ích!
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
 
-					<div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-						<div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial-wrap">
+                                    <div class="testimonial-item">
+                                        <img th:src="@{../assets/img/team/datle.jpg}" class="testimonial-img" alt="">
+                                        <h3>Đạt Lê</h3>
+                                        <h4>datlv@gmail.com</h4>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Tôi rất vui khi đã tìm ra được trang web bổ ích như thế này . Thật là hữu
+                                            ích và thuận lợi cho cả việc học và thi.
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
 
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{../assets/img/team/to.jpg}" class="testimonial-img" alt="">
-										<h3>Center Nguyễn</h3>
-										<h4>tamntde130089@gmail.com</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											Giao diện đẹp , bắt mắt . Các câu hỏi và nội dung đúng theo các bộ đề của Bộ
-											giao thông vận tải đề ra.
-											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div><!-- End testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-wrap">
+                                    <div class="testimonial-item">
+                                        <img th:src="@{../assets/img/team/Dan1.jpg}" class="testimonial-img" alt="">
+                                        <h3>Hương Giang</h3>
+                                        <h4>huonggiang@gmail.com</h4>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Thật tiện lợi , cho dù tôi đang làm việc hay đi chơi tôi cũng có thể học
+                                            những kiến thức về bằng lái xe này.
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
 
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{../assets/img/team/TuBinh.png}" class="testimonial-img" alt="">
-										<h3>Tú Bình</h3>
-										<h4>tubinh@gmail.com</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											Phần học của trang web có tính năng tốt , giúp tôi rất nhiều do việc học từ
-											dễ đến khó một cách nhanh chóng . Cảm ơn người đã tạo ra một website thật bổ
-											ích!
-											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div><!-- End testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-wrap">
+                                    <div class="testimonial-item">
+                                        <img th:src="@{../assets/img/team/xuanhong.jpg}" class="testimonial-img" alt="">
+                                        <h3>Xuân Hồng</h3>
+                                        <h4>hongnxt@gmail.com</h4>
+                                        <p>
+                                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                            Tôi rất chán ghét khi cầm sách vở để học thuộc lòng . Tình cờ tôi tìm được
+                                            website trên internet như thế này , giúp tôi đã vượt qua được kì thi lái xe
+                                            một cách dễ dàng .
+                                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!-- End testimonial item -->
 
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{../assets/img/team/datle.jpg}" class="testimonial-img" alt="">
-										<h3>Đạt Lê</h3>
-										<h4>datlv@gmail.com</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											Tôi rất vui khi đã tìm ra được trang web bổ ích như thế này . Thật là hữu
-											ích và thuận lợi cho cả việc học và thi.
-											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div><!-- End testimonial item -->
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
 
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{../assets/img/team/Dan1.jpg}" class="testimonial-img" alt="">
-										<h3>Hương Giang</h3>
-										<h4>huonggiang@gmail.com</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											Thật tiện lợi , cho dù tôi đang làm việc hay đi chơi tôi cũng có thể học
-											những kiến thức về bằng lái xe này.
-											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div><!-- End testimonial item -->
+                </div>
+            </section><!-- End Testimonials Section -->    
+            <section id="team" class="team section-bg">
+                <div class="container">
 
-							<div class="swiper-slide">
-								<div class="testimonial-wrap">
-									<div class="testimonial-item">
-										<img th:src="@{../assets/img/team/xuanhong.jpg}" class="testimonial-img" alt="">
-										<h3>Xuân Hồng</h3>
-										<h4>hongnxt@gmail.com</h4>
-										<p>
-											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-											Tôi rất chán ghét khi cầm sách vở để học thuộc lòng . Tình cờ tôi tìm được
-											website trên internet như thế này , giúp tôi đã vượt qua được kì thi lái xe
-											một cách dễ dàng .
-											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-										</p>
-									</div>
-								</div>
-							</div><!-- End testimonial item -->
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>ĐỘI NGŨ PHÁT TRIỂN</h2>
+                        <p>Chúng tôi là FLearnDriving đã cùng nhau tạo ra sản phẩm</p>
+                    </div>
 
-						</div>
-						<div class="swiper-pagination"></div>
-					</div>
+                    <div class="row">
 
-				</div>
-			</section><!-- End Testimonials Section -->	
-			<section id="team" class="team section-bg">
-				<div class="container">
+                        <div class="col-lg col-md-6 d-flex align-items-stretch">
+                            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                <div class="member-img">
+                                    <img th:src="@{../assets/img/team/hieu.jpg}" style="height: 100%;width: 100%;"
+                                        alt="">
 
-					<div class="section-title" data-aos="fade-up">
-						<h2>ĐỘI NGŨ PHÁT TRIỂN</h2>
-						<p>Chúng tôi là FLearnDriving đã cùng nhau tạo ra sản phẩm</p>
-					</div>
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Lê Minh Hiếu</h4>
+                                    <span>Dev Member</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg col-md-6 d-flex align-items-stretch">
+                            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                                <div class="member-img">
+                                    <img th:src="@{../assets/img/team/QuangAnh.jpg}" style="height: 100%;width: 100%;"
+                                        alt="">
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Phạm Quang Anh</h4>
+                                    <span>Test Member</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg col-md-6 d-flex align-items-stretch">
+                            <div class="member" data-aos="fade-up" data-aos-delay="200">
+                                <div class="member-img">
+                                    <img th:src="@{../assets/img/team/dung.jpg}" style="height: 100%;width: 100%;"
+                                        alt="">
 
-					<div class="row">
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Võ Mạnh Dũng</h4>
+                                    <span>Dev Leader</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg col-md-6 d-flex align-items-stretch">
+                            <div class="member" data-aos="fade-up" data-aos-delay="300">
+                                <div class="member-img">
+                                    <img th:src="@{../assets/img/team/tam.jpg}" style="height: 100%;width: 100%;"
+                                        alt="">
 
-						<div class="col-lg col-md-6 d-flex align-items-stretch">
-							<div class="member" data-aos="fade-up" data-aos-delay="100">
-								<div class="member-img">
-									<img th:src="@{../assets/img/team/hieu.jpg}" style="height: 100%;width: 100%;"
-										alt="">
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Nguyễn Trung Tâm</h4>
+                                    <span>Analysis Leader</span>
+                                </div>
+                            </div>
+                        </div>
 
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Lê Minh Hiếu</h4>
-									<span>Dev Member</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg col-md-6 d-flex align-items-stretch">
-							<div class="member" data-aos="fade-up" data-aos-delay="100">
-								<div class="member-img">
-									<img th:src="@{../assets/img/team/QuangAnh.jpg}" style="height: 100%;width: 100%;"
-										alt="">
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Phạm Quang Anh</h4>
-									<span>Test Member</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg col-md-6 d-flex align-items-stretch">
-							<div class="member" data-aos="fade-up" data-aos-delay="200">
-								<div class="member-img">
-									<img th:src="@{../assets/img/team/dung.jpg}" style="height: 100%;width: 100%;"
-										alt="">
+                        <div class="col-lg col-md-6 d-flex align-items-stretch">
+                            <div class="member" data-aos="fade-up" data-aos-delay="400">
+                                <div class="member-img">
+                                    <img th:src="@{../assets/img/team/hoang.jpg}" style="height: 100%;width: 100%;"
+                                        alt="">
 
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Võ Mạnh Dũng</h4>
-									<span>Dev Leader</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg col-md-6 d-flex align-items-stretch">
-							<div class="member" data-aos="fade-up" data-aos-delay="300">
-								<div class="member-img">
-									<img th:src="@{../assets/img/team/tam.jpg}" style="height: 100%;width: 100%;"
-										alt="">
+                                    <div class="social">
+                                        <a href=""><i class="bi bi-twitter"></i></a>
+                                        <a href=""><i class="bi bi-facebook"></i></a>
+                                        <a href=""><i class="bi bi-instagram"></i></a>
+                                        <a href=""><i class="bi bi-linkedin"></i></a>
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Đặng Quang Hoàng</h4>
+                                    <span>Test Leader</span>
+                                </div>
+                            </div>
+                        </div>
 
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Nguyễn Trung Tâm</h4>
-									<span>Analysis Leader</span>
-								</div>
-							</div>
-						</div>
+                    </div>
 
-						<div class="col-lg col-md-6 d-flex align-items-stretch">
-							<div class="member" data-aos="fade-up" data-aos-delay="400">
-								<div class="member-img">
-									<img th:src="@{../assets/img/team/hoang.jpg}" style="height: 100%;width: 100%;"
-										alt="">
+                </div>
+            </section>
 
-									<div class="social">
-										<a href=""><i class="bi bi-twitter"></i></a>
-										<a href=""><i class="bi bi-facebook"></i></a>
-										<a href=""><i class="bi bi-instagram"></i></a>
-										<a href=""><i class="bi bi-linkedin"></i></a>
-									</div>
-								</div>
-								<div class="member-info">
-									<h4>Đặng Quang Hoàng</h4>
-									<span>Test Leader</span>
-								</div>
-							</div>
-						</div>
+            <!-- ======= Contact Section ======= -->
+            <section id="contact" class="contact">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>LIÊN LẠC VỚI CHÚNG TÔI</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="contact-about">
+                                <h3>Flearn Driving</h3>
 
-					</div>
-
-				</div>
-			</section>
-
-			<!-- ======= Contact Section ======= -->
-			<section id="contact" class="contact">
-				<div class="container">
-					<div class="section-title" data-aos="fade-up">
-						<h2>LIÊN LẠC VỚI CHÚNG TÔI</h2>
-					</div>
-					<div class="row">
-						<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-							<div class="contact-about">
-								<h3>Flearn Driving</h3>
-
-								<div class="social-links">
-									<a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-									<a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-									<a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-									<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-							<div class="info">
-								<div>
-									<i class="ri-map-pin-line"></i>
-									<p>476 Núi Thành<br>Hải Châu , Đà Nẵng 535022</p>
-								</div>
-								<div>
-									<i class="ri-mail-send-line"></i>
-									<p>FLearnDriving@gmail.com</p>
-								</div>
-								<div>
-									<i class="ri-phone-line"></i>
-									<p>0-899-222-998</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-							<form action="forms/contact.php" method="post" role="form" class="php-email-form">
-								<div class="form-group">
-									<input type="text" name="name" class="form-control" id="name"
-										placeholder="Tên của bạn" required>
-								</div>
-								<div class="form-group">
-									<input type="email" class="form-control" name="email" id="email"
-										placeholder="Email của bạn" required>
-								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" name="subject" id="subject"
-										placeholder="Số điện thoại" required>
-								</div>
-								<div class="form-group">
-									<textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn"
-										required></textarea>
-								</div>
-								<div class="my-3">
-									<div class="loading">Loading</div>
-									<div class="error-message"></div>
-									<div class="sent-message">Your message has been sent. Thank you!</div>
-								</div>
-								<div class="text-center"><button type="submit">Gửi thông tin</button></div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
-	</th:block>
+                                <div class="social-links">
+                                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <div class="info">
+                                <div>
+                                    <i class="ri-map-pin-line"></i>
+                                    <p>476 Núi Thành<br>Hải Châu , Đà Nẵng 535022</p>
+                                </div>
+                                <div>
+                                    <i class="ri-mail-send-line"></i>
+                                    <p>FLearnDriving@gmail.com</p>
+                                </div>
+                                <div>
+                                    <i class="ri-phone-line"></i>
+                                    <p>0-899-222-998</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Tên của bạn" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Email của bạn" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                        placeholder="Số điện thoại" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn"
+                                        required></textarea>
+                                </div>
+                                <div class="my-3">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                                </div>
+                                <div class="text-center"><button type="submit">Gửi thông tin</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </th:block>
 </body>
 
 </html>

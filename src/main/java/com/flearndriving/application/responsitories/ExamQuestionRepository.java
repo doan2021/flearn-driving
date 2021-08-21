@@ -15,9 +15,10 @@ public interface ExamQuestionRepository extends JpaRepository<ExamQuestions, Lon
     public ExamQuestions findByExamQuestionsId(Long examQuestionsId);
     
     @Query(value="SELECT new com.flearndriving.application.dto.TrialExamDto(eq.examQuestionsId AS examQuestionsId, "
-            + "eq.drivingLicense.examMinutes) "
-            + "FROM ExamQuestions eq "
-            + "WHERE eq.examQuestionsId = :examQuestionsId")
+            + " eq.name,"
+            + " eq.drivingLicense.examMinutes)"
+            + " FROM ExamQuestions eq "
+            + " WHERE eq.examQuestionsId = :examQuestionsId")
     public TrialExamDto getDataTrialExam(Long examQuestionsId);
     
 }

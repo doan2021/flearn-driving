@@ -2,192 +2,109 @@ package com.flearndriving.application.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class AccountUpdateForm {
-	private Long accountId;
-	private String userName;
-	private String firstName;
-	private String middleName;
-	private String lastName;
-	private String password;
-	private String confirmPassword;
-	private Integer gender;
-	private String email;
-	private String birthDay;
-	private String numberPhone;
-	private Long roleId;
-	private MultipartFile image;
-	private Boolean isUpdate;
-	private String description;
-	private Date createAt;
-	private String createBy;
-	private Date updateAt;
-	private String updateBy;
-	private String address;
+    private String userName;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String birthDay;
+    private Integer gender;
+    private String email;
+    private String numberPhone;
+    private String description;
+    private Date createAt;
+    private Date updateAt;
 
-	public String getAddress() {
-		return address;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public Integer getGender() {
+        return gender;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public Integer getGender() {
-		return gender;
-	}
+    public String getBirthDay() {
+        return birthDay;
+    }
 
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getNumberPhone() {
+        return numberPhone;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setNumberPhone(String numberPhone) {
+        this.numberPhone = numberPhone;
+    }
 
-	public Long getRoleId() {
-		return roleId;
-	}
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
+    public String getMiddleName() {
+        return middleName;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Date getCreateAt() {
+        return createAt;
+    }
 
-	public String getBirthDay() {
-		return birthDay;
-	}
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
 
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
-	}
+    public Date getUpdateAt() {
+        return updateAt;
+    }
 
-	public String getNumberPhone() {
-		return numberPhone;
-	}
-
-	public void setNumberPhone(String numberPhone) {
-		this.numberPhone = numberPhone;
-	}
-
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
-
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
-
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
-	}
-
-	public Boolean getIsUpdate() {
-		return isUpdate;
-	}
-
-	public void setIsUpdate(Boolean isUpdate) {
-		this.isUpdate = isUpdate;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	public String getCreateBy() {
-		return createBy;
-	}
-
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
-	public Date getUpdateAt() {
-		return updateAt;
-	}
-
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
-	}
-
-	public String getUpdateBy() {
-		return updateBy;
-	}
-
-	public void setUpdateBy(String updateBy) {
-		this.updateBy = updateBy;
-	}
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
 
 }
