@@ -36,11 +36,11 @@
                 </div>
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link scrollto active fw-bold" th:href="@{/}">Trang chủ</a></li>
-                        <li><a class="nav-link scrollto fw-bold" th:href="@{/document}">Tài liệu</a></li>
-                        <li><a class="nav-link scrollto fw-bold" th:href="@{/select-chapter}">Học tập</a></li>
-                        <li><a class="nav-link scrollto fw-bold" th:href="@{/select-exam-question}">Thi thử</a></li>
-                        <li><a class="nav-link scrollto fw-bold" th:href="@{/register-exam}">Đăng ký thi</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:classappend="${classActiveIndexTab}" th:href="@{/}">Trang chủ</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:classappend="${classActiveDocumentTab}" th:href="@{/document}">Tài liệu</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:classappend="${classActiveLearnTab}" th:href="@{/select-chapter}">Học tập</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:classappend="${classActiveTrialExamTab}" th:href="@{/select-exam-question}">Thi thử</a></li>
+                        <li><a class="nav-link scrollto fw-bold" th:classappend="${classActiveExamTab}" th:href="@{/register-exam}">Đăng ký thi</a></li>
                         <li th:if="${#request.userPrincipal == null}"><a class="getstarted scrollto" th:href="@{/login}">Đăng nhập</a></li>
                         <li class="dropdown" th:if="${#request.userPrincipal != null}">
                             <a href="#" class="nav-link fw-bold">

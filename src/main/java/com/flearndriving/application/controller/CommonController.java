@@ -3,45 +3,39 @@ package com.flearndriving.application.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.flearndriving.application.dto.AccountForm;
 import com.flearndriving.application.services.AccountServices;
-import com.flearndriving.application.services.ChapterServices;
-import com.flearndriving.application.services.DrivingLicenseInfoServices;
-import com.flearndriving.application.services.QuestionServices;
 
 @Controller
 public class CommonController {
-    
-    @Autowired
-    ChapterServices chapterServices;
-    
+
     @Autowired
     AccountServices accountServices;
-    
-    @Autowired
-    QuestionServices questionServices;
-    
-    @Autowired
-    DrivingLicenseInfoServices drivingLicenseInfoServices;
-
-    @GetMapping(value = { "/", "/index" })
-    public String init(Model model) {
-        model.addAttribute("numberOfChapter", chapterServices.countChapter());
-        model.addAttribute("numberOfAccount", accountServices.countAccount());
-		model.addAttribute("numberOfQuestion", questionServices.countQuestion());
-		model.addAttribute("numberOfDrivingLicenseInfo", drivingLicenseInfoServices.countDrivingLicenseInfo());
-        return "index";
-    }
 
     @GetMapping(value = { "/login" })
     public String login(Model model) {
         return "login";
     }
 
-    @GetMapping(value = "/403")
-    public String accessDenied(Model model) {
-        return "403";
+    @GetMapping(value = { "/register" })
+    public String registerPage(Model model) {
+        model.addAttribute("accountForm", new AccountForm());
+        return "register";
     }
 
+    @PostMapping(value = { "/create-account" })
+    public String createUser(@ModelAttribute("accountForm") @Validated AccountForm accountForm, BindingResult result,
+            Model model) {
+        if (result.hasErrors()) {
+            return "register";
+        }
+        accountServices.createAccount(accountForm);
+        return "register-successful";
+    }
 }

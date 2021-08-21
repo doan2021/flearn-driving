@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/layout}">
-
-<head>
-    <meta charset="utf-8" />
-    <title th:text="|Chương ${chapter.index}|"></title>
-    <link rel="stylesheet">
-</head>
-
-<body>
-    <th:block layout:fragment="content">
-        <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2 th:text="|Chương ${chapter.index}|"></h2>
-                    <ol>
-                        <li><a th:href="@{/}">Trang chủ</a></li>
-                        <li><a th:href="@{/document}">Tài liệu</a></li>
-                        <li th:text="|Chương ${chapter.index}|"></li>
-                    </ol>
+    <head>
+        <meta charset="utf-8" />
+        <title>Chi tiết chương</title>
+        <link rel="stylesheet">
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <section id="breadcrumbs" class="breadcrumbs d-flex align-items-center">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>Chi tiết chương</h2>
+                        <ol>
+                            <li><a th:href="@{/}">Trang chủ</a></li>
+                            <li><a th:href="@{/document}">Tài liệu</a></li>
+                            <li>Chi tiết chương</li>
+                        </ol>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section id="portfolio-details" class="portfolio-details">
-            <div class="container">
-              <div class="row gy-4">
-                <div class="col-lg-4">
-                  <div class="portfolio-details-slider swiper-container border" th:if="${chapter.listImages.size != 0}">
-                      <img th:src="${chapter.listImages.get(0).path}" th:alt="${chapter.listImages.get(0).description}">
+            </section>
+            <section id="portfolio-details" class="portfolio-details" th:if="${chapter != null}">
+                <div class="container">
+                  <div class="row gy-4">
+                    <div class="col-lg-4">
+                      <div class="portfolio-details-slider swiper-container border" th:if="${chapter.listImages.size != 0}">
+                          <img th:src="${chapter.listImages.get(0).path}" th:alt="${chapter.listImages.get(0).description}">
+                      </div>
+                      <div class="portfolio-details-slider swiper-container border" th:unless="${chapter.listImages.size != 0}">
+                          <img th:src="@{../assets/img/no-photo.png}" alt="Không có hình ảnh">
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="portfolio-header">
+                        <h3 th:text="|Chương ${chapter.index}: ${chapter.name}|"></h3>
+                        <p th:text="${chapter.description}"></p>
+                      </div>
+                      <div class="portfolio-info">
+                        <h3>Thông tin chương</h3>
+                        <ul class="mb-0">
+                          <li><strong>Số câu hỏi</strong>: [[${chapter.listQuestion.size}]]</li>
+                          <li><strong>Số câu liệt</strong>: [[${#lists.size(chapter.listQuestion.?[paralysis == true])}]]</li>
+                          <li><strong>Ngày tạo</strong>: [[${#dates.format(chapter.updateAt, 'dd/MM/yyyy')}]]</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div class="portfolio-details-slider swiper-container border" th:unless="${chapter.listImages.size != 0}">
-                      <img th:src="@{../assets/img/no-photo.png}" alt="Không có hình ảnh">
-                  </div>
-                </div>
-                <div class="col-lg-8">
-                  <div class="portfolio-header">
-                    <h2 th:text="${chapter.name}"></h2>
-                    <p th:text="${chapter.description}"></p>
-                  </div>
-                  <div class="portfolio-info">
-                    <h3>Thông tin chương</h3>
-                    <ul class="mb-0">
-                      <li><strong>Số câu hỏi</strong>: [[${chapter.listQuestion.size}]]</li>
-                      <li><strong>Số câu liệt</strong>: [[${#lists.size(chapter.listQuestion.?[paralysis == true])}]]</li>
-                      <li><strong>Ngày tạo</strong>: [[${#dates.format(chapter.updateAt, 'dd/MM/yyyy')}]]</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-lg-12">
-                  <div class="portfolio-info">
-                    <h3>Câu hỏi trong chương</h3>
-                    <div th:each="question : ${listQuestion}" class="mt-5">
-                        <h4><span class="fw-bold">Câu [[${question.number}]] </span><span>[[${question.content}]]</span><span th:if="${question.paralysis}" class="badge bg-warning text-dark ms-3">Câu liệt</span></h4>
-                        <div th:each="image : ${question.listImage}" th:if="${question.listImage != 0}">
-                            <img th:alt="${image.description}" th:src="${image.path}">
+                  <div class="row mt-4">
+                    <div class="col-lg-12">
+                      <div class="portfolio-info">
+                        <h3>Câu hỏi trong chương</h3>
+                        <div th:each="question : ${listQuestion}" class="mt-5">
+                            <h4><span class="fw-bold">Câu [[${question.number}]] </span><span>[[${question.content}]]</span><span th:if="${question.paralysis}" class="badge bg-warning text-dark ms-3">Câu liệt</span></h4>
+                            <div th:each="image : ${question.listImage}" th:if="${question.listImage != 0}">
+                                <img th:alt="${image.description}" th:src="${image.path}">
+                            </div>
+                            <div th:each="answer,stat : ${question.listAnswers}" class="mt-3">
+                                <span th:text="${stat.index + 1}" class="fw-bold mx-3"></span>
+                                <span  th:text="${answer.content}" th:class="${answer.isTrue} ? 'text-danger fw-bold'"></span>
+                            </div>
                         </div>
-                        <div th:each="answer,stat : ${question.listAnswers}" class="mt-3">
-                            <span th:text="${stat.index + 1}" class="fw-bold mx-3"></span>
-                            <span  th:text="${answer.content}" th:class="${answer.isTrue} ? 'text-danger fw-bold'"></span>
-                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-        </section>
-    </th:block>
-</body>
-
+            </section>
+            <section class="portfolio-details" th:if="${chapter == null}" style="min-height: 614px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 p-5 text-center">
+                            <h3 class="text-danger">Chương không tồn tại!</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </th:block>
+    </body>
 </html>

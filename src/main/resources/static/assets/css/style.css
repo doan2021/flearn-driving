@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar .dropdown ul {
   display: block;
   position: absolute;
-  left: 30px;
+  left: -190px;
   top: calc(100% + 30px);
   margin: 0;
   padding: 10px 0;
@@ -263,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul li {
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .navbar .dropdown ul a {

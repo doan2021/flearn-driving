@@ -31,7 +31,7 @@ public class ChapterServices {
     StatusLearnRespository statusLearnRespository;
     
     public Chapter getOne(Long chapterId) {
-        return chapterResponsitory.getOne(chapterId);
+        return chapterResponsitory.findByChapterId(chapterId);
     }
     
     public List<Chapter> findAllChapter() {

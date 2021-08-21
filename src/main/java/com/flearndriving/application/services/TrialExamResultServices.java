@@ -34,7 +34,8 @@ public class TrialExamResultServices {
     AccountServices accountServices;
 
     public List<TrialExamResult> findAllTrialExamResult() {
-        return trialExamResultResponsitory.findAll();
+        Account account = accountServices.getAccountLogin();
+        return trialExamResultResponsitory.findAllByAccount(account);
     }
 
     public TrialExamResult getOne(Long trailExamResultId) {
@@ -72,13 +73,16 @@ public class TrialExamResultServices {
                 listHistoryAnswers.add(historyAnswer);
             }
         }
+        String cause = "Không đủ điểm đậu.";
         if (numberCorrect >= examQuestions.getDrivingLicense().getNumberQuestionCorect()) {
+            cause = "Đạt đủ điểm.";
             isPass = true;
         }
         if (!correctParalysis) {
             isPass = false;
-            trialExamResult.setDescription("Sai câu điểm liệt");
+            cause = "Sai câu điểm liệt.";
         }
+        trialExamResult.setDescription(cause);
         trialExamResult.setListHistoryAnswer(listHistoryAnswers);
         trialExamResult.setNumberCorrect(numberCorrect);
         trialExamResult.setNumberIncorrect(examQuestions.getDrivingLicense().getNumberQuestion() - numberCorrect);
@@ -89,22 +93,26 @@ public class TrialExamResultServices {
         trialExamResult.setUpdateBy(Common.getUsernameLogin());
         trialExamResultResponsitory.save(trialExamResult);
         responeData.putResult("pass", isPass);
+        responeData.putResult("cause", cause);
+        responeData.putResult("numberCorrect", numberCorrect);
+        responeData.putResult("totalQuestion", examQuestions.getDrivingLicense().getNumberQuestion());
         return responeData;
     }
 
-    public int getPercentPass() {
+    public int getNumberOfPass() {
         // get account login
         Account account = accountServices.getAccountLogin();
-        // gt count total by account login
         // get count pass by account login
         return trialExamResultResponsitory.countByAccountAndIsPass(account, true);
     }
 
     public int countTrialExamResult() {
-        // TODO Auto-generated method stub
         Account account = accountServices.getAccountLogin();
-        int total = trialExamResultResponsitory.countByAccount(account);
-        return total;
+        return trialExamResultResponsitory.countByAccount(account);
+    }
+    
+    public Long countAllTrialExamResult() {
+        return trialExamResultResponsitory.count();
     }
 
 }

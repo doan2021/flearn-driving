@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.flearndriving.application.dto.AccountLogin;
 import com.flearndriving.application.services.AccountServices;
 
-@ControllerAdvice(annotations = Controller.class)
+@ControllerAdvice(annotations = {Controller.class})
 public class CommonControllerAdvice {
     
     @Autowired
