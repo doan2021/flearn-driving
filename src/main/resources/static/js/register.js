@@ -1,67 +1,83 @@
 $("#register-form").validate({
 	rules: {
 		firstName: {
-			required: true
+			required: true,
+			maxlength: 36
 		},
 		lastName: {
-			required: true
+			required: true,
+			maxlength: 36
+		},
+		middleName: {
+			maxlength: 36,
 		},
 		email: {
 			required: true,
+			maxlength: 255,
 			email: true
 		},
-		phoneNumber: {
+		numberPhone: {
 			required: true,
 			number: true,
 			rangelength: [10, 10]
 		},
-		birthday: {
-			required: true
+		birthDay: {
+			required: true,
+			maxlength: 10,
 		},
 		userName: {
-			required: true
+			required: true,
+			maxlength: 36
 		},
 		password: {
 			required: true,
-			minlength: 8
+			rangelength: [8, 36]
 		},
 		confirmPassword: {
 			equalTo: "#password"
 		},
-		selectGender: {
+		gender: {
 			required: true
 		}
 	},
 	messages: {
 		firstName: {
-			required: "Vui lòng nhập tên!"
+			required: "Vui lòng nhập tên!",
+			maxlength: "Tên không được nhập quá 36 ký tự!"
+		},
+		middleName: {
+			maxlength: "Tên đệm không được nhập quá 36 ký tự!"
 		},
 		lastName: {
-			required: "Vui lòng nhập họ!"
+			required: "Vui lòng nhập họ!",
+			maxlength: "Họ không được nhập quá 36 ký tự!"
 		},
 		email: {
 			required: "Vui lòng nhập Email!",
+			maxlength: "Email không được nhập quá 255 ký tự!",
 			email: "Email chưa đúng định dạng, vui lòng kiểm tra lại!"
 		},
-		phoneNumber: {
+		numberPhone: {
 			required: "Vui lòng nhập số điện thoại!",
 			rangelength: "Số điện thoại phải đủ 10 số, vui lòng kiểm tra lại!",
-			number: "Số điện thoại phải là số, vui lòng kiểm tra lại!"
+			number: "Số điện thoại phải là số, vui lòng kiểm tra lại!",
 		},
-		birthday: {
-			required: "Vui lòng chọn ngày sinh!"
+		birthDay: {
+			required: "Vui lòng chọn ngày sinh!",
+			maxlength: "Ngày sinh phải đúng 10 ký tự!"
 		},
 		userName: {
-			required: "Vui lòng điền tên đăng nhập!"
+			required: "Vui lòng điền tên đăng nhập!",
+			maxlength: "Tên đăng nhập không được nhập quá 36 ký tự!"
 		},
 		password: {
 			required: "Vui lòng nhập mật khẩu!",
-			minlength: "Mật khẩu phải trên 8 kí tự, vui lòng kiểm tra lại!"
+			rangelength: "Mật khẩu phải trên 8 ký tự và dưới 36 ký tự!"
 		},
 		confirmPassword: {
-			equalTo: "Mật khẩu không khớp, vui lòng kiểm tra lại!"
+			equalTo: "Mật khẩu nhập lại không khớp, vui lòng kiểm tra lại!"
 		},
-		selectGender: {
+		gender: {
 			required: "Vui lòng chọn giới tính!"
 		}
 	},
@@ -71,33 +87,6 @@ $("#register-form").validate({
     },
     unhighlight: function (element) {
         $(element).removeClass('is-invalid');
-    },
-    errorPlacement: function (error, element) {
-        switch (element.attr("name")) {
-		case 'email':
-            error.insertAfter($("#email-place"));
-            break;
-        case 'birthday':
-            error.insertAfter($("#birthday-place"));
-            break;
-        case 'userName':
-            error.insertAfter($("#username-place"));
-            break;
-        case 'password':
-            error.insertAfter($("#password-place"));
-            break;
-        case 'confirmPassword':
-            error.insertAfter($("#cPassword-place"));
-            break;
-        case 'phoneNumber':
-            error.insertAfter($("#phoneNumber-place"));
-            break;
-        case 'gender':
-        	error.insertAfter($("#gender-place"));
-        	break;
-        default:
-            error.insertAfter(element);
-        }
     },
 	submitHandler: function(form) {
 		form.submit();

@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-12 mt-3">
                                         <label class="fw-bold">Ngày sinh</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent datepicker-area" id="birthday" th:field="*{birthDay}" placeholder="Chọn ngày sinh" autocomplete="off"/>
+                                        <input type="text" class="form-control bg-transparent datepicker-area" name="birthDay" id="birthday" th:field="*{birthDay}" placeholder="Chọn ngày sinh" autocomplete="off"/>
                                     </div>
                                     <div class="col-12 mt-3">
                                         <label class="fw-bold">Tên đăng nhập</label><span class="text-danger"> *</span>
@@ -62,11 +62,11 @@
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label class="fw-bold">Số điện thoại</label><span class="text-danger"> *</span>
-                                        <input type="text" class="form-control bg-transparent" placeholder="Số điện thoại" th:field="*{numberPhone}"/>
+                                        <input type="text" class="form-control bg-transparent" placeholder="Số điện thoại" th:field="*{numberPhone}" name="numberPhone"/>
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label class="fw-bold">Giới tính</label><span class="text-danger"> *</span>
-                                        <select class="form-select bg-transparent" th:field="*{gender}">
+                                        <select class="form-select bg-transparent" th:field="*{gender}" name="gender">
                                             <option value="">Chọn giới tính</option>
                                             <option value="1">Nam</option>
                                             <option value="0">Nữ</option>
