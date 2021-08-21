@@ -35,9 +35,9 @@ new Vue({
                     }
                 }
                 axios(config).then(function (response) {
-                    _this.listQuestions = response.data.result.listQuestions;
-                    _this.examQuestions = response.data.result.examQuestions;
-                    _this.examMinutes = _this.examQuestions.drivingLicense.examMinutes;
+                    _this.examQuestions = response.data.result.trialExamQuestion;
+                    _this.listQuestions = _this.examQuestions.listQuestions
+                    _this.examMinutes = _this.examQuestions.examMinutes;
                     _this.questionCurrentIndex = 0;
                     _this.listSelectAnswers.length = _this.listQuestions.length;
                     _this.questionRest = _this.listQuestions.length;

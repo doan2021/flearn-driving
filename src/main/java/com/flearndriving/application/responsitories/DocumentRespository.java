@@ -1,5 +1,7 @@
 package com.flearndriving.application.responsitories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,4 +21,9 @@ public interface DocumentRespository  extends JpaRepository<Document, Long> {
             + "WHERE d.type = :type "
             + "AND d.account.accountId = :accountId")
     Document findByTypeAndAccountId(Integer type, Long accountId);
+    
+    @Query("SELECT d.path"
+            + " FROM Document d "
+            + " WHERE d.question.questionId = :questionId ")
+    List<String> getListUrlImageByQuestionId(Long questionId);
 }
