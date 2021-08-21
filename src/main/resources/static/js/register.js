@@ -24,6 +24,7 @@ $("#register-form").validate({
 		birthDay: {
 			required: true,
 			maxlength: 10,
+			required: true
 		},
 		userName: {
 			required: true,
@@ -34,7 +35,7 @@ $("#register-form").validate({
 			rangelength: [8, 36]
 		},
 		confirmPassword: {
-			equalTo: "#password"
+			equalTo: password
 		},
 		gender: {
 			required: true

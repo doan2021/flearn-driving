@@ -53,7 +53,7 @@
 								</ul>
 								<ul class="col-6">
 									<li><strong>Thời gian làm bài</strong>: [[|${trialExamResult.examQuestions.drivingLicense.examMinutes} phút|]]</li>
-									<li><strong>Ngày thi</strong>: [[${trialExamResult.createAt}]]</li>
+									<li><strong>Ngày thi</strong>: <span th:text="${#dates.format(trialExamResult.createAt, 'dd/MM/yyyy HH:mm')}"></span></li>
 									<li><strong>Điểm</strong>: [[${trialExamResult.point}]]</li>
 								</ul>
 							</div>

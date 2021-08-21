@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flearndriving.application.dto.ResponeData;
 import com.flearndriving.application.services.DrivingLicenseServices;
 import com.flearndriving.application.services.ExamQuestionsServices;
+import com.flearndriving.application.services.TrialExamResultServices;
 
 @Controller
 public class TrialExamController {
@@ -19,9 +21,12 @@ public class TrialExamController {
     @Autowired
     ExamQuestionsServices examQuestionsServices;
     
+    @Autowired
+    TrialExamResultServices trialExamResultServices;
+    
     @GetMapping(value = { "/trial-exam" })
     public String trialTest(Long examQuestionsId, Model model) {
-        model.addAttribute("examQuestionsId", examQuestionsId);
+        model.addAttribute("examQuestions", examQuestionsServices.findOneExamQuestions(examQuestionsId));
         return "trial-exam";
     }
 
@@ -53,5 +58,11 @@ public class TrialExamController {
         responeData.putResult("examQuestions", examQuestionsServices.findOneExamQuestions(examQuestionsId));
         responeData.putResult("listQuestions", examQuestionsServices.findListQuestionByExamQuestionsId(examQuestionsId));
         return responeData;
+    }
+    
+    @PostMapping(value = { "/post-answer" })
+    @ResponseBody
+    public ResponeData postAnswer(String listSelectAnswers, Long examQuestionsId, Integer timeLeft) {
+        return trialExamResultServices.answerTrialExam(listSelectAnswers, examQuestionsId, timeLeft);
     }
 }
