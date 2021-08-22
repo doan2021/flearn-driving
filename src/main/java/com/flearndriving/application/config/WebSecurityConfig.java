@@ -73,28 +73,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/register",
                 "/create-account",
                 "/document",
-                "/list-question"
-                ).permitAll();
+                "/list-question",
+                "/detail-document").permitAll();
         // Trang yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
         // Nếu chưa login, nó sẽ redirect tới trang /login.
         http.authorizeRequests().antMatchers("/learn/**", 
                 "/view-profile", 
-                "/view-profile-update", 
-                "/update-account-view",
+                "/update-profile", 
                 "/view-profile-registed-exam",
                 "/view-profile-learning-progress",
+                "/view-history-trial-test",
+                "/detail-history-trial-test",
+                "/upload-avatar",
                 "/select-chapter",
                 "/register-exam",
                 "/search-exam",
                 "/load-district",
                 "/load-ward",
-                "/register-exam",
-                "/trial-exam",
-                "/select-trial-exam",
                 "/load-page-learn",
                 "/submit-answer",
-                "/trial-exam"
-                ).access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+                "/trial-exam",
+                "/select-exam-question",
+                "/init-select-exam-question",
+                "/select-driving-license",
+                "/init-trial-exam",
+                "/post-answer").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
         // Cấu hình cho Login Form.
         http.authorizeRequests().and().formLogin()

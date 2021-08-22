@@ -31,7 +31,7 @@
               <div class="col-md-6 d-flex align-items-stretch mt-4" th:each="chapter : ${listChapter}">
                 <div class="card border" th:style="|background-image: url('@{../assets/img/no-photo.png}')|" data-aos="fade-up" data-aos-delay="100" th:if="${chapter.listImages.size == 0}">
                   <div class="card-body">
-                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.name}|"></a></h4>
+                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.index}|"></a></h4>
                     <h5 class="card-title" th:text="${chapter.name}"></h5>
                     <p class="card-text" th:text="${chapter.description}"></p>
                     <div class="read-more"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Xem chi tiết</a></div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="card border" th:style="|background-image: url('${chapter.listImages.get(0).path}')|" data-aos="fade-up" data-aos-delay="100" th:unless="${chapter.listImages.size == 0}">
                   <div class="card-body">
-                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.name}|"></a></h4>
+                    <h4 class="card-title"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}" th:text="|Chương ${chapter.index}|"></a></h4>
                     <h5 class="card-title" th:text="${chapter.name}"></h5>
                     <p class="card-text" th:text="${chapter.description}"></p>
                     <div class="read-more"><a th:href="@{${'/detail-document?chapterId='} + ${chapter.chapterId}}"><i class="bi bi-arrow-right"></i> Xem chi tiết</a></div>

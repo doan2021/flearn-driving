@@ -90,25 +90,24 @@ public class AccountServices {
     }
     
     public AccountLogin getBasicInfoAccountLogin() {
+        AccountLogin accountLogin = new AccountLogin();
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) {
             String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-            AccountLogin accountLogin = accountsRespository.findBasicInfoByUserName(userName);
-            accountLogin.setUrlAvater(documentRespository.findUrlDocumentByTypeAndAccountId(Constant.TYPE_DOCUMENT_AVATAR, accountLogin.getAccountId()));
-            return accountLogin;
+            accountLogin = accountsRespository.findBasicInfoByUserName(userName);
         } else if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof CustomOAuth2User) {
             CustomOAuth2User oAuth2User = (CustomOAuth2User) SecurityContextHolder.getContext().getAuthentication()
                     .getPrincipal();
-            AccountLogin accountLogin = accountsRespository.findBasicInfoByEmail(oAuth2User.getEmail());
-            accountLogin.setUrlAvater(documentRespository.findUrlDocumentByTypeAndAccountId(Constant.TYPE_DOCUMENT_AVATAR, accountLogin.getAccountId()));
-            return accountLogin;
+            accountLogin = accountsRespository.findBasicInfoByEmail(oAuth2User.getEmail());
         }
-        return null;
+        if (accountLogin != null) {
+            accountLogin.setUrlAvater(documentRespository.findUrlDocumentByTypeAndAccountId(Constant.TYPE_DOCUMENT_AVATAR, accountLogin.getAccountId()));
+        }
+        return accountLogin;
     }
 
     @Transactional
     public void createAccountAfterOAuthLoginSuccess(String email, String fullName, String authenticationProvider) {
         Account account = new Account();
-        account.setUserName(email);
         account.setEmail(email);
         account.setFirstName(Common.getFirstName(fullName));
         account.setMiddleName(Common.getMiddleName(fullName));

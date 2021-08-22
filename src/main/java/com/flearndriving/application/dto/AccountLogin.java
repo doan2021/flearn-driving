@@ -22,6 +22,9 @@ public class AccountLogin {
         this.description = description;
     }
 
+    public AccountLogin() {
+    }
+
     public Long getAccountId() {
         return accountId;
     }

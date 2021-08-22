@@ -40,7 +40,6 @@ Vue.component("countdown", {
     watch: {
         totalTime: function(val) {
         	this.totalTimes = val;
-        	this.timeLeft = this.totalTime - this.totalTimes;
         },
         totalTimes: function(value) {
             if (value == 0) {
@@ -91,6 +90,9 @@ Vue.component("countdown", {
             if (this.timerRunning == true) {
                 this.totalTimes--;
             }
+        },
+        returnTimeLeft() {
+        	return this.totalTime - this.totalTimes;
         }
     }
 });

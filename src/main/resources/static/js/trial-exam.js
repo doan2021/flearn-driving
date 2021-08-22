@@ -78,14 +78,13 @@ new Vue({
                 return (item != null && item != '');
             }));
             formData.append('examQuestionsId', this.examQuestionsId);
-            formData.append('timeLeft', this.$refs.countdown.timeLeft);
+            formData.append('timeLeft', this.$refs.countdown.returnTimeLeft());
             axios.post("/post-answer", formData, { headers : { 'Content-Type': 'application/json' }
             }).then(function (respone) {
             	$('#preloader').fadeOut();
             	_this.resultExam = respone.data.result;
             	_this.isComplete = true;
             });
-
         },
         continueAnswer: function () {
             this.confirmSubmit = false;
