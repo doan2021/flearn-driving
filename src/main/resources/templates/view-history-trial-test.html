@@ -73,7 +73,7 @@
                     <h3 class="mt-4"><strong>Số lần thi thử</strong> : <span th:text="${totalTrialExamResult}"></span></h3>
                     <h3 th:if="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${totalTrialExamResult} %|" class="text-danger fw-bold"></span></h3>
                     <h3 th:unless="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${#numbers.formatDecimal(numberOfPass / totalTrialExamResult * 100 , 1, 0)} %|" class="text-danger fw-bold"></span></h3>
-                    <div class="col-12">
+                    <div class="col-12 table-reponsive">
                         <table class="table table-bordered mt-4">
                             <thead class="mt-1" style="background-color: rgb(213, 213, 213);">
                                 <tr class="text-center">
@@ -100,10 +100,15 @@
                                     <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[correct]}">[[${filtered.size}]]</td>
                                     <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[!correct]}">[[${filtered.size}]]</td>
                                     <td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}"></td>
-                                    <td th:text="|${trialExamResult.timeExam} phút|"></td>
+                                    <td th:unless="${trialExamResult.timeExam < 60}">
+                                        <span class="me-2">[[${trialExamResult.timeExam/60}]] phút</span><span>[[${trialExamResult.timeExam%60}]] Giây</span>
+                                    </td>
+                                    <td th:if="${trialExamResult.timeExam < 60}">
+                                        <span>[[${trialExamResult.timeExam%60}]] Giây</span>
+                                    </td>
                                     <td>
-                                        <span th:if="${trialExamResult.pass}">Đạt</span>
-                                        <span th:unless="${trialExamResult.pass}">Không đạt</span>
+                                        <span th:if="${trialExamResult.pass}" class="text-success fw-bold">Đạt</span>
+                                        <span th:unless="${trialExamResult.pass}" class="text-danger fw-bold">Không đạt</span>
                                     </td>
                                     
                                     <td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trialExamResultId}}">Chi

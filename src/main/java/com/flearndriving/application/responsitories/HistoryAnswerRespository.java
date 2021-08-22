@@ -13,7 +13,7 @@ import com.flearndriving.application.entities.StatusLearn;
 public interface HistoryAnswerRespository extends JpaRepository<HistoryAnswer, Long> {
     
     
-    @Query(value = "SELECT ha.answer.isTrue "
+    @Query(value = "SELECT ha.isCorrect "
             + "FROM HistoryAnswer ha "
             + "WHERE ha.statusLearn = :statusLearn "
             + "ORDER BY ha.dateAnswer DESC ")
