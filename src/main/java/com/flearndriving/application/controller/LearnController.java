@@ -48,7 +48,6 @@ public class LearnController {
     	model.addAttribute("account", accountsServices.getAccountLoginInfo());
     	model.addAttribute("listLearningProgressChapter", chapterServices.learningProgressChapter());
     	model.addAttribute("listChapter", chapterServices.countChapter());
-		model.addAttribute("listLearnedChapter", chapterServices.countLearnedChapter());
         return "select-chapter";
     }
 }

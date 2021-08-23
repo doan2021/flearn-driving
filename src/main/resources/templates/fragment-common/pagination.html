@@ -1,0 +1,19 @@
+<th:block th:fragment="pagination" xmlns:th="http://www.thymeleaf.org">
+    <nav th:if="${pageContent.totalPages > 1}">
+        <ul class="pagination m-0">
+            <li class="page-item">
+                <button type="button" class="page-link" th:onclick="|search(0)|" th:if="${not pageContent.first}">
+                    <i class="fas fa-angle-double-left"></i>
+                </button>
+            </li>
+            <li class="page-item" th:each="i: ${#numbers.sequence(0, pageContent.totalPages - 1)}" th:classappend="${pageContent.number eq i} ? 'active' : ''">
+                <button class="page-link" th:onclick="|search(${i})|" th:text="${i} + 1"></button>
+            </li>
+            <li class="page-item">
+                <button class="page-link" th:onclick="|search(${pageContent.totalPages - 1})|" th:if="${not pageContent.last}">
+                    <i class="fas fa-angle-double-right"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</th:block>

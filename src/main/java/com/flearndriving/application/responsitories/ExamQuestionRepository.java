@@ -18,7 +18,8 @@ public interface ExamQuestionRepository extends JpaRepository<ExamQuestions, Lon
             + " eq.name,"
             + " eq.drivingLicense.examMinutes)"
             + " FROM ExamQuestions eq "
-            + " WHERE eq.examQuestionsId = :examQuestionsId")
+            + " WHERE eq.examQuestionsId = :examQuestionsId "
+            + " AND eq.isDelete = false")
     public TrialExamDto getDataTrialExam(Long examQuestionsId);
     
 }

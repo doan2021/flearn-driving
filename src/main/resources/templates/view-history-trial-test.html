@@ -32,10 +32,11 @@
                                 <div class="portfolio-info">
                                     <h4>Ảnh đại diện</h4>
                                     <div class="portfolio-links">
-                                         <a class="portfolio-lightbox" th:href="@{${accountLogin.urlAvater}}"><i class="bi bi-arrow-up-right-square"></i></a>
+                                        <a class="portfolio-lightbox" th:href="${accountLogin.urlAvater}" th:unless="${#strings.isEmpty(accountLogin.urlAvater)}"><i class="bi bi-arrow-up-right-square"></i></a>
+                                        <a class="portfolio-lightbox" th:href="@{../assets/img/avatar_default.png}" th:if="${#strings.isEmpty(accountLogin.urlAvater)}"><i class="bi bi-arrow-up-right-square"></i></a>
                                         <label class="cursor-pointer" title="Thay ảnh đại diện" for="avatar"><i class="bi bi-upload"></i></label>
                                         <form th:action="@{/upload-avatar}" method="POST" enctype="multipart/form-data" id="formUploadAvatar">
-                                            <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()">
+                                            <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()" accept="image/png, image/gif, image/jpeg">
                                         </form>
                                     </div>
                                 </div>
@@ -48,7 +49,7 @@
                         <h3>Xin chào !</h3>
                         <h4>[[${accountLogin.lastName}]] [[${accountLogin.middleName}]] [[${accountLogin.firstName}]]</h4>
                         <div class="mt-3">Tài khoản: [[${account.userName}]]</div>
-                        <a th:href="@{/update-profile}" class="btn btn-sm btn-warning">Đổi mật khẩu</a>
+                        <a href="#" class="btn btn-sm btn-warning">Đổi mật khẩu</a>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,7 @@
                 <div class="portfolio-info border border-2 border-top-0" style="border-radius: 0 0 0.5rem 0.5rem;">
                     <h3 class="mt-4"><strong>Số lần thi thử</strong> : <span th:text="${totalTrialExamResult}"></span></h3>
                     <h3 th:if="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${totalTrialExamResult} %|" class="text-danger fw-bold"></span></h3>
-                    <h3 th:unless="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${#numbers.formatDecimal(numberOfPass / totalTrialExamResult * 100 , 1, 0)} %|" class="text-danger fw-bold"></span></h3>
+                    <h3 th:unless="${totalTrialExamResult == 0}"><strong>Tỉ lệ thi đậu</strong>: <span th:text="|${#numbers.formatDecimal(numberOfPass * 1.0 / totalTrialExamResult * 100 , 1, 0)} %|" class="text-danger fw-bold"></span></h3>
                     <div class="col-12 table-reponsive">
                         <table class="table table-bordered mt-4">
                             <thead class="mt-1" style="background-color: rgb(213, 213, 213);">
@@ -93,15 +94,15 @@
                             <tbody >
                                 <tr class="text-center" th:each="trialExamResult,stat : ${listTrialExamResult}" th:if="${listTrialExamResult.size != 0}">
                                     <td th:text="${stat.index + 1}"></td>
-                                    <th th:text="${trialExamResult.examQuestions.drivingLicense.name}"></th>
+                                    <td class="fw-bold" th:text="${trialExamResult.examQuestions.drivingLicense.name}"></td>
                                     <td th:text="${trialExamResult.examQuestions.name}"></td>
                                     <td th:text="${#dates.format(trialExamResult.createAt, 'dd/MM/yyyy HH:mm')}"></td>
                                     <td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestion}"></td>
-                                    <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[correct]}">[[${filtered.size}]]</td>
-                                    <td th:with="filtered=${trialExamResult.listHistoryAnswer.?[!correct]}">[[${filtered.size}]]</td>
+                                    <td th:text="${trialExamResult.listHistoryAnswer.?[correct].size}"></td>
+                                    <td th:text="${trialExamResult.listHistoryAnswer.?[!correct].size}"></td>
                                     <td th:text="${trialExamResult.examQuestions.drivingLicense.numberQuestionParalysis}"></td>
                                     <td th:unless="${trialExamResult.timeExam < 60}">
-                                        <span class="me-2">[[${trialExamResult.timeExam/60}]] phút</span><span>[[${trialExamResult.timeExam%60}]] Giây</span>
+                                        <span class="me-2">[[${trialExamResult.timeExam/60}]] Phút</span><span>[[${trialExamResult.timeExam%60}]] Giây</span>
                                     </td>
                                     <td th:if="${trialExamResult.timeExam < 60}">
                                         <span>[[${trialExamResult.timeExam%60}]] Giây</span>
@@ -111,7 +112,7 @@
                                         <span th:unless="${trialExamResult.pass}" class="text-danger fw-bold">Không đạt</span>
                                     </td>
                                     
-                                    <td><a type="button" class="btn btn-xs btn-primary mb-3" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trialExamResultId}}">Chi
+                                    <td><a type="button" class="btn btn-xs btn-primary" th:href="@{${'/detail-history-trial-test?trialExamResultId='} + ${trialExamResult.trialExamResultId}}">Chi
                                             tiết</a>
                                     </td>
                                 </tr>
