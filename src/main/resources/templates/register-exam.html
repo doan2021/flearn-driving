@@ -302,7 +302,7 @@
                                         <label class="image-area d-flex justify-content-center align-items-center fw-bold text-secondary mt-3" for="identityCardImageFront" style="height:250px" v-else>
                                             Mặt trước
                                         </label>
-                                        <input class="d-none " :class="$hasError($v.formUploadDocument.identityCardImageFront)" type="file" id="identityCardImageFront" @change="loadIdentityCardFront" accept="image/*">
+                                        <input class="d-none" :class="$hasError($v.formUploadDocument.identityCardImageFront)" type="file" id="identityCardImageFront" @change="loadIdentityCardFront" accept="image/png, image/gif, image/jpeg">
                                         <div class="invalid-feedback">{{ $messageError($v.formUploadDocument.identityCardImageFront) }}</div>
                                     </div>
                                     <div class="col-6">
@@ -313,7 +313,7 @@
                                         <label class="image-area d-flex justify-content-center align-items-center fw-bold text-secondary mt-3" for="identityCardImageBack" style="height:250px" v-else>
                                             Mặt sau
                                         </label>
-                                        <input class="d-none" :class="$hasError($v.formUploadDocument.identityCardImageBack)" type="file" id="identityCardImageBack" @change="loadIdentityCardBack" accept="image/*">
+                                        <input class="d-none" :class="$hasError($v.formUploadDocument.identityCardImageBack)" type="file" id="identityCardImageBack" @change="loadIdentityCardBack" accept="image/png, image/gif, image/jpeg">
                                         <div class="invalid-feedback">{{ $messageError($v.formUploadDocument.identityCardImageBack) }}</div>
                                     </div>
                                     <div class="col-12 mt-4">

@@ -1,7 +1,5 @@
 package com.flearndriving.application.services;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
@@ -32,24 +30,16 @@ import com.flearndriving.application.utils.EncrytedPasswordUtils;
 public class AccountServices {
 
     @Autowired
-    private AccountsRespository accountsRespository;
+    AccountsRespository accountsRespository;
 
     @Autowired
-    private RoleRespository roleRespository;
+    RoleRespository roleRespository;
     
     @Autowired
-    private DocumentRespository documentRespository;
+    DocumentRespository documentRespository;
     
     @Autowired
     AmazonS3ClientService amazonS3ClientService;
-
-    public Account getAccountByUserName(String userName) {
-        return accountsRespository.findByUserName(userName);
-    }
-
-    public List<Account> findAllAccount() {
-        return accountsRespository.findAll();
-    }
 
     public Account findByEmail(String email) {
         return accountsRespository.findByEmail(email);

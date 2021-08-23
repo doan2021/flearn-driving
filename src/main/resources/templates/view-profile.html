@@ -36,10 +36,11 @@
                                     <div class="portfolio-info">
                                         <h4>Ảnh đại diện</h4>
                                         <div class="portfolio-links">
-                                             <a class="portfolio-lightbox" th:href="@{${accountLogin.urlAvater}}"><i class="bi bi-arrow-up-right-square"></i></a>
+                                            <a class="portfolio-lightbox" th:href="${accountLogin.urlAvater}" th:unless="${#strings.isEmpty(accountLogin.urlAvater)}"><i class="bi bi-arrow-up-right-square"></i></a>
+                                            <a class="portfolio-lightbox" th:href="@{../assets/img/avatar_default.png}" th:if="${#strings.isEmpty(accountLogin.urlAvater)}"><i class="bi bi-arrow-up-right-square"></i></a>
                                             <label class="cursor-pointer" title="Thay ảnh đại diện" for="avatar"><i class="bi bi-upload"></i></label>
                                             <form th:action="@{/upload-avatar}" method="POST" enctype="multipart/form-data" id="formUploadAvatar">
-                                                <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()">
+                                                <input type="file" name="data" class="d-none" id="avatar" onchange="changeAvatar()" accept="image/png, image/gif, image/jpeg">
                                             </form>
                                         </div>
                                     </div>
@@ -52,7 +53,7 @@
                             <h3>Xin chào !</h3>
                             <h4>[[${accountLogin.lastName}]] [[${accountLogin.middleName}]] [[${accountLogin.firstName}]]</h4>
                             <div class="mt-3">Tài khoản: [[${account.userName}]]</div>
-                            <a th:href="@{/update-profile}" class="btn btn-sm btn-warning">Đổi mật khẩu</a>
+                            <a href="#" class="btn btn-sm btn-warning">Đổi mật khẩu</a>
                         </div>
                     </div>
                 </div>

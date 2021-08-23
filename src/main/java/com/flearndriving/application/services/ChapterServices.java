@@ -57,6 +57,7 @@ public class ChapterServices {
             learningProgress.setKnowledge(statusLearnRespository.countQuestionWithStatus(chapter, account, 3));
             learningProgress.setFamilier(statusLearnRespository.countQuestionWithStatus(chapter, account, 2));
             learningProgress.setRest(statusLearnRespository.countQuestionRest(chapter, account));
+            learningProgress.setNumberOfQuestion(questionsRespository.countQuestionByChapterId(chapter.getChapterId()));
             listLearningProgressChapter.add(learningProgress);
         }
         return listLearningProgressChapter;
@@ -66,18 +67,5 @@ public class ChapterServices {
         Account account = accountsServices.getAccountLogin();
         int knowledge = statusLearnRespository.countQuestionWithStatus(chapter, account, 3);
         return ((knowledge * 1.0) / chapter.getListQuestion().size()) * 100;
-    }
-
-    public List<LearningProgress> countLearnedChapter() {
-        List<LearningProgress> listLearningProgressChapter = new ArrayList<>();
-        List<Chapter> listChapter = chapterResponsitory.findAll();
-        for (Chapter lChapter : listChapter) {
-            LearningProgress learningProgress = new LearningProgress();
-            learningProgress.setProgressChapter(getNumberLearnProgress(lChapter));
-            if (learningProgress.getProgressChapter() == 100) {
-                listLearningProgressChapter.add(learningProgress);
-            }
-        }
-        return listLearningProgressChapter;
     }
 }

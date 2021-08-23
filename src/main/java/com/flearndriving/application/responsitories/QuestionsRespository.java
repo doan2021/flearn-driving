@@ -17,6 +17,9 @@ public interface QuestionsRespository extends JpaRepository<Question, Long> {
 
     @Query("SELECT q FROM Question q WHERE q.isDelete = false AND q.chapter.chapterId = :chapterId")
     List<Question> findQuestionByChapterId(Long chapterId);
+    
+    @Query("SELECT count(q) FROM Question q WHERE q.isDelete = false AND q.chapter.chapterId = :chapterId")
+    Long countQuestionByChapterId(Long chapterId);
 
     @Query("SELECT q " 
             + "FROM Question q " 
