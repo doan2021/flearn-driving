@@ -1,6 +1,7 @@
 body {
     font-family: 'Comfortaa', cursive;
     color: #444444;
+    position: relative;
 }
 
 a {
@@ -1674,7 +1675,9 @@ section {
   padding: 30px 0;
   color: #222222;
   font-size: 14px;
-}
+  bottom:0;
+  position: absolute;
+  }
 
 #footer .credits {
   font-size: 13px;
